@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'com.hw'
+group = 'com.yorimichi'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -31,6 +31,19 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+    // jsp 구동하기 위함. & jstl
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+    implementation 'com.oracle.database.security:oraclepki:21.5.0.0'
+    implementation 'com.oracle.database.security:osdt_cert:21.5.0.0'
+    implementation 'com.oracle.database.security:osdt_core:21.5.0.0'
 }
 
 tasks.named('test') {
