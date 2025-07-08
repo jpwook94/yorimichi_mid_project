@@ -1,4 +1,4 @@
-package com.yorimichi.travel.vo;
+package com.yorimichi.travel.vo.account;
 
 public class AccountVO {
     private String id;
