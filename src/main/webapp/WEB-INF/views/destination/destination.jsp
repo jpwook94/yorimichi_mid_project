@@ -10,18 +10,5 @@
 </head>
 <body>
 <h1>destination jsp</h1>
-<c:forEach items="${destinationList}" var="destination">
-    name : ${destination.destination_name}
-    location : ${destination.location}
-    tags : ${destination.tags}
-</c:forEach>
-<%--<form action="destination-add">--%>
-<%--    destination_name<input name="destination_name">--%>
-<%--    location<input name="location">--%>
-<%--    tags<input name="tags">--%>
-<%--    <button>add</button>--%>
-<%--</form>--%>
-
-
 </body>
 </html>
