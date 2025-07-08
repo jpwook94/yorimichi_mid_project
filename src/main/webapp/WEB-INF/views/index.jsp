@@ -9,10 +9,5 @@
 </head>
 <body>
 <h1>index jsp</h1>
-
-<a href="/destination-all">get all destination</a>
-
-
-
 </body>
 </html>
