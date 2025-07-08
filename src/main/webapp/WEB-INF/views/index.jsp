@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
+    <script >location.href="hc"</script>
+
 </head>
 <body>
-<h1>index jsp</h1>
+
 </body>
 </html>

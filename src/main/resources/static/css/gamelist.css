@@ -1,0 +1,185 @@
+.pixel-card {
+position: relative;
+width: 300px;
+height: 400px;
+background-color: #ffe97d;
+border: 4px solid #8b7355;
+border-radius: 12px;
+box-shadow:
+inset 2px 2px 0px #fff8dc,
+               inset -2px -2px 0px #d4c17a,
+4px 4px 0px #5a4a3a;
+}
+
+.card-border {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    background-color: #ffe97d;
+    box-shadow: inset 1px 1px 0px #ffe97d;
+}
+
+.card-content {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-color: #ffe97d;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #6b5b3d;
+    text-shadow: 1px 1px 0px #fff8dc;
+}
+
+/* 모서리 선 장식 */
+.corner-lines {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.corner-lines.top-left {
+    top: 8px;
+    left: 8px;
+    border-top: 2px solid #d4c17a;
+    border-left: 2px solid #d4c17a;
+    border-top-left-radius: 4px;
+}
+
+.corner-lines.top-right {
+    top: 8px;
+    right: 8px;
+    border-top: 2px solid #d4c17a;
+    border-right: 2px solid #d4c17a;
+    border-top-right-radius: 4px;
+}
+
+.corner-lines.bottom-left {
+    bottom: 8px;
+    left: 8px;
+    border-bottom: 2px solid #d4c17a;
+    border-left: 2px solid #d4c17a;
+    border-bottom-left-radius: 4px;
+}
+
+.corner-lines.bottom-right {
+    bottom: 8px;
+    right: 8px;
+    border-bottom: 2px solid #d4c17a;
+    border-right: 2px solid #d4c17a;
+    border-bottom-right-radius: 4px;
+}
+
+/* 못 박힌 듯한 픽셀 장식 */
+.pixel-rivet {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #b8860b;
+    border: 1px solid #8b7355;
+    border-radius: 1px;
+    box-shadow:
+            inset 1px 1px 0px #daa520,
+            inset -1px -1px 0px #996633;
+}
+
+.pixel-rivet.top-left {
+    top: 18px;
+    left: 18px;
+}
+
+.pixel-rivet.top-right {
+    top: 18px;
+    right: 18px;
+}
+
+.pixel-rivet.bottom-left {
+    bottom: 18px;
+    left: 18px;
+}
+
+.pixel-rivet.bottom-right {
+    bottom: 18px;
+    right: 18px;
+}
+
+/* 내부 리벳 중앙 점 */
+.rivet-center {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #654321;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+}
+.card-oriimg {
+
+}
+
+/* 카드 오리 이미지*/
+.card-oriimg img{
+    width: 110px;
+    height: auto;
+    margin-bottom: 14px;
+
+}
+.card-oriimg2 img{
+    width: 140px;
+    height: auto;
+    margin-bottom: 20px;
+
+}
+
+
+/* 카드 제목 */
+.card-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #8b7355;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 0px #fff8dc;
+}
+
+/* 카드 설명 */
+.card-description {
+    font-size: 14px;
+    color: #6b5b3d;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+/* 호버 효과 */
+.pixel-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow:
+            inset 2px 2px 0px #fff8dc,
+            inset -2px -2px 0px #d4c17a,
+            6px 6px 0px #5a4a3a;
+}
+
+/* 애니메이션 */
+@keyframes pixelGlow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.pixel-card:hover .card-border {
+    animation: pixelGlow 1s ease-in-out infinite;
+}
+
+.pixel-card:hover .pixel-rivet {
+    animation: pixelGlow 0.6s ease-in-out infinite;
+}
