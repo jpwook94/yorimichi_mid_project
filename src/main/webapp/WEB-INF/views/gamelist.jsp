@@ -58,7 +58,7 @@
 
 
         </div>
-        <div class="gamelist-btn">
+        <div onclick="location.href='/gacha'" class="gamelist-btn">
 
             <div class="pixel-card">
                 <div class="card-border">

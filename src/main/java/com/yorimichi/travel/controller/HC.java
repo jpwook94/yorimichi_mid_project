@@ -20,4 +20,11 @@ public class HC {
     return "main";
     }
 
+    @GetMapping("/gacha")
+    public String gacha(Model model) {
+        model.addAttribute("content", "gacha/gacha.jsp");
+        model.addAttribute("gachacontent", "/WEB-INF/views/gacha/gachamascot.jsp");
+        return "main";
+    }
+
 }
