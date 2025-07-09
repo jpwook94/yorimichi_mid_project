@@ -109,7 +109,7 @@
         <div class="tagsearch-speechbubble">
             <img src="https://cdn.discordapp.com/attachments/1389097872523530293/1392057521518153759/pixel-speech-bubble.gif?ex=686e2618&is=686cd498&hm=d397bb0cd12a652107b4184a9f0848abdc55f29762efbd4ce18e50a5f748d811&" alt="">
         </div>
-        <div class="tagsearch-ori">
+        <div class="tagsearch-ori" onclick="location.href='tagPage'">
             <img  src="https://cdn.discordapp.com/attachments/1389097872523530293/1392061193891614760/DUCK1.png?ex=686e2983&is=686cd803&hm=6cf3b37d66ac43c9e2991a998afae776734d5fc94e94dd53e0854bb54cdda384&" alt="">
         </div>
         <div class="tagsearch-ori2">
