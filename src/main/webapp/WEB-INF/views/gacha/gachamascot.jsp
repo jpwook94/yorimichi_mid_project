@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language = "java" contentType = "text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!doctype html>
@@ -9,6 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-<h1>gasha jsp</h1>
+
+<h1>mascot</h1>
+
+<div></div>
+
 </body>
 </html>
