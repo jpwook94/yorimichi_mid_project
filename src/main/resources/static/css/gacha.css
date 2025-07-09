@@ -1,0 +1,305 @@
+.gachalist-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+/* ============================가챠 컨테이너 웹페이지 디자인은 가장 아래에 모아두겟음 ========================== */
+
+.gacha-container{
+margin-top: 60px;
+
+}
+
+.gacha-browser-window {
+    width: 1000px;
+    height: 500px;
+    background: #ffb8b8;
+    border: 4px solid #2a3687;
+    box-sizing: border-box;
+}
+
+.gacha-title-bar {
+    background: #ffb8b8;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 4px solid #2a3687;
+}
+
+.gacha-tab {
+    background: #fffce0;
+    border: 3px solid #2a3687;
+    padding: 8px 16px;
+    margin-right: 10px;
+    color: #2a3687;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    /* 3D 효과 */
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.5),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3),
+            3px 3px 0px #a884e0;
+}
+
+.gacha-tab.active {
+    background: #fffce0;
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.7),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3),
+            2px 2px 0px #a884e0;
+}
+
+.gacha-window-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.gacha-control-btn {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #2a3687;
+    background: #fffce0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #2a3687;
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.5),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3),
+            3px 3px 0px #a884e0;
+}
+
+.gacha-control-btn:hover {
+    background: #fff176;
+}
+
+.gacha-toolbar {
+    background: #ffb8b8;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 4px solid #2a3687;
+    gap: 15px;
+}
+
+.gacha-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #2a3687;
+    background: #fffce0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #2a3687;
+    font-size: 18px;
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.5),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3),
+            3px 3px 0px #a884e0;
+}
+
+.gacha-nav-btn:hover {
+    background: #fff176;
+}
+
+.gacha-nav-btn:active {
+    box-shadow:
+            inset -2px -2px 0px rgba(255,255,255,0.5),
+            inset 2px 2px 0px rgba(255, 9, 0, 0.3),
+            1px 1px 0px #a884e0;
+}
+
+.gacha-address-bar {
+    flex: 1;
+    height: 40px;
+    border: 3px solid #2a3687;
+    background: #fffce0;
+    padding: 0 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #2a3687;
+    outline: none;
+    box-shadow:
+            inset -2px -2px 0px rgba(255,255,255,0.5),
+            inset 2px 2px 0px rgba(255, 9, 0, 0.3);
+}
+
+.gacha-content-area {
+    display: flex;
+    position: relative;
+    height: 374px;
+    background: #f0f0f0;
+}
+
+.gacha-sidebar {
+    width: 200px;
+    height: 334px;
+    background-color: rgba(198, 164, 248, 0.3);
+    border-right: 4px solid #2a3687;
+    border-left: 4px solid #2a3687;
+    padding: 20px;
+    position: absolute;
+    left: 20px;
+    z-index: 1;
+    /* 3D 효과 */
+    box-shadow:
+            inset 3px 3px 0px rgba(255,255,255,0.2),
+            inset -3px -3px 0px rgba(255, 0, 234, 0.3);
+}
+
+.gacha-sidebar-item {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: #ffe57c;
+    border: 4px solid #bc5a5a;
+    border-bottom-color: #8f5b69;
+    border-radius: 15px;
+    height: 90px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    position: relative;
+    z-index: 2;
+    /* 3D 버튼 효과 */
+    box-shadow:
+            inset  3px 3px 0px rgba(255, 255, 255, 0.64),
+            inset -3px -3px 0px rgba(255, 255, 255, 0.63),
+            0px 6px 0px #dc7a3e,
+            0px 8px 0px #7c1717,
+            0px 10px 8px rgba(154, 68, 68, 0.3);
+}
+
+.gacha-sidebar-item img{
+    width: 100px;
+    height: auto;
+}
+
+.gacha-sidebar-item:hover {
+    transform: translateY(-2px);
+    box-shadow:
+            inset 3px 3px 0px rgba(255,255,255,0.5),
+            inset -3px -3px 0px rgba(255, 255, 255, 0.64),
+            0px 8px 0px #dc7a3e,
+            0px 10px 0px #953434,
+            0px 12px 12px rgba(255, 129, 52, 0.98);
+}
+/* 마우스로 눌렀을 때 */
+.gacha-sidebar-item:active {
+    transform: translateY(2px);
+    box-shadow:
+            inset 3px 3px 0px rgba(202, 38, 38, 0.3),
+            inset -3px -3px 0px rgba(255, 255, 255, 0.85),
+            0px 4px 0px #dc7a3e,
+            0px 6px 0px #680707,
+            0px 8px 4px rgba(0,0,0,0.3);
+}
+
+.gacha-main-content {
+    flex: 1;
+    background: #fffce0;
+    border-right: 4px solid #2a3687;
+    position: relative;
+    /* 3D 효과 */
+    box-shadow:
+            inset 3px 3px 0px rgba(255,255,255,0.3),
+            inset -3px -3px 0px rgba(255, 9, 0, 0.3);
+}
+
+.gacha-scrollbar {
+    width: 30px;
+    background: #ffb8b8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.2),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3);
+}
+
+.gacha-scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2a3687;
+    background: #fffce0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #2a3687;
+    font-size: 12px;
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.5),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3),
+            2px 2px 0px #a884e0;
+}
+
+.gacha-scroll-thumb {
+    width: 20px;
+    height: 60px;
+    border: 2px solid #2a3687;
+    background: #fffce0;
+    cursor: pointer;
+    box-shadow:
+            inset 2px 2px 0px rgba(255,255,255,0.5),
+            inset -2px -2px 0px rgba(255, 9, 0, 0.3),
+            2px 2px 0px #a884e0;
+}
+
+.gacha-purple-overlay {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    height: 200px;
+    background: #9c27b0;
+    border: 4px solid #2a3687;
+    border-radius: 15px;
+    z-index: 10;
+    cursor: move;
+    /* 3D 효과 */
+    box-shadow:
+            inset 3px 3px 0px rgba(255,255,255,0.3),
+            inset -3px -3px 0px rgba(0,0,0,0.4),
+            0px 6px 0px #7b1fa2,
+            0px 8px 0px #6a1b9a,
+            0px 10px 15px rgba(0,0,0,0.4);
+}
+
+.gacha-purple-overlay:hover {
+    transform: translateY(-2px);
+    box-shadow:
+            inset 3px 3px 0px rgba(255,255,255,0.4),
+            inset -3px -3px 0px rgba(0,0,0,0.3),
+            0px 8px 0px #7b1fa2,
+            0px 10px 0px #6a1b9a,
+            0px 12px 20px rgba(0,0,0,0.5);
+}
+
+/* 픽셀 아트 효과 */
+* {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
