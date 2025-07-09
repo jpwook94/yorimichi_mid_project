@@ -29,7 +29,7 @@
     </button>
     <p class="login-signup-link">
         No account?
-        <a class="login-up" href="/sign-up">Sign up!</a>
+        <a class="login-up" href="/sign-up" onclick="loadContent(event, '/sign-up')">Sign up!</a>
     </p>
 </form>
 </body>
