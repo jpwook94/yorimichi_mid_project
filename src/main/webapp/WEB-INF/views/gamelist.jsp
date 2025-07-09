@@ -57,7 +57,7 @@ pageEncoding="UTF-8"%>
             </div>
           </div>
         </div>
-        <div class="gamelist-btn">
+        <div class="gamelist-btn" onclick="location.href='/gacha'">
           <div class="pixel-card">
             <div class="card-border">
               <div class="card-content">
