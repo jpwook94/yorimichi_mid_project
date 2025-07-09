@@ -17,7 +17,13 @@ public class HC {
     @GetMapping("/gamelist")
     public String gamelist(Model model) {
         model.addAttribute("content", "gamelist.jsp");
-    return "main";
+        return "main";
+    }
+
+    @GetMapping("/login-page")
+    public String loginPage(Model model) {
+        model.addAttribute("content", "account/login.jsp");
+        return "main";
     }
 
 }

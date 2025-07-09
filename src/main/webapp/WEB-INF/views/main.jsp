@@ -8,16 +8,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="/other/css/main.css">
     <link rel="stylesheet" href="/other/css/gamelist.css">
+    <link rel="stylesheet" href="/other/css/login.css">
 </head>
 <body>
 
 <%--하트--%>
 <div class="heart-list">
-    <div class="heart"><img src="https://cdn.discordapp.com/attachments/1389097872523530293/1392023005957193838/image.png?ex=686e05f3&is=686cb473&hm=6adace4c833cfdff1e3583cac984251f5b2d7e30066152268353fd027e611fdf&" alt=""></div>
-    <div class="heart"><img src="https://cdn.discordapp.com/attachments/1389097872523530293/1392023005957193838/image.png?ex=686e05f3&is=686cb473&hm=6adace4c833cfdff1e3583cac984251f5b2d7e30066152268353fd027e611fdf&" alt=""></div>
-    <div class="heart"><img src="https://cdn.discordapp.com/attachments/1389097872523530293/1392023005957193838/image.png?ex=686e05f3&is=686cb473&hm=6adace4c833cfdff1e3583cac984251f5b2d7e30066152268353fd027e611fdf&" alt=""></div>
-    <div class="heart"><img src="https://cdn.discordapp.com/attachments/1389097872523530293/1392023005957193838/image.png?ex=686e05f3&is=686cb473&hm=6adace4c833cfdff1e3583cac984251f5b2d7e30066152268353fd027e611fdf&" alt=""></div>
-    <div class="heart"><img src="https://cdn.discordapp.com/attachments/1389097872523530293/1392023005957193838/image.png?ex=686e05f3&is=686cb473&hm=6adace4c833cfdff1e3583cac984251f5b2d7e30066152268353fd027e611fdf&" alt=""></div>
+    <div class="heart"><img src="/other/image/heart.png" alt=""></div>
+    <div class="heart"><img src="/other/image/heart.png" alt=""></div>
+    <div class="heart"><img src="/other/image/heart.png" alt=""></div>
+    <div class="heart"><img src="/other/image/heart.png" alt=""></div>
+    <div class="heart"><img src="/other/image/heart.png" alt=""></div>
 
     <div class="heart-time"> 10:10</div>
 </div>
