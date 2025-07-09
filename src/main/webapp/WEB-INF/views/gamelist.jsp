@@ -16,7 +16,7 @@
     </div>
     <%-- 심리테스트와 가챠 선택창을 감싸는 큰 div--%>
     <div class="gamelist-btnlist">
-        <div class="gamelist-btn">
+        <div class="gamelist-btn" onclick="location.href='/charTest'">
 
             <div class="pixel-card">
                 <div class="card-border">

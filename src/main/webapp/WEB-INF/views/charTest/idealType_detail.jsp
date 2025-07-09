@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<a href="/destination-all">get all destination</a>
+
 </body>
 </html>

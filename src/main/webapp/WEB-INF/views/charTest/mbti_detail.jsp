@@ -1,4 +1,3 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,14 +8,18 @@
     <title>Document</title>
 </head>
 <body>
-<h1>test page</h1>
 
-<c:forEach items="${destinations}" var="d">
 <div>
-${d.destination_number} / ${d.destination_name} / ${d.mbti_category} / ${d.destination_address} / ${d.detination_image}
+    <div>
+        <img src="" alt="">
+        <div>내 MBTI에 어울리는 여행지를 알아보자</div>
+    </div>
+
+    <div>
+        <button onclick="location.href='/mbtiTest'">Let's Go</button>
+    </div>
 </div>
 
-</c:forEach>
 
 </body>
 </html>

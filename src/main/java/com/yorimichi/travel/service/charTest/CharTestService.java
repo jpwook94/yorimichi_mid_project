@@ -8,9 +8,8 @@ import java.util.List;
 
 public class CharTestService {
 
-    @Autowired
-    private CharTestMapper charTestMapper;
+/*    @Autowired
+    private CharTestMapper charTestMapper;*/
 
-    public List<VO>
 
 }

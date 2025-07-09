@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/other/css/main.css">
     <link rel="stylesheet" href="/other/css/gamelist.css">
+    <%--<link rel="stylesheet" href="/other/css/charTest.css">--%>
 </head>
 <body>
 

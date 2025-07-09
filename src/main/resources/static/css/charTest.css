@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: transparent;
+}
+
+.window {
+    position: relative;
+    background: white;
+    border: 2px solid #000;
+    width: 400px;
+    height: 500px;
+    box-shadow: 4px 4px 0 #222;
+    margin: 40px auto;
+}
+
+.title-bar {
+    background-color: #a5aaff;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 5px;
+    border-bottom: 1px solid #000;
+}
+
+.window-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.btn {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 1px solid #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minimize .icon-line {
+    width: 10px;
+    height: 2px;
+    background: #000;
+}
+
+.maximize .icon-square {
+    width: 10px;
+    height: 8px;
+    border: 1px solid #000;
+}
+
+.close .icon-x {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+.close .icon-x span {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 10px;
+    height: 2px;
+    background: #000;
+}
+
+.close .icon-x span:first-child {
+    transform: rotate(45deg);
+}
+
+.close .icon-x span:last-child {
+    transform: rotate(-45deg);
+}
+
+.search-bar {
+    display: flex;
+    padding: 8px;
+    gap: 5px;
+    border-bottom: 1px solid #000;
+}
+
+.search-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #000;
+}
+
+.search-button {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.content-box {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.scroll-content {
+    height: 800px; /* 테스트용 */
+    padding: 10px;
+}
+
+/* ===== Scrollbar Customization (Webkit 기반 브라우저용) ===== */
+.content-box::-webkit-scrollbar {
+    width: 24px;
+}
+
+.content-box::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.content-box::-webkit-scrollbar-thumb {
+    background-color: #a5aaff;
+    border: 1px solid #000;
+}
+
+.content-box::-webkit-scrollbar-button:single-button {
+    background: #e5e5e5;
+    border: 1px solid #000;
+    height: 24px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content-box::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: url("data:image/svg+xml;utf8,<svg width='10' height='10' xmlns='http://www.w3.org/2000/svg'><polygon points='5,2 2,7 8,7' fill='black'/></svg>");
+}
+
+.content-box::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: url("data:image/svg+xml;utf8,<svg width='10' height='10' xmlns='http://www.w3.org/2000/svg'><polygon points='2,3 8,3 5,8' fill='black'/></svg>");
+}
