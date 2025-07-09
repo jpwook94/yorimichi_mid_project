@@ -9,6 +9,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="/other/css/main.css" />
     <link rel="stylesheet" href="/other/css/gamelist.css" />
     <link rel="stylesheet" href="/other/css/charTest.css" />
+    <link rel="stylesheet" href="/other/css/gacha.css" />
     <link rel="stylesheet" href="/other/css/login.css" />
   </head>
   <body>
