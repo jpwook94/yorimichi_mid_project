@@ -1,0 +1,24 @@
+.ts-tag-box {
+    width: 500px;
+    height: 100px;
+    border:  1px solid;
+
+}
+
+.ts-tag-line {
+    display: flex;
+    height: 24%;
+    border:   1px solid;
+
+}
+
+.ts-tag-category{
+    border-right:  1px solid;
+}
+
+.ts-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5px;
+    gap: 10px;
+}
