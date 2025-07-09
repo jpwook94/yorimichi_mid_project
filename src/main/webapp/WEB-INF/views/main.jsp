@@ -8,9 +8,7 @@ pageEncoding="UTF-8"%>
     <title>Document</title>
     <link rel="stylesheet" href="/other/css/main.css" />
     <link rel="stylesheet" href="/other/css/gamelist.css" />
-    <%--
     <link rel="stylesheet" href="/other/css/charTest.css" />
-    --%>
     <link rel="stylesheet" href="/other/css/login.css" />
   </head>
   <body>

@@ -7,11 +7,11 @@ c-window-container {
 .c-window {
     position: relative;
     background: white;
-    border: 3px solid #003D8E;
-    width: 800px;
-    /*height: 300px;*/
-    box-shadow: 4px 4px 0 rgba(0, 61, 142, 0.8);
-    margin: 95px auto;
+    border: 2px solid #000;
+    width: 400px;
+    height: 500px;
+    box-shadow: 4px 4px 0 #222;
+    margin: 40px auto;
 }
 
 .c-title-bar {
