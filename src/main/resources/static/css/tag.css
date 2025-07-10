@@ -22,3 +22,13 @@
     padding: 0 5px;
     gap: 10px;
 }
+
+
+
+
+------------------------------
+
+.ts-taglist button.active {
+    background-color: #007bff;
+    color: white;
+}
