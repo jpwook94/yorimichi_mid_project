@@ -33,4 +33,7 @@ public class AccountService {
         }
     }
 
+    public AccountVO login(String userId, String userPw) {
+        return accountMapper.login(userId, userPw);
+    }
 }
