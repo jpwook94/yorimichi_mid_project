@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-
+<h1>이상형월드컵페이지</h1>
 </body>
 </html>
