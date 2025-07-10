@@ -46,7 +46,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="gamelist-btn" onclick="location.href='/gacha'">
                     <div class="pixel-card">
                         <div class="card-border">
@@ -155,7 +154,6 @@
             </div>
         </div>
     </body>
-=======
             </div>
         </div>
 
@@ -280,5 +278,4 @@
 </div>
 </div>
 </body>
->>>>>>> 5cdb08bc94910f596743eca2635865f78dcbe2a2
 </html>
