@@ -8,6 +8,17 @@
     <title>Document</title>
 </head>
 <body>
+<%-- 로고 --%>
+<div class="teamlogo-container">
+    <img
+            id="teamlogo2"
+            onclick="location.href='/gamelist'"
+            src="/other/image/logo.png"
+            alt=""
+    />
+</div>
+
+<%-- 로그인 폼 --%>
 <form class="login-form">
     <div class="login-form-title"><span>sign in to your</span></div>
     <div class="login-title-2"><span>Journey</span></div>
@@ -29,7 +40,7 @@
     </button>
     <p class="login-signup-link">
         No account?
-        <a class="login-up" href="/sign-up" onclick="loadContent(event, '/sign-up')">Sign up!</a>
+        <a class="login-up" href="/sign-up" onclick="loadContent(event, '/sign-up')">Sign up</a>
     </p>
 </form>
 </body>

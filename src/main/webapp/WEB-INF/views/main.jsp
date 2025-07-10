@@ -19,14 +19,8 @@ pageEncoding="UTF-8"%>
       <div class="heart"><img src="/other/image/heart.png" alt="" /></div>
       <div class="heart"><img src="/other/image/heart.png" alt="" /></div>
       <div class="heart"><img src="/other/image/heart.png" alt="" /></div>
-
       <div class="heart-time">10:10</div>
     </div>
-
-<<<<<<< HEAD
-    <div class="heart-time"> 10:10</div>
-</div>
-
 
 
 <div class="main-container">
@@ -35,9 +29,6 @@ pageEncoding="UTF-8"%>
 </div>
 </div>
 
-
-<%-- 뭔가 비동기로 하는걸 피티한테 물어봄 --%>
-<a class="login-up" href="/sign-up" onclick="loadContent(event, '/sign-up')">Sign up!</a>
 
 <script>
     function loadContent(event, url) {
@@ -61,12 +52,3 @@ pageEncoding="UTF-8"%>
 </script>
 </body>
 </html>
-=======
-    <div class="main-container">
-      <div>
-        <jsp:include page="${content}"></jsp:include>
-      </div>
-    </div>
-  </body>
-</html>
->>>>>>> 7b33be1820f3fa5925da43009bdc6cdab46ca0a9
