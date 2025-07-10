@@ -1,10 +1,11 @@
 /* From Uiverse.io by Pinparker */
 .login-form {
     position: relative;
-    margin-top: 250px;
+    margin-top: 150px;
     display: block;
     padding: 2.2rem;
     max-width: 350px;
+    width: 268px;
     background: linear-gradient(
             14deg,
             rgba(2, 0, 36, 0.8) 0%,
@@ -317,10 +318,12 @@
 /* From Uiverse.io by Pinparker */
 .signup-form {
     position: relative;
-    margin-top: 200px;
+    margin-top: 100px;
     display: block;
     padding: 2.2rem;
     max-width: 350px;
+    width: 268px;
+
     background: linear-gradient(
             14deg,
             rgba(2, 0, 36, 0.8) 0%,
