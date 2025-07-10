@@ -13,6 +13,7 @@ c-window-container {
     box-shadow: 4px 4px 0 rgba(0, 61, 142, 0.8);
     margin: 60px auto;
     margin-bottom: 0px;
+    z-index: 2
 }
 
 .c-title-bar {
@@ -235,7 +236,7 @@ fake-popup-body {
 }
 
 .c-popup-header {
-    background: #e8d3f5;
+    background: #c2dcfb;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -294,17 +295,62 @@ fake-popup-body {
 
 /*여기서부터 공통Test.jsp */
 
-.testPopup-body1 {
+.c-commonPopup-container {
     position: relative;
 }
 
-.c-popup {
+.c-commonPopup1 {
     position: absolute;
-    bottom: 140px;
-    right: 220px;
-    width: 430px;
+    bottom: -10px;
+    left: -190px;
+    width: 250px;
     background: #fff;
     border: 3px solid #000;
     box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
     z-index: 999;
+}
+
+.c-popup-body {
+    text-align: center;
+}
+
+.c-commonPopup-body {
+    position: relative;
+    padding: 3px;
+}
+
+.c-commonPopup-imgblock {
+    height: 240px;
+    overflow: hidden;
+    border: 2px solid #000;
+}
+
+.c-commonPopup-title {
+    font-size: 15px;
+}
+
+.c-commonPopup-extraBTN {
+    width: 17px;
+    height: 17px;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.c-commonPopup2 {
+    position: absolute;
+    bottom: 200px;
+    left: 300px;
+    width: 300px;
+    background: #fff;
+    border: 3px solid #003D8E;
+    box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
+}
+
+.c-commonPopup2-header {
+    background: #e8d3f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 3px solid #000;
 }

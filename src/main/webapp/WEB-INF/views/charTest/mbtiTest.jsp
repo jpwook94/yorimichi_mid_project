@@ -61,45 +61,39 @@
         </div>
 
         <%--여기서부터 팝업창--%>
-        <div class="testPopup-body1">
-            <div class="c-popup">
+        <div class="c-commonPopup-container">
+            <div class="c-commonPopup1">
                 <div class="c-popup-header">
-                    <span class="c-popup-title">cloud.png</span>
+                    <span class="c-commonPopup-title">cloud.png</span>
                     <div class="c-popup-buttons">
-                        <div class="c-popup-extraBTN"></div>
-                        <div class="c-popup-extraBTN"></div>
-                        <div class="c-popup-extraBTN"></div>
+                        <div class="c-commonPopup-extraBTN"></div>
                     </div>
                 </div>
-                    <div class="c-popup-body">
-                        <img src="" alt="">
+                    <div class="c-commonPopup-body">
+                        <div class="c-commonPopup-imgblock">
+                            <img src="/other/image/charTest_cloud.gif" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <%--여기서부터 팝업창--%>
-        <div class="fake-popup-body" id="ITpopup" style="display: none;">
-            <div class="c-fake-popup">
-                <div class="c-popup-header">
-                    <span class="c-popup-title">System</span>
-                    <div class="c-popup-buttons">
-                        <div class="c-popup-extraBTN"></div>
-                        <div class="c-popup-extraBTN"></div>
-                        <div class="c-popup-extraBTN"></div>
-                    </div>
-                </div>
-                <div class="c-popup-body">
-                    <p class="c-popup-text">start?</p>
-                    <div class="c-popup-actions">
-                        <button class="c-popup-btn" onclick="location.href='/ITTest'">sure</button>
-                        <button class="c-popup-btn highlight" onclick="hideITPopup()">cancel</button>
-                    </div>
+    <div class="c-commonPopup-container">
+        <div class="c-commonPopup2">
+            <div class="c-commonPopup2-header">
+                <span class="c-commonPopup-title">gombangwha.png</span>
+            </div>
+            <div class="c-commonPopup-body">
+                <div class="c-commonPopup-imgblock">
+                    <img src="/other/image/charTest_sakura.gif" alt="">
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
+
 
 </body>
 </html>
