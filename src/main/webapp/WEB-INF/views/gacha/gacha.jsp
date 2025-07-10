@@ -89,4 +89,5 @@
     document.querySelectorAll(".gacha-sidebar-item")[0].click() ;</script>
 
 </body>
+<%--<script src="/other/js/gacha.js" defer></script>--%>
 </html>

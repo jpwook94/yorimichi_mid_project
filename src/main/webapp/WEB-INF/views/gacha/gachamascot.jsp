@@ -36,7 +36,7 @@
                     <img src="/other/image/crane.png" alt="">
                 </div>
                 <div>
-                    <img class="pick" src="/other/image/DUCK1.png" alt="">
+                    <img class="pickmascot" src="/other/image/DUCK1.png" alt="">
                 </div>
             </div>
         </div>
@@ -44,11 +44,11 @@
             <div class="gachacitypick-coin-slot"></div>
             <div class="gachacitypick-control-panel abs">
                 <div class="gachacitypick-control-top-panel">
-                    <div id="joystick-left" class="gachacitypick-joystick-left">
-                        <img src="/other/image/gachacitypick-left.png" alt="">
+                    <div class="gachacitypick-joystick-left">
+                        <img id="joystick-left" src="/other/image/gachacitypick-left.png" alt="">
                     </div>
-                    <div id="joystick-right" class="gachacitypick-joystick-right">
-                        <img src="/other/image/gachacitypick-right.png" alt="">
+                    <div class="gachacitypick-joystick-right">
+                        <img id="joystick-right" src="/other/image/gachacitypick-right.png" alt="">
                     </div>
                     <div class="gachacitypick-button-container">
                         <div id="gachacitypick-pickup" class="gachacitypick-button"></div>
@@ -60,5 +60,5 @@
 </div>
 
 </body>
-<script src="/other/js/gacha.js"></script>
+<%--<script src="/other/js/gacha.js"></script>--%>
 </html>

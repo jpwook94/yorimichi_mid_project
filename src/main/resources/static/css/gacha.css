@@ -136,11 +136,21 @@
     position: absolute;
     top: -120px;
     left: 15px;
+    border: 1px solid red;
 }
 
 .gachacitypick-crane img{
     width: 55px;
     height: auto;
+}
+
+.pickmascot{
+    width: 50px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.7s ease-in-out;
 }
 
 .gachacitypic-bottombox{
@@ -230,17 +240,7 @@
     height: auto;
 }
 
-.gachacitypick-joystick::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    background-color: #FFA07A; /* Light Salmon */
-    border-radius: 50%;
-}
+
 
 .gachacitypick-button-container {
     margin-left: auto;
@@ -265,6 +265,14 @@
     inset 3px 3px 1px #f14e39,
     inset -3px -3px 1px #ffebe0;
     transform: translateY(2px);
+}
+
+.pick{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 50px;
+    height: auto;
 }
 
 
