@@ -6,6 +6,34 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Document</title>
+<<<<<<< HEAD
+</head>
+<body>
+
+
+<div class="gamelist-container">
+    <div class="teamlogo-container">
+        <img id="teamlogo2" onclick="location.href='/gamelist'" src="/other/image/logo.png" alt="">
+    </div>
+    <%-- 심리테스트와 가챠 선택창을 감싸는 큰 div--%>
+    <div class="gamelist-btnlist">
+        <div class="gamelist-btn" onclick="location.href='/charTest'">
+
+            <div class="pixel-card">
+                <div class="card-border">
+                    <div class="card-content">
+                        <div class="card-oriimg2">
+                            <img src="/other/image/DUCK3.png" alt="">
+                        </div>
+                        <div class="card-title">심리 테스트</div>
+                        <div class="card-description">
+                            MBTI, 이상형 월드컵 같은<br>
+                            참신한 방법으로 여행지를<br>
+                            추천해줄게! 네 성향에 맞는<br>
+                            여행지는 어디일까??
+                        </div>
+                    </div>
+=======
   </head>
   <body>
     <div class="gamelist-container">
@@ -25,6 +53,7 @@ pageEncoding="UTF-8"%>
               <div class="card-content">
                 <div class="card-oriimg2">
                   <img src="/other/image/DUCK3.png" alt="" />
+>>>>>>> 7b33be1820f3fa5925da43009bdc6cdab46ca0a9
                 </div>
                 <div class="card-title">심리 테스트</div>
                 <div class="card-description">
