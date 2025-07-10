@@ -33,28 +33,30 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 모서리 선 장식 -->
+                <div class="corner-lines top-left"></div>
+                <div class="corner-lines top-right"></div>
+                <div class="corner-lines bottom-left"></div>
+                <div class="corner-lines bottom-right"></div>
+
+                <!-- 못 박힌 듯한 픽셀 장식 -->
+                <div class="pixel-rivet top-left">
+                    <div class="rivet-center"></div>
+                </div>
+                <div class="pixel-rivet top-right">
+                    <div class="rivet-center"></div>
+                </div>
+                <div class="pixel-rivet bottom-left">
+                    <div class="rivet-center"></div>
+                </div>
+                <div class="pixel-rivet bottom-right">
+                    <div class="rivet-center"></div>
+                </div>
             </div>
         </div>
 
-        <!-- 모서리 선 장식 -->
-        <div class="corner-lines top-left"></div>
-        <div class="corner-lines top-right"></div>
-        <div class="corner-lines bottom-left"></div>
-        <div class="corner-lines bottom-right"></div>
 
-        <!-- 못 박힌 듯한 픽셀 장식 -->
-        <div class="pixel-rivet top-left">
-            <div class="rivet-center"></div>
-        </div>
-        <div class="pixel-rivet top-right">
-            <div class="rivet-center"></div>
-        </div>
-        <div class="pixel-rivet bottom-left">
-            <div class="rivet-center"></div>
-        </div>
-        <div class="pixel-rivet bottom-right">
-            <div class="rivet-center"></div>
-        </div>
 
         <div class="gamelist-btn" onclick="location.href='/gacha'">
             <div class="pixel-card">
