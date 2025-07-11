@@ -53,62 +53,20 @@
 
 </body>
 <script>
-    const renderDiv = document.querySelector("#render-div");
-
-    // 목적, 카테고리, 동행자 관계, 지역 버튼 모두 선택
-    document.querySelectorAll(".ts-taglist button").forEach(button => {
-        button.addEventListener("click", () => {
-            const tag = button.getAttribute("name");
-            // console.log(tag);
-
-            let url = "/search/tag-search?name=" + tag;
-
-            fetch(url)
-                .then((response) => response.json())
-                .then((data) => {
-                    // console.log(data);
-                    render(data);
-                });
-        });
-    });
-
-    function render(data) {
-        let content = `<div class="tag-result-wrapper">`;
-        data.forEach(element => {
-            console.log(element);
-            content += "<div class='tag-result'>" + element.destination_number + "</div>";
-            content += "<div class='tag-result'>" + element.destination_name + "</div>";
-            content += "<div class='tag-result'>" + element.mbti_category + "</div>";
-            content += "<div class='tag-result'>" + element.destination_address + "</div>";
-            content += "<hr>"
-        });
-        content += "</div>";
-        // console.log(content);
-        renderDiv.innerHTML = content;
-    }
     // const renderDiv = document.querySelector("#render-div");
-    // const selectedTags = new Set();  // 중복 없이 태그 저장
     //
+    // // 목적, 카테고리, 동행자 관계, 지역 버튼 모두 선택
     // document.querySelectorAll(".ts-taglist button").forEach(button => {
     //     button.addEventListener("click", () => {
     //         const tag = button.getAttribute("name");
+    //         // console.log(tag);
     //
-    //         // 토글: 이미 선택된 태그라면 제거, 아니라면 추가
-    //         if (selectedTags.has(tag)) {
-    //             selectedTags.delete(tag);
-    //             button.classList.remove("active");
-    //         } else {
-    //             selectedTags.add(tag);
-    //             button.classList.add("active");
-    //         }
-    //
-    //         // 선택된 태그들을 URL 쿼리로 전송
-    //         const tagParam = Array.from(selectedTags).join(",");
-    //         const url = "/search/tag-search?tags=" + encodeURIComponent(tagParam);
+    //         let url = "/search/tag-search?name=" + tag;
     //
     //         fetch(url)
-    //             .then(response => response.json())
-    //             .then(data => {
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 // console.log(data);
     //                 render(data);
     //             });
     //     });
@@ -117,14 +75,56 @@
     // function render(data) {
     //     let content = `<div class="tag-result-wrapper">`;
     //     data.forEach(element => {
+    //         console.log(element);
     //         content += "<div class='tag-result'>" + element.destination_number + "</div>";
     //         content += "<div class='tag-result'>" + element.destination_name + "</div>";
     //         content += "<div class='tag-result'>" + element.mbti_category + "</div>";
     //         content += "<div class='tag-result'>" + element.destination_address + "</div>";
-    //         content += "<hr>";
+    //         content += "<hr>"
     //     });
     //     content += "</div>";
+    //     // console.log(content);
     //     renderDiv.innerHTML = content;
     // }
+    const renderDiv = document.querySelector("#render-div");
+    const selectedTags = new Set();  // 중복 없이 태그 저장
+
+    document.querySelectorAll(".ts-taglist button").forEach(button => {
+        button.addEventListener("click", () => {
+            const tag = button.getAttribute("name");
+
+            // 토글: 이미 선택된 태그라면 제거, 아니라면 추가
+            if (selectedTags.has(tag)) {
+                selectedTags.delete(tag);
+                button.classList.remove("active");
+            } else {
+                selectedTags.add(tag);
+                button.classList.add("active");
+            }
+
+            // 선택된 태그들을 URL 쿼리로 전송
+            const tagParam = Array.from(selectedTags).join(",");
+            const url = "/search/tag-search?tags=" + encodeURIComponent(tagParam);
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    render(data);
+                });
+        });
+    });
+
+    function render(data) {
+        let content = `<div class="tag-result-wrapper">`;
+        data.forEach(element => {
+            content += "<div class='tag-result'>" + element.destination_number + "</div>";
+            content += "<div class='tag-result'>" + element.destination_name + "</div>";
+            content += "<div class='tag-result'>" + element.mbti_category + "</div>";
+            content += "<div class='tag-result'>" + element.destination_address + "</div>";
+            content += "<hr>";
+        });
+        content += "</div>";
+        renderDiv.innerHTML = content;
+    }
 </script>
 </html>

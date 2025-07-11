@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/search")
@@ -20,7 +21,7 @@ public class TagSearchController {
 
 
     @GetMapping("/tag-search")
-    public List<DestinationVO> tagSearch(@RequestParam("name") String tag_name) {
+    public List<DestinationVO> tagSearch(@RequestParam("tags") ArrayList<String> tag_name) {
         System.out.println(tag_name);
         System.out.println(tagSearchService.searchTag(tag_name));
         return tagSearchService.searchTag(tag_name);

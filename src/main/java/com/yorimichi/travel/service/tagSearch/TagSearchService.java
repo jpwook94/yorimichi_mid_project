@@ -7,6 +7,8 @@ import com.yorimichi.travel.vo.tagSearch.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -36,23 +38,58 @@ public class TagSearchService {
     }
 
 
-    public List<DestinationVO> searchTag(String tagname) {
-        boolean isTag = 0 < tagSearchMapper.existsInTag(tagname);
-        boolean isLocation = 0 < tagSearchMapper.existsInLocation(tagname);
-        System.out.println(tagname);
-        System.out.println(isTag);
-        System.out.println(isLocation);
+    public List<DestinationVO> searchTag(ArrayList<String> tagname) {
+        List<DestinationVO> destinations = null;
 
-        if (isTag) {
-            return tagSearchMapper.searchGetDestinationByTag(tagname);
-        } else if (isLocation) {
-            return tagSearchMapper.searchGetDestinationByLocation(tagname);
-        } else {
-            return null;
+
+        for (String tag : tagname) {
+            List<DestinationVO> dest = null;
+
+            if (tagSearchMapper.existsInTag(tagname) > 0) {
+                dest = tagSearchMapper.searchGetDestinationByTag(tagname);
+            } else if (tagSearchMapper.existsInLocation(tagname) > 0) {
+                dest = tagSearchMapper.searchGetDestinationByLocation(tagname);
+            } else {
+                return Collections.emptyList();
+            }
+
+
+
+            if (destinations == null) {
+                destinations = new ArrayList<>(dest); // 첫 결과는 그대로 저장
+            } else {
+                destinations.retainAll(dest); // 그 이후부터는 교집합
+            }
+
+            if (destinations.isEmpty()) {
+                return Collections.emptyList();
+            }
+
+
+
         }
+        return destinations == null ? Collections.emptyList() : destinations;
 
 
 
+//        List<DestinationVO> destinations = null;
+//
+//
+//        for (String tag : tagname) {
+//
+//
+//            boolean isTag = 0 < tagSearchMapper.existsInTag(tagname);
+//            boolean isLocation = 0 < tagSearchMapper.existsInLocation(tagname);
+//            System.out.println(tagname);
+//            System.out.println(isTag);
+//            System.out.println(isLocation);
+//
+//            if (isTag) {
+//                destinations.add() tagSearchMapper.searchGetDestinationByTag(tagname);
+//            } else if (isLocation) {
+//                return tagSearchMapper.searchGetDestinationByLocation(tagname);
+//            }
+//        }
 
 
     }
