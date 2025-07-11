@@ -77,3 +77,7 @@ VALUES (10, '시라카와고 합장촌', 'ISFJ', '기후현 오노군 시라카�
 
 select *
 from destination;
+
+select * from LOCATION;
+
+update LOCATION set LOCATION_MASCOT_ID=4 where LOCATION_NUMBER=4;

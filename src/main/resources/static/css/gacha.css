@@ -14,6 +14,74 @@
     margin-top: 33px;
     margin-right: 65px;
 }
+/*========================== 귀여운 도트 이미지 친구들 =======================================*/
+.gachacitypick-cute{
+
+}
+.gachacitypick-cute img:nth-child(1) {
+    position: absolute;
+    top: 153px;
+    left: -65px;
+    z-index: 50;
+    width: 30px;
+}
+.gachacitypick-cute img:nth-child(2) {
+    position: absolute;
+    top: -33px;
+    left: -72px;
+    z-index: 50;
+    width: 106px;
+}
+.gachacitypick-cute img:nth-child(3) {
+    position: absolute;
+    top: 180px;
+    left: 101px;
+    z-index: 50;
+    width: 95px;
+}
+.gachacitypick-cute img:nth-child(4) {
+    position: absolute;
+    top: 253px;
+    left: 453px;
+    z-index: 50;
+    width: 191px;
+}
+.gachacitypick-cute img:nth-child(5) {
+    position: absolute;
+    top: -86px;
+    left: 356px;
+    z-index: 50;
+    width: 100px;
+}
+.gachacitypick-cute img:nth-child(6) {
+    position: absolute;
+    top: 35px;
+    left: 519px;
+    z-index: 50;
+    width: 91px;
+}
+.gachacitypick-cute img:nth-child(7) {
+    position: absolute;
+    top: 200px;
+    left: -60px;
+    z-index: 50;
+    width: 113px;
+}
+.gachacitypick-cute img:nth-child(8) {
+    position: absolute;
+    top: 132px;
+    left: -42px;
+    z-index: 50;
+    width: 19px;
+}
+.gachacitypick-cute img:nth-child(9) {
+    position: absolute;
+    top: -90px;
+    left: 503px;
+    z-index: 50;
+    width: 119px;
+}
+
 
 
 .gachacitypick-arcade-machine {
@@ -120,7 +188,7 @@
 }
 
 .gachacitypick-screen-area {
-    background-color: #FFFFFF; /* White */
+    background-color: #f5ffff; /* White */
     border: 4px solid #5f519c;
     border-radius: 5px;
     width: 350px;
@@ -134,7 +202,7 @@
 
 .gachacitypick-crane{
     position: absolute;
-    top: -120px;
+    top: -125px;
     left: 15px;
 }
 
@@ -143,21 +211,46 @@
     height: auto;
 }
 
+.gachacitypick-mascots{
+    position: absolute;
+    top: 73px;
+    /*z-index: 1;*/
+}
+
+.gachacitypick-mascots img {
+    width: 362px;
+    height: auto;
+}
+
 .pickmascot{
     width: 50px;
     height: auto;
     position: absolute;
-    bottom: -40px;
+    bottom: -75px;
     left: 0;
     transition: all 0.7s ease-in-out;
+    filter: drop-shadow(0 0 3px #000000);
 }
 
 .gachacitypic-bottombox{
     display: flex;
     position: relative;
-
 }
 
+.hidden {
+    display: none;
+}
+
+.gachacitypick-pickstart-speechbubble{
+    position: absolute;
+    top: -63px;
+    left: 410px;
+    z-index: 100;
+}
+
+.gachacitypick-pickstart-speechbubble img{
+    width: 132px;
+}
 
 .abs{
     position: absolute;
@@ -280,6 +373,81 @@
 
 
 
+
+
+/* ========================================== SSR 카드 뽑기 =========================================== */
+
+.gachadescard-pickbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 75px;
+    background: #c2e9fb; /* 밝은 하늘색 배경 */
+    border: 4px solid #5b9bd5; /* 선명한 테두리 */
+    border-bottom-color: #3a78b3; /* 아래쪽 테두리 더 진하게 */
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    position: relative;
+    z-index: 2;
+    margin: 20px;
+    font-size: 20px;
+
+    /* 드래그 금지 */
+    -webkit-touch-callout: none;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+
+    /* 3D 버튼 효과 */
+    box-shadow:
+            inset 3px 3px 0px rgba(255, 255, 255, 0.7),
+            inset -3px -3px 0px rgba(255, 255, 255, 0.6),
+            0px 6px 0px #7bbdf4,
+            0px 8px 0px #396d9c,
+            0px 10px 8px rgba(91, 148, 202, 0.4);
+}
+
+.gachadescard-pickcontainer{
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    bottom: 110px;
+    left: -340px;
+    width: 100%;
+
+}
+
+.gachadescard-pickbtn:hover{
+    transform: translateY(-2px);
+    box-shadow:
+            inset 3px 3px 0px rgba(255, 255, 255, 0.8),
+            inset -3px -3px 0px rgba(255, 255, 255, 0.8),
+            0px 8px 0px #7bbdf4,
+            0px 10px 0px #255c8e,
+            0px 12px 12px rgba(120, 180, 255, 0.7);
+}
+
+
+/* 마우스로 눌렀을 때 */
+.gachadescard-pickbtn:active {
+    transform: translateY(2px);
+    box-shadow:
+            inset 3px 3px 0px rgba(140, 190, 255, 0.4),
+            inset -3px -3px 0px rgba(255, 255, 255, 0.85),
+            0px 4px 0px #6faeea,
+            0px 6px 0px #1d507b,
+            0px 8px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ================================================================================================== */
+
+
 /* ============================가챠 컨테이너 웹페이지 디자인은 가장 아래에 모아두겟음 ========================== */
 
 .gacha-container{
@@ -397,14 +565,13 @@ margin-top: 60px;
 
 .gacha-address-bar {
     flex: 1;
+    line-height: 40px;
     height: 40px;
     border: 3px solid #2a3687;
     background: #fffce0;
     padding: 0 15px;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
+    font-size: 19px;
     color: #2a3687;
-    outline: none;
     box-shadow:
             inset -2px -2px 0px rgba(255,255,255,0.5),
             inset 2px 2px 0px rgba(255, 9, 0, 0.3);
@@ -461,8 +628,14 @@ margin-top: 60px;
     height: auto;
 }
 
+.gacha-sidebar-item:nth-child(2) img {
+    width: 150px; /* 원하는 크기 */
+    height: auto;
+}
+
 .gacha-sidebar-item:hover {
     transform: translateY(-2px);
+    background: #ffedab;
     box-shadow:
             inset 3px 3px 0px rgba(255,255,255,0.5),
             inset -3px -3px 0px rgba(255, 255, 255, 0.64),

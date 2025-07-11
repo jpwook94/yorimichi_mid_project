@@ -9,8 +9,11 @@
 </head>
 <body>
 
-<h1>gachadestination</h1>
 
+<div class="gachadescard-pickcontainer">
+    <div class="gachadescard-pickbtn">1회 뽑기</div>
+    <div class="gachadescard-pickbtn">n회 뽑기</div>
+</div>
 
 </body>
 </html>
