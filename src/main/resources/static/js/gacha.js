@@ -7,9 +7,15 @@ const observer = new MutationObserver((mutations) => {
 
         console.log("✅ gacha.js 파일이 제대로 연결되었습니다!");
 
+
+
+
+
+        //뽑기를 아직 안눌렀음
+        let hasPicked = false;
+
         const crane = document.querySelector(".gachacitypick-crane");
         const picked = document.querySelector(".pickmascot");
-
 
         const leftBtn = document.querySelector("#joystick-left");
         const rightBtn = document.querySelector("#joystick-right");
@@ -17,12 +23,21 @@ const observer = new MutationObserver((mutations) => {
         let isPressing = false;
         let pressInterval;
 
-
+        // 뽑기 버튼 클릭!
         pickup.addEventListener("click", () => {
+            if (hasPicked) return; // 이미 눌렸다면 아무것도 하지 않음
+            console.log("🎯 뽑기 버튼 클릭됨"); // 추가
+            hasPicked = true;
+
             animatecrane();
+
+            // 버튼 기능 차단 (원하는 경우 시각적으로 비활성화도 가능)
+            pickup.style.pointerEvents = "none";
+            leftBtn.style.pointerEvents = "none";
+            rightBtn.style.pointerEvents = "none";
         });
 
-// 조이스틱 왼쪽
+        // 조이스틱 왼쪽
         leftBtn.addEventListener("mousedown", () => {
             isPressing = true;
             console.log("눌렀다!");
@@ -31,10 +46,8 @@ const observer = new MutationObserver((mutations) => {
                 if (isPressing) {
                     console.log("계속 누르는 중...");
 
-                    // 현재 left 값을 가져와서 숫자로 변환
                     let currentLeft = parseInt(getComputedStyle(crane).left, 10) || 0;
                     console.log(currentLeft);
-                    // 20px 줄이기
                     if (currentLeft >= 1) crane.style.left = currentLeft - 1 + "px";
                 }
             }, 1);
@@ -50,8 +63,7 @@ const observer = new MutationObserver((mutations) => {
             clearInterval(pressInterval);
         });
 
-// 조이스틱 오른쪽
-
+        // 조이스틱 오른쪽
         rightBtn.addEventListener("mousedown", () => {
             isPressing = true;
             console.log("눌렀다!");
@@ -60,10 +72,8 @@ const observer = new MutationObserver((mutations) => {
                 if (isPressing) {
                     console.log("계속 누르는 중...");
 
-                    // 현재 left 값을 가져와서 숫자로 변환
                     let currentRight = parseInt(getComputedStyle(crane).left, 10) || 0;
                     console.log(currentRight);
-                    // 20px 줄이기
                     if (currentRight <= 295) crane.style.left = currentRight + 1 + "px";
                 }
             }, 1);
@@ -79,23 +89,19 @@ const observer = new MutationObserver((mutations) => {
             clearInterval(pressInterval);
         });
 
-
         async function animatecrane() {
             crane.style.transition = "all 1s";
 
-            // 2. 아래로 이동
             crane.style.top = "-40px";
             await delay(1000);
             picked.style.left = crane.style.left;
             await delay(1000);
             picked.style.bottom = "35px";
-            // 3. 다시 위로 이동
             crane.style.top = "-120px";
             await delay(1000);
 
-            // 4. 원래 위치로 복귀
             crane.style.left = "15px";
-            picked.style.left = "15px"; // picked도 따라오게 하려면
+            picked.style.left = "15px";
             await delay(1000);
         }
 
@@ -108,7 +114,3 @@ const observer = new MutationObserver((mutations) => {
 });
 
 observer.observe(document.body, {childList: true, subtree: true});
-
-
-
-

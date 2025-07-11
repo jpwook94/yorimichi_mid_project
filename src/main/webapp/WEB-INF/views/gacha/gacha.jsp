@@ -41,10 +41,9 @@
             </div>
 
             <div class="gacha-toolbar">
-                <div class="gacha-nav-btn">←</div>
-                <div class="gacha-nav-btn">→</div>
-                <div class="gacha-nav-btn">↻</div>
-                <%--누르면 새로고침 되도록--%>
+                <div class="gacha-nav-btn" id="gacha-back">←</div>
+                <div class="gacha-nav-btn" id="gacha-forward">→</div>
+                <div class="gacha-nav-btn" id="gacha-refresh">↻</div>
 
                 <input type="text" class="gacha-address-bar" value="" placeholder="주소를 입력하세요...">
             </div>
@@ -86,7 +85,33 @@
             });
         })
     })
-    document.querySelectorAll(".gacha-sidebar-item")[0].click() ;</script>
+    document.querySelectorAll(".gacha-sidebar-item")[0].click() ;
+
+
+    //===========================================
+
+    const backBtn = document.getElementById("gacha-back");
+    const forwardBtn = document.getElementById("gacha-forward");
+    const refreshBtn = document.getElementById("gacha-refresh");
+
+    // 뒤로가기
+    backBtn.addEventListener("click", () => {
+        history.back();
+    });
+
+    // 앞으로가기
+    forwardBtn.addEventListener("click", () => {
+        history.forward();
+    });
+
+    // 새로고침
+    refreshBtn.addEventListener("click", () => {
+        location.reload();
+    });
+
+
+
+</script>
 
 </body>
 <%--<script src="/other/js/gacha.js" defer></script>--%>
