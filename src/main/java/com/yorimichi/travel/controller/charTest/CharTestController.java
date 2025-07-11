@@ -31,22 +31,19 @@ public class CharTestController {
         return "main";
     }
 
-    // MBTI 시작(상세) 페이지
-    @GetMapping("/mbtiTest-detail")
-    public String mbtiDetail(Model model) {
-        model.addAttribute("content", "charTest/mbti_detail.jsp");
-        return "main";
-    }
-
-    // 이상형 월드컵 시작(상세) 페이지
-    @GetMapping("/idealType-detail")
-    public String idealTypeDetail(Model model) {
-        model.addAttribute("content", "charTest/idealType_detail.jsp");
-        return "main";
-    }
-
     // MBTI 문항 페이지
+    @GetMapping("/mbtiTest")
+    public String mbtiTest(Model model) {
+        model.addAttribute("content", "charTest/mbtiTest.jsp");
+        return "main";
+    }
 
+    // 이상형 월드컵 문항 페이지
+    @GetMapping("/ITTest")
+    public String ITTest(Model model) {
+        model.addAttribute("content", "charTest/ITTest.jsp");
+        return "main";
+    }
 
 
 
