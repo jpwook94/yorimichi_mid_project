@@ -37,16 +37,16 @@ public interface TagSearchMapper {
 
 
     @Select("select * " +
-            "from destination " +
-            "join location " +
-            "on destination_number = location_number " +
-            "where location_name = #{tag_name[0]}")
+            "from destination d " +
+            "join location l " +
+            "on d.location_number = l.location_number " +
+            "where location_name = #{tag_name}")
     public List<DestinationVO> searchGetDestinationByLocation(String tag_name);
 
-    @Select("select count(*) from tag where tag_name = #{tag_name[0]}")
+    @Select("select count(*) from tag where tag_name = #{tag_name}")
     public int existsInTag(String tag_name);
 
-    @Select("select count(*) from location where location_name = #{tag_name[0]}")
+    @Select("select count(*) from location where location_name = #{tag_name}")
     public int existsInLocation(String tag_name);
 
 }
