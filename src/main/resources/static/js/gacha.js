@@ -64,7 +64,7 @@ const observer = new MutationObserver((mutations) => {
                     let currentRight = parseInt(getComputedStyle(crane).left, 10) || 0;
                     console.log(currentRight);
                     // 20px 줄이기
-                    if (currentRight <= 320) crane.style.left = currentRight + 1 + "px";
+                    if (currentRight <= 295) crane.style.left = currentRight + 1 + "px";
                 }
             }, 1);
         });
@@ -84,18 +84,19 @@ const observer = new MutationObserver((mutations) => {
             crane.style.transition = "all 1s";
 
             // 2. 아래로 이동
-            crane.style.top = "30px";
+            crane.style.top = "-40px";
             await delay(1000);
             picked.style.left = crane.style.left;
             await delay(1000);
-            picked.style.bottom = "220px";
+            picked.style.bottom = "35px";
             // 3. 다시 위로 이동
-            crane.style.top = "-170px";
+            crane.style.top = "-120px";
             await delay(1000);
 
-            // 4. 오른쪽 이동
-            crane.style.left = "50px";
-            picked.style.left = "50px";
+            // 4. 원래 위치로 복귀
+            crane.style.left = "15px";
+            picked.style.left = "15px"; // picked도 따라오게 하려면
+            await delay(1000);
         }
 
         function delay(ms) {
