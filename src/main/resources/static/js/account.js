@@ -58,3 +58,24 @@ document.getElementById('signup-user-id').addEventListener('input', function () 
     isIdAvailable = false;
     document.getElementById('id-check-result').textContent = "";
 });
+
+
+/* 비동기 */
+function loadContent(event, url) {
+    event.preventDefault();
+    fetch(url, {
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+        .then(response => response.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // 기존 main.jsp 구조를 유지하고 있으므로,
+            // include된 컨텐츠가 들어가는 "main-container" 안의 <div>를 다시 넣는 방식으로
+            const newMain = doc.querySelector('.main-container');
+            document.querySelector('.main-container').innerHTML = newMain.innerHTML;
+        });
+}

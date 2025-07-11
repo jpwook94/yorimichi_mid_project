@@ -28,6 +28,7 @@
     <c:choose>
         <c:when test="${not empty sessionScope.loginUser}">
             <span>${sessionScope.loginUser.user_name}님, 환영합니다!</span>
+            <button onclick="location.href='/mypage'">마이페이지</button>
             <a href="/logout">로그아웃</a>
         </c:when>
         <c:otherwise>
@@ -81,9 +82,7 @@
     </c:choose>
 </div>
 
-<c:if test="${not empty loginError}">
-    <div style="color:red; margin-top:10px">${loginError}</div>
-</c:if>
+
 
 <div class="main-container">
     <div class="include-container">
@@ -103,26 +102,7 @@
     </div>
 </div>
 
-<script>
-    function loadContent(event, url) {
-        event.preventDefault();
-        fetch(url, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        })
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-
-                // 기존 main.jsp 구조를 유지하고 있으므로,
-                // include된 컨텐츠가 들어가는 "main-container" 안의 <div>를 다시 넣는 방식으로
-                const newMain = doc.querySelector('.main-container');
-                document.querySelector('.main-container').innerHTML = newMain.innerHTML;
-            });
-    }
-</script>
+<script src="/other/js/account.js"></script>
 <script src="/other/js/gacha.js" defer></script>
 </body>
 </html>
