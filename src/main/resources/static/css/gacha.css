@@ -6,10 +6,277 @@
 }
 
 
+/*============================== 인형뽑기 디자인 =====================================*/
+
+.gachacitypick-box{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 33px;
+    margin-right: 65px;
+}
+
+
+.gachacitypick-arcade-machine {
+    background-image: url("https://i.pinimg.com/1200x/6b/34/77/6b347757661505edf86e026e6edc18ae.jpg");
+    background-size: 100% 100%;
+    /*background-color: #ADD8E6; !* Light Blue *!*/
+    border: 4px solid #5f519c; /* Blue Violet */
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    position: relative;
+    box-shadow:
+            inset 4px 4px 0px rgba(255,255,255,0.5),
+            inset -4px -4px 0px rgba(255, 9, 0, 0.3),
+            5px 5px 0px rgba(151, 185, 236, 0.65);
+}
+
+.gachacitypic-topbox{
+    display: flex;
+    flex-direction: row;
+}
+
+.gachacitypic-topboxbox{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.gachacitypic-topboxbox-txt{
+    margin-bottom: 20px;
+    justify-self: center;
+    align-self: center;
+    font-size: 17pt;
+    color: #5b3b88;
+}
+
+.gachacitypick-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    background-color: #ADD8E6; /* Light Blue */
+    border: 3px solid #5f519c; /* Blue Violet */
+    border-radius: 5px;
+    width: 90px;
+    height: 120px;
+
+    box-shadow:
+            inset 4px 4px 0px rgba(255,255,255,0.5),
+            inset -4px -4px 0px rgba(255, 9, 0, 0.3),
+            5px 5px 0px rgba(151, 185, 236, 0.65);
+}
+
+.gachacitypick-logo img {
+    width: 60px;
+    height: 50px;
+}
+
+
+/* 못 박힌 듯한 픽셀 장식 */
+.gachacitypick-pixel-rivet {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #5786a5;
+    border: 1px solid #5853d1;
+    border-radius: 1px;
+    box-shadow:
+            inset 1px 1px 0px #85b2f8,
+            inset -1px -1px 0px #57769a;
+}
+
+.gachacitypick-pixel-rivet.top-left {
+    top: 8px;
+    left: 8px;
+}
+
+.gachacitypick-pixel-rivet.top-right {
+    top: 8px;
+    right: 8px;
+}
+
+.gachacitypick-pixel-rivet.bottom-left {
+    bottom: 8px;
+    left: 8px;
+}
+
+.gachacitypick-pixel-rivet.bottom-right {
+    bottom: 8px;
+    right: 8px;
+}
+
+/* 내부 리벳 중앙 점 */
+.gachacitypick-rivet-center {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #0d2251;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+}
+
+.gachacitypick-screen-area {
+    background-color: #FFFFFF; /* White */
+    border: 4px solid #5f519c;
+    border-radius: 5px;
+    width: 350px;
+    height: 180px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    overflow: hidden;
+
+    position: relative;
+}
+
+.gachacitypick-crane{
+    position: absolute;
+    top: -120px;
+    left: 15px;
+}
+
+.gachacitypick-crane img{
+    width: 55px;
+    height: auto;
+}
+
+.pickmascot{
+    width: 50px;
+    height: auto;
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    transition: all 0.7s ease-in-out;
+}
+
+.gachacitypic-bottombox{
+    display: flex;
+    position: relative;
+
+}
+
+
+.abs{
+    position: absolute;
+    right: 30px;
+
+}
+
+.gachacitypick-control-panel {
+    width: 300px;
+    height: 80px;
+    border: 3px solid #6b5ca7;
+    border-radius: 5px;
+    background: #f4a983;
+    position: absolute;
+    margin-top: 9px;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+.gachacitypick-control-top-panel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 54px;
+    background: #ffeee0;
+    border-radius: 3px 3px 0 0;
+    border-bottom: 3px solid rgba(161, 137, 137, 0.74);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+    box-shadow:
+            inset 3px 3px 0px #ffffff,
+            inset 0px -3px 0px #856a8c;
+}
+
+.gachacitypick-coin-slot {
+    background-color: #6c98a8; /* Sienna */
+    border: 3px solid #5f519c;
+    width: 90px;
+    height: 60px;
+    border-radius: 3px;
+    margin-left: 20px;
+    box-shadow: inset 4px 4px 1px rgba(97, 41, 41, 0.5),
+                inset -2px -2px 0px rgba(230, 230, 230, 0.74);
+
+
+}
+
+.gachacitypick-joystick-left {
+    width: 40px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.gachacitypick-joystick-left img{
+    width: 40px;
+    height: auto;
+}
+.gachacitypick-joystick-left img:hover{
+    cursor: pointer;
+}
+
+.gachacitypick-joystick-right {
+    width: 40px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.gachacitypick-joystick-right img:hover{
+    cursor: pointer;
+}
+
+.gachacitypick-joystick-right img{
+    width: 40px;
+    height: auto;
+}
 
 
 
+.gachacitypick-button-container {
+    margin-left: auto;
+}
 
+.gachacitypick-button {
+    width: 45px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #ff7669; /* Light Salmon */
+    border: 3px solid #cf0f0f; /* Tomato */
+    border-radius: 50%;
+    box-shadow: 3px 3px 0px rgb(172, 187, 232),
+                 inset 3px 3px 1px #ffebe0;
+                /* inset -3px -3px 0px #ffeeee;*/
+    cursor: pointer;
+    transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.gachacitypick-button:active {
+    box-shadow: 0px 0px 2px #4a2f2c,
+    inset 3px 3px 1px #f14e39,
+    inset -3px -3px 1px #ffebe0;
+    transform: translateY(2px);
+}
+
+.pick{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 50px;
+    height: auto;
+}
+
+
+
+/*===================================================================================*/
 
 
 
