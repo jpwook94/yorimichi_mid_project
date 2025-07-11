@@ -11,7 +11,9 @@ c-window-container {
     width: 800px;
     /*height: 300px;*/
     box-shadow: 4px 4px 0 rgba(0, 61, 142, 0.8);
-    margin: 95px auto;
+    margin: 60px auto;
+    margin-bottom: 0px;
+    z-index: 2
 }
 
 .c-title-bar {
@@ -38,6 +40,21 @@ c-window-container {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.c-btn.close:hover {
+    background-color: #ff4c4c;
+    border-color: #000;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.c-btn.close:hover .icon-x span {
+    background: #fff; /* X가 더 튀도록 하얗게 */
+}
+
+.c-btn.close:active {
+    transform: scale(0.95);
 }
 
 .minimize .icon-line {
@@ -113,6 +130,51 @@ c-window-container {
     flex: 1;
     background: white;
     border-right: 1px solid #000;
+
+}
+
+.c-icons {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    margin: 30px 40px;
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-box:active {
+    transform: scale(0.97);
+}
+
+.c-icons .test-img {
+    width: 130px;
+    display: block;
+
+}
+
+.icon-box:hover .test-img {
+/*    outline: 2px solid #4b8aff;
+    outline-offset: 4px;*/
+    transform: scale(1.05);
+    transition: transform 0.2s ease, outline 0.2s ease;
+}
+
+.icon-label {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.icon-box:hover .icon-label {
+    color: #4b8aff;
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.2s ease;
 }
 
 .c-fake-scrollbar {
@@ -156,4 +218,139 @@ c-window-container {
     position: absolute;
     top: 30%;
     left: 0;
+}
+
+fake-popup-body {
+    position: relative;
+}
+
+.c-fake-popup {
+    position: absolute;
+    bottom: 140px;
+    right: 220px;
+    width: 430px;
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
+    z-index: 999;
+}
+
+.c-popup-header {
+    background: #c2dcfb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 3px solid #000;
+}
+
+.c-popup-title {
+    font-size: 20px;
+}
+
+.c-popup-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.c-popup-extraBTN {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.c-popup-body {
+    padding: 32px 24px 20px;
+    text-align: center;
+}
+
+.c-popup-text {
+    margin-bottom: 28px;
+    font-size: 22px;
+}
+
+.c-popup-actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.c-popup-btn {
+    font-size: 22px;
+    padding: 8px 20px;
+    background: #fff;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+.c-popup-btn:hover {
+    background-color: #c8e0f9;
+}
+
+.c-popup-btn.highlight:hover {
+    background: #f9ccec;
+}
+
+
+
+/*여기서부터 공통Test.jsp */
+
+.c-commonPopup-container {
+    position: relative;
+}
+
+.c-commonPopup1 {
+    position: absolute;
+    bottom: -10px;
+    left: -190px;
+    width: 250px;
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
+    z-index: 999;
+}
+
+.c-popup-body {
+    text-align: center;
+}
+
+.c-commonPopup-body {
+    position: relative;
+    padding: 3px;
+}
+
+.c-commonPopup-imgblock {
+    height: 240px;
+    overflow: hidden;
+    border: 2px solid #000;
+}
+
+.c-commonPopup-title {
+    font-size: 15px;
+}
+
+.c-commonPopup-extraBTN {
+    width: 17px;
+    height: 17px;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.c-commonPopup2 {
+    position: absolute;
+    bottom: 200px;
+    left: 300px;
+    width: 300px;
+    background: #fff;
+    border: 3px solid #003D8E;
+    box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
+}
+
+.c-commonPopup2-header {
+    background: #e8d3f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 3px solid #000;
 }

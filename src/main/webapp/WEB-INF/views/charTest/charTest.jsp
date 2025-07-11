@@ -8,8 +8,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
 </head>
 <body>
+
+<div class="gamelist-container">
+    <div class="teamlogo-container">
+        <img id="teamlogo2" onclick="location.href='/hc'" src="/other/image/logo.png" alt="">
+    </div>
 
 <div class="c-window-container">
     <div class="c-window">
@@ -21,7 +27,7 @@
                 <div class="c-btn maximize">
                     <div class="icon-square"></div>
                 </div>
-                <div class="c-btn close">
+                <div class="c-btn close" onclick="location.href='/gamelist'">
                     <div class="icon-x">
                         <span></span><span></span>
                     </div>
@@ -34,15 +40,17 @@
         </div>
         <div class="c-content-box">
             <div class="c-content-area">
+                <div class="c-icons">
+                    <div class="icon-box" onclick="showMBTIPopup()" >
+                        <img class="test-img" src="/other/image/MBTItest.png" alt="">
+                        <p class="icon-label">mbti.exe</p>
+                    </div>
 
-                <div>
-                    <img src="" onclick="location.href='/mbtiTest-detail'" alt="">
+                    <div class="icon-box" onclick="showITPopup()">
+                    <img class="test-img" src="/other/image/idealtest.png" alt="">
+                        <p class="icon-label">ideal_type.exe</p>
+                    </div>
                 </div>
-
-                <div>
-                    <img src="" onclick="location.href='/idealType-detail'" alt="">
-                </div>
-
             </div>
             <div class="c-fake-scrollbar">
                 <div class="c-scroll-btn up">
@@ -61,16 +69,68 @@
             </div>
         </div>
     </div>
+
+    <%--여기서부터 팝업창--%>
+<div class="fake-popup-body" id="MBTIpopup" style="display: none;">
+    <div class="c-fake-popup">
+        <div class="c-popup-header">
+            <span class="c-popup-title">System</span>
+            <div class="c-popup-buttons">
+                <div class="c-popup-extraBTN"></div>
+                <div class="c-popup-extraBTN"></div>
+                <div class="c-popup-extraBTN"></div>
+            </div>
+        </div>
+        <div class="c-popup-body">
+            <p class="c-popup-text">start?</p>
+            <div class="c-popup-actions">
+                <button class="c-popup-btn" onclick="location.href='/mbtiTest'">sure</button>
+                <button class="c-popup-btn highlight" onclick="hideMBTIPopup()">cancel</button>
+            </div>
+        </div>
+    </div>
 </div>
 
+    <%--여기서부터 팝업창--%>
+    <div class="fake-popup-body" id="ITpopup" style="display: none;">
+        <div class="c-fake-popup">
+            <div class="c-popup-header">
+                <span class="c-popup-title">System</span>
+                <div class="c-popup-buttons">
+                    <div class="c-popup-extraBTN"></div>
+                    <div class="c-popup-extraBTN"></div>
+                    <div class="c-popup-extraBTN"></div>
+                </div>
+            </div>
+            <div class="c-popup-body">
+                <p class="c-popup-text">start?</p>
+                <div class="c-popup-actions">
+                    <button class="c-popup-btn" onclick="location.href='/ITTest'">sure</button>
+                    <button class="c-popup-btn highlight" onclick="hideITPopup()">cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div>
-    <img src="" onclick="location.href='/mbtiTest-detail'" alt="">
 </div>
 
-<div>
-    <img src="" onclick="location.href='/idealType-detail'" alt="">
-</div>
+    <script>
 
+        function showMBTIPopup() {
+            document.getElementById("MBTIpopup").style.display = "block";
+        }
+
+        function showITPopup() {
+            document.getElementById("ITpopup").style.display = "block";
+        }
+
+        function hideMBTIPopup() {
+            document.getElementById("MBTIpopup").style.display = "none";
+        }
+
+        function hideITPopup() {
+            document.getElementById("ITpopup").style.display = "none";
+        }
+    </script>
 </body>
 </html>

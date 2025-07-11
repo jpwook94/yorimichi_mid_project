@@ -13,43 +13,63 @@
 </head>
 <body>
 <div class="ts-box">
+    <c:forEach items="${tagList}" var="tl">
+    <c:forEach items="${tags}" var="map">
     <div class="ts-line">
-        <div class="ts-category">목적</div>
-        <c:forEach items="${tags1}" var="t">
+        <div class="ts-category">${map.key}</div>
         <div class="ts-taglist">
-            <button type="button" name="${t.tag_name}">#${t.tag_name}</button>
+            <button type="button" name="${map.value.getTag_name}">#${map.value.getTag_name}</button>
         </div>
+    </div>
+    </c:forEach>
+    <div class="ts-line">
         </c:forEach>
-        </div>
-        <div class="ts-line">
-            <div class="ts-category">카테고리</div>
-            <c:forEach items="${tags2}" var="t">
-            <div class="ts-taglist">
-                <button type="button" name="${t.tag_name}">#${t.tag_name}</button>
-            </div>
-            </c:forEach>
-        </div>
-        <div class="ts-line">
-            <div class="ts-category">동행자 관계</div>
-            <c:forEach items="${tags3}" var="t">
-            <div class="ts-taglist">
-                <button type="button" name="${t.tag_name}">#${t.tag_name}</button>
-            </div>
-            </c:forEach>
-        </div>
-        <div class="ts-line">
-            <div class="ts-category">지역</div>
-            <c:forEach items="${tags4}" var="t">
+        <div class="ts-category">지역</div>
+        <c:forEach items="${tags4}" var="t">
             <div class="ts-taglist">
                 <button type="button" name="${t.location_name}">${t.location_name}</button>
             </div>
-            </c:forEach>
-        </div>
+        </c:forEach>
     </div>
-</div>
 
-<hr>
-<div id="render-div"></div>
+
+    <%--    <div class="ts-line">--%>
+    <%--        <div class="ts-category">목적</div>--%>
+    <%--        <c:forEach items="${tags1}" var="t">--%>
+    <%--        <div class="ts-taglist">--%>
+    <%--            <button type="button" name="${t.tag_name}">#${t.tag_name}</button>--%>
+    <%--        </div>--%>
+    <%--        </c:forEach>--%>
+    <%--        </div>--%>
+    <%--        <div class="ts-line">--%>
+    <%--            <div class="ts-category">카테고리</div>--%>
+    <%--            <c:forEach items="${tags2}" var="t">--%>
+    <%--            <div class="ts-taglist">--%>
+    <%--                <button type="button" name="${t.tag_name}">#${t.tag_name}</button>--%>
+    <%--            </div>--%>
+    <%--            </c:forEach>--%>
+    <%--        </div>--%>
+    <%--        <div class="ts-line">--%>
+    <%--            <div class="ts-category">동행자 관계</div>--%>
+    <%--            <c:forEach items="${tags3}" var="t">--%>
+    <%--            <div class="ts-taglist">--%>
+    <%--                <button type="button" name="${t.tag_name}">#${t.tag_name}</button>--%>
+    <%--            </div>--%>
+    <%--            </c:forEach>--%>
+    <%--        </div>--%>
+    <%--        <div class="ts-line">--%>
+    <%--            <div class="ts-category">지역</div>--%>
+    <%--            <c:forEach items="${tags4}" var="t">--%>
+    <%--            <div class="ts-taglist">--%>
+    <%--                <button type="button" name="${t.location_name}">${t.location_name}</button>--%>
+    <%--            </div>--%>
+    <%--            </c:forEach>--%>
+    <%--        </div>--%>
+    <%--    </div>--%>
+    <%--</div>--%>
+
+    <hr>
+    <div id="render-div"></div>
 
 </body>
 <script>

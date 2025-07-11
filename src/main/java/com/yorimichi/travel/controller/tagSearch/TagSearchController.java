@@ -23,8 +23,8 @@ public class TagSearchController {
     @GetMapping("/tag-search")
     public List<DestinationVO> tagSearch(@RequestParam("tags") ArrayList<String> tag_name) {
         System.out.println(tag_name);
-        System.out.println(tagSearchService.searchTag(tag_name));
-        return tagSearchService.searchTag(tag_name);
+        List<DestinationVO> results =  tagSearchService.searchTag(tag_name);
+        return results;
     }
 //
 //

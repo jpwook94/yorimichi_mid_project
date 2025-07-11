@@ -17,7 +17,7 @@
     <%--위에 고정되는 로고--%>
     <div class="teamlogo-container">
         <img id="teamlogo2" onclick="location.href='/gamelist'"
-             src="https://cdn.discordapp.com/attachments/1389097872523530293/1392025998312079420/TEAM_YORIMICHI_LOGO-Photoroom.png?ex=686e08bc&is=686cb73c&hm=6d826cd0bcf03a0bf3d837c0870d9346361b24fa81fca1d00b208ddedee66199&"
+             src="/other/image/logo.png"
              alt="">
     </div>
     <%-- 가챠 컨테이너 --%>
@@ -52,7 +52,7 @@
             <div class="gacha-content-area">
                 <div class="gacha-sidebar">
                     <div class="gacha-sidebar-item" data-cate="1">
-                        <img data-cate="1" src="https://cdn.discordapp.com/attachments/1392410209665810554/1392410353069064245/gacha-city-pick.png?ex=686f6eb1&is=686e1d31&hm=c3b425ecd02ce095bbc8c8f4e4f76119ef13700d2cad18d471c18ff59516e373&"
+                        <img data-cate="1" src="/other/image/gachacitypick_logo.png"
                              alt="">
                     </div>
                     <div  class="gacha-sidebar-item" data-cate="2"></div>
@@ -78,10 +78,10 @@
 <script>
     document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
         dom.addEventListener("click", (e) => {
-            console.log(e.target.dataset.cate); // cate   1,2,3
+            /*console.log(e.target.dataset.cate); // cate   1,2,3*/
             const url = "api/gacha?cate=" + e.target.dataset.cate;
             fetch(url).then(response => response.text()).then(data => {
-                console.log(data);
+                /*console.log(data);*/
                 document.querySelector(".gacha-main-content").innerHTML = data;
             });
         })
@@ -89,4 +89,5 @@
     document.querySelectorAll(".gacha-sidebar-item")[0].click() ;</script>
 
 </body>
+<%--<script src="/other/js/gacha.js" defer></script>--%>
 </html>

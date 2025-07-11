@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface TagSearchMapper {
@@ -15,11 +16,10 @@ public interface TagSearchMapper {
 
     @Select(
             "select * " +
-                    "from tag " +
-                    "join tag_category " +
-                    "on tag_id = tag_category_tag_id " +
-                    "where tag_category_name = #{category_name}")
-    public List<TagVO> getAllTags(String category_name);
+                    "from tag, tag_category " +
+                    "where tag_id = tag_categroy_tag_id " +
+                    "order by tag_category_name")
+    public List<Map<String, Object>> getAllTags();
 
 
     @Select(

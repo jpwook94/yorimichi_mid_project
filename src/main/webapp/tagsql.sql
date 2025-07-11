@@ -19,7 +19,15 @@ insert into tag values (tag_sequence.nextval, '가족이랑');
 insert into tag values (tag_sequence.nextval, '연인이랑');
 
 select * from tag;
+select  * from TAG_CATEGORY;
 
+
+select * from tag t, TAG_CATEGORY tc where t.TAG_ID = tc.TAG_CATEGORY_TAG_ID and tc.TAG_CATEGORY_NAME = '목적';
+select * from tag t, TAG_CATEGORY tc where t.TAG_ID = tc.TAG_CATEGORY_TAG_ID and tc.TAG_CATEGORY_NAME = '목적';
+select * from tag t, TAG_CATEGORY tc where t.TAG_ID = tc.TAG_CATEGORY_TAG_ID and tc.TAG_CATEGORY_NAME = '목적';
+
+
+select * from tag t, TAG_CATEGORY tc where t.TAG_ID = tc.TAG_CATEGORY_TAG_ID order by tag_category_name;
 -------------------------------------------------
 
 create table tag_category(

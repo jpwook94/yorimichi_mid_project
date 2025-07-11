@@ -123,6 +123,6 @@
             });
     }
 </script>
-
+<script src="/other/js/gacha.js" defer></script>
 </body>
 </html>

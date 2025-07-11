@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TagSearchService {
@@ -29,8 +30,9 @@ public class TagSearchService {
 //    }
 
 
-    public List<TagVO> getTags(String category_name) {
-        return tagSearchMapper.getAllTags(category_name);
+    public List<Map<String, Object>> getTags() {
+
+        return tagSearchMapper.getAllTags();
     }
 
     public List<LocationVO> searchGetLocation() {
