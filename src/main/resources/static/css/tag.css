@@ -1,34 +1,72 @@
-.ts-tag-box {
-    width: 500px;
-    height: 100px;
-    border:  1px solid;
-
-}
-
-.ts-tag-line {
+/* 전체 라인 (카테고리 + 버튼들 줄) */
+.ts-line {
     display: flex;
-    height: 24%;
-    border:   1px solid;
-
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 6px 0;
+    gap: 8px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
 }
 
-.ts-tag-category{
-    border-right:  1px solid;
+/* 카테고리명 (장르/배경 등) */
+.ts-category {
+    min-width: 75px;
+    text-align: center;
+    padding: 7px 10px;
+    background-color: #f6f7f9;
+    color: #222;
+    font-weight: 600;
+    border-radius: 4px;
+    line-height: 1.5;
+    flex-shrink: 0;
 }
 
-.ts-tag-list {
+/* 태그 버튼들을 담는 영역 (흰색 바탕) */
+.ts-taglist {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 5px;
-    gap: 10px;
+    gap: 8px;
+    background-color: #fff;
+    padding: 4px 0;
 }
 
+/* 개별 버튼 */
+.ts-taglist button {
+    padding: 6px 12px;
+    background-color: #f5f7fa;
+    border: 1px solid #e5e8eb;
+    border-radius: 999px;
+    color: #4e5968;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
+/* 호버 상태 */
+.ts-taglist button:hover {
+    background-color: #e9f2ff;
+    border-color: #a3c3f5;
+    color: #3578e5;
+}
 
-
-------------------------------
-
+/* 활성화된 버튼 */
 .ts-taglist button.active {
-    background-color: #007bff;
+    background-color: #3578e5;
+    border-color: #3578e5;
     color: white;
+}
+
+/* 결과 출력부 render-div 하나만 해당 */
+#render-div .tag-result-wrapper {
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.8;
+    max-width: 700px;
 }

@@ -7,10 +7,7 @@ import com.yorimichi.travel.vo.tagSearch.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class TagSearchService {
@@ -30,9 +27,27 @@ public class TagSearchService {
 //    }
 
 
-    public List<Map<String, Object>> getTags() {
-
-        return tagSearchMapper.getAllTags();
+    public Map<String, List<TagVO>> getTags() {
+        List<TagVO> tags = tagSearchMapper.getAllTags();
+        List<TagVO> temp = new ArrayList<>();
+        List<TagVO> temp2 = new ArrayList<>();
+        List<TagVO> temp3 = new ArrayList<>();
+        Map<String, List<TagVO>> results = new HashMap<>();
+        tags.forEach(tag -> {
+            if (tag.getTag_category_name().equals("동행자 관계")) {
+                temp.add(tag);
+                results.put(tag.getTag_category_name(), temp);
+            } else if (tag.getTag_category_name().equals("목적")) {
+                temp2.add(tag);
+                results.put(tag.getTag_category_name(), temp2);
+            } else if (tag.getTag_category_name().equals("카테고리")) {
+                temp3.add(tag);
+                results.put(tag.getTag_category_name(), temp3);
+            }
+        });
+        System.out.println(">>>>>>>>>>>>>>>>>>>>");
+        System.out.println(results);
+        return results;
     }
 
     public List<LocationVO> searchGetLocation() {
@@ -47,18 +62,18 @@ public class TagSearchService {
         for (String tag : tagname) {
             List<DestinationVO> dest = null;
 
-            if (tagSearchMapper.existsInTag(tagname) > 0) {
-                dest = tagSearchMapper.searchGetDestinationByTag(tagname);
-            } else if (tagSearchMapper.existsInLocation(tagname) > 0) {
-                dest = tagSearchMapper.searchGetDestinationByLocation(tagname);
+            if (tagSearchMapper.existsInTag(tag) > 0) {
+                dest = tagSearchMapper.searchGetDestinationByTag(tag);
+            } else if (tagSearchMapper.existsInLocation(tag) > 0) {
+                dest = tagSearchMapper.searchGetDestinationByLocation(tag);
             } else {
                 return Collections.emptyList();
             }
 
 
-
             if (destinations == null) {
-                destinations = new ArrayList<>(dest); // 첫 결과는 그대로 저장
+                destinations = new ArrayList<>();
+                destinations.addAll(dest); // 첫 결과는 그대로 저장
             } else {
                 destinations.retainAll(dest); // 그 이후부터는 교집합
             }
@@ -68,10 +83,8 @@ public class TagSearchService {
             }
 
 
-
         }
         return destinations == null ? Collections.emptyList() : destinations;
-
 
 
 //        List<DestinationVO> destinations = null;

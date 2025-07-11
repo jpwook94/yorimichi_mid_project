@@ -16,10 +16,10 @@ public interface TagSearchMapper {
 
     @Select(
             "select * " +
-                    "from tag, tag_category " +
-                    "where tag_id = tag_categroy_tag_id " +
+                    "from tag t, tag_category tc " +
+                    "where t.tag_id = tc.tag_category_tag_id " +
                     "order by tag_category_name")
-    public List<Map<String, Object>> getAllTags();
+    public List<TagVO> getAllTags();
 
 
     @Select(
@@ -32,8 +32,8 @@ public interface TagSearchMapper {
             "from destination " +
             "join destination_tag on destination_number = destination_tag_destination_number " +
             "join tag on destination_tag_tag_id = tag_id " +
-            "where tag_name = #{tag_name[0]}")
-    public List<DestinationVO> searchGetDestinationByTag(ArrayList<String> tag_name);
+            "where tag_name = #{tag_name}")
+    public List<DestinationVO> searchGetDestinationByTag(String tag_name);
 
 
     @Select("select * " +
@@ -41,12 +41,12 @@ public interface TagSearchMapper {
             "join location " +
             "on destination_number = location_number " +
             "where location_name = #{tag_name[0]}")
-    public List<DestinationVO> searchGetDestinationByLocation(ArrayList<String> tag_name);
+    public List<DestinationVO> searchGetDestinationByLocation(String tag_name);
 
     @Select("select count(*) from tag where tag_name = #{tag_name[0]}")
-    public int existsInTag(ArrayList<String> tag_name);
+    public int existsInTag(String tag_name);
 
     @Select("select count(*) from location where location_name = #{tag_name[0]}")
-    public int existsInLocation(ArrayList<String> tag_name);
+    public int existsInLocation(String tag_name);
 
 }

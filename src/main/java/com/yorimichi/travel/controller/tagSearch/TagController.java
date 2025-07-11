@@ -21,26 +21,8 @@ public class TagController {
 
     @GetMapping("/tag-page")
     public String tagPage(Model model) {
-        List<Map<String, Object>> tagList = tagSearchService.getTags();
-        List<Map<String, TagVO>> results = new ArrayList<>();
-
-        for (Map<String, Object> map : tagList) {
-            Map<String, TagVO> tags = new HashMap<>();
-            int tag_id = (int) map.get("tag_id");
-            String tag_name = (String) map.get("tag_name");
-            String categoryName = (String) map.get("tag_category_name");
-
-            TagVO tag = new TagVO();
-            tag.setTag_id(tag_id);
-            tag.setTag_name(tag_name);
-
-            tags.put(categoryName, tag);
-            results.add(tags);
-        }
-
-        model.addAttribute("tagList", results);
-
-
+            Map<String, List<TagVO>> tagList = tagSearchService.getTags();
+        model.addAttribute("tagList", tagList);
 
 
 //        model.addAttribute("tags1", tagSearchService.getTags("목적"));

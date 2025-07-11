@@ -96,4 +96,4 @@ insert into destination_tag values (destination_tag_sequence.nextval, 9, 9);
 insert into destination_tag values (destination_tag_sequence.nextval, 10, 10);
 
 
-select * from destination_tag;
+select * from destination join destination_tag on DESTINATION_NUMBER = destination_tag_destination_number;
