@@ -94,7 +94,7 @@
     <div class="tagsearch-speechbubble">
         <img src="/other/image/pixel-speech-bubble.gif" alt=""/>
     </div>
-    <div class="tagsearch-ori" onclick="location.href='tagPage'">
+    <div class="tagsearch-ori" onclick="location.href='tag-page'">
         <img src="/other/image/DUCK1.png" alt=""/>
     </div>
     <div class="tagsearch-ori2">
