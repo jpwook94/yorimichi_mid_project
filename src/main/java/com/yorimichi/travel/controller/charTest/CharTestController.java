@@ -36,7 +36,21 @@ public class CharTestController {
     public String mbtiTest(Model model) {
         model.addAttribute("content", "charTest/mbtiTest.jsp");
         return "main";
+
+    // mbti 결과
     }
+
+    @GetMapping("/mbtiTest/result")
+    public String mbtiTestResult(String[] ans ) {
+        for (String s : ans) {
+            System.out.println(s);
+        }
+
+        return "main";
+    }
+
+
+
 
     // 이상형 월드컵 문항 페이지
     @GetMapping("/ITTest")
