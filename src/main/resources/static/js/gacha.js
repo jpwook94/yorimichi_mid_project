@@ -6,6 +6,10 @@ document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
             .then(data => {
                 document.querySelector(".gacha-main-content").innerHTML = data;
                 initGachaMachineEvents(); // ✅ 이벤트 등록은 fetch 이후!
+
+                if (e.target.dataset.cate === "2") {
+                    initSSRcardEvents(); // 원하는 함수 호출
+                }
             });
     });
 });
@@ -13,13 +17,7 @@ document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
 // 페이지 로딩 후 기본 호출
 document.querySelectorAll(".gacha-sidebar-item")[0].click();
 
-window.addEventListener('DOMContentLoaded', () => {
-    const bgMusic = document.getElementById("bg-music");
-    bgMusic.muted = false; // 소리 켜기
-    bgMusic.play().catch((err) => {
-        console.warn("브라우저가 자동 재생을 막았어요. 클릭 후 재생됩니다.");
-    });
-});
+
 
 function initGachaMachineEvents() {
     const crane = document.querySelector(".gachacitypick-crane");
@@ -46,7 +44,6 @@ function initGachaMachineEvents() {
             speechBubble.classList.add("hidden");
 
 
-            //그놈의 비동기
             const response = await fetch("/pick");
             const data = await response.text();
             console.log(data)
@@ -139,7 +136,35 @@ function initGachaMachineEvents() {
         await delay(1000);
     }
 
-    //===================================== SSR 카드 뽑기 ==========================================
+}
+
+
+
+
+
+
+//===================================== SSR 카드 뽑기 ==========================================
+
+
+
+
+function initSSRcardEvents(){
+    console.log("🎉 data-cate='2'을 클릭했습니다!");
+
+    const SSRcardpicked1 = document.querySelector('#SSRpick1');
+    const SSRcardpickedN = document.querySelector('#SSRpickN');
+
+    /* 1회 뽑기 눌렀을 때 */
+    SSRcardpicked1.addEventListener("click", async () => {
+        console.log("1회뽑기 눌렀음")
+        const response = await fetch("/pickSSR");
+        const data = await response.json();
+        console.log(data)
+
+        const destNameEl = document.getElementById("destination-name");
+        if (destNameEl) {
+            destNameEl.textContent = data.destination_name;
+        }
 
 
 
@@ -148,10 +173,9 @@ function initGachaMachineEvents() {
 
 
 
+    /* n회 뽑기 는 나중에... ㅎㅎㅎㅎ*/
 
 
-
-
-
+    })
 
 }

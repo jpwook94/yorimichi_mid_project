@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+<%-- 오디오 --%>
 <audio controls autoplay loop style="display: none">
     <source src="/other/audio/gacha/8-bit-game-music.mp3">
 </audio>
@@ -29,7 +30,7 @@
             <img src="/other/image/gacha-cute/sakura.gif" alt="">
         </div>
 
-        <%-- 오디오 --%>
+        <%-- 한번 더 이미지 --%>
         <div class="gachacitypick-onemore">
             <img src="/other/image/gacha-cute/one-more.gif" alt="">
         </div>

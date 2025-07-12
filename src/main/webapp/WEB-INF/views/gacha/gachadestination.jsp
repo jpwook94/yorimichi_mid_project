@@ -9,10 +9,13 @@
 </head>
 <body>
 
+<div class="SSRcard-container">
+    <h1 id="destination-name"></h1>
+</div>
 
 <div class="gachadescard-pickcontainer">
-    <div class="gachadescard-pickbtn">1회 뽑기</div>
-    <div class="gachadescard-pickbtn">n회 뽑기</div>
+    <div id="SSRpick1" class="gachadescard-pickbtn" >1회 뽑기</div>
+    <div id="SSRpickN" class="gachadescard-pickbtn">n회 뽑기</div>
 </div>
 
 </body>

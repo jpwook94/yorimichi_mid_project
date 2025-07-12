@@ -25,7 +25,8 @@ public class GachaController {
         return randomLocation; // 뽑은 객체
     }
 
-    @GetMapping
+    @ResponseBody
+    @GetMapping("/pickSSR")
     public DestinationVO pickDestination(Model model) {
         DestinationVO randomDestination = gachaService.getRandomDestination();
         model.addAttribute("pickeddest", randomDestination);
