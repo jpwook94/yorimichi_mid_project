@@ -44,14 +44,14 @@
                         <div class="c-MBTIiconbox">
                             <img class="c-MBTIicons" src="/other/image/MBTIicon1.png" alt="">
                         </div>
-                        <div class="c-mbtiQ" data-qnum="1">
+                        <div class="c-mbtiQ" data-qnum="1" style="font-size: 24px">
                             친구들이 갑자기 "야! 이번 주말에 여행 가자!"라고 한다.
                         </div>
                         <div class="c-mbtiA">
-                            <input type="radio" name="mbtiA" value="a"><span class="mbtiA-text" data-ans="a">어디든 일단 콜! 이런 게 여행이지!</span></label><br>
-                            <input type="radio" name="mbtiA" value="b"><span class="mbtiA-text" data-ans="b">응? 좋긴 한데... 뭐 타고 갈 건데? 숙소는?</span></label><br>
-                            <input type="radio" name="mbtiA" value="c"><span class="mbtiA-text" data-ans="c">너무 갑작스러워서... 난 패스~</span></label><br>
-                            <input type="radio" name="mbtiA" value="d"><span class="mbtiA-text" data-ans="d">좋아! 근데 누구랑 가는 건지, 몇시 출발인지 말해줘.</span></label><br>
+                            <label><input type="radio" name="mbtiA" value="a"><span class="mbtiA-text" data-ans="a">어디든 일단 콜! 이런 게 여행이지!</span></label><br>
+                            <label><input type="radio" name="mbtiA" value="b"><span class="mbtiA-text" data-ans="b">응? 좋긴 한데... 뭐 타고 갈 건데? 숙소는?</span></label><br>
+                            <label><input type="radio" name="mbtiA" value="c"><span class="mbtiA-text" data-ans="c">너무 갑작스러워서... 난 패스~</span></label><br>
+                            <label><input type="radio" name="mbtiA" value="d"><span class="mbtiA-text" data-ans="d">좋아! 근데 누구랑 가는 건지, 몇시 출발인지 말해줘.</span></label><br>
                         </div>
                     </div>
                     <div class="c-MBTIbtnBlock">

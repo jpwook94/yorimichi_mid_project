@@ -133,6 +133,7 @@ c-window-container {
     display: block;
     flex: 1;
     gap: 20px;
+    position: relative;
 
 }
 
@@ -156,6 +157,61 @@ c-window-container {
     display: flex;
     justify-content: right;
     align-items: end;
+    position: absolute;
+    right: 38px;
+    gap: 7px;
+}
+/* 숨김 처리 */
+.c-mbtiA input[type="radio"] {
+    display: none;
+}
+
+.c-mbtiA {
+ /*   display: flex;
+    align-items: center;*/
+}
+
+/* 가짜 라디오 스타일 */
+.mbtiA-text {
+    display: inline-block;
+    padding-left: 35px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 12px;
+    font-size: 17px;
+    user-select: none;
+    line-height: 23px;
+    vertical-align: middle; /* 세로 정렬 추가 */
+}
+
+/* 동그라미 */
+.mbtiA-text::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%; /* 중앙 기준으로 변경 */
+    transform: translateY(-50%); /* 정확한 중앙 정렬 */
+    width: 16px;
+    height: 16px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 2px 2px 0 #666;
+}
+
+/* 체크됐을 때 안에 점 찍힘 */
+.c-mbtiA input[type="radio"]:checked + .mbtiA-text::before {
+    background: radial-gradient(circle at center, #000 0%, #000 35%, white 35%, white 100%);
+    box-shadow: inset 1px 1px 0 #999, 2px 2px 0 #666;
+}
+
+/* 호버 효과 */
+.mbtiA-text:hover::before {
+    background: #f0f0f0;
+}
+
+.c-mbtiA input[type="radio"]:checked + .mbtiA-text:hover::before {
+    background: radial-gradient(circle at center, #333 0%, #333 35%, #f0f0f0 35%, #f0f0f0 100%);
 }
 
 .c-icons {
@@ -166,7 +222,7 @@ c-window-container {
     margin: 30px 40px;
 }
 
-.icon-box {
+.c-icon-box {
     display: flex;
     flex-direction: column;
     align-items: center;
