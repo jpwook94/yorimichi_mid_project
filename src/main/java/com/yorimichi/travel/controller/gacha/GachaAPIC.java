@@ -21,10 +21,7 @@ public class GachaAPIC {
 
         } else if (cate == 3){
             return "gacha/gachafood";
-
         }
         return "";
-
     }
-
 }

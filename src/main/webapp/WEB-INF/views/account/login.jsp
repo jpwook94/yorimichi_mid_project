@@ -38,21 +38,14 @@
     <button class="login-submit"  type="submit">
         <span class="sign-text">Sign in</span>
     </button>
+    <c:if test="${not empty loginError}">
+        <div style="color:red; margin-top:10px">${loginError}</div>
+    </c:if>
     <p class="login-signup-link">
         No account?
         <a class="login-up" onclick="loadContent(event, '/sign-up')">Sign up</a>
     </p>
 </form>
-<script>
-    // 쿼리스트링에서 joined=ok이면 안내문 띄움
-    window.addEventListener('DOMContentLoaded', function() {
-        const params = new URLSearchParams(window.location.search);
-        if(params.get('joined') === 'ok') {
-            alert('회원가입이 완료되었습니다!');
-            // 필요하면, 안내 문구 표시 후 파라미터 지우기 (옵션)
-            // location.replace('/login-page');
-        }
-    });
-</script>
+<script src="/other/js/account.js"></script>
 </body>
 </html>
