@@ -1,6 +1,7 @@
 package com.yorimichi.travel.service.account;
 
 import com.yorimichi.travel.mapper.AccountMapper;
+import com.yorimichi.travel.vo.DestinationVO;
 import com.yorimichi.travel.vo.account.AccountVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,10 @@ public class AccountService {
 
     public AccountVO login(String userId, String userPw) {
         return accountMapper.login(userId, userPw);
+    }
+
+    public List<DestinationVO> getDestinations() {
+        List<DestinationVO> destinations = accountMapper.selectAllDestination();
+        return destinations;
     }
 }
