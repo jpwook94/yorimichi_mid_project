@@ -1,6 +1,8 @@
 package com.yorimichi.travel.service.tagSearch;
 
 import com.yorimichi.travel.mapper.TagSearchMapper;
+import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.LocationVO;
 import com.yorimichi.travel.vo.tagSearch.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

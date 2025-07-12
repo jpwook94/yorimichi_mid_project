@@ -51,9 +51,9 @@
 
             <div class="gacha-content-area">
                 <div class="gacha-sidebar">
-                    <div class="gacha-sidebar-item" data-cate="1"><p>내 찜 목록</p></div>
-                    <div class="gacha-sidebar-item" data-cate="2"><p>좋아요</p></div>
-                    <div class="gacha-sidebar-item" data-cate="3"><p>플래너</p></div>
+                    <div class="gacha-sidebar-item" data-cate="4"><p>내 찜 목록</p></div>
+                    <div class="gacha-sidebar-item" data-cate="5"><p>좋아요</p></div>
+                    <div class="gacha-sidebar-item" data-cate="6"><p>플래너</p></div>
                 </div>
 
                 <div class="gacha-main-content">
@@ -92,7 +92,7 @@
 
     document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
         dom.addEventListener("click", (e) => {
-            const cate = dom.dataset.cate;
+            const cate = e.currentTarget.dataset.cate; // ✅ currentTarget 사용!
             console.log("cate:", cate); // 확인
             const url = "/account/mypageC?myPageCate=" + cate;
             fetch(url).then(response => response.text()).then(data => {

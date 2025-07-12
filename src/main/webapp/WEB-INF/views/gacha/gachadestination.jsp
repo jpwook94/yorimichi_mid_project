@@ -10,6 +10,8 @@
 <body>
 
 <div class="SSRcard-container">
+    <img class="SSRcard-cardback" src="/other/image/gacha-cute/SSRcardBack.png" alt="">
+    <div class="SSRcard-imgcontainer">이미지</div>
     <h1 id="destination-name"></h1>
 </div>
 

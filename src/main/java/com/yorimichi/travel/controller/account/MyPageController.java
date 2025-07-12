@@ -20,11 +20,11 @@ public class MyPageController {
 
     @GetMapping("/mypageC")
     public String catePage(int myPageCate ,@RequestParam(defaultValue="1") int page, Model model) {
-        if(myPageCate == 1){
+        if(myPageCate == 4){
             return "account/userProfile";
-        } else if (myPageCate == 2) {
+        } else if (myPageCate == 5) {
             return "account/userLikes";
-        } else if (myPageCate == 3){
+        } else if (myPageCate == 6){
             int pageSize = 3;
             // 1. 전체 여행지 리스트 가져오기
             List<DestinationVO> all = accountService.getDestinations();

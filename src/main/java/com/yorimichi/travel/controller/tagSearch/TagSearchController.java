@@ -2,6 +2,7 @@ package com.yorimichi.travel.controller.tagSearch;
 
 
 import com.yorimichi.travel.service.tagSearch.TagSearchService;
+import com.yorimichi.travel.vo.DestinationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

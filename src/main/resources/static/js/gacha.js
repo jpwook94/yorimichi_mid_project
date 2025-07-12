@@ -28,6 +28,7 @@ function initGachaMachineEvents() {
     const speechBubble = document.querySelector(".gachacitypick-pickstart-speechbubble");
     const joystickAudio = new Audio("/other/audio/gacha/robot-movement-sound-effects.mp3");
     joystickAudio.loop = true; // 계속 재생되도록
+    joystickAudio.volume = 0.4
 
     if (!crane || !picked || !leftBtn || !rightBtn || !pickup) return;
 
@@ -41,22 +42,25 @@ function initGachaMachineEvents() {
             if (hasPicked) return; // 이미 눌렸다면 아무것도 하지 않음
             hasPicked = true;
 
-            speechBubble.classList.add("hidden");
+        // 버튼 기능 차단 (원하는 경우 시각적으로 비활성화도 가능)
+        pickup.style.pointerEvents = "none";
+        leftBtn.style.pointerEvents = "none";
+        rightBtn.style.pointerEvents = "none";
 
+            speechBubble.classList.add("hidden");
+            const pushbtnSound = new Audio("/other/audio/gacha/pushbtn.mp3");
+            pushbtnSound.play().catch((err) => {
+                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+            });
 
             const response = await fetch("/pick");
-            const data = await response.text();
+            const data = await response.json();
             console.log(data)
 
 
             // 크레인 움직임
             await animatecrane();
 
-
-            // 버튼 기능 차단 (원하는 경우 시각적으로 비활성화도 가능)
-            pickup.style.pointerEvents = "none";
-            leftBtn.style.pointerEvents = "none";
-            rightBtn.style.pointerEvents = "none";
 
             document.querySelector(".gachacitypick-onemore").style.display = "block";
         }
@@ -130,10 +134,19 @@ function initGachaMachineEvents() {
         await delay(1000);
         picked.style.bottom = "35px";
         crane.style.top = "-120px";
+        const dropSound = new Audio("/other/audio/gacha/jump03.mp3");
+        dropSound.volume= 0.5;
+        dropSound.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
         await delay(1000);
         crane.style.left = "15px";
         picked.style.left = "15px";
         await delay(1000);
+        const getmasSound = new Audio("/other/audio/gacha/8-bit-powerup.mp3");
+        getmasSound.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
     }
 
 }

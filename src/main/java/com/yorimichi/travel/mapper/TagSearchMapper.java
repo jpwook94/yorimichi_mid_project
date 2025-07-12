@@ -1,5 +1,7 @@
 package com.yorimichi.travel.mapper;
 
+import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.LocationVO;
 import com.yorimichi.travel.vo.tagSearch.TagVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
