@@ -2,6 +2,7 @@ package com.yorimichi.travel.controller.gacha;
 
 
 import com.yorimichi.travel.service.gacha.GachaService;
+import com.yorimichi.travel.vo.gacha.DestinationVO;
 import com.yorimichi.travel.vo.gacha.LocationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,14 @@ public class GachaController {
     public LocationVO pickMascot(Model model) {
         LocationVO randomLocation = gachaService.getRandomLocation();
         model.addAttribute("pickedloc", randomLocation);
-        return randomLocation; // <- JSP 파일 경로
+        return randomLocation; // 뽑은 객체
+    }
+
+    @GetMapping
+    public DestinationVO pickDestination(Model model) {
+        DestinationVO randomDestination = gachaService.getRandomDestination();
+        model.addAttribute("pickeddest", randomDestination);
+        return randomDestination;
     }
 
 

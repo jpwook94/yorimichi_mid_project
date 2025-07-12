@@ -82,6 +82,18 @@
     width: 119px;
 }
 
+.gachacitypick-onemore{
+    display: none;
+}
+
+.gachacitypick-onemore img{
+    position: absolute;
+    top: -185px;
+    left: -176px;
+    z-index: 50;
+    width: 138px;
+}
+
 
 
 .gachacitypick-arcade-machine {

@@ -9,11 +9,14 @@
     <title>Document</title>
 </head>
 <body>
-
+<audio controls autoplay loop style="display: none">
+    <source src="/other/audio/gacha/8-bit-game-music.mp3">
+</audio>
 
 <div class="gachacitypick-box">
     <div class="gachacitypick-arcade-machine">
 
+        <%-- 꾸미기 용도 --%>
         <div class="gachacitypick-cute">
             <img src="/other/image/gacha-cute/heart2.gif" alt="">
             <img src="/other/image/gacha-cute/rebbon.gif" alt="">
@@ -26,6 +29,12 @@
             <img src="/other/image/gacha-cute/sakura.gif" alt="">
         </div>
 
+        <%-- 오디오 --%>
+        <div class="gachacitypick-onemore">
+            <img src="/other/image/gacha-cute/one-more.gif" alt="">
+        </div>
+
+        <%-- 인형뽑기 상자 --%>
         <div class="gachacitypic-topbox">
             <div class="gachacitypic-topboxbox">
                 <div class="gachacitypic-topboxbox-txt">인형뽑기</div>

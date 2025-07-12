@@ -1,12 +1,14 @@
 package com.yorimichi.travel.service.gacha;
 
 import com.yorimichi.travel.mapper.GachaMapper;
+import com.yorimichi.travel.vo.gacha.DestinationVO;
 import com.yorimichi.travel.vo.gacha.LocationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class GachaService {
@@ -33,7 +35,30 @@ public class GachaService {
                 List<LocationVO> Locations = gachaMapper.selectAllLocation();
                 if (Locations == null || Locations.isEmpty()) return null;
 
-                int randomIndex = new Random().nextInt(Locations.size());
+                int randomIndex = ThreadLocalRandom.current().nextInt(Locations.size());
                 return Locations.get(randomIndex);
         }
+
+        // destination 전체 조회
+        public List<DestinationVO> getAllDestination(){
+                List<DestinationVO> destinations = gachaMapper.selectAllDestination();
+                System.out.println(destinations);
+                return destinations;
+        }
+
+        // destination 하나 조회
+        public DestinationVO getDestinationById(int id){
+                DestinationVO destination = gachaMapper.selectDestinationByNum(id);
+                System.out.println(destination);
+                return destination;
+        }
+
+        // destination 랜덤 뽑기
+        public DestinationVO getRandomDestination() {
+                List<DestinationVO> destinations = gachaMapper.selectAllDestination();
+                if (destinations == null || destinations.isEmpty()) return null;
+                int randomIndex = ThreadLocalRandom.current().nextInt(destinations.size());
+                return destinations.get(randomIndex);
+        }
+
 }

@@ -13,6 +13,14 @@ document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
 // 페이지 로딩 후 기본 호출
 document.querySelectorAll(".gacha-sidebar-item")[0].click();
 
+window.addEventListener('DOMContentLoaded', () => {
+    const bgMusic = document.getElementById("bg-music");
+    bgMusic.muted = false; // 소리 켜기
+    bgMusic.play().catch((err) => {
+        console.warn("브라우저가 자동 재생을 막았어요. 클릭 후 재생됩니다.");
+    });
+});
+
 function initGachaMachineEvents() {
     const crane = document.querySelector(".gachacitypick-crane");
     const picked = document.querySelector(".pickmascot");
@@ -20,6 +28,8 @@ function initGachaMachineEvents() {
     const rightBtn = document.querySelector("#joystick-right");
     const pickup = document.querySelector("#gachacitypick-pickup");
     const speechBubble = document.querySelector(".gachacitypick-pickstart-speechbubble");
+    const joystickAudio = new Audio("/other/audio/gacha/robot-movement-sound-effects.mp3");
+    joystickAudio.loop = true; // 계속 재생되도록
 
     if (!crane || !picked || !leftBtn || !rightBtn || !pickup) return;
 
@@ -40,7 +50,7 @@ function initGachaMachineEvents() {
             const response = await fetch("/pick");
             const data = await response.text();
             console.log(data)
-            document.querySelector("#random-number").append(data)
+
 
             // 크레인 움직임
             await animatecrane();
@@ -50,15 +60,25 @@ function initGachaMachineEvents() {
             pickup.style.pointerEvents = "none";
             leftBtn.style.pointerEvents = "none";
             rightBtn.style.pointerEvents = "none";
+
+            document.querySelector(".gachacitypick-onemore").style.display = "block";
         }
     )
     ;
+
+    function stopPressing() {
+        isPressing = false;
+        clearInterval(pressInterval);
+        joystickAudio.pause();      // 소리 멈춤
+        joystickAudio.currentTime = 0; // 처음으로 되돌림
+    }
 
 
 // 조이스틱 왼쪽
     leftBtn.addEventListener("mousedown", () => {
         isPressing = true;
         console.log("눌렀다!");
+        joystickAudio.play();
 
         pressInterval = setInterval(() => {
             if (isPressing) {
@@ -71,21 +91,15 @@ function initGachaMachineEvents() {
         }, 1);
     });
 
-    leftBtn.addEventListener("mouseup", () => {
-        isPressing = false;
-        clearInterval(pressInterval);
-    });
-
-    leftBtn.addEventListener("mouseleave", () => {
-        isPressing = false;
-        clearInterval(pressInterval);
-    });
+    leftBtn.addEventListener("mouseup", stopPressing);
+    leftBtn.addEventListener("mouseleave", stopPressing);
 // 조이스틱 왼쪽 끝
 
 // 조이스틱 오른쪽
     rightBtn.addEventListener("mousedown", () => {
         isPressing = true;
         console.log("눌렀다!");
+        joystickAudio.play();
 
         pressInterval = setInterval(() => {
             if (isPressing) {
@@ -98,15 +112,9 @@ function initGachaMachineEvents() {
         }, 1);
     });
 
-    rightBtn.addEventListener("mouseup", () => {
-        isPressing = false;
-        clearInterval(pressInterval);
-    });
 
-    rightBtn.addEventListener("mouseleave", () => {
-        isPressing = false;
-        clearInterval(pressInterval);
-    });
+    rightBtn.addEventListener("mouseup", stopPressing);
+    rightBtn.addEventListener("mouseleave", stopPressing);
 
 //조이스틱 오른쪽 끝
 
@@ -130,4 +138,20 @@ function initGachaMachineEvents() {
         picked.style.left = "15px";
         await delay(1000);
     }
+
+    //===================================== SSR 카드 뽑기 ==========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
