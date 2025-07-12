@@ -49,6 +49,12 @@
     <div id="clear-button-container"></div>
 <div id="render-div"></div>
 </div>
+
+
+
+<div class="top-button-wrapper"><img src="/other/image/DUCK7.png" alt="" class="top-duck"></div>
+
+
 </body>
 <script>
 
