@@ -38,6 +38,9 @@
     <button class="login-submit"  type="submit">
         <span class="sign-text">Sign in</span>
     </button>
+    <c:if test="${not empty loginError}">
+        <div style="color:red; margin-top:10px">${loginError}</div>
+    </c:if>
     <p class="login-signup-link">
         No account?
         <a class="login-up" onclick="loadContent(event, '/sign-up')">Sign up</a>

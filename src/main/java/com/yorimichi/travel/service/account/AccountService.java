@@ -36,4 +36,9 @@ public class AccountService {
     public AccountVO login(String userId, String userPw) {
         return accountMapper.login(userId, userPw);
     }
+
+    public List<DestinationVO> getDestinations() {
+        List<DestinationVO> destinations = accountMapper.selectAllDestination();
+        return destinations;
+    }
 }

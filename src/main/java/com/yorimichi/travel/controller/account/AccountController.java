@@ -53,9 +53,22 @@ public class AccountController {
             return "main";
         }
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate(); // 세션(로그인 정보) 삭제
         return "redirect:/login-page";
+    }
+
+    @GetMapping("/mypage")
+    public String myPage(HttpSession session, Model model) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+//        if (loginUser == null) {
+//            // 로그인 안했으면 로그인 페이지로!
+//            return "redirect:/login-page";
+//        }
+        model.addAttribute("loginUser", loginUser);
+        model.addAttribute("content", "account/myPage.jsp");
+        return "main"; // 템플릿 이름에 맞게 조정 (ex. "main" or "account/mypage" 등)
     }
 }
