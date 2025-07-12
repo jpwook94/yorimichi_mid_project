@@ -1,4 +1,4 @@
-.gachalist-container{
+.mypagelist-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@
 
 /*============================== 인형뽑기 디자인 =====================================*/
 
-.gachacitypick-box{
+.mypagecitypick-box{
     display: flex;
     flex-direction: row-reverse;
     margin-top: 33px;
@@ -16,7 +16,7 @@
 }
 
 
-.gachacitypick-arcade-machine {
+.mypagecitypick-arcade-machine {
     background-image: url("https://i.pinimg.com/1200x/6b/34/77/6b347757661505edf86e026e6edc18ae.jpg");
     background-size: 100% 100%;
     /*background-color: #ADD8E6; !* Light Blue *!*/
@@ -31,18 +31,18 @@
             5px 5px 0px rgba(151, 185, 236, 0.65);
 }
 
-.gachacitypic-topbox{
+.mypagecitypic-topbox{
     display: flex;
     flex-direction: row;
 }
 
-.gachacitypic-topboxbox{
+.mypagecitypic-topboxbox{
     display: flex;
     flex-direction: column;
 
 }
 
-.gachacitypic-topboxbox-txt{
+.mypagecitypic-topboxbox-txt{
     margin-bottom: 20px;
     justify-self: center;
     align-self: center;
@@ -50,7 +50,7 @@
     color: #5b3b88;
 }
 
-.gachacitypick-logo{
+.mypagecitypick-logo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,14 +68,14 @@
             5px 5px 0px rgba(151, 185, 236, 0.65);
 }
 
-.gachacitypick-logo img {
+.mypagecitypick-logo img {
     width: 60px;
     height: 50px;
 }
 
 
 /* 못 박힌 듯한 픽셀 장식 */
-.gachacitypick-pixel-rivet {
+.mypagecitypick-pixel-rivet {
     position: absolute;
     width: 8px;
     height: 8px;
@@ -87,28 +87,28 @@
             inset -1px -1px 0px #57769a;
 }
 
-.gachacitypick-pixel-rivet.top-left {
+.mypagecitypick-pixel-rivet.top-left {
     top: 8px;
     left: 8px;
 }
 
-.gachacitypick-pixel-rivet.top-right {
+.mypagecitypick-pixel-rivet.top-right {
     top: 8px;
     right: 8px;
 }
 
-.gachacitypick-pixel-rivet.bottom-left {
+.mypagecitypick-pixel-rivet.bottom-left {
     bottom: 8px;
     left: 8px;
 }
 
-.gachacitypick-pixel-rivet.bottom-right {
+.mypagecitypick-pixel-rivet.bottom-right {
     bottom: 8px;
     right: 8px;
 }
 
 /* 내부 리벳 중앙 점 */
-.gachacitypick-rivet-center {
+.mypagecitypick-rivet-center {
     position: absolute;
     width: 2px;
     height: 2px;
@@ -119,7 +119,7 @@
     border-radius: 1px;
 }
 
-.gachacitypick-screen-area {
+.mypagecitypick-screen-area {
     background-color: #FFFFFF; /* White */
     border: 4px solid #5f519c;
     border-radius: 5px;
@@ -132,13 +132,13 @@
     position: relative;
 }
 
-.gachacitypick-crane{
+.mypagecitypick-crane{
     position: absolute;
     top: -120px;
     left: 15px;
 }
 
-.gachacitypick-crane img{
+.mypagecitypick-crane img{
     width: 55px;
     height: auto;
 }
@@ -152,7 +152,7 @@
     transition: all 0.7s ease-in-out;
 }
 
-.gachacitypic-bottombox{
+.mypagecitypic-bottombox{
     display: flex;
     position: relative;
 
@@ -165,7 +165,7 @@
 
 }
 
-.gachacitypick-control-panel {
+.mypagecitypick-control-panel {
     width: 300px;
     height: 80px;
     border: 3px solid #6b5ca7;
@@ -178,7 +178,7 @@
 
 }
 
-.gachacitypick-control-top-panel{
+.mypagecitypick-control-top-panel{
     position: absolute;
     top: 0;
     left: 0;
@@ -197,7 +197,7 @@
             inset 0px -3px 0px #856a8c;
 }
 
-.gachacitypick-coin-slot {
+.mypagecitypick-coin-slot {
     background-color: #6c98a8; /* Sienna */
     border: 3px solid #5f519c;
     width: 90px;
@@ -210,42 +210,42 @@
 
 }
 
-.gachacitypick-joystick-left {
+.mypagecitypick-joystick-left {
     width: 40px;
     position: relative;
     margin-left: 20px;
 }
 
-.gachacitypick-joystick-left img{
+.mypagecitypick-joystick-left img{
     width: 40px;
     height: auto;
 }
-.gachacitypick-joystick-left img:hover{
+.mypagecitypick-joystick-left img:hover{
     cursor: pointer;
 }
 
-.gachacitypick-joystick-right {
+.mypagecitypick-joystick-right {
     width: 40px;
     position: relative;
     margin-left: 20px;
 }
 
-.gachacitypick-joystick-right img:hover{
+.mypagecitypick-joystick-right img:hover{
     cursor: pointer;
 }
 
-.gachacitypick-joystick-right img{
+.mypagecitypick-joystick-right img{
     width: 40px;
     height: auto;
 }
 
 
 
-.gachacitypick-button-container {
+.mypagecitypick-button-container {
     margin-left: auto;
 }
 
-.gachacitypick-button {
+.mypagecitypick-button {
     width: 45px;
     height: 30px;
     margin-right: 10px;
@@ -259,7 +259,7 @@
     transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
 
-.gachacitypick-button:active {
+.mypagecitypick-button:active {
     box-shadow: 0px 0px 2px #4a2f2c,
     inset 3px 3px 1px #f14e39,
     inset -3px -3px 1px #ffebe0;
@@ -282,12 +282,12 @@
 
 /* ============================가챠 컨테이너 웹페이지 디자인은 가장 아래에 모아두겟음 ========================== */
 
-.gacha-container{
+.mypage-container{
     margin-top: 60px;
 
 }
 
-.gacha-browser-window {
+.mypage-browser-window {
     width: 1000px;
     height: 500px;
     background: #ffb8b8;
@@ -295,7 +295,7 @@
     box-sizing: border-box;
 }
 
-.gacha-title-bar {
+.mypage-title-bar {
     background: #92efff;
     height: 60px;
     display: flex;
@@ -304,7 +304,7 @@
     border-bottom: 4px solid #2a3687;
 }
 
-.gacha-tab {
+.mypage-tab {
     background: #fffce0;
     border: 3px solid #2a3687;
     padding: 8px 16px;
@@ -321,7 +321,7 @@
             3px 3px 0px #a884e0;
 }
 
-.gacha-tab.active {
+.mypage-tab.active {
     background: #fffce0;
     box-shadow:
             inset 2px 2px 0px rgba(255,255,255,0.7),
@@ -329,13 +329,13 @@
             2px 2px 0px #a884e0;
 }
 
-.gacha-window-controls {
+.mypage-window-controls {
     margin-left: auto;
     display: flex;
     gap: 10px;
 }
 
-.gacha-control-btn {
+.mypage-control-btn {
     width: 30px;
     height: 30px;
     border: 3px solid #2a3687;
@@ -352,11 +352,11 @@
             3px 3px 0px #a884e0;
 }
 
-.gacha-control-btn:hover {
+.mypage-control-btn:hover {
     background: #fff176;
 }
 
-.gacha-toolbar {
+.mypage-toolbar {
     background: #92efff;
     height: 50px;
     display: flex;
@@ -366,7 +366,7 @@
     gap: 15px;
 }
 
-.gacha-nav-btn {
+.mypage-nav-btn {
     width: 40px;
     height: 40px;
     border: 3px solid #2a3687;
@@ -384,18 +384,18 @@
             3px 3px 0px #a884e0;
 }
 
-.gacha-nav-btn:hover {
+.mypage-nav-btn:hover {
     background: #fff176;
 }
 
-.gacha-nav-btn:active {
+.mypage-nav-btn:active {
     box-shadow:
             inset -2px -2px 0px rgba(255,255,255,0.5),
             inset 2px 2px 0px rgba(255, 9, 0, 0.3),
             1px 1px 0px #a884e0;
 }
 
-.gacha-address-bar {
+.mypage-address-bar {
     flex: 1;
     height: 40px;
     border: 3px solid #2a3687;
@@ -410,14 +410,14 @@
             inset 2px 2px 0px rgba(255, 9, 0, 0.3);
 }
 
-.gacha-content-area {
+.mypage-content-area {
     display: flex;
     position: relative;
     height: 374px;
     background: #f0f0f0;
 }
 
-.gacha-sidebar {
+.mypage-sidebar {
     width: 200px;
     height: 334px;
     background-color: rgb(255, 210, 252);
@@ -433,7 +433,7 @@
             inset -3px -3px 0px rgba(255, 0, 234, 0.3);
 }
 
-.gacha-sidebar-item {
+.mypage-sidebar-item {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -456,12 +456,12 @@
             0px 10px 8px rgba(154, 68, 68, 0.3);
 }
 
-.gacha-sidebar-item img{
+.mypage-sidebar-item img{
     width: 100px;
     height: auto;
 }
 
-.gacha-sidebar-item:hover {
+.mypage-sidebar-item:hover {
     transform: translateY(-2px);
     box-shadow:
             inset 3px 3px 0px rgba(255,255,255,0.5),
@@ -471,7 +471,7 @@
             0px 12px 12px rgba(255, 129, 52, 0.98);
 }
 /* 마우스로 눌렀을 때 */
-.gacha-sidebar-item:active {
+.mypage-sidebar-item:active {
     transform: translateY(2px);
     box-shadow:
             inset 3px 3px 0px rgba(202, 38, 38, 0.3),
@@ -481,7 +481,7 @@
             0px 8px 4px rgba(0,0,0,0.3);
 }
 
-.gacha-main-content {
+.mypage-main-content {
     flex: 1;
     background: #fffce0;
     border-right: 4px solid #2a3687;
@@ -492,7 +492,7 @@
             inset -3px -3px 0px rgba(255, 9, 0, 0.3);
 }
 
-.gacha-scrollbar {
+.mypage-scrollbar {
     width: 30px;
     background: #92efff;
     display: flex;
@@ -505,7 +505,7 @@
             inset -2px -2px 0px rgba(255, 9, 0, 0.3);
 }
 
-.gacha-scroll-arrow {
+.mypage-scroll-arrow {
     width: 20px;
     height: 20px;
     border: 2px solid #2a3687;
@@ -522,7 +522,7 @@
             2px 2px 0px #a884e0;
 }
 
-.gacha-scroll-thumb {
+.mypage-scroll-thumb {
     width: 20px;
     height: 60px;
     border: 2px solid #2a3687;
@@ -534,7 +534,7 @@
             2px 2px 0px #a884e0;
 }
 
-.gacha-purple-overlay {
+.mypage-purple-overlay {
     position: absolute;
     top: 100px;
     left: 100px;
@@ -554,7 +554,7 @@
             0px 10px 15px rgba(0,0,0,0.4);
 }
 
-.gacha-purple-overlay:hover {
+.mypage-purple-overlay:hover {
     transform: translateY(-2px);
     box-shadow:
             inset 3px 3px 0px rgba(255,255,255,0.4),
