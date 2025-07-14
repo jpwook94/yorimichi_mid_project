@@ -39,7 +39,7 @@ public class CharTestController {
 
         // 서비스에서 값 계산 및 정보 조회
         Map<String, Object> resultMap = charTestService.resultMBTI(ans);
-        charTestService.resultMBTIByGPT();
+        /*charTestService.resultMBTIByGPT();*/
         // jsp에서 쓸 값 셋팅
         model.addAttribute("destList", resultMap.get("destination"));
         model.addAttribute("mbtiResult", resultMap.get("trait"));

@@ -86,7 +86,7 @@
         <div class="c-commonPopup-container">
             <div class="c-commonPopup3">
                 <div class="c-commonPopup3-header">
-                    <span class="c-commonPopup-title">gombangwha.png</span>
+                    <span class="c-commonPopup-title">destination.png</span>
                 </div>
                 <div class="c-commonPopup-body">
                     <div class="c-commonPopup-imgblock">
