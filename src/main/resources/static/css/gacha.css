@@ -469,6 +469,7 @@
     position: relative;
     opacity: 0;
     transition: top 1.2s ease, opacity 1.2s ease;
+    pointer-events: none;
 }
 
 .SSRcard-wrapper.show {
@@ -525,6 +526,10 @@
     border: 3px solid brown;
 }
 
+#SSR-destination-name{
+    font-size: 30px;
+    flex-wrap: wrap;
+}
 
 
 /* ======================================= SSR 카드 뽑기 끝 =================================================== */

@@ -169,7 +169,24 @@ function initSSRcardEvents(){
 
     /* 1회 뽑기 눌렀을 때 */
     SSRcardpicked1.addEventListener("click", async () => {
+        // 버튼 비활성화
+        SSRcardpicked1.style.pointerEvents = "none"; // 클릭 막기
+        SSRcardpicked1.style.opacity = "0.5"; // 시각적으로 흐리게
+
+        const wrapper = document.querySelector(".SSRcard-wrapper");
+        const innerCard = document.querySelector(".SSRcard-inner");
+
+/*        if (wrapper && innerCard) {
+            // 2. 카드 사라지게
+            wrapper.classList.remove("show", "flip");
+            innerCard.style.transform = "none";
+            wrapper.style.opacity = "0";
+            wrapper.style.transform = "translateY(30px)";
+            void wrapper.offsetWidth; // 강제 reflow
+        }*/
+
         console.log("1회뽑기 눌렀음")
+        /* 데이터 받아오기 */
         const response = await fetch("/pickSSR");
         const data = await response.json();
         console.log(data)
@@ -180,7 +197,6 @@ function initSSRcardEvents(){
         }
 
 
-        const wrapper = document.querySelector(".SSRcard-wrapper");
         if (wrapper) {
             // 초기 상태 리셋
             wrapper.classList.remove("flip");
@@ -198,14 +214,16 @@ function initSSRcardEvents(){
             }, 2000);
         }
 
+        setTimeout(() => {
+            SSRcardpicked1.style.pointerEvents = "auto";
+            SSRcardpicked1.style.opacity = "1";
+        }, 2000 + 1000); // 올라오기 2초 + 뒤집기 1초 = 총 3초
 
 
-
-
-
-    /* n회 뽑기 는 나중에... ㅎㅎㅎㅎ*/
 
 
     })
+
+    /* n회 뽑기 는 나중에... ㅎㅎㅎㅎ*/
 
 }
