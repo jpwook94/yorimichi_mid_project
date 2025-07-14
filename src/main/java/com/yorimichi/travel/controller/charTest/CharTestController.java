@@ -10,18 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class CharTestController {
 
-/*
 
     @Autowired
     private CharTestService charTestService;
-*/
-
-    /*// 전체조회 테스트
-    @GetMapping("/destination-all")
-    public String destinationAll(Model model) {
-        model.addAttribute(CharTestService.getAllDestination() );
-        return "charTest/select_test";
-    }*/
 
 
     // 테스트 유형 선택 페이지
@@ -36,16 +27,14 @@ public class CharTestController {
     public String mbtiTest(Model model) {
         model.addAttribute("content", "charTest/mbtiTest.jsp");
         return "main";
-
-    // mbti 결과
     }
 
-    @GetMapping("/mbtiTest/result")
-    public String mbtiTestResult(String[] ans ) {
-        for (String s : ans) {
-            System.out.println(s);
+    // mbti 결과
+    @GetMapping("/mbtiTest-result")
+    public String mbtiTestCalc(String[] ans) {
+        for (String s : ans) {System.out.println(s);
         }
-
+        charTestService.resultMBTI(ans);
         return "main";
     }
 

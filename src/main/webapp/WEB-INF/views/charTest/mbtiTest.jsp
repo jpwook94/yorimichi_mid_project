@@ -57,7 +57,7 @@
                     <div class="c-MBTIbtnBlock">
                         <button class="c-MBTIbefore">before</button>
                         <button class="c-MBTInext">next ></button>
-                        <button class="sb-btn" style="display: none">See Result</button>
+                        <button class="c-sb-btn" style="display: none">See Result</button>
                     </div>
                 </div>
                 <div class="c-fake-scrollbar">
@@ -130,7 +130,7 @@
         }
     }
 
-    const submitBtn = document.querySelector(".sb-btn");
+    const submitBtn = document.querySelector(".c-sb-btn");
     const mbtiQ = document.querySelector(".c-mbtiQ");
     const tests = ["", "친구들이 갑자기 \"야! 이번 주말에 여행 가자!\"라고 한다.",
         "낯선 사람들과 2박 3일 여행을 같이 하게 되었다.",
@@ -185,7 +185,7 @@
     submitBtn.addEventListener("click", () => {
         valid(tests.length - 1)
         console.log(saveAns);
-        let url = 'mbtiTest/result'
+        let url = '/mbtiTest-result'
         for (let i = 1; i < saveAns.length; i++) {
             if (i === 1) {
                 url += '?ans=' + saveAns[i];
