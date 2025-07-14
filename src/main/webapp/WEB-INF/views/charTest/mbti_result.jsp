@@ -1,5 +1,6 @@
-<%@ page language = "java" contentType = "text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,6 +18,8 @@
         <img id="teamlogo2" onclick="location.href='/hc'" src="/other/image/logo.png" alt="">
     </div>
 
+    <div id="destContainer">
+    <c:forEach var="desti" items="${destList}">
     <div class="c-window-container">
         <div class="c-window">
             <div class="c-title-bar">
@@ -35,12 +38,13 @@
                 </div>
             </div>
             <div class="c-search-bar">
-                <div class="c-fake-address">게임/성향 테스트/MBTI</div>
+                <div class="c-fake-address">게임/성향 테스트/MBTI/내 결과</div>
                 <button class="c-search-button">Search...</button>
             </div>
             <div class="c-content-box">
                 <div class="c-content-area">
-
+                <h3>${mbtiResult.mbti_category}</h3>
+                <p>${mbtiResult.mbti_description}인 당신!</p>
                 </div>
                 <div class="c-fake-scrollbar">
                     <div class="c-scroll-btn up">
@@ -59,12 +63,13 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <%--여기서부터 팝업창--%>
         <div class="c-commonPopup-container">
             <div class="c-commonPopup1">
                 <div class="c-popup-header">
-                    <span class="c-commonPopup-title">cloud.png</span>
+                    <span class="c-commonPopup-title">destination.png</span>
                     <div class="c-popup-buttons">
                         <div class="c-commonPopup-extraBTN"></div>
                     </div>
@@ -76,7 +81,23 @@
                 </div>
             </div>
         </div>
+
+        <%--여행지 결과창 팝업--%>
+        <div class="c-commonPopup-container">
+            <div class="c-commonPopup3">
+                <div class="c-commonPopup3-header">
+                    <span class="c-commonPopup-title">gombangwha.png</span>
+                </div>
+                <div class="c-commonPopup-body">
+                    <div class="c-commonPopup-imgblock">
+                        <img src="/other/image/charTest_sakura.gif" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    </c:forEach>
+
 
     <%--여기서부터 팝업창--%>
     <div class="c-commonPopup-container">
@@ -93,7 +114,6 @@
     </div>
 
 </div>
-
 
 </body>
 </html>
