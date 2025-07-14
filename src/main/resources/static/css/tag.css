@@ -89,6 +89,12 @@ hr {
     margin: 20px 0;
 }
 
+.render-wrapper {
+    min-height: 600px;
+    width: 100%;
+}
+
+
 /* 결과 영역 */
 #render-div {
     margin-top: 20px;
@@ -157,6 +163,7 @@ hr {
 
 .return-container{
     margin-left: 10px;
+    width: 120px;
 }
 .return-container img {
     width: 60px;
@@ -188,6 +195,23 @@ hr {
     animation: pulse-bounce 0.4s ease;
     display: block;
 }
+
+.top-button-bubble {
+    position: fixed;
+    bottom: 80px;
+    right: 100px;
+    width: 200px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 999;
+    display: none; /* 처음에는 숨겨놓기 */
+}
+
+
+
+
 
 /* 애니메이션 정의 */
 @keyframes pulse-bounce {
@@ -251,21 +275,14 @@ hr {
     background-color: #f0f0f0;
 }
 
-.banner-wrapper {
-    position: sticky;
-    top: 80px; /* header 아래 정도 위치로 조정 */
-    align-self: flex-start;
-    z-index: 10;
-    margin-left: 20px;
-}
 
-
-.banner-wrapper img {
-    width: 300px;
-}
 
 .no-result-message {
     margin-top: 100px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 30px;
     font-size: 20px;
     color: #555;
@@ -281,4 +298,91 @@ hr {
     font-size: 24px;
     font-weight: bold;
     color: #ff6666;
+}
+
+
+/* 로그인 버튼*/
+.login-container {
+    font-family: "pixelfont", sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 10px;
+    color: white;
+    text-shadow: 2px 2px rgb(116, 116, 116);
+    text-transform: uppercase;
+    cursor: pointer;
+    border: solid 2px black;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: hsl(49deg 98% 60%);
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    margin-right: 25px;
+}
+
+@font-face {
+    font-family: "pixelfont";
+    src: url("../fonts/PFstar3.0ExtraBold.ttf") format("woff2");
+    src: url("../fonts/PFstar3.0ExtraBold.ttf") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.login-container:active {
+    transform: scale(0.9);
+    transition: all 100ms ease;
+}
+
+.login-container svg {
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.login-container .play {
+    transition: all 0.5s ease;
+    transition-delay: 300ms;
+}
+
+.login-container:hover svg {
+    transform: scale(3) translate(50%);
+}
+
+.login-container .now {
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.login-container:hover .now {
+    transform: translateX(10px);
+    transition-delay: 300ms;
+}
+
+.login-container:hover .play {
+    transform: translateX(200%);
+    transition-delay: 300ms;
+}
+
+.login-menu-area {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+
+
+
+footer {
+    display: flex;
+    overflow: hidden;
+    /*padding: 100px;*/
+    justify-content: space-between;
+    width: 100%;
+    height: 500px;
+    background-image: url("/other/image/duckback.png");
 }

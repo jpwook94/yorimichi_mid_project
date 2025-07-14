@@ -13,10 +13,66 @@
 </head>
 <body>
 <div class="header-wrapper" onclick="">
-    <div class="return-container" onclick="history.back()"><img src="/other/image/return.png" alt=""></div>
+    <div class="return-container"><img src="/other/image/return.png" alt="" onclick="history.back()"></div>
     <div class="teamlogo-container"><img id="teamlogo2" onclick="location.href='/gamelist'" src="/other/image/logo.png"
                                          alt=""></div>
-    <div>로그인 / 마이페이지</div>
+    <div class="login-menu-area">
+        <c:choose>
+            <c:when test="${not empty sessionScope.loginUser}">
+                <span>${sessionScope.loginUser.user_name}님, 환영합니다!</span>
+                <button onclick="location.href='/mypage'">마이페이지</button>
+                <a href="/logout">로그아웃</a>
+            </c:when>
+            <c:otherwise>
+                <!-- 로그인 안 된 상태면 로그인/회원가입 버튼 노출 -->
+                <%--로그인 버튼--%>
+                <button class="login-container" onclick="location.href='/login-page'">
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 36 36"
+                            width="36px"
+                            height="36px"
+                    >
+                        <rect width="36" height="36" x="0" y="0" fill="#fdd835"></rect>
+                        <path
+                                fill="#e53935"
+                                d="M38.67,42H11.52C11.27,40.62,11,38.57,11,36c0-5,0-11,0-11s1.44-7.39,3.22-9.59 c1.67-2.06,2.76-3.48,6.78-4.41c3-0.7,7.13-0.23,9,1c2.15,1.42,3.37,6.67,3.81,11.29c1.49-0.3,5.21,0.2,5.5,1.28 C40.89,30.29,39.48,38.31,38.67,42z"
+                        ></path>
+                        <path
+                                fill="#b71c1c"
+                                d="M39.02,42H11.99c-0.22-2.67-0.48-7.05-0.49-12.72c0.83,4.18,1.63,9.59,6.98,9.79 c3.48,0.12,8.27,0.55,9.83-2.45c1.57-3,3.72-8.95,3.51-15.62c-0.19-5.84-1.75-8.2-2.13-8.7c0.59,0.66,3.74,4.49,4.01,11.7 c0.03,0.83,0.06,1.72,0.08,2.66c4.21-0.15,5.93,1.5,6.07,2.35C40.68,33.85,39.8,38.9,39.02,42z"
+                        ></path>
+                        <path
+                                fill="#212121"
+                                d="M35,27.17c0,3.67-0.28,11.2-0.42,14.83h-2C32.72,38.42,33,30.83,33,27.17 c0-5.54-1.46-12.65-3.55-14.02c-1.65-1.08-5.49-1.48-8.23-0.85c-3.62,0.83-4.57,1.99-6.14,3.92L15,16.32 c-1.31,1.6-2.59,6.92-3,8.96v10.8c0,2.58,0.28,4.61,0.54,5.92H10.5c-0.25-1.41-0.5-3.42-0.5-5.92l0.02-11.09 c0.15-0.77,1.55-7.63,3.43-9.94l0.08-0.09c1.65-2.03,2.96-3.63,7.25-4.61c3.28-0.76,7.67-0.25,9.77,1.13 C33.79,13.6,35,22.23,35,27.17z"
+                        ></path>
+                        <path
+                                fill="#01579b"
+                                d="M17.165,17.283c5.217-0.055,9.391,0.283,9,6.011c-0.391,5.728-8.478,5.533-9.391,5.337 c-0.913-0.196-7.826-0.043-7.696-5.337C9.209,18,13.645,17.32,17.165,17.283z"
+                        ></path>
+                        <path
+                                fill="#212121"
+                                d="M40.739,37.38c-0.28,1.99-0.69,3.53-1.22,4.62h-2.43c0.25-0.19,1.13-1.11,1.67-4.9 c0.57-4-0.23-11.79-0.93-12.78c-0.4-0.4-2.63-0.8-4.37-0.89l0.1-1.99c1.04,0.05,4.53,0.31,5.71,1.49 C40.689,24.36,41.289,33.53,40.739,37.38z"
+                        ></path>
+                        <path
+                                fill="#81d4fa"
+                                d="M10.154,20.201c0.261,2.059-0.196,3.351,2.543,3.546s8.076,1.022,9.402-0.554 c1.326-1.576,1.75-4.365-0.891-5.267C19.336,17.287,12.959,16.251,10.154,20.201z"
+                        ></path>
+                        <path
+                                fill="#212121"
+                                d="M17.615,29.677c-0.502,0-0.873-0.03-1.052-0.069c-0.086-0.019-0.236-0.035-0.434-0.06 c-5.344-0.679-8.053-2.784-8.052-6.255c0.001-2.698,1.17-7.238,8.986-7.32l0.181-0.002c3.444-0.038,6.414-0.068,8.272,1.818 c1.173,1.191,1.712,3,1.647,5.53c-0.044,1.688-0.785,3.147-2.144,4.217C22.785,29.296,19.388,29.677,17.615,29.677z M17.086,17.973 c-7.006,0.074-7.008,4.023-7.008,5.321c-0.001,3.109,3.598,3.926,6.305,4.27c0.273,0.035,0.48,0.063,0.601,0.089 c0.563,0.101,4.68,0.035,6.855-1.732c0.865-0.702,1.299-1.57,1.326-2.653c0.051-1.958-0.301-3.291-1.073-4.075 c-1.262-1.281-3.834-1.255-6.825-1.222L17.086,17.973z"
+                        ></path>
+                        <path
+                                fill="#e1f5fe"
+                                d="M15.078,19.043c1.957-0.326,5.122-0.529,4.435,1.304c-0.489,1.304-7.185,2.185-7.185,0.652 C12.328,19.467,15.078,19.043,15.078,19.043z"
+                        ></path>
+                    </svg>
+                    <span class="now">in</span>
+                    <span class="play">sign</span>
+                </button>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </div>
 <hr>
 
@@ -47,153 +103,36 @@
     <div id="user-select"></div>
     <div id="clear-button-container"></div>
     <div id="ts-result-size" class="tag-result-size"></div>
-    <div id="render-div"><div class="no-result-message">태그를 선택해 여행지를 검색해 보세요.</div></div>
+    <div class="render-wrapper">
+        <div id="render-div">
+            <div class="no-result-message">태그를 선택해 여행지를 검색해 보세요.</div>
+        </div>
+    </div>
 </div>
 
 
-<div class="banner-wrapper"><img src="/other/image/banner2.png" alt=""></div>
-<div class="top-button-wrapper"><img src="/other/image/DUCK7.png" alt="" class="top-duck"></div>
+<div class="top-button-bubble"></div>
+<div class="top-button-wrapper" id="topBtn"><img src="/other/image/DUCK7.png" alt="" class="top-duck"></div>
 
 
+<footer>
+    <div class="teamlogo-container" >
+        <img src="/other/image/logo.png" alt="" style="width: 240px; height: auto">
+        <div>팀 설명 팀 설명 팀 설명</div>
+    </div>
 
-<footer>dddd</footer>
+    <div class="team-description">
+        <div class="team-description-title"><h1>팀원</h1></div>
+        <div class="team-member">
+            <div>정현욱(팀장)</div>
+            <div>이가은</div>
+            <div>장채은</div>
+            <div>최병주</div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="/other/js/tagSearch.js"></script>
 </body>
-<script>
-
-    const userSelect = document.querySelector("#user-select");
-    const renderDiv = document.querySelector("#render-div");
-    const selectedTags = new Set();  // 중복 없이 태그 저장
-
-    document.querySelectorAll(".ts-taglist button").forEach(button => {
-        button.addEventListener("click", () => {
-            const tag = button.getAttribute("name");
-
-            // 토글: 이미 선택된 태그라면 제거, 아니라면 추가
-            if (selectedTags.has(tag)) {
-                selectedTags.delete(tag);
-                button.classList.remove("active");
-            } else {
-                selectedTags.add(tag);
-                button.classList.add("active");
-            }
-
-            userRender();
-
-            if (selectedTags.size === 0) {
-                render([]);  // ← 이 때는 빈 배열을 넘겨 '태그 선택해주세요' 출력
-                updateClearButton();
-                return;
-            }
-
-
-            // 선택된 태그들을 URL 쿼리로 전송
-            const tagParam = Array.from(selectedTags).join(",");
-            const url = "/search/tag-search?tags=" + encodeURIComponent(tagParam);
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    render(data);
-                    console.log(data);
-                });
-            updateClearButton();
-        });
-    });
-
-    function render(data) {
-        let content = "";
-        const resultSizeDiv = document.querySelector("#ts-result-size");
-
-        //  case 1: 아무 태그도 선택 안 했을 때
-        if (selectedTags.size === 0) {
-            content = `<div class="no-result-message">태그를 선택해 여행지를 검색해 보세요.</div>`;
-            resultSizeDiv.innerText = ""; // 👉 안 보이게 처리
-        }
-            //  case 2: 태그는 선택했지만 결과가 없을 때
-        else if (data.length === 0) {
-            content = `<div class="no-result-message">검색 결과가 없습니다.</div>`;
-            resultSizeDiv.innerHTML = `총 <span class="highlight-number">0</span> 개의 여행지`;
-
-        //  case 3: 결과 있음
-
-        } else {
-            content = `<div class="tag-result-wrapper">`;
-            console.log("data.length:", data.length);
-            resultSizeDiv.innerHTML = `총  <span class="highlight-number">\${data.length}</span> 개의 여행지`;
-            data.forEach(element => {
-                // ### [추가 시작] 태그 검색 결과인 경우
-                if ('destination_name' in element) {
-                    content += "<div class='tag-result'>" + element.destination_number + "</div>";
-                    content += "<div class='tag-result'>" + element.destination_name + "</div>";
-                    content += "<div class='tag-result'>" + element.mbti_category + "</div>";
-                    content += "<div class='tag-result'>" + element.destination_address + "</div>";
-                }
-                    // ### [추가 끝]
-
-                // ### [추가 시작] 지역 검색 결과인 경우
-                else if ('location_name' in element) {
-                    content += "<div class='tag-result'>" + element.location_name + "</div>";
-                }
-                // ### [추가 끝]
-                content += "<hr>";
-            });
-            content += "</div>";
-        }
-        renderDiv.innerHTML = content;
-    }
-
-    function userRender() {
-        let content = `<div class="user-select-wrapper">`;
-
-        selectedTags.forEach(name => {
-            content += `<div class="user-tag" data-tag="\${name}">#\${name}</div>`;
-        });
-        content += `</div>`;
-        userSelect.innerHTML = content;
-
-        // 클릭 시 해당 태그 제거
-        document.querySelectorAll(".user-tag").forEach(tagDiv => {
-            tagDiv.addEventListener("click", () => {
-                const tagName = tagDiv.getAttribute("data-tag");
-                console.log("삭제 대상 태그:", tagName);
-                console.log("현재 Set 상태:", selectedTags);
-                selectedTags.delete(tagName);
-
-                // 모든 버튼 중에서 name 속성이 일치하는 것 찾아서 active 제거
-                document.querySelectorAll(".ts-taglist button").forEach(btn => {
-                    if (btn.getAttribute("name") === tagName) {
-                        btn.classList.remove("active");
-                    }
-                });
-
-                userRender();
-                renderDiv.innerHTML = "";
-                updateClearButton();
-            });
-        });
-
-        updateClearButton();
-    }
-
-
-    const clearButtonContainer = document.querySelector("#clear-button-container");
-
-    function updateClearButton() {
-        if (selectedTags.size > 0) {
-            clearButtonContainer.innerHTML = `<button id="clear-all-button">태그 전체 해제</button>`;
-
-            document.querySelector("#clear-all-button").addEventListener("click", () => {
-                selectedTags.clear();  // 전체 해제
-                document.querySelectorAll(".ts-taglist button").forEach(btn => btn.classList.remove("active"));
-                userRender();
-                render([]);
-                clearButtonContainer.innerHTML = ""; // 버튼도 제거
-            });
-        } else {
-            clearButtonContainer.innerHTML = "";
-        }
-    }
-
-
-</script>
 </html>
