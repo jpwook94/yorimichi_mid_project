@@ -21,7 +21,7 @@ public class TagController {
 
     @GetMapping("/tag-page")
     public String tagPage(Model model) {
-            Map<String, List<TagVO>> tagList = tagSearchService.getTags();
+        Map<String, List<TagVO>> tagList = tagSearchService.getTags();
         model.addAttribute("tagList", tagList);
 
 

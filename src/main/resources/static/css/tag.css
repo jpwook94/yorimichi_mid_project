@@ -3,12 +3,21 @@
     padding: 0;
 }
 
+body{
+    overflow: visible
+}
+
 /* 전체 래퍼 */
 .tag-search-wrapper {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tag-search-title {
+    margin-top: 30px;
+    margin-bottom: 80px;
 }
 
 /* 태그 라인 컨테이너 */
@@ -62,15 +71,15 @@
 }
 
 .ts-taglist button:hover {
-    border-color: #007bff;
-    color: #007bff;
+    border-color: #ffb8b8;
+    color: #ffb8b8;
 }
 
 /* 활성화된 버튼 스타일 */
 .ts-taglist button.active {
-    background-color: #007bff;
+    background-color: #ffb8b8;
     color: #ffffff;
-    border-color: #007bff;
+    border-color: #ffb8b8;
 }
 
 /* 구분선 */
@@ -101,7 +110,7 @@ hr {
 
 .tag-result:first-child {
     font-weight: 600;
-    color: #007bff;
+    color: #ffb8b8;
 }
 
 /* 반응형 디자인 */
@@ -196,14 +205,15 @@ hr {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 15px;
+    cursor: pointer;
 }
 
 /* 각 태그 박스 */
 .user-select-wrapper > div {
     display: inline-flex;
     align-items: center;
-    background-color: #e7f2ff;
-    color: #003366;
+    background-color: #ffe4e4;
+    color: #cc4d4d;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 14px;
@@ -220,8 +230,7 @@ hr {
     margin-left: 8px;
     font-weight: bold;
     font-size: 16px;
-    color: #007bff;
-    cursor: pointer;
+    color: #ffb8b8;
 }
 
 /* 전체해제 버튼 컨테이너 */
@@ -240,4 +249,36 @@ hr {
 
 #clear-all-button:hover {
     background-color: #f0f0f0;
+}
+
+.banner-wrapper {
+    position: sticky;
+    top: 80px; /* header 아래 정도 위치로 조정 */
+    align-self: flex-start;
+    z-index: 10;
+    margin-left: 20px;
+}
+
+
+.banner-wrapper img {
+    width: 300px;
+}
+
+.no-result-message {
+    margin-top: 100px;
+    padding: 30px;
+    font-size: 20px;
+    color: #555;
+    text-align: center;
+}
+
+.tag-result-size {
+    margin-top: 60px;
+}
+
+
+.highlight-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6666;
 }
