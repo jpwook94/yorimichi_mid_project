@@ -2,10 +2,14 @@ package com.yorimichi.travel.service.charTest;
 
 import com.yorimichi.travel.mapper.CharTestMapper;
 import com.yorimichi.travel.vo.DestinationVO;
-import com.yorimichi.travel.vo.account.AccountVO;
+import com.yorimichi.travel.vo.TagMbtiVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +20,7 @@ public class CharTestService {
     @Autowired
     private CharTestMapper charTestMapper;
 
+    ArrayList<String> ansArray = null;
 
     // mbti 테스트 값 계산
     public Map<String, Object> resultMBTI(String[] ans) {
@@ -23,10 +28,10 @@ public class CharTestService {
         int S = 0, N = 0;
         int T = 0, F = 0;
         int J = 0, P = 0;
-
+        ansArray = new ArrayList<>();
         for (int i = 0; i < ans.length; i++) {
             String answer = ans[i];
-
+            ansArray.add(answer);
             switch (i) {  // 문제 번호: 0부터 시작
                 case 0: // 그래서 1번 문제
                     if (answer.equals("a")) {
@@ -127,32 +132,31 @@ public class CharTestService {
         }
 
 
-            // 여기서 점수 다 모였으니 이제 MBTI 조합
-            StringBuilder result = new StringBuilder();
+        // 여기서 점수 다 모였으니 이제 MBTI 조합
+        StringBuilder result = new StringBuilder();
 
-            result.append(E >= I ? "E" : "I");
-            result.append(S >= N ? "S" : "N");
-            result.append(T >= F ? "T" : "F");
-            result.append(J >= P ? "J" : "P");
+        result.append(E >= I ? "E" : "I");
+        result.append(S >= N ? "S" : "N");
+        result.append(T >= F ? "T" : "F");
+        result.append(J >= P ? "J" : "P");
 
-            String mbtiType = result.toString(); // 스트링으로 변환...
-            System.out.println("계산된 MBTI: " + mbtiType);
-
-            // 매퍼로 정보 조회
-            MBTIVO traitInfo = charTestMapper.selectByMbti(mbtiType);
-            List<DestinationVO> destinationList = charTestMapper.selectDestinationsByMbti(mbtiType);
-
-            Map<String, Object> resultMap = new HashMap<>();
-            resultMap.put("traitInfo", traitInfo);
-            resultMap.put("destinationList", destinationList);
-
-            return resultMap;
+        String mbtiType = result.toString(); // 스트링으로 변환...
+        System.out.println("계산된 MBTI: " + mbtiType);
 
 
+        // 매퍼로 정보 조회
+        TagMbtiVO traitInfo = charTestMapper.selectByMbti(mbtiType);
+        List<DestinationVO> destinationList = charTestMapper.selectDestinationsByMbti(mbtiType);
 
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("trait", traitInfo);
+        resultMap.put("destination", destinationList);
+
+        return resultMap;
 
 
     }
+
 
 }
 

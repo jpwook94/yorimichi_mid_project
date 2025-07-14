@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Map;
+
 @Controller
 public class CharTestController {
 
@@ -29,12 +31,21 @@ public class CharTestController {
         return "main";
     }
 
-    // mbti 결과
+    // mbti 결과 페이지
     @GetMapping("/mbtiTest-result")
-    public String mbtiTestCalc(String[] ans) {
+    public String mbtiTestCalc(String[] ans, Model model) {
         for (String s : ans) {System.out.println(s);
         }
-        charTestService.resultMBTI(ans);
+
+        // 서비스에서 값 계산 및 정보 조회
+        Map<String, Object> resultMap = charTestService.resultMBTI(ans);
+        charTestService.resultMBTIByGPT();
+        // jsp에서 쓸 값 셋팅
+        model.addAttribute("destList", resultMap.get("destination"));
+        model.addAttribute("mbtiResult", resultMap.get("trait"));
+
+        // jsp 페이지 경로 설정
+        model.addAttribute("content", "charTest/mbti_result.jsp");
         return "main";
     }
 
