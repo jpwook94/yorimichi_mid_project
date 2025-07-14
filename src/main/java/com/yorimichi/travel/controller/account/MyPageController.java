@@ -6,13 +6,11 @@ import com.yorimichi.travel.vo.DestinationVO;
 import com.yorimichi.travel.vo.account.AccountVO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -27,12 +25,13 @@ public class MyPageController {
     private LikesService likesService;
 
     @GetMapping("/mypageC")
-    public String catePage(int myPageCate , @RequestParam(defaultValue="1") int page, Model model, HttpSession session) {
-        if(myPageCate == 1){
+    public String catePage(int myPageCate, @RequestParam(defaultValue = "1") int page, Model model,
+                           HttpSession session) {
+        if (myPageCate == 1) {
             return "account/userProfile";
         } else if (myPageCate == 2) {
             return "account/userLikes";
-        } else if (myPageCate == 3){
+        } else if (myPageCate == 3) {
             int pageSize = 3;
             // 1. 전체 여행지 리스트 가져오기
             List<DestinationVO> all = accountService.getDestinations();

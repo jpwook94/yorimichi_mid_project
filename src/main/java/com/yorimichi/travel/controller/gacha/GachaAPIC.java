@@ -24,4 +24,8 @@ public class GachaAPIC {
         }
         return "";
     }
+
+
+
+
 }

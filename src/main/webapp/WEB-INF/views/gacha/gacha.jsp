@@ -31,8 +31,8 @@
                         <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
                     </svg>
                 </div>
-                <div class="gacha-tab" onclick="location.href='/gacha'">가챠</div>
-                <div class="gacha-tab">심리테스트</div>
+                <div class="gacha-tab" onclick="location.href='/gacha'">랜덤 뽑기</div>
+                <div class="gacha-tab" onclick="location.href='/charTest'">심리테스트</div>
                 <div class="gacha-window-controls">
                     <div class="gacha-control-btn">−</div>
                     <div class="gacha-control-btn">□</div>
@@ -41,12 +41,11 @@
             </div>
 
             <div class="gacha-toolbar">
-                <div class="gacha-nav-btn">←</div>
-                <div class="gacha-nav-btn">→</div>
-                <div class="gacha-nav-btn">↻</div>
-                <%--누르면 새로고침 되도록--%>
+                <div class="gacha-nav-btn" id="gacha-back">←</div>
+                <div class="gacha-nav-btn" id="gacha-forward">→</div>
+                <div class="gacha-nav-btn" id="gacha-refresh">↻</div>
 
-                <input type="text" class="gacha-address-bar" value="" placeholder="주소를 입력하세요...">
+                <div class="gacha-address-bar">요리미치/게임/랜덤 뽑기</div>
             </div>
 
             <div class="gacha-content-area">
@@ -55,12 +54,13 @@
                         <img data-cate="1" src="/other/image/gachacitypick_logo.png"
                              alt="">
                     </div>
-                    <div  class="gacha-sidebar-item" data-cate="2"></div>
+                    <div  class="gacha-sidebar-item" data-cate="2">
+                        <img data-cate="2" src="/other/image/gachacard-logo.png" alt="">
+                    </div>
                     <div class="gacha-sidebar-item" data-cate="3"></div>
                 </div>
 
                 <div class="gacha-main-content">
-                    <%--                    <jsp:include page="${gachacontent}"></jsp:include>--%>
 
                 </div>
 
@@ -86,8 +86,33 @@
             });
         })
     })
-    document.querySelectorAll(".gacha-sidebar-item")[0].click() ;</script>
+    document.querySelectorAll(".gacha-sidebar-item")[0].click() ;
+
+
+    //===========================================
+
+    const backBtn = document.getElementById("gacha-back");
+    const forwardBtn = document.getElementById("gacha-forward");
+    const refreshBtn = document.getElementById("gacha-refresh");
+
+    // 뒤로가기
+    backBtn.addEventListener("click", () => {
+        history.back();
+    });
+
+    // 앞으로가기
+    forwardBtn.addEventListener("click", () => {
+        history.forward();
+    });
+
+    // 새로고침
+    refreshBtn.addEventListener("click", () => {
+        location.reload();
+    });
+
+
+
+</script>
 
 </body>
-<%--<script src="/other/js/gacha.js" defer></script>--%>
 </html>
