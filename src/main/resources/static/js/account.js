@@ -91,6 +91,58 @@ document.addEventListener('click', function (e) {
     }
 });
 
+document.addEventListener('click', function(e) {
+    const likeButton = e.target.closest('.like-btn');
+    if (likeButton) {
+        likeButton.disabled = true;
+
+        const heartImage = likeButton.querySelector('img');
+        const destinationNumber = likeButton.dataset.destinationNumber;
+
+        // [수정] 이미지 src 대신, 버튼의 data-liked 꼬리표 값으로 상태를 판단한다.
+        const isLiked = likeButton.dataset.liked === 'true';
+
+        if (isLiked) {
+            // --- 찜 취소 로직 ---
+            fetch(`/api/likes/delete-like/${destinationNumber}`, { method: 'DELETE' })
+                .then(response => response.json())
+                .then(result => {
+                    alert(result.message);
+                    if (result.status === 'success') {
+                        heartImage.src = '/other/image/emptyheart.png';
+                        heartImage.alt = '찜하지 않은 상태 하트';
+                        // [핵심] 꼬리표의 값도 'false'로 바꿔준다!
+                        likeButton.dataset.liked = 'false';
+                    }
+                })
+                .finally(() => {
+                    likeButton.disabled = false;
+                });
+
+        } else {
+            // --- 찜하기 로직 ---
+            const likeData = { destination_number: destinationNumber };
+            fetch('/api/likes/add-like', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(likeData)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    alert(result.message);
+                    if (result.status === 'success') {
+                        heartImage.src = '/other/image/heart.png';
+                        heartImage.alt = '찜한 상태 하트';
+                        // [핵심] 꼬리표의 값도 'true'로 바꿔준다!
+                        likeButton.dataset.liked = 'true';
+                    }
+                })
+                .finally(() => {
+                    likeButton.disabled = false;
+                });
+        }
+    }
+});
 // ===== DOM이 바뀔 때마다 필요한 다른 기능을 처리하는 부분 =====
 const observer2 = new MutationObserver((mutations) => {
 

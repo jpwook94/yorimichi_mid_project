@@ -201,3 +201,27 @@ SELECT *
 from tag_mbti;
 SELECT *
 from location;
+
+CREATE TABLE likes
+(
+    like_number        NUMBER(10) PRIMARY KEY,
+    user_id            VARCHAR2(50) NOT NULL,
+    destination_number NUMBER(10)   NOT NULL,
+
+    CONSTRAINT fk_like_user
+        FOREIGN KEY (user_id)
+            REFERENCES users (user_id),
+
+    CONSTRAINT fk_like_destination
+        FOREIGN KEY (destination_number)
+            REFERENCES destination (destination_number),
+
+    CONSTRAINT uq_like_unique
+        UNIQUE (user_id, destination_number) -- 중복 찜 방지
+);
+CREATE SEQUENCE likes_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE;
+
+select * from likes;
