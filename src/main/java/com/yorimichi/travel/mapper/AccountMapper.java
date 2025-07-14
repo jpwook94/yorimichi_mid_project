@@ -16,7 +16,7 @@ public interface AccountMapper {
     public List<AccountVO> selectAll();
 
     @Select("select * from destination")
-    public  List<DestinationVO> selectAllDestination();
+    public List<DestinationVO> selectAllDestination();
 
     @Select("SELECT COUNT(*) FROM users WHERE user_id = #{user_id}")
     int countByUserId(String user_id); // 아이디로 개수를 세는 메서드 추가
