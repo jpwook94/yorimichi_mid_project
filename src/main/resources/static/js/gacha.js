@@ -174,12 +174,29 @@ function initSSRcardEvents(){
         const data = await response.json();
         console.log(data)
 
-        const destNameEl = document.getElementById("destination-name");
+        const destNameEl = document.getElementById("SSR-destination-name");
         if (destNameEl) {
             destNameEl.textContent = data.destination_name;
         }
 
 
+        const wrapper = document.querySelector(".SSRcard-wrapper");
+        if (wrapper) {
+            // 초기 상태 리셋
+            wrapper.classList.remove("flip");
+            wrapper.classList.remove("show");
+
+            // 강제로 다시 flow 재계산해서 transition 제대로 작동하게 함
+            void wrapper.offsetWidth;
+
+            // 1단계: 카드 위로 올라오게
+            wrapper.classList.add("show");
+
+            // 2단계: 약간 딜레이 후 flip 적용 (0.9초 후 뒤집힘)
+            setTimeout(() => {
+                wrapper.classList.add("flip");
+            }, 2000);
+        }
 
 
 

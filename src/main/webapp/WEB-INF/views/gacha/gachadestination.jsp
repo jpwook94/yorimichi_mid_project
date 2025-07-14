@@ -9,10 +9,18 @@
 </head>
 <body>
 
-<div class="SSRcard-container">
-    <img class="SSRcard-cardback" src="/other/image/gacha-cute/SSRcardBack.png" alt="">
-    <div class="SSRcard-imgcontainer">이미지</div>
-    <h1 id="destination-name"></h1>
+<div class="SSRcard-wrapper">
+    <div class="SSRcard-inner">
+        <div class="SSRcard-flip-card-front">
+            <img class="SSRcard-cardback" src="/other/image/gacha-cute/SSRcardBack.png" alt="">
+        </div>
+        <div class="SSRcard-flip-card-back">
+            <img class="SSRcard-cardback" src="/other/image/gacha-cute/SSRcardBack.png" alt="">
+            <div class="SSRcard-imgcontainer">이미지</div>
+            <h1 id="SSR-destination-name"></h1>
+    </div>
+    </div>
+
 </div>
 
 <div class="gachadescard-pickcontainer">

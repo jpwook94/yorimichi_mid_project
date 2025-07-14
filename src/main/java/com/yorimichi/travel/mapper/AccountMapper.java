@@ -1,7 +1,7 @@
 package com.yorimichi.travel.mapper;
 
+import com.yorimichi.travel.vo.DestinationVO;
 import com.yorimichi.travel.vo.account.AccountVO;
-import com.yorimichi.travel.vo.gacha.DestinationVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

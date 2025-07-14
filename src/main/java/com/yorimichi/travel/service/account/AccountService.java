@@ -2,7 +2,7 @@ package com.yorimichi.travel.service.account;
 
 import com.yorimichi.travel.mapper.AccountMapper;
 import com.yorimichi.travel.vo.account.AccountVO;
-import com.yorimichi.travel.vo.gacha.DestinationVO;
+import com.yorimichi.travel.vo.DestinationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

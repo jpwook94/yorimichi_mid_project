@@ -1,8 +1,8 @@
 package com.yorimichi.travel.service.gacha;
 
 import com.yorimichi.travel.mapper.GachaMapper;
-import com.yorimichi.travel.vo.gacha.DestinationVO;
-import com.yorimichi.travel.vo.gacha.LocationVO;
+import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.LocationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

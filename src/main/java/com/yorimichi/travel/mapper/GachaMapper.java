@@ -1,7 +1,7 @@
 package com.yorimichi.travel.mapper;
 
-import com.yorimichi.travel.vo.gacha.DestinationVO;
-import com.yorimichi.travel.vo.gacha.LocationVO;
+import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.LocationVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

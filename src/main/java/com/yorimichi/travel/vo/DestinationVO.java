@@ -8,6 +8,5 @@ public class DestinationVO {
     private String destination_name;
     private String mbti_category;
     private String destination_address;
-    private String destination_image;
     private int location_number;
 }
