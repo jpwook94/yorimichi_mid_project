@@ -97,7 +97,7 @@
 
 /*======================= 여기부터 인형뽑기 머신 =======================*/
 .gachacitypick-arcade-machine {
-    background-image: url("/other/image/gachacitypick-arcade-machine.jpg");
+    background-image: url("/other/image/gacha/gachacitypick-arcade-machine.jpg");
     background-size: 100% 100%;
     /*background-color: #ADD8E6; !* Light Blue *!*/
     border: 4px solid #5f519c; /* Blue Violet */
@@ -192,7 +192,7 @@
     position: absolute;
     width: 2px;
     height: 2px;
-    background-color: #0d2251;
+    background-color: #002678;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -235,13 +235,13 @@
 }
 
 .pickmascot{
-    width: 50px;
+    width: 60px;
     height: auto;
     position: absolute;
     bottom: -75px;
     left: 0;
     transition: all 0.7s ease-in-out;
-    filter: drop-shadow(0 0 3px #000000);
+    filter: drop-shadow(0 0 3px #ff0000);
 }
 
 .gachacitypic-bottombox{
@@ -258,6 +258,7 @@
     top: -63px;
     left: 410px;
     z-index: 100;
+    pointer-events: none;
 }
 
 .gachacitypick-pickstart-speechbubble img{
@@ -377,6 +378,118 @@
     left: 100px;
     width: 50px;
     height: auto;
+}
+
+
+
+
+.gachacitypic-picked-mascot{
+    display: flex;
+    pointer-events: none;
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: -40px;
+    left: 400px;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    display: none; /* 초기에는 안 보이게 */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gachacitypic-picked-locationname {
+    font-size: 40px;
+    color: white; /* 메인 글자 색 */
+    position: relative;
+    z-index: 1;
+}
+
+.gachacitypic-picked-locationname::before {
+    content: attr(data-content);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #002678; /* 테두리 색상 */
+    z-index: -1; /* 본문 뒤로 보내기 */
+    /* 8방향 테두리 효과 */
+    text-shadow:
+            -4px -4px 0 #002678,
+            0    -4px 0 #002678,
+            4px -4px 0 #002678,
+            4px  0    0 #002678,
+            4px  4px  0 #002678,
+            0    4px  0 #002678,
+            -4px  4px  0 #002678,
+            -4px  0    0 #002678;
+}
+
+
+.gachacitypic-picked-mascotimg{
+    width: 200px;
+    height: auto;
+    z-index: 1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.gachacitypic-picked-mascotname{
+    font-size: 25px;
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+}
+
+.gachacitypic-picked-mascotname::before{
+    content: attr(data-content);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #002678; /* 테두리 색상 */
+    z-index: -1; /* 본문 뒤로 보내기 */
+    /* 8방향 테두리 효과 */
+    text-shadow:
+            -3px -3px 0 #002678,
+            0    -3px 0 #002678,
+            3px -3px 0 #002678,
+            3px  0    0 #002678,
+            3px  3px  0 #002678,
+            0    3px  0 #002678,
+            -3px  3px  0 #002678,
+            -3px  0    0 #002678;
+}
+
+.gachacitypic-picked-mascot-like{
+    position: absolute;
+    width: 70px;
+    top: 100px;
+    right: 30px;
+    z-index: 1;
+    margin-top: 100px;
+}
+
+.gachacitypic-picked-mascot-like img{
+    width: 70px;
+    margin-left: 50px;
+}
+
+.gachacitypic-picked-mascot-backlight{
+    position: absolute;
+    width: 550px;
+    transform-origin: 50% 50%;
+}
+
+.rotate {
+    animation: rotate_image 10s linear infinite;
+}
+
+@keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -507,6 +620,7 @@
 
 .SSRcard-flip-card-back{
     transform: rotateY(180deg);
+    position: relative;
 }
 
 .SSRcard-cardback{
@@ -523,12 +637,156 @@
     align-items: center;
     width: 200px;
     height: 150px;
-    border: 3px solid brown;
+    border: 3px solid #0820a3;
+    margin-bottom: 10px;
 }
 
 #SSR-destination-name{
     font-size: 30px;
-    flex-wrap: wrap;
+    position: relative;
+    color: #fff9cf;
+}
+
+#SSR-destination-name::before {
+    content: attr(data-content);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #f977c6; /* 테두리 색상 */
+    z-index: -1; /* 본문 뒤로 보내기 */
+    /* 8방향 테두리 효과 */
+    text-shadow:
+            -4px -4px 0 #f977c6,
+            0    -4px 0 #f977c6,
+            4px -4px 0 #f977c6,
+            4px  0    0 #f977c6,
+            4px  4px  0 #f977c6,
+            0    4px  0 #f977c6,
+            -4px  4px  0 #f977c6,
+            -4px  0    0 #f977c6;
+}
+
+
+/* 파티클 컨테이너 */
+.sparkle-container {
+    position: fixed;  /* absolute에서 fixed로 변경 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* 개별 파티클 */
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkleAnimation 0.8s ease-out forwards;
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(360deg);
+    }
+}
+
+/* 큰 반짝이 효과 */
+.big-sparkle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: bigSparkleAnimation 1.2s ease-out forwards;
+}
+
+@keyframes bigSparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.5) rotate(120deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) rotate(360deg);
+    }
+}
+
+/* 별 모양 반짝이 */
+.star-sparkle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    animation: starSparkleAnimation 1s ease-out forwards;
+}
+
+.star-sparkle::before {
+    content: '★';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 16px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes starSparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) rotate(360deg);
+    }
+}
+
+/* 광선 효과 */
+.light-ray {
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0));
+    opacity: 0;
+    animation: lightRayAnimation 1.5s ease-out forwards;
+}
+
+@keyframes lightRayAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1, 0) rotate(0deg);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1, 1) rotate(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1, 0.5) rotate(180deg);
+    }
 }
 
 

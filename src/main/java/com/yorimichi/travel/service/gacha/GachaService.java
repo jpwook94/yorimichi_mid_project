@@ -2,6 +2,7 @@ package com.yorimichi.travel.service.gacha;
 
 import com.yorimichi.travel.mapper.GachaMapper;
 import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.FoodVO;
 import com.yorimichi.travel.vo.LocationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,14 @@ public class GachaService {
                 if (destinations == null || destinations.isEmpty()) return null;
                 int randomIndex = ThreadLocalRandom.current().nextInt(destinations.size());
                 return destinations.get(randomIndex);
+        }
+
+        // food 랜덤 뽑기
+        public FoodVO getRandomFood() {
+                List<FoodVO> foods = gachaMapper.selectAllFood();
+                if (foods == null || foods.isEmpty()) return null;
+                int randomIndex = ThreadLocalRandom.current().nextInt(foods.size());
+                return foods.get(randomIndex);
         }
 
 }

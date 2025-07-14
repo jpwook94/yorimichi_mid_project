@@ -51,11 +51,11 @@
             <div class="gacha-content-area">
                 <div class="gacha-sidebar">
                     <div class="gacha-sidebar-item" data-cate="1">
-                        <img data-cate="1" src="/other/image/gachacitypick_logo.png"
+                        <img data-cate="1" src="/other/image/gacha/gachacitypick_logo.png"
                              alt="">
                     </div>
                     <div  class="gacha-sidebar-item" data-cate="2">
-                        <img data-cate="2" src="/other/image/gachacard-logo.png" alt="">
+                        <img data-cate="2" src="/other/image/gacha/gachacard-logo.png" alt="">
                     </div>
                     <div class="gacha-sidebar-item" data-cate="3"></div>
                 </div>

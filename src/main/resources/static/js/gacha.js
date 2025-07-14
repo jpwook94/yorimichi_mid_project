@@ -9,6 +9,8 @@ document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
 
                 if (e.target.dataset.cate === "2") {
                     initSSRcardEvents(); // 원하는 함수 호출
+                } else if (e.target.dataset.cate === "3"){
+                    initFoodGachaEvents();
                 }
             });
     });
@@ -47,25 +49,51 @@ function initGachaMachineEvents() {
         leftBtn.style.pointerEvents = "none";
         rightBtn.style.pointerEvents = "none";
 
-            speechBubble.classList.add("hidden");
-            const pushbtnSound = new Audio("/other/audio/gacha/pushbtn.mp3");
-            pushbtnSound.play().catch((err) => {
-                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
-            });
+        speechBubble.classList.add("hidden");
 
-            const response = await fetch("/pick");
-            const data = await response.json();
-            console.log(data)
+        const pushbtnSound = new Audio("/other/audio/gacha/pushbtn.mp3");
+        pushbtnSound.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
 
+        const response = await fetch("/pick");
+        const data = await response.json();
+        console.log(data)
 
-            // 크레인 움직임
-            await animatecrane();
-
-
-            document.querySelector(".gachacitypick-onemore").style.display = "block";
+        const mascotImg = document.querySelector(".pickmascot");
+        if (mascotImg && data.location_number) {
+            mascotImg.src = `/other/image/mascot/${data.location_number}.png`;
         }
-    )
-    ;
+
+
+        // 크레인 움직임
+        await animatecrane();
+
+        const pickedmascot = document.querySelector(".gachacitypic-picked-mascot");
+        const backlight = document.querySelector(".gachacitypic-picked-mascot-backlight");
+        const locationnameEl = document.querySelector(".gachacitypic-picked-locationname");
+        if (locationnameEl) {
+            locationnameEl.textContent = data.location_name;
+            locationnameEl.setAttribute("data-content", data.location_name); // data-content 속성도 업데이트
+        }
+        const mascotnameEl = document.querySelector(".gachacitypic-picked-mascotname");
+        if (mascotnameEl) {
+            mascotnameEl.textContent = data.mascot_number;
+            mascotnameEl.setAttribute("data-content", data.mascot_number);
+        }
+        const pickedmascotimg = document.querySelector(".gachacitypic-picked-mascotimg");
+        if (pickedmascotimg && data.location_number) {
+            pickedmascotimg.src = `/other/image/mascot/${data.location_number}.png`;
+        }
+        backlight.classList.add("rotate");
+        pickedmascot.style.display = "flex";
+        void pickedmascot.offsetWidth;
+        pickedmascot.style.opacity = "1";
+
+        // 새로고침 누르도록
+        document.querySelector(".gachacitypick-onemore").style.display = "block";
+        }
+    );
 
     function stopPressing() {
         isPressing = false;
@@ -125,24 +153,39 @@ function initGachaMachineEvents() {
 
     async function animatecrane() {
 
-
         crane.style.transition = "all 1s";
+        picked.style.transition = "all 1s"
 
+        // 1단계: 크레인 아래로 내려옴
         crane.style.top = "-40px";
         await delay(1000);
+
+        // 2단계: picked 요소 좌우 위치 crane에 맞춤
         picked.style.left = crane.style.left;
         await delay(1000);
-        picked.style.bottom = "35px";
+
+        // picked crane아래에 두고 올리기
+        const craneRect = crane.getBoundingClientRect();
+        const containerRect = crane.parentElement.getBoundingClientRect();
+        const craneBottomRelative = craneRect.bottom - containerRect.top;
+
+        picked.style.top = `${craneBottomRelative}px`;
+        picked.style.bottom = "auto";
+        await delay(50);
         crane.style.top = "-120px";
+        picked.style.top = "calc(100% - 110px)";
         const dropSound = new Audio("/other/audio/gacha/jump03.mp3");
         dropSound.volume= 0.5;
         dropSound.play().catch((err) => {
             console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
         });
         await delay(1000);
+
+        // 5단계: 좌우로 이동
         crane.style.left = "15px";
         picked.style.left = "15px";
         await delay(1000);
+
         const getmasSound = new Audio("/other/audio/gacha/8-bit-powerup.mp3");
         getmasSound.play().catch((err) => {
             console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
@@ -157,7 +200,111 @@ function initGachaMachineEvents() {
 
 
 //===================================== SSR 카드 뽑기 ==========================================
+// 파티클 생성 함수
+function createSparkleEffect() {
+    const container = document.getElementById('sparkleContainer');
+    const cardWrapper = document.querySelector('.SSRcard-wrapper');
+    const cardRect = cardWrapper.getBoundingClientRect();
 
+    // 카드 중심점 계산
+    const centerX = cardRect.left + cardRect.width / 2;
+    const centerY = cardRect.top + cardRect.height / 2;
+
+    // 작은 반짝이 파티클들 (30개)
+    for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+
+        // 랜덤 위치 (카드 주변에 분포)
+        const angle = (Math.PI * 2 * i) / 30;
+        const distance = Math.random() * 150 + 50;
+        const x = centerX + Math.cos(angle) * distance;
+        const y = centerY + Math.sin(angle) * distance;
+
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        sparkle.style.animationDelay = Math.random() * 0.5 + 's';
+
+        container.appendChild(sparkle);
+
+        // 0.8초 후 제거
+        setTimeout(() => {
+            if (sparkle.parentNode) {
+                sparkle.parentNode.removeChild(sparkle);
+            }
+        }, 1300);
+    }
+
+    // 큰 반짝이 효과들 (8개)
+    for (let i = 0; i < 8; i++) {
+        const bigSparkle = document.createElement('div');
+        bigSparkle.className = 'big-sparkle';
+
+        const angle = (Math.PI * 2 * i) / 8;
+        const distance = Math.random() * 100 + 80;
+        const x = centerX + Math.cos(angle) * distance;
+        const y = centerY + Math.sin(angle) * distance;
+
+        bigSparkle.style.left = x + 'px';
+        bigSparkle.style.top = y + 'px';
+        bigSparkle.style.animationDelay = Math.random() * 0.3 + 's';
+
+        container.appendChild(bigSparkle);
+
+        setTimeout(() => {
+            if (bigSparkle.parentNode) {
+                bigSparkle.parentNode.removeChild(bigSparkle);
+            }
+        }, 1500);
+    }
+
+    // 별 모양 반짝이들 (12개)
+    for (let i = 0; i < 12; i++) {
+        const starSparkle = document.createElement('div');
+        starSparkle.className = 'star-sparkle';
+
+        const angle = (Math.PI * 2 * i) / 12;
+        const distance = Math.random() * 120 + 60;
+        const x = centerX + Math.cos(angle) * distance;
+        const y = centerY + Math.sin(angle) * distance;
+
+        starSparkle.style.left = x + 'px';
+        starSparkle.style.top = y + 'px';
+        starSparkle.style.animationDelay = Math.random() * 0.4 + 's';
+
+        container.appendChild(starSparkle);
+
+        setTimeout(() => {
+            if (starSparkle.parentNode) {
+                starSparkle.parentNode.removeChild(starSparkle);
+            }
+        }, 1400);
+    }
+
+    // 광선 효과들 (6개)
+    for (let i = 0; i < 6; i++) {
+        const lightRay = document.createElement('div');
+        lightRay.className = 'light-ray';
+
+        const angle = (Math.PI * 2 * i) / 6;
+        const distance = 30;
+        const x = centerX + Math.cos(angle) * distance;
+        const y = centerY + Math.sin(angle) * distance;
+
+        lightRay.style.left = x + 'px';
+        lightRay.style.top = y + 'px';
+        lightRay.style.transform = `rotate(${angle * 180 / Math.PI}deg)`;
+        lightRay.style.animationDelay = Math.random() * 0.2 + 's';
+
+        container.appendChild(lightRay);
+
+        setTimeout(() => {
+            if (lightRay.parentNode) {
+                lightRay.parentNode.removeChild(lightRay);
+            }
+        }, 1800);
+    }
+}
 
 
 
@@ -194,6 +341,7 @@ function initSSRcardEvents(){
         const destNameEl = document.getElementById("SSR-destination-name");
         if (destNameEl) {
             destNameEl.textContent = data.destination_name;
+            destNameEl.setAttribute("data-content", data.destination_name);
         }
 
 
@@ -211,13 +359,16 @@ function initSSRcardEvents(){
             // 2단계: 약간 딜레이 후 flip 적용 (0.9초 후 뒤집힘)
             setTimeout(() => {
                 wrapper.classList.add("flip");
+                setTimeout(() => {
+                    createSparkleEffect();
+                }, 1000);
             }, 2000);
         }
 
         setTimeout(() => {
             SSRcardpicked1.style.pointerEvents = "auto";
             SSRcardpicked1.style.opacity = "1";
-        }, 2000 + 1000); // 올라오기 2초 + 뒤집기 1초 = 총 3초
+        }, 4000); // 올라오기 2초 + 뒤집기 1초 = 총 3초
 
 
 
@@ -226,4 +377,9 @@ function initSSRcardEvents(){
 
     /* n회 뽑기 는 나중에... ㅎㅎㅎㅎ*/
 
+}
+
+
+function initFoodGachaEvents(){
+    console.log("🎉 data-cate='3'을 클릭했습니다!");
 }

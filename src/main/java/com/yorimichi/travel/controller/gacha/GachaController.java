@@ -3,6 +3,7 @@ package com.yorimichi.travel.controller.gacha;
 
 import com.yorimichi.travel.service.gacha.GachaService;
 import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.FoodVO;
 import com.yorimichi.travel.vo.LocationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,14 @@ public class GachaController {
         DestinationVO randomDestination = gachaService.getRandomDestination();
         model.addAttribute("pickeddest", randomDestination);
         return randomDestination;
+    }
+
+    @ResponseBody
+    @GetMapping("pickfood")
+    public FoodVO pickFood(Model model) {
+        FoodVO randomFood = gachaService.getRandomFood();
+        model.addAttribute("pickedfood", randomFood);
+        return randomFood;
     }
 
 
