@@ -74,15 +74,15 @@ function loadContent(event, url) {
 
 
 document.addEventListener('click', function (e) {
-    // e.target이 a.page-link 인지 체크
-    console.log("click event");
     if (e.target.matches('.pagination .page-link')) {
-        console.log('근데 페이지 버튼도 같이 눌렸다!');
         e.preventDefault();
         const page = e.target.dataset.page;
 
         // 클릭을 하면 /account/mypageC?myPageCate=3&page=${page} 이 주소에서 리턴한 값을 res (변수명 내맘대로)에 담음
-        fetch(`/account/mypageC?myPageCate=3&page=${page}`)
+        // [수정] 고정된 '3' 대신, myPage.jsp에 저장해둔 현재 카테고리 번호를 읽어온다.
+        const currentCate = document.getElementById('myPageContentArea').dataset.currentCate;
+
+        fetch(`/account/mypageC?myPageCate=${currentCate}&page=${page}`)
             .then(res => res.text()) // 그래서 그 res를 text화 시켜줌 (그게 text 펑션임)
             .then(data => { // 래서 이제 그 값을 data(변수명 내맘대로)에 담아줌
                 // 그 다음에 data를 어떻게 사용할지 (지금은 이 클래스에(.mypage-main-content)에 innerHTML(안에 띄워줘라)
@@ -113,6 +113,8 @@ document.addEventListener('click', function(e) {
                         heartImage.alt = '찜하지 않은 상태 하트';
                         // [핵심] 꼬리표의 값도 'false'로 바꿔준다!
                         likeButton.dataset.liked = 'false';
+                        // [이런 방법도 있긴한데 페이지에서 사라지고 다음게 넘어오지는 않음ㅠㅠ] 하트 이미지를 바꾸는 대신, 카드 전체를 삭제한다.
+                        // likeButton.closest('.pokemon-card').remove();
                     }
                 })
                 .finally(() => {
