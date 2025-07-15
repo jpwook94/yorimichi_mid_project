@@ -14,12 +14,25 @@
 </head>
 <body>
 
-<h1>gachafood</h1>
-    <button class="gacha">random!!</button>
+<%-- 배경 --%>
+<div class="gachafoodback">
+
+<%-- 미연시 오리 --%>
+<div class="gachafood-duckcontainer">
+    <img id="gachafood-duck" src="/other/image/gacha/dokidoki21.png" alt="">
+</div>
+
+<%-- 선택지 --%>
+<div class="gachafood-choices">
+    <button class="gacha">일본 여행왔는데 추천해줄 음식 있어?</button>
     <button class="gacha" value="on">어디가면 그 음식 먹을 수 있는데??</button>
-<span id="result" style="display: inline-block;
-    width: 500px;
-    margin-left: 300px;"></span>
+</div>
+
+<%-- 대화창 --%>
+<div class="gachafood-chatwindow">
+    <span id="result" ></span>
+</div>
+</div>
 <script>
     // document.addEventListener('click', (e) => {
         // if (e.target && e.target.class === 'gacha') {

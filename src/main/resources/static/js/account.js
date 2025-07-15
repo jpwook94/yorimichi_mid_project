@@ -91,6 +91,25 @@ document.addEventListener('click', function (e) {
     }
     if (e.target && e.target.className === 'gacha') {
         console.log('랜덤뽑기!!');
+
+        document.querySelector("#result").textContent = "";
+
+        const duckImage = document.getElementById('gachafood-duck');
+        const duckImages = [
+            '/other/image/gacha/dokidoki22.png',
+            '/other/image/gacha/dokidoki33.png'
+        ];
+        const randomIndex = Math.floor(Math.random() * duckImages.length);
+        duckImage.src = duckImages[randomIndex];
+
+        // bounce 애니메이션 적용
+        duckImage.classList.add('bounce');
+
+        // 애니메이션 끝나고 클래스 제거 (지속시간과 맞춤)
+        setTimeout(() => {
+            duckImage.classList.remove('bounce');
+        }, 600);
+
         let flag = 0;
         let url = "/api/gacha/food";
         console.log(e.target.value)
@@ -98,6 +117,7 @@ document.addEventListener('click', function (e) {
             url += '?where=on'}
         const eventSource = new EventSource(url);
         eventSource.onmessage = function (event) {
+
             console.log(event.data)
             const data = event.data;
             document.querySelector("#result").textContent += data;
@@ -105,8 +125,8 @@ document.addEventListener('click', function (e) {
                 flag++;
                 if (flag == 2){
                  eventSource.close();  // ✅ 프론트에서 수동으로 끊기
-                    const hr = document.createElement("hr");
-                    document.querySelector("#result").appendChild(hr);
+                    /*const hr = document.createElement("hr");
+                    document.querySelector("#result").appendChild(hr);*/
                 }
             }
         };

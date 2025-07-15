@@ -1126,3 +1126,102 @@ margin-top: 60px;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 }
+
+
+
+
+/*====================================== ask the duck!! =========================================*/
+
+.gachafoodback{
+    background-image: url("/other/image/gacha/foodback.jpg");
+    background-size: cover;
+    width: 955px;
+    height: 374px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    /*display: none;*/
+    overflow: hidden;
+}
+
+.gachafood-duckcontainer{
+    top: -10px;
+    left: 350px;
+    position: absolute;
+
+}
+
+@keyframes bounce-twice {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(-20px); }
+    40%  { transform: translateY(0); }
+    60%  { transform: translateY(-12px); }
+    80%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+#gachafood-duck{
+    z-index: 1;
+    width: 224px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#gachafood-duck.bounce {
+    animation: bounce-twice 0.6s ease;
+}
+
+.gachafood-choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 34px;
+    left: 66px;
+    position: absolute;
+}
+
+.gacha {
+    z-index: 2;
+    width: 300px;
+    height: 50px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.52); /* 배경만 반투명 */
+    color: black; /* 글자는 선명하게 */
+    border: 2px solid #ff6b9d;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.gacha:hover {
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff9ff3, #feca57);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+}
+
+
+.gachafood-chatwindow{
+    position: absolute;
+    top: 234px;
+    left: 321px;
+    z-index: 5;
+    width: 600px;
+    height: 119px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #ff6b9d;
+}
+
+#result{
+    z-index: 6;
+    display: inline-block;
+    width: 500px;
+    margin-left: 300px;
+    position: absolute;
+    top: 18px;
+    left: -270px;
+}
+
+
+/*====================================== ask the duck!!  끝 =========================================*/
