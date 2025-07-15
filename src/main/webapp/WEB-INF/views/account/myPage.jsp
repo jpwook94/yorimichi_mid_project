@@ -83,7 +83,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
               </div>
             </div>
 
-            <div class="mypage-main-content">
+            <div class="mypage-main-content" id="myPageContentArea" data-current-cate="">
               <h1>이게 뭐지?</h1>
             </div>
 
@@ -100,7 +100,10 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
       document.querySelectorAll(".mypage-sidebar-item").forEach((dom) => {
         dom.addEventListener("click", (e) => {
           const mycate = dom.dataset.mycate;
-          // console.log("cate:", mycate); // 확인
+
+          // [추가] 메인 컨텐츠 영역에 현재 카테고리 번호를 기록한다!
+          document.getElementById("myPageContentArea").dataset.currentCate = mycate;
+
           const url = "/account/mypageC?myPageCate=" + mycate;
           fetch(url)
             .then((response) => response.text())
