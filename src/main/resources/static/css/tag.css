@@ -140,6 +140,8 @@ hr {
 .tag-result:first-child {
     font-weight: 600;
     color: #e84343;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* 반응형 디자인 */

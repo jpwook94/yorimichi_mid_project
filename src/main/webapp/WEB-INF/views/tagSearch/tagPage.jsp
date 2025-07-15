@@ -1,3 +1,4 @@
+<%@ page import="com.google.gson.Gson" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -10,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/other/css/tag.css">
+    <link rel="stylesheet" href="/other/css/card-list.css">
 </head>
 <body>
 <div class="header-wrapper" onclick="">
@@ -132,7 +134,20 @@
     </div>
 </footer>
 
+<%
+    Object tags = request.getAttribute("tagList");  // 또는 필요한 경우 캐스팅
+    String jsonMap = new Gson().toJson(tags);
+%>
 
+<script>
+    const likedDestinations = "${likedDestinations}";
+    const locations = JSON.parse('${tags5}');
+    const tags = JSON.parse('<%=jsonMap%>');
+
+</script>
 <script src="/other/js/tagSearch.js"></script>
+<script src="/other/js/account.js"></script>
+
+
 </body>
 </html>

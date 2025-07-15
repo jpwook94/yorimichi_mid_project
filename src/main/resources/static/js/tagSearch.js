@@ -42,6 +42,8 @@ function render(data) {
     let content = "";
     const resultSizeDiv = document.querySelector("#ts-result-size");
 
+
+
     //  case 1: 아무 태그도 선택 안 했을 때
     if (selectedTags.size === 0) {
         content = `<div class="no-result-message">태그를 선택해 여행지를 검색해 보세요.</div>`;
@@ -55,21 +57,60 @@ function render(data) {
         //  case 3: 결과 있음
 
     } else {
+
         content = `<div class="tag-result-wrapper">`;
         console.log("data.length:", data.length);
+
         resultSizeDiv.innerHTML = `총  <span class="highlight-number">${data.length}</span> 개의 여행지`;
         data.forEach(element => {
             // ### [추가 시작] 태그 검색 결과인 경우
+            isLiked = likedDestinations.includes(element.destination_number);
             if ('destination_name' in element) {
                 content += "<div class='tag-result-one-result'>"
                 content += "<div class='tag-result-img-wrapper'>" + "<img src='/other/image/destination/" + element.destination_number + ".png' alt=''/></div>";
                 content += "<div class='tag-result-info-wrapper'>";
-                content += "<div class='tag-result'><h1>" + element.destination_name + "</h1></div><hr>";
+                content += "<div class='tag-result'><h1>" + element.destination_name + "</h1>" +
+                    "            <button style='position: static' class='like-btn'" +
+                    "                    id='heart-icon-btn'" +
+                    "                    data-destination-number='" + element.destination_number + "'" +
+                   "                    data-liked='"+isLiked+"'>" ;
+                if (isLiked) {
+                    content +=  "<img src='/other/image/heart.png' style='width: 40px' alt='찜한 상태 하트'>"
+                } else {
+                    content +=  "<img src='/other/image/emptyheart.png' style='width: 40px' alt='빈 하트'>"
+                }
+
+
+                   content +=  "</button>" +
+                    "</div><hr>";
                 content += "<div class='tag-result'>추천 유형 : " + element.mbti_category + "</div>";
-                content += "<div class='tag-result'>주소 : " + element.destination_address + "</div></div></div>";
+                content += "<div class='tag-result'>주소 : " + element.destination_address + "</div>";
+                Object.entries(tags).forEach(([category, tagArray]) => {
+                    tagArray.forEach(t => {
+                        fetch("/search/tag-search?tags=" + t.tag_name)
+                            .then(response => response.json())
+                            .then(data => {
+                                data.forEach(d => {
+                                    // console.log("ffff" + d.destination_name);
+                                })
+                            });
+                        console.log("태그:", t.tag_name);  // ex) ENFP, 도쿄도
+                    });
+                });
+
+                for (let i = 0; i < locations.length; i++) {
+                    if (locations[i].location_number == element.location_number) {
+                        content += "<div>" + locations[i].location_name + " </div>"
+                    }
+                }
+                content +=  "</div></div>";
+
             }
             // ### [추가 끝]
-        content += "<br>";
+            content += "<br>";
+
+            //
+            content = `${content}`;
 
         });
         content += "</div>";
@@ -190,6 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
 
 
 
