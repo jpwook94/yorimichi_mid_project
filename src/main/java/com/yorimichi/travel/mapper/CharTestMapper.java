@@ -15,6 +15,6 @@ public interface CharTestMapper {
     TagMbtiVO selectByMbti(String mbtiType);
 
     // MBTI 유형에 해당하는 여행지들 조회
-    @Select("SELECT * from destination where mbti_category = #{mbtiType}")
+    @Select("SELECT * from destination WHERE mbti_category = #{mbtiType} ORDER BY destination_number")
     List<DestinationVO> selectDestinationsByMbti(String mbtiType);
 }
