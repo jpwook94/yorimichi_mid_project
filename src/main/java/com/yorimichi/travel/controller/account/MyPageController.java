@@ -1,7 +1,10 @@
 package com.yorimichi.travel.controller.account;
 
 import com.yorimichi.travel.service.account.AccountService;
+import com.yorimichi.travel.service.account.LikesService;
 import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.account.AccountVO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/account")
@@ -18,13 +22,39 @@ public class MyPageController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private LikesService likesService;
+
     @GetMapping("/mypageC")
-    public String catePage(int myPageCate ,@RequestParam(defaultValue="1") int page, Model model) {
-        if(myPageCate == 4){
+    public String catePage(int myPageCate, @RequestParam(defaultValue = "1") int page, Model model,
+                           HttpSession session) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+        if (myPageCate == 1) {
             return "account/userProfile";
-        } else if (myPageCate == 5) {
+        } else if (myPageCate == 2) {
+            // '찜 목록' 요청 - JOIN 방식으로 수정
+            // 1. [핵심] 서비스를 호출해 '찜한 여행지 목록'을 DB에서 바로 가져온다.
+            List<DestinationVO> likedDestinations = likesService.getLikedDestinations(loginUser.getUser_id());
+
+            // 2. 가져온 '찜한 여행지' 리스트를 기준으로 페이지네이션을 계산한다.
+            int pageSize = 3;
+            int totalPage = (int) Math.ceil((double) likedDestinations.size() / (double) pageSize);
+            int start = (page - 1) * pageSize;
+            int end = Math.min(start + pageSize, likedDestinations.size());
+            List<DestinationVO> pageList = likedDestinations.subList(start, end);
+
+            // 3, 최종 목록을 모델에 담는다
+            model.addAttribute("destinations", pageList);
+            model.addAttribute("curPage", page);
+            model.addAttribute("totalPage", totalPage);
+            // [수정] userLikes.jsp에서도 하트 표시 로직이 필요하므로, 찜 ID 목록을 전달합니다.
+            model.addAttribute("likedDestinationIds",
+                    likedDestinations.stream().map(DestinationVO::getDestination_number).collect(Collectors.toList()));
+
+            // likedDestinationsIds는 이 페이지에서 하트 표시 로직에 필요하므로 그대로 전달
             return "account/userLikes";
-        } else if (myPageCate == 6){
+
+        } else if (myPageCate == 3) {
             int pageSize = 3;
             // 1. 전체 여행지 리스트 가져오기
             List<DestinationVO> all = accountService.getDestinations();
@@ -41,6 +71,14 @@ public class MyPageController {
             model.addAttribute("destinations", pageList);
             model.addAttribute("curPage", page);
             model.addAttribute("totalPage", totalPage);
+
+            // [추가] 현재 로그인한 유저의 찜 목록을 가져와서 모델에 추가하는 로직
+            if (loginUser != null) {
+                // LikesService를 이용해 찜한 여행지 ID 목록을 가져온다
+                List<Integer> likedIds = likesService.getLikedDestinationIds(loginUser.getUser_id());
+                // JSP에서 사용할 수 있도록 모델에 담아준다
+                model.addAttribute("likedDestinationIds", likedIds);
+            }
 
             return "account/userPlanner";
         }
