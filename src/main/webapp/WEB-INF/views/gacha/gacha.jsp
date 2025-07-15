@@ -57,7 +57,9 @@
                     <div  class="gacha-sidebar-item" data-cate="2">
                         <img data-cate="2" src="/other/image/gacha/gachacard-logo.png" alt="">
                     </div>
-                    <div class="gacha-sidebar-item" data-cate="3"></div>
+                    <div class="gacha-sidebar-item" data-cate="3">
+                        <img data-cate="3" src="/other/image/gacha/gachafood_logo.png" alt="">
+                    </div>
                 </div>
 
                 <div class="gacha-main-content">

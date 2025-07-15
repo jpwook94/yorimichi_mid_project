@@ -310,6 +310,12 @@ function createSparkleEffect() {
 
 function initSSRcardEvents(){
     console.log("🎉 data-cate='2'을 클릭했습니다!");
+    window.addEventListener("DOMContentLoaded", () => {
+        const audio = document.getElementById("gacha-audio");
+        if (audio) {
+            audio.volume = 0.2;
+        }
+    });
 
     const SSRcardpicked1 = document.querySelector('#SSRpick1');
     const SSRcardpickedN = document.querySelector('#SSRpickN');
@@ -319,18 +325,12 @@ function initSSRcardEvents(){
         // 버튼 비활성화
         SSRcardpicked1.style.pointerEvents = "none"; // 클릭 막기
         SSRcardpicked1.style.opacity = "0.5"; // 시각적으로 흐리게
+        SSRcardpickedN.style.pointerEvents = "none"; // 클릭 막기
+        SSRcardpickedN.style.opacity = "0.5"; // 시각적으로 흐리게
 
         const wrapper = document.querySelector(".SSRcard-wrapper");
         const innerCard = document.querySelector(".SSRcard-inner");
 
-/*        if (wrapper && innerCard) {
-            // 2. 카드 사라지게
-            wrapper.classList.remove("show", "flip");
-            innerCard.style.transform = "none";
-            wrapper.style.opacity = "0";
-            wrapper.style.transform = "translateY(30px)";
-            void wrapper.offsetWidth; // 강제 reflow
-        }*/
 
         console.log("1회뽑기 눌렀음")
         /* 데이터 받아오기 */
@@ -368,6 +368,8 @@ function initSSRcardEvents(){
         setTimeout(() => {
             SSRcardpicked1.style.pointerEvents = "auto";
             SSRcardpicked1.style.opacity = "1";
+            SSRcardpickedN.style.pointerEvents = "auto";
+            SSRcardpickedN.style.opacity = "1";
         }, 4000); // 올라오기 2초 + 뒤집기 1초 = 총 3초
 
 

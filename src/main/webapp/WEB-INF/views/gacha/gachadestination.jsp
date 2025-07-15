@@ -8,6 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+<audio id="gacha-audio" controls autoplay loop style="visibility: hidden; width: 0; height: 0;">
+    <source src="/other/audio/gacha/SSRback.mp3" type="audio/mpeg">
+</audio>
+
+<div class="SSRcardlogo">
+    <img src="/other/image/gacha/gachacard-logo.png" alt="">
+</div>
+<div class="SSRcardback"></div>
+
 <div class="sparkle-container" id="sparkleContainer"></div>
 
 <div class="SSRcard-wrapper">

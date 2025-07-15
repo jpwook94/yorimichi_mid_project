@@ -502,6 +502,27 @@
 
 /* ========================================== SSR 카드 뽑기 =========================================== */
 
+.SSRcardlogo{
+    top: 14px;
+    left: 293px;
+    position: absolute;
+    z-index: 1;
+}
+
+.SSRcardlogo img{
+    width: 260px;
+}
+
+.SSRcardback{
+    background-image: url("/other/image/gacha/SSRback.png");
+    background-size: cover;
+    width: 955px;
+    height: 374px;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
 .gachadescard-pickbtn{
     display: flex;
     justify-content: center;
@@ -537,12 +558,11 @@
 
 .gachadescard-pickcontainer{
     display: flex;
-
     justify-content: flex-end;
     align-items: center;
-    position: fixed;
-    bottom: 96px;
-    left: -340px;
+    position: absolute;
+    bottom: 30px;
+    left: -350px;
     width: 100%;
 
 }
@@ -595,8 +615,6 @@
 }
 
 .SSRcard-inner{
-
-/*    text-align: center;*/
     transition: transform 1.2s;
     transform-style: preserve-3d;
     width: 100%;
@@ -640,31 +658,38 @@
     border: 3px solid #0820a3;
     margin-bottom: 10px;
 }
-
-#SSR-destination-name{
+#SSR-destination-name {
     font-size: 30px;
     position: relative;
     color: #fff9cf;
+    width: 200px;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 #SSR-destination-name::before {
     content: attr(data-content);
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%; /* 가운데 기준 위치 */
+    transform: translateX(-50%); /* 진짜 가운데로 이동 */
     color: #f977c6; /* 테두리 색상 */
-    z-index: -1; /* 본문 뒤로 보내기 */
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+
     /* 8방향 테두리 효과 */
     text-shadow:
             -4px -4px 0 #f977c6,
-            0    -4px 0 #f977c6,
+            0   -4px 0 #f977c6,
             4px -4px 0 #f977c6,
-            4px  0    0 #f977c6,
-            4px  4px  0 #f977c6,
-            0    4px  0 #f977c6,
-            -4px  4px  0 #f977c6,
-            -4px  0    0 #f977c6;
+            4px  0   0 #f977c6,
+            4px  4px 0 #f977c6,
+            0    4px 0 #f977c6,
+            -4px  4px 0 #f977c6,
+            -4px  0   0 #f977c6;
 }
+
 
 
 /* 파티클 컨테이너 */
@@ -983,6 +1008,11 @@ margin-top: 60px;
 
 .gacha-sidebar-item:nth-child(2) img {
     width: 150px; /* 원하는 크기 */
+    height: auto;
+}
+
+.gacha-sidebar-item:nth-child(3) img {
+    width: 120px; /* 원하는 크기 */
     height: auto;
 }
 

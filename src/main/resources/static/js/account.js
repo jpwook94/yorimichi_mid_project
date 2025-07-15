@@ -89,6 +89,28 @@ document.addEventListener('click', function (e) {
                 document.querySelector('.mypage-main-content').innerHTML = data;
             });
     }
+    if (e.target && e.target.className === 'gacha') {
+        console.log('랜덤뽑기!!');
+        let flag = 0;
+        let url = "/api/gacha/food";
+        console.log(e.target.value)
+        if (e.target.value == 'on') {
+            url += '?where=on'}
+        const eventSource = new EventSource(url);
+        eventSource.onmessage = function (event) {
+            console.log(event.data)
+            const data = event.data;
+            document.querySelector("#result").textContent += data;
+            if (data.includes(".")) {
+                flag++;
+                if (flag == 2){
+                 eventSource.close();  // ✅ 프론트에서 수동으로 끊기
+                    const hr = document.createElement("hr");
+                    document.querySelector("#result").appendChild(hr);
+                }
+            }
+        };
+    }
 });
 
 document.addEventListener('click', function(e) {
