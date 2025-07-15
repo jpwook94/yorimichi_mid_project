@@ -1,4 +1,3 @@
-
 const userSelect = document.querySelector("#user-select");
 const renderDiv = document.querySelector("#render-div");
 const selectedTags = new Set();  // 중복 없이 태그 저장
@@ -62,19 +61,16 @@ function render(data) {
         data.forEach(element => {
             // ### [추가 시작] 태그 검색 결과인 경우
             if ('destination_name' in element) {
-                content += "<div class='tag-result'>" + element.destination_number + "</div>";
-                content += "<div class='tag-result'>" + element.destination_name + "</div>";
-                content += "<div class='tag-result'>" + element.mbti_category + "</div>";
-                content += "<div class='tag-result'>" + element.destination_address + "</div>";
-            }
-                // ### [추가 끝]
-
-            // ### [추가 시작] 지역 검색 결과인 경우
-            else if ('location_name' in element) {
-                content += "<div class='tag-result'>" + element.location_name + "</div>";
+                content += "<div class='tag-result-one-result'>"
+                content += "<div class='tag-result-img-wrapper'>" + "<img src='/other/image/destination/" + element.destination_number + ".png' alt=''/></div>";
+                content += "<div class='tag-result-info-wrapper'>";
+                content += "<div class='tag-result'><h1>" + element.destination_name + "</h1></div><hr>";
+                content += "<div class='tag-result'>추천 유형 : " + element.mbti_category + "</div>";
+                content += "<div class='tag-result'>주소 : " + element.destination_address + "</div></div></div>";
             }
             // ### [추가 끝]
-            content += "<hr>";
+        content += "<br>";
+
         });
         content += "</div>";
     }
@@ -138,8 +134,6 @@ function updateClearButton() {
 }
 
 
-
-
 // top button
 
 document.getElementById("topBtn").addEventListener("click", function () {
@@ -159,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 스크롤 시 gif1을 bubble에 삽입 (처음에만 한 번)
     let gif1Inserted = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 0) {
             if (!gif1Inserted) {
                 bubble.innerHTML = `<img src="${gif1}" class="top-bubble-gif" alt="duck idle" style="width: 140px; height: 100px;">`;
                 bubble.style.display = 'block';
@@ -187,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // hover 빠지면 다시 gif1 반복 재생으로 복구
     topBtn.addEventListener('mouseleave', () => {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 0) {
             bubble.innerHTML = `<img src="${gif1}" class="top-bubble-gif" alt="duck idle" style="width: 140px; height: 100px;">`;
             bubble.style.display = 'block';
         } else {

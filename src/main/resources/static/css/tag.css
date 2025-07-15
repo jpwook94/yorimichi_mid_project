@@ -102,10 +102,27 @@ hr {
 
 .tag-result-wrapper {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 15px;
+    border-top: 1px solid #e0e0e0;
+    margin-bottom: 150px;
+}
+
+.tag-result-one-result {
+    display: flex;
+    align-content: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 50px;
+}
+
+
+.tag-result-img-wrapper {
+    width: 40%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.tag-result-img-wrapper img {
+    height: 260px;
+    width: auto;
 }
 
 .tag-result {
@@ -114,9 +131,15 @@ hr {
     color: #333;
 }
 
+.tag-result-info-wrapper {
+    margin-left: 50px;
+    width: 55%;
+}
+
+
 .tag-result:first-child {
     font-weight: 600;
-    color: #ffb8b8;
+    color: #e84343;
 }
 
 /* 반응형 디자인 */
@@ -384,5 +407,5 @@ footer {
     justify-content: space-between;
     width: 100%;
     height: 500px;
-    background-image: url("/other/image/duckback.png");
+    background-image: url("/other/image/footer.png");
 }
