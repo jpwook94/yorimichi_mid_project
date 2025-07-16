@@ -82,6 +82,31 @@
     width: 119px;
 }
 
+.gachacitypick-cute2 img:nth-child(1) {
+    position: absolute;
+    top: 166px;
+    left: 550px;
+    z-index: 50;
+    width: 48px;
+}
+
+.gachacitypick-cute2 img:nth-child(2) {
+    position: absolute;
+    top: 106px;
+    left: 793px;
+    z-index: 50;
+    width: 152px;
+}
+
+.gachacitypick-cute2 img:nth-child(3) {
+    position: absolute;
+    top: -29px;
+    left: 775px;
+    z-index: 50;
+    width: 107px;
+    transform: rotate(236deg);
+}
+
 .gachacitypick-onemore{
     display: none;
 }
@@ -462,19 +487,6 @@
             -3px  0    0 #002678;
 }
 
-.gachacitypic-picked-mascot-like{
-    position: absolute;
-    width: 70px;
-    top: 100px;
-    right: 30px;
-    z-index: 1;
-    margin-top: 100px;
-}
-
-.gachacitypic-picked-mascot-like img{
-    width: 70px;
-    margin-left: 50px;
-}
 
 .gachacitypic-picked-mascot-backlight{
     position: absolute;
@@ -507,10 +519,12 @@
     left: 293px;
     position: absolute;
     z-index: 1;
+
 }
 
 .SSRcardlogo img{
     width: 260px;
+    filter: drop-shadow(0 0 4px #ffffff);
 }
 
 
@@ -528,7 +542,7 @@
 .SSRcardback{
     background-image: url("/other/image/gacha/SSRback.png");
     background-size: cover;
-    width: 955px;
+    width: 958px;
     height: 374px;
     top: 0;
     left: 0;
@@ -610,7 +624,7 @@
     height: 405px;
     margin-left: 450px;
     top: 0px;
-    z-index: 10;
+    z-index: 51;
     position: relative;
     opacity: 0;
 
@@ -718,7 +732,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 15;
+    z-index: 52;
 }
 
 /* 개별 파티클 */
@@ -833,7 +847,213 @@
 }
 
 
+
+.likegacha-container{
+    position: absolute;
+    top: 233px;
+    left: 785px;
+    z-index: 100;
+    display: none;
+}
+
+.likegacha-browser-window {
+    width: 257px;
+    height: 223px;
+    background: #ffb8b8;
+    border: 4px solid #2a3687;
+    box-sizing: border-box;
+}
+
+.likegacha-title-bar {
+    background: #ffb8b8;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 3px solid #2a3687;
+}
+
+.likegacha-window-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 9px;
+}
+
+.likegacha-control-btn {
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid #2a3687;
+    background: #fffce0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #2a3687;
+    box-shadow: 2px 2px 0px #a884e0;
+}
+
+.likegacha-control-btn:hover {
+    background: #fff176;
+}
+
+.likegacha-content-area {
+    display: flex;
+    position: relative;
+    height: 177px;
+    background: #f0f0f0;
+}
+
+.likegacha-main-content {
+    flex: 1;
+    background: #fffce0;
+    position: relative;
+    font-size: 20px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    /* 3D 효과 */
+    box-shadow:
+            inset 3px 3px 0px rgba(255,255,255,0.3),
+            inset -3px -3px 0px rgba(255, 9, 0, 0.3);
+    padding: 30px;
+}
+
+.likegacha-main-content img{
+    width: 50px;
+    margin-top: 10px;
+}
+
+.likegacha-main-btnlist{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.likegacha-main-btn{
+    width: 72px;
+    height: 35px;
+    font-size: 19px;
+    border: 2.5px solid #2a3687;
+    background: #fffce0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #2a3687;
+    box-shadow: 2px 2px 0px #a884e0;
+}
+
+.likegacha-main-btn:hover{
+    background: #fff176;
+}
+
 /* ======================================= SSR 카드 뽑기 끝 =================================================== */
+
+
+
+
+
+/*====================================== ask the duck!! =========================================*/
+
+.gachafoodback{
+    background-image: url("/other/image/gacha/foodback.jpg");
+    background-size: cover;
+    width: 955px;
+    height: 374px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    /*display: none;*/
+    overflow: hidden;
+}
+
+.gachafood-duckcontainer{
+    top: -10px;
+    left: 350px;
+    position: absolute;
+
+}
+
+@keyframes bounce-twice {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(-20px); }
+    40%  { transform: translateY(0); }
+    60%  { transform: translateY(-12px); }
+    80%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+#gachafood-duck{
+    z-index: 1;
+    width: 224px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#gachafood-duck.bounce {
+    animation: bounce-twice 0.6s ease;
+}
+
+.gachafood-choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 34px;
+    left: 66px;
+    position: absolute;
+}
+
+.gacha {
+    z-index: 2;
+    width: 300px;
+    height: 50px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.52); /* 배경만 반투명 */
+    color: black; /* 글자는 선명하게 */
+    border: 2px solid #ff6b9d;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.gacha:hover {
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff9ff3, #feca57);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+}
+
+
+.gachafood-chatwindow{
+    position: absolute;
+    top: 234px;
+    left: 321px;
+    z-index: 5;
+    width: 600px;
+    height: 119px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #ff6b9d;
+}
+
+#result{
+    z-index: 6;
+    display: inline-block;
+    width: 500px;
+    margin-left: 300px;
+    position: absolute;
+    top: 18px;
+    left: -270px;
+}
+
+
+
+/*====================================== ask the duck!!  끝 =========================================*/
 
 
 /* ============================가챠 컨테이너 웹페이지 디자인은 가장 아래에 모아두겟음 ========================== */
@@ -1145,101 +1365,3 @@ margin-top: 60px;
     image-rendering: crisp-edges;
 }
 
-
-
-
-/*====================================== ask the duck!! =========================================*/
-
-.gachafoodback{
-    background-image: url("/other/image/gacha/foodback.jpg");
-    background-size: cover;
-    width: 955px;
-    height: 374px;
-    top: 0;
-    left: 0;
-    position: absolute;
-    /*display: none;*/
-    overflow: hidden;
-}
-
-.gachafood-duckcontainer{
-    top: -10px;
-    left: 350px;
-    position: absolute;
-
-}
-
-@keyframes bounce-twice {
-    0%   { transform: translateY(0); }
-    20%  { transform: translateY(-20px); }
-    40%  { transform: translateY(0); }
-    60%  { transform: translateY(-12px); }
-    80%  { transform: translateY(0); }
-    100% { transform: translateY(0); }
-}
-
-#gachafood-duck{
-    z-index: 1;
-    width: 224px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-#gachafood-duck.bounce {
-    animation: bounce-twice 0.6s ease;
-}
-
-.gachafood-choices{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    top: 34px;
-    left: 66px;
-    position: absolute;
-}
-
-.gacha {
-    z-index: 2;
-    width: 300px;
-    height: 50px;
-    margin-top: 30px;
-    background-color: rgba(255, 255, 255, 0.52); /* 배경만 반투명 */
-    color: black; /* 글자는 선명하게 */
-    border: 2px solid #ff6b9d;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.gacha:hover {
-    cursor: pointer;
-    background: linear-gradient(135deg, #ff9ff3, #feca57);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
-}
-
-
-.gachafood-chatwindow{
-    position: absolute;
-    top: 234px;
-    left: 321px;
-    z-index: 5;
-    width: 600px;
-    height: 119px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    border: 2px solid #ff6b9d;
-}
-
-#result{
-    z-index: 6;
-    display: inline-block;
-    width: 500px;
-    margin-left: 300px;
-    position: absolute;
-    top: 18px;
-    left: -270px;
-}
-
-
-/*====================================== ask the duck!!  끝 =========================================*/

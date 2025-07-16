@@ -78,8 +78,8 @@ function initGachaMachineEvents() {
         }
         const mascotnameEl = document.querySelector(".gachacitypic-picked-mascotname");
         if (mascotnameEl) {
-            mascotnameEl.textContent = data.mascot_number;
-            mascotnameEl.setAttribute("data-content", data.mascot_number);
+            mascotnameEl.textContent = data.mascot_name;
+            mascotnameEl.setAttribute("data-content", data.mascot_name);
         }
         const pickedmascotimg = document.querySelector(".gachacitypic-picked-mascotimg");
         if (pickedmascotimg && data.location_number) {
@@ -320,6 +320,26 @@ function initSSRcardEvents(){
     const SSRcardpicked1 = document.querySelector('#SSRpick1');
     const SSRcardpickedN = document.querySelector('#SSRpickN');
 
+    const likegachaContainer = document.querySelector(".likegacha-container");
+    const closeButton = document.querySelector(".likegacha-window-controls .likegacha-control-btn:last-child");
+    const noButton = document.querySelector(".likegacha-main-btnlist .likegacha-main-btn:last-child");
+    const hideLikegachaContainer = () => {
+        if (likegachaContainer) {
+            likegachaContainer.style.display = "none";
+        }
+    };
+    if (closeButton) {
+        closeButton.addEventListener("click", hideLikegachaContainer);
+    } else {
+        console.warn("닫기 버튼 (×)을 찾을 수 없습니다.");
+    }
+
+    if (noButton) {
+        noButton.addEventListener("click", hideLikegachaContainer);
+    } else {
+        console.warn("'no' 버튼을 찾을 수 없습니다.");
+    }
+
     /* 1회 뽑기 눌렀을 때 */
     SSRcardpicked1.addEventListener("click", async () => {
         // 버튼 비활성화
@@ -330,6 +350,8 @@ function initSSRcardEvents(){
 
         const wrapper = document.querySelector(".SSRcard-wrapper");
         const innerCard = document.querySelector(".SSRcard-inner");
+        const likegachaContainer = document.querySelector(".likegacha-container");
+        const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn");
 
 
         console.log("1회뽑기 눌렀음")
@@ -349,6 +371,7 @@ function initSSRcardEvents(){
             // 초기 상태 리셋
             wrapper.classList.remove("flip", "show");
             wrapper.classList.add("hide");
+            likegachaContainer.style.display = "none";
             /* 받아온 destination 이름 적기 */
             const destNameEl = document.getElementById("SSR-destination-name");
             if (destNameEl) {
@@ -372,8 +395,10 @@ function initSSRcardEvents(){
                     // flip 1초 뒤 효과
                     setTimeout(() => {
                         createSparkleEffect();
+                        setTimeout(() => {
+                            document.querySelector(".likegacha-container").style.display = "block";
+                        }, 1000);
                     }, 1000);
-
                 }, 2000);
             }, 1000); // hide 애니메이션 시간에 맞게
         }
@@ -390,7 +415,7 @@ function initSSRcardEvents(){
 
     })
 
-    /* n회 뽑기 는 나중에... ㅎㅎㅎㅎ*/
+    /* 5회 뽑기 */
     SSRcardpickedN.addEventListener("click", async () => {
         // 버튼 비활성화
         SSRcardpicked1.style.pointerEvents = "none"; // 클릭 막기
@@ -399,14 +424,20 @@ function initSSRcardEvents(){
         SSRcardpickedN.style.opacity = "0.5"; // 시각적으로 흐리게
 
         console.log("N회뽑기 눌렀음")
+        likegachaContainer.style.display = "none";
 
         const response = await fetch("/pickSSRN");
         const data = await response.json();
         console.log(data)
 
         playSSRN(data);
+        setTimeout(() => {
+            document.querySelector(".likegacha-container").style.display = "block";
+        }, 35000);
 
     })
+
+
 }
 
 function playSSRN(destinations) {
@@ -448,21 +479,16 @@ function playSSRN(destinations) {
                     // flip 1초 뒤 효과
                     setTimeout(() => {
                         createSparkleEffect();
-
-                        // 현재 카드의 모든 애니메이션이 완료된 후 다음 목적지를 위해 revealNext()를 호출합니다.
-                        // 하나의 카드 애니메이션 총 지속 시간은 대략 1000ms (hide) + 2000ms (show -> flip) + 1000ms (flip -> sparkle) = 4000ms 입니다.
-                        // 실제 CSS transition 지속 시간에 따라 이 총 지연 시간을 조정해야 합니다.
                         setTimeout(() => {
                             index++; // 다음 목적지를 위해 인덱스 증가
                             revealNext(); // 다음 항목을 위해 revealNext 호출
-                        }, 2500); // 스파클 효과가 완료될 때까지 기다리거나 필요에 따라 조정하세요.
+                        }, 2500);
 
                     }, 1000);
 
                 }, 2000);
-            }, 1000); // hide 애니메이션 시간에 맞게
+            }, 1000);
         } else {
-            // wrapper를 찾을 수 없는 경우, revealNext()가 재귀적으로 호출될 때 무한 루프를 방지합니다.
             console.error("SSRcard-wrapper를 찾을 수 없습니다.");
             return;
         }

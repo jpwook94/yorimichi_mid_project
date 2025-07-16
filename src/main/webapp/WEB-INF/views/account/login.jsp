@@ -23,7 +23,7 @@
     <div class="login-form-title"><span>sign in to your</span></div>
     <div class="login-title-2"><span>Journey</span></div>
     <div class="login-input-container">
-        <input placeholder="Id" name="user_id" type="text" class="login-input-mail" value="asdf" />
+        <input placeholder="Id" name="user_id" type="text" class="login-input-mail" value="qwer" />
         <span> </span>
     </div>
     <section class="login-bg-stars">
@@ -33,7 +33,7 @@
         <span class="login-star"></span>
     </section>
     <div class="login-input-container">
-        <input placeholder="Password" name="user_pw" type="password" class="login-input-pwd" value="123" />
+        <input placeholder="Password" name="user_pw" type="password" class="login-input-pwd" value="qwer" />
     </div>
     <button class="login-submit"  type="submit">
         <span class="sign-text">Sign in</span>

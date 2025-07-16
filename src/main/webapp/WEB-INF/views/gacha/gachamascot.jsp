@@ -19,9 +19,6 @@
     <div class="gachacitypic-picked-locationname" data-content=""> 도쿄 </div>
     <img class="gachacitypic-picked-mascotimg" src="" alt="">
     <div class="gachacitypic-picked-mascotname" data-content=""> 니시코군 </div>
-    <div class="gachacitypic-picked-mascot-like">
-        <img src="/other/image/gacha-cute/one-more.gif" alt="">
-    </div>
     <img class="gachacitypic-picked-mascot-backlight" src="/other/image/gacha/backlight.png" alt="">
 </div>
 
