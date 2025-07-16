@@ -269,3 +269,9 @@ CREATE SEQUENCE likes_seq
     NOCACHE;
 
 select * from likes;
+
+
+SELECT d.destination_number, d.destination_name, d.mbti_category, d.destination_address, d.location_number
+            FROM destination d, likes l
+            where d.destination_number = l.destination_number and
+            l.user_id = 'asdf' offset 0 rows fetch next 3 rows only;

@@ -18,9 +18,9 @@ public class LikesService {
     }
 
     // 찜 하기 메소드
-    public List<Integer> getLikedDestinationIds(String userId) {
-        return likesMapper.findLikedDestinationIdsByUserId(userId);
-    }
+//    public List<Integer> getLikedDestinationIds(String userId) {
+//        return likesMapper.findLikedDestinationIdsByUserId(userId);
+//    }
 
     // 찜 취소(삭제)를 위한 서비스 메소드
     public void deleteLike(String userId, int destinationNumber) {
@@ -28,7 +28,10 @@ public class LikesService {
     }
 
     // [이 메소드 사용] 찜한 여행지 목록의 상세 정보를 가져오는 서비스 메소드
-    public List<DestinationVO> getLikedDestinations(String userId) {
-        return likesMapper.findLikedDestinationsByUserId(userId);
+    public List<DestinationVO> getLikedDestinations(int offset, String userId) {
+        return likesMapper.findLikedDestinationsByUserId(offset, userId);
+    }
+    public int getLikedDestinationsCount(String userId) {
+        return likesMapper.findLikedDestinationsByUserIdCount(userId);
     }
 }

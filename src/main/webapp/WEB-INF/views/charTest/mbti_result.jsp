@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,88 +21,89 @@
 
     <div id="destContainer">
         <c:forEach var="desti" items="${destList}" varStatus="status">
-    <div class="c-window-container" data-index="${status.index}" style="${status.index != 0 ? 'display:none;' : ''}">
-        <div class="c-window">
-            <div class="c-title-bar">
-                <div class="c-window-buttons">
-                    <div class="c-btn minimize">
-                        <div class="icon-line"></div>
+            <div class="c-window-container" data-index="${status.index}"
+                 style="${status.index != 0 ? 'display:none;' : ''}">
+                <div class="c-window">
+                    <div class="c-title-bar">
+                        <div class="c-window-buttons">
+                            <div class="c-btn minimize">
+                                <div class="icon-line"></div>
+                            </div>
+                            <div class="c-btn maximize">
+                                <div class="icon-square"></div>
+                            </div>
+                            <div class="c-btn close" onclick="location.href='/gamelist'">
+                                <div class="icon-x">
+                                    <span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="c-btn maximize">
-                        <div class="icon-square"></div>
+                    <div class="c-search-bar">
+                        <div class="c-fake-address">게임/성향 테스트/MBTI/내 결과</div>
+                        <button class="c-search-button">Search...</button>
                     </div>
-                    <div class="c-btn close" onclick="location.href='/gamelist'">
-                        <div class="icon-x">
-                            <span></span><span></span>
+                    <div class="c-content-box">
+                        <div class="c-content-area">
+                            <div class="c-contentTXT">
+                                <h3 style="font-size: 50px">${mbtiResult.mbti_category}</h3>
+                                <p>${mbtiResult.mbti_description}인 당신!</p>
+                                <p>▾당신의 여행지는 바로 여기▾</p>
+
+                                <div class="c-contentTXT2">
+                                    <h3 class="c-MBTIresultBlink" style="font-size: 30px" id="destinationName">
+                                        >>> ${desti.destination_name} <<< </h3>
+                                    <p style="font-size: 16px">${desti.destination_address}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-fake-scrollbar">
+                            <div class="c-scroll-btn up">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                                    <polygon points="5,2 2,7 8,7" fill="black"/>
+                                </svg>
+                            </div>
+                            <div class="c-track">
+                                <div class="c-thumb"></div>
+                            </div>
+                            <div class="c-scroll-btn down">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                                    <polygon points="2,3 8,3 5,8" fill="black"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <%--여행지 결과창 팝업--%>
+                <div class="c-commonPopup-container3">
+                    <div class="c-commonPopup3">
+                        <div class="c-commonPopup3-header">
+                            <span class="c-commonPopup-title">your_destination.jpg</span>
+                        </div>
+                        <div class="c-commonPopup-body">
+                            <div class="c-commonPopup-imgblock3">
+                                <img class="c-commonPopup-img3" id="destinationImage"
+                                     src="/other/image/destination/${desti.destination_number}.jpg" alt=""
+                                     onerror="
+                                             this.onerror=null;
+                                             this.src='/other/image/${desti.destination_number}.png';
+                                             this.onerror=function(){
+                                             this.onerror=null;
+                                             this.src='/other/image/${desti.destination_number}.jpeg';
+                                             };
+                                             "
+                                     alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="c-search-bar">
-                <div class="c-fake-address">게임/성향 테스트/MBTI/내 결과</div>
-                <button class="c-search-button">Search...</button>
-            </div>
-            <div class="c-content-box">
-                <div class="c-content-area">
-                    <div class="c-contentTXT">
-                        <h3 style="font-size: 50px">${mbtiResult.mbti_category}</h3>
-                        <p>${mbtiResult.mbti_description}인 당신!</p>
-                        <p>▾당신의 여행지는 바로 여기▾</p>
-
-                        <div class="c-contentTXT2">
-                        <h3 class="c-MBTIresultBlink" style="font-size: 30px" id="destinationName"> >>> ${desti.destination_name} <<< </h3>
-                        <p style="font-size: 16px">${desti.destination_address}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-fake-scrollbar">
-                    <div class="c-scroll-btn up">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
-                            <polygon points="5,2 2,7 8,7" fill="black"/>
-                        </svg>
-                    </div>
-                    <div class="c-track">
-                        <div class="c-thumb"></div>
-                    </div>
-                    <div class="c-scroll-btn down">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
-                            <polygon points="2,3 8,3 5,8" fill="black"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <%--여행지 결과창 팝업--%>
-        <div class="c-commonPopup-container3">
-            <div class="c-commonPopup3">
-                <div class="c-commonPopup3-header">
-                    <span class="c-commonPopup-title">your_destination.jpg</span>
-                </div>
-                <div class="c-commonPopup-body">
-                    <div class="c-commonPopup-imgblock3">
-                        <img class="c-commonPopup-img3" id="destinationImage" src="/other/image/destination/${desti.destination_number}.jpg" alt=""
-                             onerror="
-                                     this.onerror=null;
-                                     this.src='/other/image/${desti.destination_number}.png';
-                                     this.onerror=function(){
-                                     this.onerror=null;
-                                     this.src='/other/image/${desti.destination_number}.jpeg';
-                                     };
-                                     "
-                             alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-    </c:forEach>
+        </c:forEach>
 
 
-
-
-<%--여기서부터 팝업창--%>
+        <%--여기서부터 팝업창--%>
         <div class="c-commonPopup-container">
             <div class="c-commonPopup1">
                 <div class="c-popup-header">
@@ -120,14 +121,21 @@
         </div>
 
 
-
         <div class="c-mbti-menu">
             <ul class="c-MBTImenu-items">
                 <li class="c-MBTImenu-item">
                     <img class="c-MBTImenu-icon" src="/other/image/mbtiLike.png">
-                    <span><u>L</u>ike</span>
+                    <span data-testlike><u>L</u>ike</span>
                     <span class="c-MBTImenu-arrow">▶</span>
                 </li>
+                <%--
+                <c:set var="isLiked" value="false"/>
+            <c:forEach items="${likedDestinationIds}" var="likedId">
+                <c:if test="${des.destination_number == likedId}">
+                    <c:set var="isLiked" value="true"/>
+                </c:if>
+            </c:forEach>
+                --%>
                 <li class="c-MBTImenu-item" id="mbtiMoreBtn">
                     <img class="c-MBTImenu-icon" src="/other/image/mbtiMore.png">
                     <span><u>M</u>ore</span>
@@ -137,22 +145,21 @@
         </div>
 
 
-
-    <%--여기서부터 팝업창--%>
-    <div class="c-commonPopup-container">
-        <div class="c-commonPopup2-plus">
-            <div class="c-commonPopup2-header">
-                <span class="c-commonPopup-title">gombangwha.png</span>
-            </div>
-            <div class="c-commonPopup-body">
-                <div class="c-commonPopup-imgblock">
-                    <img src="/other/image/charTest_sakura.gif" alt="">
+        <%--여기서부터 팝업창--%>
+        <div class="c-commonPopup-container">
+            <div class="c-commonPopup2-plus">
+                <div class="c-commonPopup2-header">
+                    <span class="c-commonPopup-title">gombangwha.png</span>
+                </div>
+                <div class="c-commonPopup-body">
+                    <div class="c-commonPopup-imgblock">
+                        <img src="/other/image/charTest_sakura.gif" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 </div>
 
 

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/other/css/charTest.css"/>
     <link rel="stylesheet" href="/other/css/gacha.css"/>
     <link rel="stylesheet" href="/other/css/login.css"/>
+    <link rel="stylesheet" href="/other/css/card-list.css">
 </head>
 <body>
 <%--하트--%>

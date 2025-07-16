@@ -73,10 +73,10 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
           <div class="mypage-content-area">
             <div class="mypage-sidebar">
               <div class="mypage-sidebar-item" data-mycate="1">
-                <p>내 찜 목록</p>
+                <p>내 정보</p>
               </div>
               <div class="mypage-sidebar-item" data-mycate="2">
-                <p>좋아요</p>
+                <p>찜 목록</p>
               </div>
               <div class="mypage-sidebar-item" data-mycate="3">
                 <p>플래너</p>
@@ -84,7 +84,7 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
             </div>
 
             <div class="mypage-main-content" id="myPageContentArea" data-current-cate="">
-              <h1>이게 뭐지?</h1>
+              <h1>여기에 javascript 내용 들어옴</h1>
             </div>
 
             <div class="mypage-scrollbar">
