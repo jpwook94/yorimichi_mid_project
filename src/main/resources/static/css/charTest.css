@@ -137,6 +137,45 @@ c-window-container {
 
 }
 
+.c-contentTXT {
+    text-align: right;
+    text-align: center;
+    padding-left: 300px;
+    line-height: 1.6;
+    font-size: 22px;
+}
+
+.c-MBTIresultBlink {
+    font-size: 30px;
+    font-weight: bold;
+    color: #00ff99;
+    background: linear-gradient(90deg, #00ff99, #00ffff, #ff00ff, #00ff99);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hackerWave 4s infinite linear, blinkCaret 1s steps(2, start) infinite;
+}
+
+@keyframes hackerWave {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 400%;
+    }
+}
+
+@keyframes blinkCaret {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 2px rgba(0, 255, 153, 0.3);
+    }
+}
+
+
+
 .c-MBTIsurvey {
     display: flex;
     justify-content: center;
@@ -515,7 +554,7 @@ fake-popup-body {
     background: #fff;
     border: 3px solid #000;
     box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
-    z-index: 999;
+    z-index: 3;
 }
 
 .c-popup-body {
@@ -562,4 +601,120 @@ fake-popup-body {
     padding: 8px 12px;
     border-bottom: 3px solid #000;
 }
+
+.c-commonPopup3 {
+    position: absolute;
+    bottom: 50px;
+    left: -90px;
+    width: 400px;
+    background: #fff;
+    border: 3px solid #003D8E;
+    box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
+    z-index: 4;
+}
+
+.c-commonPopup3-header {
+    background: #e8d3f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 3px solid #000;
+}
+
+.c-commonPopup-imgblock3 {
+    height: 270px;
+    overflow: hidden;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center; /* 가로 가운데 */
+    position: relative;
+}
+
+
+/* mbti 결과 페이지 */
+
+.c-mbti-menu {
+    width: 180px;
+    border: 2px solid #000;
+    background: linear-gradient(to bottom, #d4d4d4, #a9a9a9);
+    box-shadow: rgba(0, 61, 142, 0.8) 4px 4px 0px;
+    padding: 0;
+    position: relative;
+    top: -80px;
+    right: -600px;
+    z-index: 4;
+}
+
+.c-MBTImenu-items {
+    list-style: none;
+    margin: 0;
+    padding: 2px;
+}
+.c-MBTImenu-item {
+    padding: 9px 12px;
+    background-color: #dcdcdc;
+    border-bottom: 2px solid #999;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    height: 22px;
+}
+.c-MBTImenu-item:last-child {
+    border-bottom: none;
+}
+.c-MBTImenu-item:hover {
+    background-color: #0078d4;
+    color: white;
+    font-weight: bold;
+}
+.c-MBTImenu-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+.c-MBTImenu-arrow {
+    margin-left: auto;
+    font-size: 13px;
+}
+
+.c-commonPopup2-plus {
+    position: absolute;
+    bottom: 287px;
+    left: 660px;
+    width: 350px;
+    background: #fff;
+    border: 3px solid #003D8E;
+    box-shadow: 6px 6px 0 rgba(0, 61, 142, 0.8);
+}
+
+
+
+.c-commonPopup-img3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.c-contentTXT2 {
+    margin-top: 20px;
+    line-height: 60px;
+}
+
+.c-commonPopup-container3 {
+    position: relative;
+    z-index: 10; /* 팝업 전체가 위로 올라오게 */
+    overflow: visible; /* 배경이 잘리지 않게 */
+}
+
+
+
 
