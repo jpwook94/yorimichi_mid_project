@@ -85,22 +85,33 @@ function render(data) {
                     "</div><hr>";
                 content += "<div class='tag-result'>추천 유형 : " + element.mbti_category + "</div>";
                 content += "<div class='tag-result'>주소 : " + element.destination_address + "</div>";
-                Object.entries(tags).forEach(([category, tagArray]) => {
-                    tagArray.forEach(t => {
-                        fetch("/search/tag-search?tags=" + t.tag_name)
-                            .then(response => response.json())
-                            .then(data => {
-                                data.forEach(d => {
-                                    // console.log("ffff" + d.destination_name);
-                                })
-                            });
-                        console.log("태그:", t.tag_name);  // ex) ENFP, 도쿄도
+                // Object.entries(tags).forEach(([category, tagArray]) => {
+                //     tagArray.forEach(t => {
+                //         fetch("/search/tag-search?tags=" + t.tag_name)
+                //             .then(response => response.json())
+                //             .then(data => {
+                //                 data.forEach(d => {
+                //                     // console.log("ffff" + d.destination_name);
+                //                 })
+                //             });
+                //         console.log("태그:", t.tag_name);  // ex) ENFP, 도쿄도
+                //     });
+                // });
+
+
+                const url2 = "/search/dest-search?dest=" + element.destination_number;
+                fetch(url2)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(tag => {
+                            console.log(tag.tag_name);
+                            content += "<div>" + "gg" + "</div>";
+                        })
                     });
-                });
 
                 for (let i = 0; i < locations.length; i++) {
                     if (locations[i].location_number == element.location_number) {
-                        content += "<div>" + locations[i].location_name + " </div>"
+                        content += "<div>" + locations[i].location_name + "</div>"
                     }
                 }
                 content +=  "</div></div>";

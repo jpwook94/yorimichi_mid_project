@@ -6,6 +6,7 @@ import com.yorimichi.travel.vo.tagSearch.TagVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper
@@ -47,4 +48,9 @@ public interface TagSearchMapper {
     @Select("select count(*) from location where location_name = #{tag_name}")
     public int existsInLocation(String tag_name);
 
+    @Select("select * from tag t " +
+            "join destination_tag dt on t.tag_id = dt.destination_tag_tag_id " +
+            "join destination d on dt.destination_tag_destination_number = d.destination_number " +
+            "where d.destination_number = #{destination_number}")
+    public List<TagVO> searchGetTagByDestN(int destination_number);
 }
