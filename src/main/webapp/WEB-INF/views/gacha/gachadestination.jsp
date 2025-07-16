@@ -15,6 +15,10 @@
 <div class="SSRcardlogo">
     <img src="/other/image/gacha/gachacard-logo.png" alt="">
 </div>
+
+<div class="SSRment">
+    <img src="/other/image/gacha/SSRment.png" alt="">
+</div>
 <div class="SSRcardback"></div>
 
 <div class="sparkle-container" id="sparkleContainer"></div>

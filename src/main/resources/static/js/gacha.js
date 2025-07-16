@@ -337,7 +337,7 @@ function initSSRcardEvents(){
         const response = await fetch("/pickSSR");
         const data = await response.json();
         console.log(data)
-
+        /* 받아온 destination 이름 적기 */
         const destNameEl = document.getElementById("SSR-destination-name");
         if (destNameEl) {
             destNameEl.textContent = data.destination_name;
@@ -347,22 +347,35 @@ function initSSRcardEvents(){
 
         if (wrapper) {
             // 초기 상태 리셋
-            wrapper.classList.remove("flip");
-            wrapper.classList.remove("show");
+            wrapper.classList.remove("flip", "show");
+            wrapper.classList.add("hide");
+            /* 받아온 destination 이름 적기 */
+            const destNameEl = document.getElementById("SSR-destination-name");
+            if (destNameEl) {
+                destNameEl.textContent = data.destination_name;
+                destNameEl.setAttribute("data-content", data.destination_name);
+            }
 
-            // 강제로 다시 flow 재계산해서 transition 제대로 작동하게 함
-            void wrapper.offsetWidth;
-
-            // 1단계: 카드 위로 올라오게
-            wrapper.classList.add("show");
-
-            // 2단계: 약간 딜레이 후 flip 적용 (0.9초 후 뒤집힘)
             setTimeout(() => {
-                wrapper.classList.add("flip");
+                wrapper.classList.remove("hide");
+
+                // 강제 리플로우로 transition 다시 계산
+                void wrapper.offsetWidth;
+
+                // 등장
+                wrapper.classList.add("show");
+
+                // flip은 2초 후
                 setTimeout(() => {
-                    createSparkleEffect();
-                }, 1000);
-            }, 2000);
+                    wrapper.classList.add("flip");
+
+                    // flip 1초 뒤 효과
+                    setTimeout(() => {
+                        createSparkleEffect();
+                    }, 1000);
+
+                }, 2000);
+            }, 1000); // hide 애니메이션 시간에 맞게
         }
 
         setTimeout(() => {
@@ -370,7 +383,7 @@ function initSSRcardEvents(){
             SSRcardpicked1.style.opacity = "1";
             SSRcardpickedN.style.pointerEvents = "auto";
             SSRcardpickedN.style.opacity = "1";
-        }, 4000); // 올라오기 2초 + 뒤집기 1초 = 총 3초
+        }, 5000);
 
 
 
@@ -378,9 +391,84 @@ function initSSRcardEvents(){
     })
 
     /* n회 뽑기 는 나중에... ㅎㅎㅎㅎ*/
+    SSRcardpickedN.addEventListener("click", async () => {
+        // 버튼 비활성화
+        SSRcardpicked1.style.pointerEvents = "none"; // 클릭 막기
+        SSRcardpicked1.style.opacity = "0.5"; // 시각적으로 흐리게
+        SSRcardpickedN.style.pointerEvents = "none"; // 클릭 막기
+        SSRcardpickedN.style.opacity = "0.5"; // 시각적으로 흐리게
 
+        console.log("N회뽑기 눌렀음")
+
+        const response = await fetch("/pickSSRN");
+        const data = await response.json();
+        console.log(data)
+
+        playSSRN(data);
+
+    })
 }
 
+function playSSRN(destinations) {
+    let index = 0;
+
+    function revealNext() {
+        // 모든 목적지가 표시되었으면 함수를 종료합니다.
+        if (index >= destinations.length) {
+            console.log("모든 목적지가 표시되었습니다!");
+            return;
+        }
+
+        const wrapper = document.querySelector(".SSRcard-wrapper");
+        if (wrapper) {
+            // 초기 상태 리셋
+            wrapper.classList.remove("flip", "show");
+            wrapper.classList.add("hide");
+
+            const destNameEl = document.getElementById("SSR-destination-name");
+            const currentDest = destinations[index];
+            if (destNameEl) {
+                destNameEl.textContent = currentDest.destination_name;
+                destNameEl.setAttribute("data-content", currentDest.destination_name);
+            }
+
+            setTimeout(() => {
+                wrapper.classList.remove("hide");
+
+                // 강제 리플로우로 transition 다시 계산
+                void wrapper.offsetWidth;
+
+                // 등장
+                wrapper.classList.add("show");
+
+                // flip은 2초 후
+                setTimeout(() => {
+                    wrapper.classList.add("flip");
+
+                    // flip 1초 뒤 효과
+                    setTimeout(() => {
+                        createSparkleEffect();
+
+                        // 현재 카드의 모든 애니메이션이 완료된 후 다음 목적지를 위해 revealNext()를 호출합니다.
+                        // 하나의 카드 애니메이션 총 지속 시간은 대략 1000ms (hide) + 2000ms (show -> flip) + 1000ms (flip -> sparkle) = 4000ms 입니다.
+                        // 실제 CSS transition 지속 시간에 따라 이 총 지연 시간을 조정해야 합니다.
+                        setTimeout(() => {
+                            index++; // 다음 목적지를 위해 인덱스 증가
+                            revealNext(); // 다음 항목을 위해 revealNext 호출
+                        }, 2500); // 스파클 효과가 완료될 때까지 기다리거나 필요에 따라 조정하세요.
+
+                    }, 1000);
+
+                }, 2000);
+            }, 1000); // hide 애니메이션 시간에 맞게
+        } else {
+            // wrapper를 찾을 수 없는 경우, revealNext()가 재귀적으로 호출될 때 무한 루프를 방지합니다.
+            console.error("SSRcard-wrapper를 찾을 수 없습니다.");
+            return;
+        }
+    }
+    revealNext(); // 프로세스 시작
+}
 
 function initFoodGachaEvents(){
     console.log("🎉 data-cate='3'을 클릭했습니다!");

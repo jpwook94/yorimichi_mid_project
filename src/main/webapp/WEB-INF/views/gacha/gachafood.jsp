@@ -13,6 +13,9 @@
     </style>
 </head>
 <body>
+<audio controls autoplay loop style="display: none">
+    <source src="/other/audio/gacha/foodback.mp3">
+</audio>
 
 <%-- 배경 --%>
 <div class="gachafoodback">

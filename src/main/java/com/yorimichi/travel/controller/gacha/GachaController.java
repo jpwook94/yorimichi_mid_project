@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Controller
 public class GachaController {
 
@@ -32,6 +34,15 @@ public class GachaController {
         DestinationVO randomDestination = gachaService.getRandomDestination();
         model.addAttribute("pickeddest", randomDestination);
         return randomDestination;
+    }
+
+    @ResponseBody
+    @GetMapping("/pickSSRN")
+    public List<DestinationVO> pickNDestinations(Model model) {
+        int count = 5; // 원하는 개수
+        List<DestinationVO> randomDestinations = gachaService.getRandomNDestinations(count);
+        model.addAttribute("pickeddestlist", randomDestinations); // JSP에서 쓸 경우
+        return randomDestinations; // JSON 배열로 반환
     }
 
     @ResponseBody

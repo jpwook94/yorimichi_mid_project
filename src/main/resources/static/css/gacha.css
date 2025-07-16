@@ -513,6 +513,18 @@
     width: 260px;
 }
 
+
+.SSRment{
+    top: 170px;
+    left: 293px;
+    position: absolute;
+    z-index: 1;
+}
+
+.SSRment img{
+    width: 260px;
+}
+
 .SSRcardback{
     background-image: url("/other/image/gacha/SSRback.png");
     background-size: cover;
@@ -601,13 +613,19 @@
     z-index: 10;
     position: relative;
     opacity: 0;
-    transition: top 1.2s ease, opacity 1.2s ease;
+
     pointer-events: none;
 }
 
 .SSRcard-wrapper.show {
+    transition: top 1.2s ease, opacity 1.2s ease;
     top: -89px; /* 🔼 올라오는 위치 */
     opacity: 1;
+}
+
+.SSRcard-wrapper.hide {
+    opacity: 0;
+    top:89px;
 }
 
 .SSRcard-wrapper.flip .SSRcard-inner {

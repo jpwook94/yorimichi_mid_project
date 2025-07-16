@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -71,6 +72,15 @@ public class GachaService {
         return destinations.get(randomIndex);
     }
 
+    // destination N개 랜덤 뽑기
+    public List<DestinationVO> getRandomNDestinations(int count) {
+        List<DestinationVO> destinations = gachaMapper.selectAllDestination();
+        if (destinations == null || destinations.size() < count) return Collections.emptyList();
+
+        Collections.shuffle(destinations); // 리스트를 섞고
+        return destinations.subList(0, count); // 앞에서부터 count개 선택
+    }
+
     // food 랜덤 뽑기
     public FoodVO getRandomFood() {
         List<FoodVO> foods = gachaMapper.selectAllFood();
@@ -84,7 +94,7 @@ public class GachaService {
     public String getRandomFoodFromGemma(HttpServletResponse response, String where) {
         response.setContentType("text/event-stream");
         response.setCharacterEncoding("UTF-8");
-        String prompt = "일본 여행왔는데 일본 음식 하나만 추천해주라!!";
+        String prompt = "일본 여행왔는데 일본 음식 뭐먹을까? 괜찮은거 하나 추천해줘~~";
 
         if (where != null) {
             result = result.replaceAll("\n", " ").trim();
