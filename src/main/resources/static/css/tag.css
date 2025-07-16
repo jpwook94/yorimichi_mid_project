@@ -427,10 +427,35 @@ footer {
     color: #838383;
     padding: 6px 12px;
     border-radius: 20px;
-    border: 1px solid #838383;
+    border: 1px solid #b1b1b1;
     font-size: 14px;
     line-height: 1;
     position: relative;
     max-width: 100%;
     white-space: nowrap;
+}
+
+/* 활성화된 버튼 스타일 */
+.tag-item.active {
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffe4e4;
+    color: #cc4d4d;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1;
+    position: relative;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.tag-item.active::after {
+    content: "×"; /* 임시 텍스트 (나중에 이미지로 교체 가능) */
+    display: inline-block;
+    margin-left: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffb8b8;
 }

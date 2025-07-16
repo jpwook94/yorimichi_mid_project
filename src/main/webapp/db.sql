@@ -246,6 +246,34 @@ from tag_mbti;
 SELECT *
 from location;
 
+create table Food(
+                     food_number number(2) primary key ,
+                     food_name varchar2(50) not null,
+                    food_details varchar2(2000) not null
+);
+
+drop table FOOD;
+
+insert into FOOD values (1, '초밥', '밥 위에 생선이나 해산물 톡 얹은 일본 대표 음식! 종류도 엄청 다양해!');
+insert into FOOD values (2, '야끼토리', '닭고기를 꼬치에 꽂아서 노릇하게 구운 간편한 길거리 간식!');
+insert into FOOD values (3, '우동', '굵고 쫄깃한 면발에 뜨끈한 국물! 추울 때 딱 생각나는 맛!');
+insert into FOOD values (4, '소바', '시원하게도, 따뜻하게도 즐기는 메밀국수! 깔끔한 맛이 매력!');
+insert into FOOD values (5, '스키야키', '얇게 썬 소고기랑 채소를 달달한 간장 육수에 졸여서 먹는 전골!');
+insert into FOOD values (6, '라멘', '국물 진~하고 면발 쫄깃쫄깃한 일본식 국수! 간장, 된장, 소금 맛도 다양해!');
+insert into FOOD values (7, '돈카츠', '두툼한 돼지고기에 바삭한 튀김옷! 겉바속촉 그 자체!');
+insert into FOOD values (8, '오므라이스', '케첩 볶음밥을 부드러운 달걀로 감싼 귀엽고 맛있는 한 그릇!');
+insert into FOOD values (9, '규동', '얇은 소고기랑 양파를 간장 양념에 졸여서 밥 위에 착! 든든한 덮밥!');
+insert into FOOD values (10, '가라아게', '간장에 살짝 재운 닭고기를 바삭하게 튀긴 일본식 치킨!');
+insert into FOOD values (11, '타코야키', '문어 들어간 반죽을 동글동글하게 구워낸 간식! 겉은 바삭, 속은 부드러워!');
+insert into FOOD values (12, '오뎅', '어묵, 무, 계란 넣고 끓인 따끈한 국물 요리! 겨울에 생각나는 맛!');
+insert into FOOD values (13, '텐동', '바삭한 튀김을 밥 위에 올리고 달콤한 소스 뿌려서 먹는 덮밥!');
+insert into FOOD values (14, '나베', '채소랑 고기, 두부 듬뿍 넣고 끓여서 다 같이 먹는 따뜻한 전골!');
+insert into FOOD values (15, '모찌', '쫀득쫀득한 찹쌀떡! 단팥 넣거나 구워 먹으면 더 맛있어!');
+
+
+select *
+from FOOD;
+
 CREATE TABLE likes
 (
     like_number        NUMBER(10) PRIMARY KEY,

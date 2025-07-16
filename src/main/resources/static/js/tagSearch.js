@@ -82,7 +82,9 @@ async function render(data) {
                     const tagData = await response.json();
 
                     tagData.forEach(tag => {
-                        content += `<div class='tag-item'>#${tag.tag_name}</div>`;
+                        const isSelected = selectedTags.has(tag.tag_name);  // ← 선택 여부 확인
+                        const activeClass = isSelected ? 'active' : '';
+                        content += `<div class='tag-item ${activeClass}'>#${tag.tag_name}</div>`;
                     });
                 } catch (err) {
                     console.error("태그 fetch 실패:", err);
@@ -90,7 +92,9 @@ async function render(data) {
 
                 for (let i = 0; i < locations.length; i++) {
                     if (locations[i].location_number == element.location_number) {
-                        content += "<div class='tag-item'>#" + locations[i].location_name + "</div>";
+                        const isSelected = selectedTags.has(locations[i].location_name);
+                        const activeClass = isSelected ? 'active' : '';
+                        content += "<div class='tag-item " + activeClass + "'>#" + locations[i].location_name + "</div>";
                     }
                 }
 
@@ -103,6 +107,57 @@ async function render(data) {
 
     renderDiv.innerHTML = content;
 }
+
+
+
+
+// 태그 누르면 삭제!
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("tag-item")) {
+        const tagName = e.target.textContent.replace("#", "").trim();
+
+        // 토글 로직
+        if (selectedTags.has(tagName)) {
+            selectedTags.delete(tagName);
+            e.target.classList.remove("active");
+            document.querySelectorAll(".ts-taglist button").forEach(btn => {
+                if (btn.getAttribute("name") === tagName) {
+                    btn.classList.remove("active");
+                }
+            });
+        } else {
+            selectedTags.add(tagName);
+            e.target.classList.add("active");
+            document.querySelectorAll(".ts-taglist button").forEach(btn => {
+                if (btn.getAttribute("name") === tagName) {
+                    btn.classList.add("active");
+                }
+            });
+        }
+
+        userRender();
+
+        if (selectedTags.size > 0) {
+            const tagParam = Array.from(selectedTags).join(",");
+            const url = "/search/tag-search?tags=" + encodeURIComponent(tagParam);
+            fetch(url)
+                .then(res => res.json())
+                .then(data => render(data));
+        } else {
+            render([]);  // 선택된 태그 없을 때 초기화 메시지
+            document.querySelector("#ts-result-size").innerText = "";
+            document.querySelector("#clear-button-container").innerHTML = "";
+        }
+    }
+});
+
+
+
+
+
+
+
 
 function userRender() {
     let content = `<div class="user-select-wrapper">`;
@@ -123,6 +178,13 @@ function userRender() {
             document.querySelectorAll(".ts-taglist button").forEach(btn => {
                 if (btn.getAttribute("name") === tagName) {
                     btn.classList.remove("active");
+                }
+            });
+
+            document.querySelectorAll(".tag-item").forEach(tagEl => {
+                const label = tagEl.textContent.replace("#", "").trim();
+                if (label === tagName) {
+                    tagEl.classList.remove("active");
                 }
             });
 

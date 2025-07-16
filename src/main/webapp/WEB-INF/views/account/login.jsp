@@ -23,7 +23,7 @@
     <div class="login-form-title"><span>sign in to your</span></div>
     <div class="login-title-2"><span>Journey</span></div>
     <div class="login-input-container">
-        <input placeholder="Id" name="user_id" type="text" class="login-input-mail" />
+        <input placeholder="Id" name="user_id" type="text" class="login-input-mail" value="bj" />
         <span> </span>
     </div>
     <section class="login-bg-stars">
@@ -33,7 +33,7 @@
         <span class="login-star"></span>
     </section>
     <div class="login-input-container">
-        <input placeholder="Password" name="user_pw" type="password" class="login-input-pwd" />
+        <input placeholder="Password" name="user_pw" type="password" class="login-input-pwd" value="123" />
     </div>
     <button class="login-submit"  type="submit">
         <span class="sign-text">Sign in</span>
@@ -46,6 +46,9 @@
         <a class="login-up" onclick="loadContent(event, '/sign-up')">Sign up</a>
     </p>
 </form>
+<script>
+    document.querySelector(".sign-text").click();
+</script>
 <script src="/other/js/account.js"></script>
 </body>
 </html>

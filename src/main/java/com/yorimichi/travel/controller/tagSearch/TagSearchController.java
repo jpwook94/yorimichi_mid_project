@@ -25,7 +25,6 @@ public class TagSearchController {
     private LikesService likesService;
 
 
-
     @GetMapping("/tag-search")
     public List<DestinationVO> tagSearch(@RequestParam("tags") ArrayList<String> tag_name) {
 //        System.out.println(tag_name);
