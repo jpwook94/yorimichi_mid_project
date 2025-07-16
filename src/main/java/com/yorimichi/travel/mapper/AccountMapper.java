@@ -27,6 +27,4 @@ public interface AccountMapper {
     @Insert("insert into users values (#{user_id},#{user_name},#{user_email},#{user_pw})")
     int insertUser(AccountVO user);
 
-
-
 }
