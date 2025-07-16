@@ -411,3 +411,26 @@ footer {
     height: 500px;
     background-image: url("/other/image/footer.png");
 }
+
+
+.tag-item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.tag-item {
+    display: inline-flex;
+    align-items: center;
+    color: #838383;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #838383;
+    font-size: 14px;
+    line-height: 1;
+    position: relative;
+    max-width: 100%;
+    white-space: nowrap;
+}

@@ -134,15 +134,11 @@
     </div>
 </footer>
 
-<%
-    Object tags = request.getAttribute("tagList");  // 또는 필요한 경우 캐스팅
-    String jsonMap = new Gson().toJson(tags);
-%>
+
 
 <script>
     const likedDestinations = "${likedDestinations}";
     const locations = JSON.parse('${tags5}');
-    const tags = JSON.parse('<%=jsonMap%>');
 
 </script>
 <script src="/other/js/tagSearch.js"></script>

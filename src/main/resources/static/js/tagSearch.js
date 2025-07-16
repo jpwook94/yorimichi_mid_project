@@ -38,94 +38,69 @@ document.querySelectorAll(".ts-taglist button").forEach(button => {
     });
 });
 
-function render(data) {
+async function render(data) {
     let content = "";
     const resultSizeDiv = document.querySelector("#ts-result-size");
 
-
-
-    //  case 1: 아무 태그도 선택 안 했을 때
     if (selectedTags.size === 0) {
         content = `<div class="no-result-message">태그를 선택해 여행지를 검색해 보세요.</div>`;
-        resultSizeDiv.innerText = ""; // 👉 안 보이게 처리
-    }
-    //  case 2: 태그는 선택했지만 결과가 없을 때
-    else if (data.length === 0) {
+        resultSizeDiv.innerText = "";
+    } else if (data.length === 0) {
         content = `<div class="no-result-message">검색 결과가 없습니다.</div>`;
         resultSizeDiv.innerHTML = `총 <span class="highlight-number">0</span> 개의 여행지`;
-
-        //  case 3: 결과 있음
-
     } else {
-
         content = `<div class="tag-result-wrapper">`;
-        console.log("data.length:", data.length);
+        resultSizeDiv.innerHTML = `총 <span class="highlight-number">${data.length}</span> 개의 여행지`;
 
-        resultSizeDiv.innerHTML = `총  <span class="highlight-number">${data.length}</span> 개의 여행지`;
-        data.forEach(element => {
-            // ### [추가 시작] 태그 검색 결과인 경우
-            isLiked = likedDestinations.includes(element.destination_number);
+        for (const element of data) {
+            const isLiked = likedDestinations.includes(element.destination_number);
+
             if ('destination_name' in element) {
-                content += "<div class='tag-result-one-result'>"
-                content += "<div class='tag-result-img-wrapper'>" + "<img src='/other/image/destination/" + element.destination_number + ".png' alt=''/></div>";
+                content += "<div class='tag-result-one-result'>";
+                content += "<div class='tag-result-img-wrapper'><img src='/other/image/destination/" + element.destination_number + ".png' alt=''/></div>";
                 content += "<div class='tag-result-info-wrapper'>";
                 content += "<div class='tag-result'><h1>" + element.destination_name + "</h1>" +
-                    "            <button style='position: static' class='like-btn'" +
-                    "                    id='heart-icon-btn'" +
-                    "                    data-destination-number='" + element.destination_number + "'" +
-                   "                    data-liked='"+isLiked+"'>" ;
+                    "<button style='position: static' class='like-btn'" +
+                    " id='heart-icon-btn'" +
+                    " data-destination-number='" + element.destination_number + "'" +
+                    " data-liked='" + isLiked + "'>";
+
                 if (isLiked) {
-                    content +=  "<img src='/other/image/heart.png' style='width: 40px' alt='찜한 상태 하트'>"
+                    content += "<img src='/other/image/heart.png' style='width: 40px' alt='찜한 상태 하트'>";
                 } else {
-                    content +=  "<img src='/other/image/emptyheart.png' style='width: 40px' alt='빈 하트'>"
+                    content += "<img src='/other/image/emptyheart.png' style='width: 40px' alt='빈 하트'>";
                 }
 
-
-                   content +=  "</button>" +
-                    "</div><hr>";
+                content += "</button></div><hr>";
                 content += "<div class='tag-result'>추천 유형 : " + element.mbti_category + "</div>";
-                content += "<div class='tag-result'>주소 : " + element.destination_address + "</div>";
-                // Object.entries(tags).forEach(([category, tagArray]) => {
-                //     tagArray.forEach(t => {
-                //         fetch("/search/tag-search?tags=" + t.tag_name)
-                //             .then(response => response.json())
-                //             .then(data => {
-                //                 data.forEach(d => {
-                //                     // console.log("ffff" + d.destination_name);
-                //                 })
-                //             });
-                //         console.log("태그:", t.tag_name);  // ex) ENFP, 도쿄도
-                //     });
-                // });
+                content += "<div class='tag-result'>주소 : " + element.destination_address + "</div><div class='tag-item-wrapper'>";
 
-
+                // 🔽 이 부분을 await로 대기
                 const url2 = "/search/dest-search?dest=" + element.destination_number;
-                fetch(url2)
-                    .then(response => response.json())
-                    .then(data => {
-                        data.forEach(tag => {
-                            console.log(tag.tag_name);
-                            content += "<div>" + "gg" + "</div>";
-                        })
+                try {
+                    const response = await fetch(url2);
+                    const tagData = await response.json();
+
+                    tagData.forEach(tag => {
+                        content += `<div class='tag-item'>#${tag.tag_name}</div>`;
                     });
+                } catch (err) {
+                    console.error("태그 fetch 실패:", err);
+                }
 
                 for (let i = 0; i < locations.length; i++) {
                     if (locations[i].location_number == element.location_number) {
-                        content += "<div>" + locations[i].location_name + "</div>"
+                        content += "<div class='tag-item'>#" + locations[i].location_name + "</div>";
                     }
                 }
-                content +=  "</div></div>";
 
+                content += "</div></div></div><br>";
             }
-            // ### [추가 끝]
-            content += "<br>";
+        }
 
-            //
-            content = `${content}`;
-
-        });
         content += "</div>";
     }
+
     renderDiv.innerHTML = content;
 }
 
