@@ -84,7 +84,6 @@ public class MyPageController {
                 // JSP에서 사용할 수 있도록 모델에 담아준다
 //                model.addAttribute("likedDestinationIds", likedIds);
             }
-
             return "account/userPlanner";
         }
         return "";
