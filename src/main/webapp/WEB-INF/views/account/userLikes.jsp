@@ -1,15 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-    <link rel="stylesheet" href="/other/css/card-list.css">
-</head>
-<body>
 <div class="card-list">
     <c:if test="${empty destinations}">
         <p>찜한 여행지가 없습니다.</p>
@@ -41,7 +32,7 @@
     <c:forEach begin="1" end="${totalPage}" var="i">
         <c:choose>
             <c:when test="${i == curPage}">
-                <span class="active">[${i}]</span>
+                <span class="active cur-page" data-page="${curPage}">[${i}]</span>
             </c:when>
             <c:otherwise>
                 <a href="#" class="page-link" data-page="${i}">[${i}]</a>
@@ -51,5 +42,3 @@
 </div>
 
 <script src="/other/js/account.js"></script>
-</body>
-</html>

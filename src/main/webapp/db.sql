@@ -297,15 +297,3 @@ CREATE SEQUENCE likes_seq
     NOCACHE;
 
 select * from likes;
-
-
-create table heart_status(
-    user_id VARCHAR2(50) PRIMARY KEY,
-    heart_count DEFAULT 5 not null ,
-    last_used_time TIMESTAMP not null
-);
-
-drop table heart_status;
-
-select *
-from HEART_STATUS;

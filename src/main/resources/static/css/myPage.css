@@ -455,7 +455,10 @@
             0px 8px 0px #7c1717,
             0px 10px 8px rgba(154, 68, 68, 0.3);
 }
-
+.mypage-sidebar-item p {
+    margin: 20px auto;
+    font-size: 40px;
+}
 .mypage-sidebar-item img{
     width: 100px;
     height: auto;

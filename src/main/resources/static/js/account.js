@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// 회원가입 비밀번호 확인
 let isIdAvailable = false;
 
 function validatePassword() {
@@ -25,6 +26,7 @@ function validatePassword() {
     return true; // 제출 허용
 }
 
+// 회원가입 아이디 중복 체크
 function checkDuplicateId() {
     const userId = document.getElementById('signup-user-id').value.trim();
     if (!userId) {
@@ -51,7 +53,6 @@ function checkDuplicateId() {
         });
 }
 
-
 /* 비동기 */
 function loadContent(event, url) {
     event.preventDefault();
@@ -72,7 +73,7 @@ function loadContent(event, url) {
         });
 }
 
-
+// 페이징 기능
 document.addEventListener('click', function (e) {
     if (e.target.matches('.pagination .page-link')) {
         e.preventDefault();
@@ -133,11 +134,13 @@ document.addEventListener('click', function (e) {
     }
 });
 
-document.addEventListener('click', function(e) {
+// 찜기능
+document.addEventListener('click', function (e) {
     const likeButton = e.target.closest('.like-btn');
+    const page = document.querySelector(".cur-page").dataset.page;
+
     if (likeButton) {
         likeButton.disabled = true;
-
         const heartImage = likeButton.querySelector('img');
         const destinationNumber = likeButton.dataset.destinationNumber;
 
@@ -146,7 +149,7 @@ document.addEventListener('click', function(e) {
 
         if (isLiked) {
             // --- 찜 취소 로직 ---
-            fetch(`/api/likes/delete-like/${destinationNumber}`, { method: 'DELETE' })
+            fetch(`/api/likes/delete-like/${destinationNumber}`, {method: 'DELETE'})
                 .then(response => response.json())
                 .then(result => {
                     alert(result.message);
@@ -161,14 +164,21 @@ document.addEventListener('click', function(e) {
                 })
                 .finally(() => {
                     likeButton.disabled = false;
+                    fetch(`/account/mypageC?myPageCate=2&page=${page}`)
+                        .then(res => res.text()) // 그래서 그 res를 text화 시켜줌 (그게 text 펑션임)
+                        .then(data => { // 래서 이제 그 값을 data(변수명 내맘대로)에 담아줌
+                            // 그 다음에 data를 어떻게 사용할지 (지금은 이 클래스에(.mypage-main-content)에 innerHTML(안에 띄워줘라)
+                            document.querySelector('.mypage-main-content').innerHTML = data;
+                        });
+
                 });
 
         } else {
             // --- 찜하기 로직 ---
-            const likeData = { destination_number: destinationNumber };
+            const likeData = {destination_number: destinationNumber};
             fetch('/api/likes/add-like', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(likeData)
             })
                 .then(response => response.json())
@@ -187,6 +197,72 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+// 이거는 마이페이지 정보 수정으로 바꾸는거
+document.addEventListener('click', function (e) {
+
+    // '수정' 버튼 클릭 시
+    if (e.target.matches('#edit-profile-btn')) {
+        document.getElementById('display-mode').style.display = 'none';
+        document.getElementById('edit-mode').style.display = 'block';
+        return;
+    }
+
+    // '취소' 버튼 클릭 시
+    if (e.target.matches('#cancel-edit-btn')) {
+        document.getElementById('display-mode').style.display = 'block';
+        document.getElementById('edit-mode').style.display = 'none';
+        return;
+    }
+});
+
+// 이거는 폼 제출(submit) 이벤트 처리
+document.addEventListener('submit', function (e) {
+    // 프로필 수정 폼이 제출될 때
+    if (e.target.matches('#profile-update-form')) {
+        e.preventDefault(); // 폼의 기본 제출(새로고침) 동장을 막음
+
+        const form = e.target;
+        const newPw = form.querySelector('#new_pw').value;
+        const confirmPw = form.querySelector('#confirm_pw').value;
+
+        // 비밀번호 유효성 검사
+        if (newPw !== "" && newPw !== confirmPw) {
+            alert("새 비밀번호가 일치하지 않습니다.")
+            return;
+        }
+
+        // fetch를 사용해 폼 데이터를 서버로 비동기 전송
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch('/account/update', {
+            method: 'POST',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert(result.message);
+                if (result.status === 'success') {
+                    //성공시, JavaScript가 직접 화면을 업데이트하고 모드를 변경한다!
+                    const updatedUser = result.updatedUser;
+
+                    //1. '보기 모드'의 내용들을 최신 정보로 바꿔치기
+                    const displayMode = document.getElementById('display-mode');
+                    document.getElementById('display_user_name').innerHTML = '<strong>이름:</strong> ' + updatedUser.user_name;
+                    document.getElementById('display_user_email').innerHTML = '<strong>이메일:</strong> ' + updatedUser.user_email;
+
+                    //2. '수정 모드'는 숨기고 '보기 모드'를 보여준다.
+                    document.getElementById('edit-mode').style.display = 'none';
+
+                    //3. id를 올바르게 고치고, 위에서 만든 변수를 재사용한다.
+                    displayMode.style.display = 'block';
+                }
+            })
+    }
+})
+
 // ===== DOM이 바뀔 때마다 필요한 다른 기능을 처리하는 부분 =====
 const observer2 = new MutationObserver((mutations) => {
 
@@ -202,4 +278,4 @@ const observer2 = new MutationObserver((mutations) => {
         });
     }
 });
-observer2.observe(document.body, { childList: true, subtree: true });
+observer2.observe(document.body, {childList: true, subtree: true});
