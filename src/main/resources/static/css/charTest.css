@@ -716,5 +716,116 @@ fake-popup-body {
 }
 
 
+/* 이상형 월드컵 문항 페이지 */
+
+.c-ITtheme-selector {
+    width: 692px;
+    height: 310px;
+    background: #ffffff;
+    border: 2px solid #000;
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+    display: flex;
+    flex-direction: column;
+}
+
+.c-ITtheme-frame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.c-ITtheme-container {
+    display: flex;
+    height: 260px;
+}
+
+.c-ITtheme-box {
+    width: 50%;
+    height: 291px;
+    background: #ffffff;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.c-ITtheme-box:hover {
+    background: #c6c9ff;
+}
+
+.c-ITtheme-preview {
+    width: 92%;
+    height: 80%;
+    background: #6060a0;
+    border: 1px solid #000;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.c-ITtheme-preview.mono {
+    background: #8080b0;
+}
+
+.c-ITtheme-label {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+}
+
+.c-ITscrollbar-container {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.c-ITscroll-track {
+    width: 100%;
+    height: 26px;
+    background: #c0c0c0;
+    border: 2px solid #000;
+    box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.c-ITscroll-thumb {
+    width: 50px;
+    height: 20px;
+    background: #828af2;
+    border: 2px solid #000;
+    position: absolute;
+    left: 69%;
+    transform: translateX(-50%);
+}
+
+.c-ITscroll-arrow {
+    width: 26px;
+    height: 25px;
+    background: #dfdfdf;
+    border: 1px solid #000;
+    box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #505050;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.c-ITscroll-arrow:active {
+    box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff;
+}
+
+
 
 

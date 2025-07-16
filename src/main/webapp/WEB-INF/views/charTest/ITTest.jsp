@@ -35,11 +35,39 @@
                 </div>
             </div>
             <div class="c-search-bar">
-                <div class="c-fake-address">게임/성향 테스트/MBTI</div>
+                <div class="c-fake-address">게임/성향 테스트/이상형 월드컵</div>
                 <button class="c-search-button">Search...</button>
             </div>
             <div class="c-content-box">
                 <div class="c-content-area">
+
+                    <div class="c-ITtheme-selector">
+                        <div class="c-ITtheme-frame">
+                            <div class="c-ITtheme-container">
+                                <!-- 왼쪽 박스 -->
+                                <div class="c-ITtheme-box">
+                                    <div class="c-ITtheme-preview"></div>
+                                    <div class="c-ITtheme-label">Mac OS Default</div>
+                                </div>
+
+                                <!-- 오른쪽 박스 -->
+                                <div class="c-ITtheme-box">
+                                    <div class="c-ITtheme-preview mono"></div>
+                                    <div class="c-ITtheme-label">Mono Blue</div>
+                                </div>
+                            </div>
+
+                            <!-- 하단 스크롤바 -->
+                            <div class="c-ITscrollbar-container">
+                                <div class="c-ITscroll-track">
+                                    <div class="c-ITscroll-arrow">◀</div>
+                                    <div class="c-ITscroll-thumb"></div>
+                                    <div class="c-ITscroll-arrow">▶</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="c-fake-scrollbar">

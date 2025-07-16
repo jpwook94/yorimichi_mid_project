@@ -56,39 +56,6 @@ public class CharTestController {
     }
 
 
-    @GetMapping("/getDestination")
-    @ResponseBody
-    public ResponseEntity<DestinationVO> getDestination(@RequestParam("page") int page, HttpSession session) {
-        List<DestinationVO> destList = (List<DestinationVO>) session.getAttribute("destList");
-
-        System.out.println("===== [destList 디버깅] 요청된 page: " + page + " =====");
-
-        if (destList == null) {
-            System.out.println("⚠ destList가 null임! 세션 저장 여부 확인 필요!");
-            return ResponseEntity.badRequest().build(); // null 대신 400 에러 반환
-        }
-
-        System.out.println("🔍 destList.size(): " + destList.size());
-
-        for (int i = 0; i < destList.size(); i++) {
-            DestinationVO d = destList.get(i);
-            System.out.println("[" + i + "] " + d.getDestination_number() + " / " + d.getDestination_name() + " / " + d.getMbti_category());
-        }
-
-        if (page < 0 || page >= destList.size()) {
-            System.out.println("⚠ 유효하지 않은 페이지 번호! → 첫 번째로 fallback");
-            return ResponseEntity.ok(destList.get(0));
-        }
-
-        System.out.println("✅ 반환할 여행지: " + destList.get(page).getDestination_name());
-        return ResponseEntity.ok(destList.get(page));
-    }
-
-
-
-
-
-
     // 이상형 월드컵 문항 페이지
     @GetMapping("/ITTest")
     public String ITTest(Model model) {
