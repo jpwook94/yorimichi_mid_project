@@ -350,6 +350,8 @@ function initSSRcardEvents(){
 
         const wrapper = document.querySelector(".SSRcard-wrapper");
         const innerCard = document.querySelector(".SSRcard-inner");
+        const likegachaContainer = document.querySelector(".likegacha-container");
+        const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn");
 
 
         console.log("1회뽑기 눌렀음")
