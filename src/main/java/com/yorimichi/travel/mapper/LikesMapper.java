@@ -22,10 +22,16 @@ public interface LikesMapper {
     int deleteLike(@Param("userId") String userId, @Param("destinationNumber") int destinationNumber);
 
     // [이 메소드 사용] 특정 유저가 찜한 모든 여행지의 상세 정보 목록을 조회
-    @Select("SELECT d.destination_number, d.destination_name, d.mbti_category, d.destination_address, d.location_number " +
-            "FROM destination d " +
-            "JOIN likes l ON d.destination_number = l.destination_number " +
-            "WHERE l.user_id = #{userId}")
-    List<DestinationVO> findLikedDestinationsByUserId(String userId);
+    @Select("SELECT d.destination_number, d.destination_name, d.mbti_category, d.destination_address, d.location_number\n" +
+            "            FROM destination d, likes l " +
+            "            where d.destination_number = l.destination_number and " +
+            "            l.user_id = #{userId} offset #{offset} rows fetch next 3 rows only")
+    List<DestinationVO> findLikedDestinationsByUserId(int offset, String userId);
+
+@Select("SELECT count(*)" +
+        "            FROM destination d, likes l " +
+        "            where d.destination_number = l.destination_number and " +
+        "            l.user_id = #{userId}")
+    int findLikedDestinationsByUserIdCount(String userId);
 }
 
