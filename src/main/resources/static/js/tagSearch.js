@@ -81,22 +81,37 @@ async function render(data) {
                     const response = await fetch(url2);
                     const tagData = await response.json();
 
-                    tagData.forEach(tag => {
-                        const isSelected = selectedTags.has(tag.tag_name);  // ← 선택 여부 확인
-                        const activeClass = isSelected ? 'active' : '';
-                        content += `<div class='tag-item ${activeClass}'>#${tag.tag_name}</div>`;
-                    });
-                } catch (err) {
-                    console.error("태그 fetch 실패:", err);
-                }
 
-                for (let i = 0; i < locations.length; i++) {
-                    if (locations[i].location_number == element.location_number) {
-                        const isSelected = selectedTags.has(locations[i].location_name);
-                        const activeClass = isSelected ? 'active' : '';
-                        content += "<div class='tag-item " + activeClass + "'>#" + locations[i].location_name + "</div>";
+
+                    ///////////////////////////////////////////////////
+                    // 1. 태그 이름 추출
+                    const tagNames = tagData.map(tag => tag.tag_name);
+
+                    // 2. 위치 이름 추출
+                    const locNames = locations
+                        .filter(loc => loc.location_number == element.location_number)
+                        .map(loc => loc.location_name);
+
+                    // 3. 단순히 합치기
+                    const combinedTags = [...tagNames, ...locNames];
+
+                    // 4. 선택된 태그 먼저 정렬
+                    combinedTags.sort((a, b) => {
+                        const aSelected = selectedTags.has(a);
+                        const bSelected = selectedTags.has(b);
+                        return aSelected === bSelected ? 0 : aSelected ? -1 : 1;
+                    });
+
+                    // 5. 출력
+                    combinedTags.forEach(tagName => {
+                        const isSelected = selectedTags.has(tagName);
+                        const activeClass = isSelected ? "active" : "";
+                        content += `<div class="tag-item ${activeClass}">#${tagName}</div>`;
+                    });
+                    } catch (err) {
+                        console.error("태그 fetch 실패:", err);
                     }
-                }
+////////////////////////////////////////////////////////////////////////////////////
 
                 content += "</div></div></div><br>";
             }
