@@ -1,6 +1,7 @@
 package com.yorimichi.travel.mapper;
 
 import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.FoodVO;
 import com.yorimichi.travel.vo.LocationVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -25,5 +26,9 @@ public interface GachaMapper {
     // destination 하나조회
     @Select("select * from destination where destination_number=#{num}")
     DestinationVO selectDestinationByNum(int num);
+
+    // food 전체조회
+    @Select("select * from food")
+    public List<FoodVO> selectAllFood();
 
 }
