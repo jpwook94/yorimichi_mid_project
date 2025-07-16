@@ -137,7 +137,8 @@ document.addEventListener('click', function (e) {
 // 찜기능
 document.addEventListener('click', function (e) {
     const likeButton = e.target.closest('.like-btn');
-    const page = document.querySelector(".cur-page").dataset.page;
+    const curPageElement = document.querySelector(".cur-page");
+    const page = curPageElement?.dataset.page != null ? curPageElement : null;
 
     if (likeButton) {
         likeButton.disabled = true;
@@ -164,15 +165,15 @@ document.addEventListener('click', function (e) {
                 })
                 .finally(() => {
                     likeButton.disabled = false;
+                    if (page != null){
                     fetch(`/account/mypageC?myPageCate=2&page=${page}`)
                         .then(res => res.text()) // 그래서 그 res를 text화 시켜줌 (그게 text 펑션임)
                         .then(data => { // 래서 이제 그 값을 data(변수명 내맘대로)에 담아줌
                             // 그 다음에 data를 어떻게 사용할지 (지금은 이 클래스에(.mypage-main-content)에 innerHTML(안에 띄워줘라)
                             document.querySelector('.mypage-main-content').innerHTML = data;
                         });
-
+                    }
                 });
-
         } else {
             // --- 찜하기 로직 ---
             const likeData = {destination_number: destinationNumber};
