@@ -3,9 +3,7 @@ package com.yorimichi.travel.service.gacha;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.yorimichi.travel.mapper.GachaMapper;
-import com.yorimichi.travel.vo.DestinationVO;
-import com.yorimichi.travel.vo.FoodVO;
-import com.yorimichi.travel.vo.LocationVO;
+import com.yorimichi.travel.vo.*;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +46,20 @@ public class GachaService {
 
         int randomIndex = ThreadLocalRandom.current().nextInt(Locations.size());
         return Locations.get(randomIndex);
+    }
+
+    // 마스코트 번호로 마스코트 조회
+    public MascotVO getMascotByNumber(int mascotNumber) {
+        return gachaMapper.selectMascotByNum(mascotNumber);
+    }
+
+    // 랜덤뽑기 한 location과 mascot 정보
+    public PickResultVO pickLocationAndMascot() {
+        LocationVO randomLocation = getRandomLocation();
+
+        // 뽑은 LocationVO의 mascot_number로 MascotVO를 조회
+        MascotVO correspondingMascot = getMascotByNumber(randomLocation.getMascot_number());
+        return new PickResultVO(randomLocation, correspondingMascot);
     }
 
     // destination 전체 조회

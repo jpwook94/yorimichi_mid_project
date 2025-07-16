@@ -5,6 +5,7 @@ import com.yorimichi.travel.service.gacha.GachaService;
 import com.yorimichi.travel.vo.DestinationVO;
 import com.yorimichi.travel.vo.FoodVO;
 import com.yorimichi.travel.vo.LocationVO;
+import com.yorimichi.travel.vo.PickResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +23,10 @@ public class GachaController {
 
     @ResponseBody
     @GetMapping("/pick")
-    public LocationVO pickMascot(Model model) {
-        LocationVO randomLocation = gachaService.getRandomLocation();
-        model.addAttribute("pickedloc", randomLocation);
-        return randomLocation; // 뽑은 객체
+    public PickResultVO pickMascot(Model model) {
+        PickResultVO randomLocationMas = gachaService.pickLocationAndMascot();
+        model.addAttribute("pickedlocMos", randomLocationMas);
+        return randomLocationMas; // 뽑은 객체
     }
 
     @ResponseBody

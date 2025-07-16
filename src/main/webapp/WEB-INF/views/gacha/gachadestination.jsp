@@ -23,6 +23,12 @@
 
 <div class="sparkle-container" id="sparkleContainer"></div>
 
+<div class="gachacitypick-cute2">
+    <img src="/other/image/gacha-cute/mario-sparkle.gif" alt="">
+    <img src="/other/image/gacha-cute/star-starry.gif" alt="">
+    <img src="/other/image/gacha-cute/star-starry.gif" alt="">
+</div>
+
 <div class="SSRcard-wrapper">
     <div class="SSRcard-inner">
         <div class="SSRcard-flip-card-front">
@@ -35,6 +41,30 @@
     </div>
     </div>
 
+</div>
+
+<div class="likegacha-container">
+    <div class="likegacha-browser-window">
+        <div class="likegacha-title-bar">
+            <div class="likegacha-window-controls">
+                <div class="likegacha-control-btn">−</div>
+                <div class="likegacha-control-btn">□</div>
+                <div class="likegacha-control-btn">×</div>
+            </div>
+        </div>
+        <div class="likegacha-content-area">
+            <div class="likegacha-main-content">
+                <span>여행지를 저장할래?</span>
+                <img src="/other/image/gacha/heart-beating-heart.gif" alt="">
+                <div class="likegacha-main-btnlist">
+                    <div class="like-btn" >
+                    <button class="likegacha-main-btn" style="">yes</button>
+                    </div>
+                    <button class="likegacha-main-btn">no</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="gachadescard-pickcontainer">

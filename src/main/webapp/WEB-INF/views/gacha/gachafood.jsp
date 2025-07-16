@@ -33,7 +33,7 @@
 
 <%-- 대화창 --%>
 <div class="gachafood-chatwindow">
-    <span id="result" ></span>
+    <span id="result" > 앗, 오리쿤에게 물어볼까?</span>
 </div>
 </div>
 <script>
