@@ -1,12 +1,18 @@
 package com.yorimichi.travel.controller.charTest;
 
 import com.yorimichi.travel.service.charTest.CharTestService;
+import com.yorimichi.travel.vo.DestinationVO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -39,7 +45,7 @@ public class CharTestController {
 
         // 서비스에서 값 계산 및 정보 조회
         Map<String, Object> resultMap = charTestService.resultMBTI(ans);
-//        charTestService.resultMBTIByGPT();
+        /*charTestService.resultMBTIByGPT();*/
         // jsp에서 쓸 값 셋팅
         model.addAttribute("destList", resultMap.get("destination"));
         model.addAttribute("mbtiResult", resultMap.get("trait"));
@@ -48,6 +54,37 @@ public class CharTestController {
         model.addAttribute("content", "charTest/mbti_result.jsp");
         return "main";
     }
+
+
+    @GetMapping("/getDestination")
+    @ResponseBody
+    public ResponseEntity<DestinationVO> getDestination(@RequestParam("page") int page, HttpSession session) {
+        List<DestinationVO> destList = (List<DestinationVO>) session.getAttribute("destList");
+
+        System.out.println("===== [destList 디버깅] 요청된 page: " + page + " =====");
+
+        if (destList == null) {
+            System.out.println("⚠ destList가 null임! 세션 저장 여부 확인 필요!");
+            return ResponseEntity.badRequest().build(); // null 대신 400 에러 반환
+        }
+
+        System.out.println("🔍 destList.size(): " + destList.size());
+
+        for (int i = 0; i < destList.size(); i++) {
+            DestinationVO d = destList.get(i);
+            System.out.println("[" + i + "] " + d.getDestination_number() + " / " + d.getDestination_name() + " / " + d.getMbti_category());
+        }
+
+        if (page < 0 || page >= destList.size()) {
+            System.out.println("⚠ 유효하지 않은 페이지 번호! → 첫 번째로 fallback");
+            return ResponseEntity.ok(destList.get(0));
+        }
+
+        System.out.println("✅ 반환할 여행지: " + destList.get(page).getDestination_name());
+        return ResponseEntity.ok(destList.get(page));
+    }
+
+
 
 
 
