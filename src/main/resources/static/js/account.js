@@ -116,10 +116,12 @@ document.addEventListener('click', function (e) {
         console.log(e.target.value)
         if (e.target.value == 'on') {
             url += '?where=on'}
+
         const eventSource = new EventSource(url);
         eventSource.onmessage = function (event) {
 
             console.log(event.data)
+
             const data = event.data;
             document.querySelector("#result").textContent += data;
             if (data.includes(".")) {
@@ -137,7 +139,7 @@ document.addEventListener('click', function (e) {
 // 찜기능
 document.addEventListener('click', function (e) {
     const likeButton = e.target.closest('.like-btn');
-    const page = document.querySelector(".cur-page").dataset.page;
+    /*const page = document.querySelector(".cur-page").dataset.page;*/
 
     if (likeButton) {
         likeButton.disabled = true;

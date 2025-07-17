@@ -28,7 +28,6 @@ pageEncoding="UTF-8" %>
                     name="user_id"
                     type="text"
                     class="login-input-mail"
-                    value="bj"
                 />
                 <span> </span>
             </div>
@@ -44,7 +43,6 @@ pageEncoding="UTF-8" %>
                     name="user_pw"
                     type="password"
                     class="login-input-pwd"
-                    value="123"
                 />
             </div>
             <button class="login-submit" type="submit">
@@ -59,10 +57,10 @@ pageEncoding="UTF-8" %>
                     >Sign up</a
                 >
             </p>
-        </form>
+        </form><%--
         <script>
             document.querySelector(".sign-text").click();
-        </script>
+        </script>--%>
         <script src="/other/js/account.js"></script>
     </body>
 </html>

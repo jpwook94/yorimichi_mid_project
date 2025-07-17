@@ -31,6 +31,7 @@ public class LikesService {
     public List<DestinationVO> getLikedDestinations(int offset, String userId) {
         return likesMapper.findLikedDestinationsByUserId(offset, userId);
     }
+
     public int getLikedDestinationsCount(String userId) {
         return likesMapper.findLikedDestinationsByUserIdCount(userId);
     }

@@ -28,13 +28,14 @@ public interface LikesMapper {
             "            l.user_id = #{userId} offset #{offset} rows fetch next 3 rows only")
     List<DestinationVO> findLikedDestinationsByUserId(int offset, String userId);
 
-@Select("SELECT count(*)" +
-        "            FROM destination d, likes l " +
-        "            where d.destination_number = l.destination_number and " +
-        "            l.user_id = #{userId}")
-    int findLikedDestinationsByUserIdCount(String userId);
+    @Select("SELECT count(*)" +
+            "            FROM destination d, likes l " +
+            "            where d.destination_number = l.destination_number and " +
+            "            l.user_id = #{userId}")
+        int findLikedDestinationsByUserIdCount(String userId);
 
-@Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
-    int existsCheck(String id, int desNum);
+    // 유저가 여행지 찜 한게 있는지 없는지(없으면 0, 있으면 1)
+    @Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
+        int existsCheck(String id, int desNum);
 }
 

@@ -336,7 +336,12 @@ function initSSRcardEvents(){
                 console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
             });
             likegachaContainer.style.display = "none";
+            document.querySelector(".fivegacha-container").style.display = "none";
             document.querySelector(".SSRcard-wrapper").classList.add("hide");
+            SSRcardpicked1.style.pointerEvents = "auto";
+            SSRcardpicked1.style.opacity = "1";
+            SSRcardpickedN.style.pointerEvents = "auto";
+            SSRcardpickedN.style.opacity = "1";
         });
     } else {
         console.warn("닫기 버튼 (×)을 찾을 수 없습니다.");
@@ -348,7 +353,12 @@ function initSSRcardEvents(){
                 console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
             });
             likegachaContainer.style.display = "none";
+            document.querySelector(".fivegacha-container").style.display = "none";
             document.querySelector(".SSRcard-wrapper").classList.add("hide");
+            SSRcardpicked1.style.pointerEvents = "auto";
+            SSRcardpicked1.style.opacity = "1";
+            SSRcardpickedN.style.pointerEvents = "auto";
+            SSRcardpickedN.style.opacity = "1";
         });
     } else {
         console.warn("'no' 버튼을 찾을 수 없습니다.");
@@ -360,7 +370,12 @@ function initSSRcardEvents(){
                 console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
             });
             likegachaContainer2.style.display = "none";
+            document.querySelector(".fivegacha-container").style.display = "none";
             document.querySelector(".SSRcard-wrapper").classList.add("hide");
+            SSRcardpicked1.style.pointerEvents = "auto";
+            SSRcardpicked1.style.opacity = "1";
+            SSRcardpickedN.style.pointerEvents = "auto";
+            SSRcardpickedN.style.opacity = "1";
         });
     }
 
@@ -370,7 +385,12 @@ function initSSRcardEvents(){
                 console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
             });
             likegachaContainer2.style.display = "none";
+            document.querySelector(".fivegacha-container").style.display = "none";
             document.querySelector(".SSRcard-wrapper").classList.add("hide");
+            SSRcardpicked1.style.pointerEvents = "auto";
+            SSRcardpicked1.style.opacity = "1";
+            SSRcardpickedN.style.pointerEvents = "auto";
+            SSRcardpickedN.style.opacity = "1";
         });
     }
     /* 카드 뽑기 눌렀을 때 사운드 */
@@ -379,6 +399,9 @@ function initSSRcardEvents(){
     const SSRcardshow = new Audio("/other/audio/gacha/shine-5.mp3");
     /* 카드 스파클 사운드 */
     const SSRcardSparkle = new Audio("/other/audio/gacha/shine-7.mp3");
+
+    /* 1회 뽑기를 눌렀는지 5회뽑기를 눌렀는지 구분용 */
+    let currentPickType = ""; // "single" 또는 "multi"
 
     /* 1회 뽑기 눌렀을 때 */
     SSRcardpicked1.addEventListener("click", async (e) => {
@@ -403,10 +426,12 @@ function initSSRcardEvents(){
         const data = await response.json();
         console.log(data)
         const destination_num = data.destination_number;
+        // 유저가 여행지 찜 한게 있는지 없는지(없으면 0, 있으면 1 / 기본세팅 0)
         let exists = 0;
         if(userId !== null || userId !== ""){
             const response = await fetch(`/existsCheck/${userId}/${destination_num}`);
             const data2 = await response.json();
+            // 유저가 여행지 찜 한게 있는지 없는지(없으면 0, 있으면 1로 바꿔준다)
             exists = data2 === 1 ? 1 : 0;
         }
 
@@ -466,12 +491,14 @@ function initSSRcardEvents(){
                         });
                         setTimeout(() => {
                             if(exists == 1){
+                            // 이미 찜해놓은 여행지면 너 이미 찜햇는딩 윈도우 보여주기
                             document.querySelector(".likegacha-container22").style.display = "block";
-
                             }else {
+                            // 찜 안해둔 여행지면 찜할래?? 윈도우 보여주기
                             document.querySelector(".likegacha-container").style.display = "block";
                             let tg = document.querySelectorAll(".likegacha-main-btn")[0];
                             tg.dataset.destinationNumber = destination_num;
+                            currentPickType = "single"; // 추가
                             addEvent();
                             }
 
@@ -481,17 +508,9 @@ function initSSRcardEvents(){
             }, 1000); // hide 애니메이션 시간에 맞게
         }
 
-        setTimeout(() => {
-            SSRcardpicked1.style.pointerEvents = "auto";
-            SSRcardpicked1.style.opacity = "1";
-            SSRcardpickedN.style.pointerEvents = "auto";
-            SSRcardpickedN.style.opacity = "1";
-        }, 5000);
-
     })
 
-
-    /* 5회 뽑기 */
+    /* 5회 뽑기 누르기 */
     SSRcardpickedN.addEventListener("click", async () => {
         // 버튼 비활성화
         SSRcardpicked1.style.pointerEvents = "none"; // 클릭 막기
@@ -513,14 +532,13 @@ function initSSRcardEvents(){
         playSSRN(data);
         setTimeout(() => {
             document.querySelector(".likegacha-container").style.display = "block";
-        }, 35000);
+            document.querySelector(".fivegacha-container").style.display = "block";
+        }, 33000);
 
     })
 
-
-}
-
-function playSSRN(destinations) {
+    /* 5회뽑기 돌아감 */
+    function playSSRN(destinations) {
     let index = 0;
     /* 카드 나올 때 사운드 */
     const SSRcardshow = new Audio("/other/audio/gacha/shine-5.mp3");
@@ -528,12 +546,15 @@ function playSSRN(destinations) {
     const SSRcardSparkle = new Audio("/other/audio/gacha/shine-7.mp3");
 
     function revealNext() {
-        // 모든 목적지가 표시되었으면 함수를 종료합니다.
+        // 모든 여행지가 표시되었으면 함수를 종료합니다.
         if (index >= destinations.length) {
             console.log("모든 목적지가 표시되었습니다!");
+            document.querySelector(".SSRcard-wrapper").classList.add("hide");
+            // 여행지 다 보여주고 찜창 띄울 때 pickType 설정 및 이벤트 설정
+            currentPickType = "multi";
+            addEvent();
             return;
         }
-
         const wrapper = document.querySelector(".SSRcard-wrapper");
         if (wrapper) {
             // 초기 상태 리셋
@@ -542,9 +563,17 @@ function playSSRN(destinations) {
 
             const destNameEl = document.getElementById("SSR-destination-name");
             const currentDest = destinations[index];
+            const checkboxes = document.querySelectorAll("input[name='fivelike']");
+            const labels = document.querySelectorAll(".checkbox-label");
             if (destNameEl) {
                 destNameEl.textContent = currentDest.destination_name;
                 destNameEl.setAttribute("data-content", currentDest.destination_name);
+            }
+            if (checkboxes[index]) {
+                checkboxes[index].value = currentDest.destination_name;
+            }
+            if (labels[index]) {
+                labels[index].textContent = currentDest.destination_name;
             }
 
             setTimeout(() => {
@@ -555,6 +584,7 @@ function playSSRN(destinations) {
 
                 // 등장
                 wrapper.classList.add("show");
+                SSRcardshow.currentTime = 0;
                 SSRcardshow.play().catch((err) => {
                     console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
                 });
@@ -587,7 +617,7 @@ function playSSRN(destinations) {
 }
 
 
-function addEvent() {
+    function addEvent() {
     console.log("addEvent() 실행됨");
 
     const yesBtn = document.querySelectorAll(".likegacha-main-btn")[0];
@@ -623,5 +653,8 @@ function addEvent() {
     };
 
     yesBtn.addEventListener("click", yesClickHandler);
+
+}
+
 
 }

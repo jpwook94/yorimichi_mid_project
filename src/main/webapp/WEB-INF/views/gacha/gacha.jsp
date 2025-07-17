@@ -45,7 +45,7 @@
                 <div class="gacha-nav-btn" id="gacha-forward">→</div>
                 <div class="gacha-nav-btn" id="gacha-refresh">↻</div>
 
-                <div class="gacha-address-bar">${loginUser.user_id}요리미치/게임/랜덤 뽑기</div>
+                <div class="gacha-address-bar">요리미치/게임/랜덤 뽑기</div>
             </div>
 
             <div class="gacha-content-area">

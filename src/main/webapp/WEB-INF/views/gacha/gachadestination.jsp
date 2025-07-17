@@ -47,6 +47,47 @@
 
 </div>
 
+<%-- 5연가챠 결과창 --%>
+    <div class="fivegacha-container">
+        <div class="fivegacha-browser-window">
+            <div class="fivegacha-title-bar">
+                <div class="fivegacha-window-controls">
+                    <div class="fivegacha-control-btn">−</div>
+                    <div class="fivegacha-control-btn">□</div>
+                    <div class="fivegacha-control-btn">×</div>
+                </div>
+            </div>
+            <div class="fivegacha-content-area">
+                <div class="fivegacha-main-content">
+                    <img src="/other/image/gacha/airplane_pixel.gif" alt="">
+
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fivelike-0" name="fivelike" value="">
+                        <label for="fivelike-0" class="checkbox-label"></label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fivelike-1" name="fivelike" value="">
+                        <label for="fivelike-1" class="checkbox-label"></label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fivelike-2" name="fivelike" value="">
+                        <label for="fivelike-2" class="checkbox-label"></label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fivelike-3" name="fivelike" value="">
+                        <label for="fivelike-3" class="checkbox-label"></label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="fivelike-4" name="fivelike" value="">
+                        <label for="fivelike-4" class="checkbox-label"></label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 <%-- 찜할거야? 윈도우 --%>
 <div class="likegacha-container">
     <div class="likegacha-browser-window">

@@ -49,7 +49,7 @@ public class GachaAPIC {
     public List<DestinationVO> pickNDestinations(Model model) {
         int count = 5; // 원하는 개수
         List<DestinationVO> randomDestinations = gachaService.getRandomNDestinations(count);
-//        model.addAttribute("pickeddestlist", randomDestinations); // JSP에서 쓸 경우
+        model.addAttribute("pickeddestlist", randomDestinations); // JSP에서 쓸 경우
         return randomDestinations; // JSON 배열로 반환
     }
 
