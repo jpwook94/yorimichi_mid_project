@@ -104,7 +104,7 @@
                 <img src="/other/image/gacha/heart-beating-heart.gif" alt="">
                 <div class="likegacha-main-btnlist">
                     <div class="like-btn1" data-destination-number="">
-                        <button class="likegacha-main-btn" value="y" style="">yes</button>
+                        <button class="likegacha-main-btn" data-mode="single" value="y" style="">yes</button>
                     </div>
                     <button class="likegacha-main-btn" value="n">no</button>
                 </div>
@@ -137,7 +137,7 @@
 
 <div class="gachadescard-pickcontainer">
     <div id="SSRpick1" class="gachadescard-pickbtn" data-userId="${sessionScope.loginUser.user_id}" >1회 뽑기</div>
-    <div id="SSRpickN" class="gachadescard-pickbtn">n회 뽑기</div>
+    <div id="SSRpickN" class="gachadescard-pickbtn" >n회 뽑기</div>
 </div>
 
 </body>

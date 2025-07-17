@@ -37,5 +37,8 @@ public interface LikesMapper {
     // 유저가 여행지 찜 한게 있는지 없는지(없으면 0, 있으면 1)
     @Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
         int existsCheck(String id, int desNum);
+
+    @Select("SELECT COUNT(*) FROM likes WHERE user_id = #{userId} AND destination_number = #{destinationNumber}")
+    int isLiked(String userId, int destinationNumber);
 }
 

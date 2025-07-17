@@ -40,4 +40,10 @@ public class LikesService {
     public int existsCheck(String id, int desNum) {
             return likesMapper.existsCheck(id, desNum);
     }
+
+    public boolean isLiked(String userId, int destinationNumber) {
+        return likesMapper.isLiked(userId, destinationNumber) > 0;
+    }
+
+
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -56,5 +58,22 @@ public class LikesController {
             // 실패 시 - 실패 메시지 반환
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", "처리 중 오류가 발생했습니다."));
         }
+    }
+
+    @PostMapping("/check-liked-list")
+    @ResponseBody
+    public ResponseEntity<?> checkMultipleLikes(@RequestBody List<Integer> destinationNumbers, HttpSession session) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "로그인이 필요합니다."));
+        }
+
+        Map<Integer, Boolean> likedMap = new HashMap<>();
+        for (int num : destinationNumbers) {
+            boolean isLiked = likesService.isLiked(loginUser.getUser_id(), num);
+            likedMap.put(num, isLiked);
+        }
+
+        return ResponseEntity.ok(likedMap);
     }
 }
