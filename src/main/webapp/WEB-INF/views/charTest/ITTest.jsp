@@ -1,5 +1,6 @@
 <%@ page language = "java" contentType = "text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +9,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/other/js/itTest.js"
+    ></script>
 
 </head>
 <body>
@@ -34,6 +38,7 @@
                     </div>
                 </div>
             </div>
+            <img class="timething" src="https://thumb.silhouette-ac.com/t/2a/2ac8f1d97ea8fe3c911b0f0395312583_t.jpeg" alt="">
             <div class="c-search-bar">
                 <div class="c-fake-address">게임/성향 테스트/이상형 월드컵</div>
                 <button class="c-search-button">Search...</button>
@@ -45,15 +50,37 @@
                         <div class="c-ITtheme-frame">
                             <div class="c-ITtheme-container">
                                 <!-- 왼쪽 박스 -->
-                                <div class="c-ITtheme-box">
-                                    <div class="c-ITtheme-preview"></div>
-                                    <div class="c-ITtheme-label">Mac OS Default</div>
+                                <div class="c-ITtheme-box" id="${left.food_number}">
+                                    <div class="c-ITtheme-preview">
+                                        <img src="/other/image/food/${left.food_number}" alt=""
+                                             onerror="
+                                                     this.onerror=null;
+                                                     this.src='/other/image/${left.food_number}.jpg';
+                                                     this.onerror=function(){
+                                                     this.onerror=null;
+                                                     this.src='/other/image/${left.food_number}.jpeg';
+                                                     };
+                                                     "
+                                        >
+                                    </div>
+                                    <div class="c-ITtheme-label">${left.food_name}</div>
                                 </div>
 
                                 <!-- 오른쪽 박스 -->
-                                <div class="c-ITtheme-box">
-                                    <div class="c-ITtheme-preview mono"></div>
-                                    <div class="c-ITtheme-label">Mono Blue</div>
+                                <div class="c-ITtheme-box" id="${right.food_number}">
+                                    <div class="c-ITtheme-preview mono">
+                                        <img src="/other/image/food/${right.food_number}" alt=""
+                                             onerror="
+                                                     this.onerror=null;
+                                                     this.src='/other/image/${right.food_number}.jpg';
+                                                     this.onerror=function(){
+                                                     this.onerror=null;
+                                                     this.src='/other/image/${right.food_number}.jpeg';
+                                                     };
+                                                     "
+                                        >
+                                    </div>
+                                    <div class="c-ITtheme-label">${right.food_name}</div>
                                 </div>
                             </div>
 
@@ -85,6 +112,25 @@
                         </svg>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <%--라운드 팝업 (메모장)--%>
+        <div class="c-notepad-window">
+            <div class="c-notepad-title-bar">
+                <span>- - Notepad</span>
+            </div>
+            <div class="c-notepad-menu-bar">
+                <span>File</span>
+                <span>Edit</span>
+                <span>Search</span>
+                <span>Help</span>
+            </div>
+            <div class="c-notepad-content-area">
+                <span id="round">${round}</span><span class="c-notepad-fake-caret">┃</span>
+            </div>
+            <div class="c-notepad-scrollbars">
+                <div class="c-notepad-resize-corner"></div>
             </div>
         </div>
 
@@ -121,6 +167,7 @@
     </div>
 
 </div>
+
 
 
 </body>

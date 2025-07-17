@@ -71,4 +71,6 @@ public class AccountController {
         model.addAttribute("content", "account/myPage.jsp");
         return "main"; // 템플릿 이름에 맞게 조정 (ex. "main" or "account/mypage" 등)
     }
+
+
 }

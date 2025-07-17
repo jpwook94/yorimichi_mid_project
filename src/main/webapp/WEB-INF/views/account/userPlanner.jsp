@@ -17,10 +17,10 @@
             </div>
 
                 <%-- [수정] 1. 찜 상태를 확인하는 로직을 버튼보다 위로 옮긴다. --%>
-            <c:set var="isLiked" value="false" />
+            <c:set var="isLiked" value="false"/>
             <c:forEach items="${likedDestinationIds}" var="likedId">
                 <c:if test="${des.destination_number == likedId}">
-                    <c:set var="isLiked" value="true" />
+                    <c:set var="isLiked" value="true"/>
                 </c:if>
             </c:forEach>
 
@@ -50,7 +50,7 @@
     <c:forEach begin="1" end="${totalPage}" var="i">
         <c:choose>
             <c:when test="${i == curPage}">
-                <span class="active">[${i}]</span>
+                <span class="active cur-page" data-page="${curPage}">[${i}]</span>
             </c:when>
             <c:otherwise>
                 <span class="page-link" data-page="${i}">[${i}]</span>

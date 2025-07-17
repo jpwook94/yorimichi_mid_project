@@ -2,6 +2,7 @@ package com.yorimichi.travel.controller.charTest;
 
 import com.yorimichi.travel.service.charTest.CharTestService;
 import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.FoodVO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,7 @@ public class CharTestController {
 
     @Autowired
     private CharTestService charTestService;
+
 
 
     // 테스트 유형 선택 페이지
@@ -58,12 +61,27 @@ public class CharTestController {
 
     // 이상형 월드컵 문항 페이지
     @GetMapping("/ITTest")
-    public String ITTest(Model model) {
+    public String startWorldCup(HttpSession session, Model model) {
+        List<FoodVO> selected = charTestService.getRandom16Foods(); // 16명 뽑기
+        model.addAttribute("round", "16강");
+        session.setAttribute("roundList", selected);
+        session.setAttribute("currentIndex", 0);
+        session.setAttribute("tempWinners", new ArrayList<FoodVO>());
+        model.addAttribute("left", selected.get(0));
+        model.addAttribute("right", selected.get(1));
+
+        System.out.println("========================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        // 문항 페이지 나타나게
         model.addAttribute("content", "charTest/ITTest.jsp");
         return "main";
     }
 
-
+    @PostMapping("/ITTest/select")
+    @ResponseBody
+    public Map<String, Object> selectFood(@RequestParam("selectedId") int selectedId, HttpSession session) {
+        System.out.println("선택된 후보 ID: " + selectedId);
+        return charTestService.processSelection(selectedId, session);
+    }
 
 
 

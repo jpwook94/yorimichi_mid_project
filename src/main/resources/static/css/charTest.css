@@ -258,7 +258,7 @@ c-window-container {
     display: flex;
     justify-content: flex-start;
     gap: 50px;
-    margin: 30px 40px;
+    margin: 16px 40px;
 }
 
 .c-icon-box {
@@ -268,29 +268,29 @@ c-window-container {
     cursor: pointer;
 }
 
-.icon-box:active {
+.c-icon-box:active {
     transform: scale(0.97);
 }
 
-.c-icons .test-img {
+.c-icons .c-test-img {
     width: 130px;
     display: block;
 
 }
 
-.icon-box:hover .test-img {
+.c-icon-box:hover .test-img {
 /*    outline: 2px solid #4b8aff;
     outline-offset: 4px;*/
     transform: scale(1.05);
     transition: transform 0.2s ease, outline 0.2s ease;
 }
 
-.icon-label {
+.c-icon-label {
     margin-top: 6px;
     font-size: 14px;
 }
 
-.icon-box:hover .icon-label {
+.c-icon-box:hover .c-icon-label {
     color: #4b8aff;
     text-decoration: underline;
     font-weight: bold;
@@ -771,7 +771,7 @@ fake-popup-body {
 }
 
 .c-ITtheme-label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     text-align: center;
     color: #000;
@@ -827,5 +827,97 @@ fake-popup-body {
 }
 
 
+.timething{
+    position: fixed;
+    left: 50%;
+    height: 50%;
+    z-index: 99;
+    animation: rotateOnce 1s linear forwards;
+    display: none;
+}
 
+@keyframes rotateOnce {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
+.c-notepad-window {
+    width: 158px;
+    height: 199px;
+    background: #c0c0c0;
+    border: 2px solid #000;
+    box-shadow: inset -1px -1px 0 #808080, inset 1px 1px 0 #fff, 4px 4px 0 rgba(0, 61, 142, 0.8);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 255px;
+    left: 288px;
+    z-index: 6;
+}
+.c-notepad-title-bar {
+    background: #73948b;
+    color: #fff;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.c-notepad-menu-bar {
+    background: #cbd2d0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #909090;
+    padding: 2px 6px;
+    font-size: 8px;
+}
+.c-notepad-menu-bar span {
+    margin-right: 10px;
+    cursor: default;
+}
+.c-notepad-content-area {
+    flex: 1;
+    background: #fff;
+    padding: 6px;
+    overflow: auto;
+    font-size: 33px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    display: flex;
+}
+
+.c-notepad-fake-caret {
+    display: inline-block;
+    width: 1ch;
+    animation: blink 1s steps(1) infinite;
+    color: black;
+    margin-left: 4px;
+
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.c-notepad-scrollbars {
+    width: 100%;
+    height: 16px;
+    background: #cbd2d0;
+    display: flex;
+    justify-content: end;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+}
+.c-notepad-resize-corner {
+    width: 16px;
+    height: 16px;
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+    box-shadow: inset -1px -1px 0 #808080;
+}
