@@ -297,3 +297,5 @@ CREATE SEQUENCE likes_seq
     NOCACHE;
 
 select * from likes;
+
+select * from likes where user_id='qwer';

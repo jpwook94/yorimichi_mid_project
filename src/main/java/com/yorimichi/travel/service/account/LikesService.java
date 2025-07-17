@@ -34,4 +34,9 @@ public class LikesService {
     public int getLikedDestinationsCount(String userId) {
         return likesMapper.findLikedDestinationsByUserIdCount(userId);
     }
+
+
+    public int existsCheck(String id, int desNum) {
+            return likesMapper.existsCheck(id, desNum);
+    }
 }
