@@ -22,6 +22,8 @@
     </div>
 
     <div class="c-window-container">
+        <img class="c-ITtest-timething" src="/other/image/chartest/sandglass.png" alt="">
+
         <div class="c-window">
             <div class="c-title-bar">
                 <div class="c-window-buttons">
@@ -38,7 +40,6 @@
                     </div>
                 </div>
             </div>
-            <img class="timething" src="https://thumb.silhouette-ac.com/t/2a/2ac8f1d97ea8fe3c911b0f0395312583_t.jpeg" alt="">
             <div class="c-search-bar">
                 <div class="c-fake-address">게임/성향 테스트/이상형 월드컵</div>
                 <button class="c-search-button">Search...</button>
@@ -52,13 +53,13 @@
                                 <!-- 왼쪽 박스 -->
                                 <div class="c-ITtheme-box" id="${left.food_number}">
                                     <div class="c-ITtheme-preview">
-                                        <img src="/other/image/food/${left.food_number}" alt=""
+                                        <img class="c-ITtheme-selecimg" src="/other/image/food/${left.food_number}" alt=""
                                              onerror="
                                                      this.onerror=null;
-                                                     this.src='/other/image/${left.food_number}.jpg';
+                                                     this.src='/other/image/food/${left.food_number}.jpg';
                                                      this.onerror=function(){
                                                      this.onerror=null;
-                                                     this.src='/other/image/${left.food_number}.jpeg';
+                                                     this.src='/other/image/food/${left.food_number}.jpeg';
                                                      };
                                                      "
                                         >
@@ -69,13 +70,13 @@
                                 <!-- 오른쪽 박스 -->
                                 <div class="c-ITtheme-box" id="${right.food_number}">
                                     <div class="c-ITtheme-preview mono">
-                                        <img src="/other/image/food/${right.food_number}" alt=""
+                                        <img class="c-ITtheme-selecimg" src="/other/image/food/${right.food_number}" alt=""
                                              onerror="
                                                      this.onerror=null;
-                                                     this.src='/other/image/${right.food_number}.jpg';
+                                                     this.src='/other/image/food/${right.food_number}.jpg';
                                                      this.onerror=function(){
                                                      this.onerror=null;
-                                                     this.src='/other/image/${right.food_number}.jpeg';
+                                                     this.src='/other/image/food/${right.food_number}.jpeg';
                                                      };
                                                      "
                                         >

@@ -14,8 +14,36 @@ $(document).ready(function () {
                     winnerAnimate();
                     setTimeout(()=>{
                         $(".c-window-container").html(`
-                        <div class="winner-box">
-                            <h2>🎉 우승자: ${data.winner.food_name}</h2>
+                                                    
+                            <div class="c-commonPopup-container">
+                                <div class="c-commonPopup1">
+                                    <div class="c-popup-header">
+                                        <span class="c-commonPopup-title">cloud.png</span>
+                                        <div class="c-popup-buttons">
+                                            <div class="c-commonPopup-extraBTN"></div>
+                                        </div>
+                                    </div>
+                                    <div class="c-commonPopup-body">
+                                        <div class="c-commonPopup-imgblock">
+                                            <img src="/other/image/charTest_cloud.gif" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        
+                        <div class="c-commonPopup-container">
+                            <div class="c-commonPopup2">
+                                <div class="c-commonPopup2-header">
+                                    <span class="c-commonPopup-title">gombangwha.png</span>
+                                </div>
+                                <div class="c-commonPopup-body">
+                                    <div class="c-commonPopup-imgblock">
+                                        <img src="/other/image/charTest_sakura.gif" alt="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     `);
                     }, 1000)
@@ -29,16 +57,16 @@ $(document).ready(function () {
                     $(".c-ITtheme-container").html(`
                         <div class="c-ITtheme-box" id="${left.food_number}">
                             <div class="c-ITtheme-preview">
-                                <img src="/other/image/food/${left.food_number}.png"
-                                     onerror="this.onerror=null;this.src='/other/image/${left.food_number}.jpg';">
+                                <img class="c-ITtheme-selecimg" src="/other/image/food/${left.food_number}.png"
+                                     onerror="this.onerror=null;this.src='/other/image/food/${left.food_number}.jpg';">
                             </div>
                             <div class="c-ITtheme-label">${left.food_name}</div>
                         </div>
 
                         <div class="c-ITtheme-box" id="${right.food_number}">
                             <div class="c-ITtheme-preview mono">
-                                <img src="/other/image/food/${right.food_number}.png"
-                                     onerror="this.onerror=null;this.src='/other/image/${right.food_number}.jpg';">
+                                <img class="c-ITtheme-selecimg" src="/other/image/food/${right.food_number}.png"
+                                     onerror="this.onerror=null;this.src='/other/image/food/${right.food_number}.jpg';">
                             </div>
                             <div class="c-ITtheme-label">${right.food_name}</div>
                         </div>
@@ -59,7 +87,7 @@ function wait(ms) {
 
 async function winnerAnimate() {
 
-    const hourglass = document.querySelector('.timething');
+    const hourglass = document.querySelector('.c-ITtest-timething');
     hourglass.style.display = 'block'
     // 애니메이션 초기화
     hourglass.classList.remove('rotate-1sec');

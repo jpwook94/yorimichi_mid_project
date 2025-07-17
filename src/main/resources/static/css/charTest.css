@@ -758,16 +758,27 @@ fake-popup-body {
 }
 
 .c-ITtheme-preview {
-    width: 92%;
-    height: 80%;
+    width: 305px;
+    height: 232px;
     background: #6060a0;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     position: relative;
     margin-bottom: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .c-ITtheme-preview.mono {
     background: #8080b0;
+    overflow: hidden;
+}
+
+.c-ITtheme-selecimg {
+    max-height: 100%;
+    width: auto;
+    display: block;
 }
 
 .c-ITtheme-label {
@@ -824,21 +835,6 @@ fake-popup-body {
 
 .c-ITscroll-arrow:active {
     box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff;
-}
-
-
-.timething{
-    position: fixed;
-    left: 50%;
-    height: 50%;
-    z-index: 99;
-    animation: rotateOnce 1s linear forwards;
-    display: none;
-}
-
-@keyframes rotateOnce {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 .c-notepad-window {
@@ -921,3 +917,24 @@ fake-popup-body {
     border-top: 1px solid #fff;
     box-shadow: inset -1px -1px 0 #808080;
 }
+
+
+
+
+/*모래시계 빙글빙글*/
+.c-ITtest-timething{
+    width: 100px;
+    height: auto;
+    position: fixed;
+    left: 46%;
+    bottom: 40%;
+    z-index: 99;
+    animation: rotateOnce 2s linear forwards;
+    display: none;
+}
+
+@keyframes rotateOnce {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
