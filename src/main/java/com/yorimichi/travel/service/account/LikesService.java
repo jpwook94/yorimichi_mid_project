@@ -17,10 +17,10 @@ public class LikesService {
         likesMapper.addLike(userId, destinationNumber);
     }
 
-    // 찜 하기 메소드
-//    public List<Integer> getLikedDestinationIds(String userId) {
-//        return likesMapper.findLikedDestinationIdsByUserId(userId);
-//    }
+//     찜 하기 메소드
+    public List<Integer> getLikedDestinationIds(String userId) {
+        return likesMapper.findLikedDestinationIdsByUserId(userId);
+    }
 
     // 찜 취소(삭제)를 위한 서비스 메소드
     public void deleteLike(String userId, int destinationNumber) {

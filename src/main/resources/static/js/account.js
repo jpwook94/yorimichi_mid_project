@@ -137,7 +137,7 @@ document.addEventListener('click', function (e) {
 // 찜기능
 document.addEventListener('click', function (e) {
     const likeButton = e.target.closest('.like-btn');
-/*    const page = document.querySelector(".cur-page").dataset.page;*/
+    const page = document.querySelector(".cur-page").dataset.page;
 
     if (likeButton) {
         likeButton.disabled = true;
