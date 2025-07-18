@@ -13,10 +13,13 @@
 <div class="home-container">
     <img id="teamlogo" src="/other/image/logo.png" alt="">
     <div class="start-btn">
-        <button class="btn btn-3d btn-delete" onclick="location.href='/gamelist'">start</button>
+        <button class="btn btn-3d btn-delete" onclick="location.href='/gamelist'"><img src="/other/image/start.png" alt="" style="width: 200px"></button>
     </div>
 <%--    <span>Soldesk.802.YORIMICHI</span>--%>
 </div>
+
+
+
 
 </body>
 </html>
