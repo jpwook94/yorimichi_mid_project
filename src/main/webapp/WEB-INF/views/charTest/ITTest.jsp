@@ -30,7 +30,7 @@
                     <div class="c-btn minimize">
                         <div class="icon-line"></div>
                     </div>
-                    <div class="c-btn maximize">
+                    <div class="c-btn maximize" onclick="location.href='/temporary'">
                         <div class="icon-square"></div>
                     </div>
                     <div class="c-btn close" onclick="location.href='/gamelist'">

@@ -110,4 +110,7 @@ public class TagSearchService {
     }
 
 
+    public List<TagVO> searchdest(int destinationNumber) {
+        return tagSearchMapper.searchGetTagByDestN(destinationNumber);
+    }
 }
