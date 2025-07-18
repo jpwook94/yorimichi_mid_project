@@ -110,6 +110,7 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/other/js/account_renew.js"></script>
 <script src="/other/js/gacha.js" defer></script>
 </body>
 </html>

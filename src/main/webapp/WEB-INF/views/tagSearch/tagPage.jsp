@@ -142,8 +142,8 @@
         </div>
     </div>
 </footer>
-<span id="user-info" data-user_id="${loginUser.user_id}" data-user_name="${loginUser.user_name}"
-      data-user_email="${loginUser.user_email}" data-user_pw="${loginUser.user_pw}"></span>
+<%--<span id="user-info" data-user_id="${loginUser.user_id}" data-user_name="${loginUser.user_name}"--%>
+<%--      data-user_email="${loginUser.user_email}" data-user_pw="${loginUser.user_pw}"></span>--%>
 
 
 <script>

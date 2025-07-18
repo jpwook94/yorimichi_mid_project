@@ -6,7 +6,9 @@ window.onload = () => {
     if (func == 'tag-page') {
         console.log(11)
         likeFn(".render-wrapper")
-    } else {
+    } else if (func == 'gacha') {
+        likeFn(".main-container")
+    } else if (func == 'mypage') {
         console.log(22)
         renderUserProfil();
         sidebar();
@@ -14,7 +16,7 @@ window.onload = () => {
 };
 
 const mainContent = document.querySelector("#myPageContentArea");
-const loginUser = document.querySelector("#user-info").dataset;
+
 
 function sidebar() {
     document.querySelectorAll(".mypage-sidebar-item").forEach((bar) => {
@@ -32,6 +34,10 @@ function sidebar() {
 }
 
 function likeFn(container) {
+    if (func == 'gacha') {
+        console.log('gacha event config')
+        container = ".main-container"
+    }
     document.querySelector(container).addEventListener('click', function (e) {
         const btn = e.target.closest('.like-btn');
         let tf = btn.dataset.liked;
@@ -40,7 +46,7 @@ function likeFn(container) {
         console.log(destination_number);
         console.log(tf);
         if (tf == 'true') {
-            axios.delete('api/likes', {data :{ destination_number}})
+            axios.delete('api/likes', {data: {destination_number}})
                 .then(res => {
                     console.log(res.data)
                     if (res.data == 1) {
@@ -65,8 +71,18 @@ function likeFn(container) {
             axios.post('api/likes', {destination_number})
                 .then(res => {
                     console.log(res.data);
-                    btn.children[0].src = '/other/image/heart.png';
-                    btn.dataset.liked = 'true';
+                    if (res.data == -1) {
+                        alert('로그인이 필요합니다')
+                        location.href = '/login-page'
+                    } else {
+
+                        if (func == 'gacha') {
+                            document.querySelectorAll(".likegacha-control-btn")[2].click();
+                        } else if (func == 'tag-page') {
+                            btn.children[0].src = '/other/image/heart.png';
+                            btn.dataset.liked = 'true';
+                        }
+                    }
                 })
         }
 
@@ -75,29 +91,29 @@ function likeFn(container) {
 
 function renderUserProfil() {
     console.log("profile called.")
-
+    const loginUser = document.querySelector("#user-info").dataset;
     let content = `<div style="border: 1px solid black; margin-left: 270px ">
 
     <div id="display-mode">
         <h3>내 프로필</h3>
-        <p><strong>아이디:</strong> ${loginUser.user_id}</p>
-        <p id="display_user_name"><strong>이름:</strong> ${loginUser.user_name}</p>
-        <p id="display_user_email"><strong>이메일:</strong> ${loginUser.user_email}</p>
+        <p><strong>아이디:</strong> ${loginUser?.user_id}</p>
+        <p id="display_user_name"><strong>이름:</strong> ${loginUser?.user_name}</p>
+        <p id="display_user_email"><strong>이메일:</strong> ${loginUser?.user_email}</p>
         <button type="button" id="edit-profile-btn">수정</button>
     </div>
 
     <div id="edit-mode" style="display:none;">
         <h3>프로필 수정</h3>
         <form action="/account/update" method="post" id="profile-update-form">
-            <p><strong>아이디:</strong> ${loginUser.user_id}</p>
-            <input type="hidden" name="user_id" value="${loginUser.user_id}">
+            <p><strong>아이디:</strong> ${loginUser?.user_id}</p>
+            <input type="hidden" name="user_id" value="${loginUser?.user_id}">
             <p>
                 <strong>이름:</strong><br>
-                <input type="text" name="user_name" value="${loginUser.user_name}" required>
+                <input type="text" name="user_name" value="${loginUser?.user_name}" required>
             </p>
             <p>
                 <strong>이메일:</strong><br>
-                <input type="email" name="user_email" value="${loginUser.user_email}" required>
+                <input type="email" name="user_email" value="${loginUser?.user_email}" required>
             </p>
             <hr>
             <p><strong>비밀번호 변경 (변경할 경우에만 입력)</strong></p>

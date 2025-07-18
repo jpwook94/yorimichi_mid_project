@@ -358,3 +358,5 @@ select * from likes where user_id='qwer';
 
 select *
 from destination;
+
+select * from likes where user_id = 'asdf';

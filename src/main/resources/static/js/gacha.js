@@ -322,7 +322,7 @@ function initSSRcardEvents(){
     const likegachaContainer = document.querySelector(".likegacha-container");
     const likegachaContainer2 = document.querySelector(".likegacha-container22");
     /* 찜하기 버튼 */
-    const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn1");
+    const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn");
     /* 닫기 버튼 */
     const closeButton = document.querySelector(".likegacha-window-controls .likegacha-control-btn:last-child");
     const noButton = document.querySelector('.likegacha-main-btn[value=\"n\"]');
@@ -446,7 +446,7 @@ function initSSRcardEvents(){
         if (likeBtn && data.destination_number) { // likeBtn과 data.destination_number가 모두 있는지 확인
             likeBtn.setAttribute("data-destination-number", data.destination_number);
             console.log(`data-destination-number 설정됨: ${data.destination_number}`);
-            document.querySelector(".like-btn1").setAttribute("data-destination-number", data.destination_number);
+            document.querySelector(".like-btn").setAttribute("data-destination-number", data.destination_number);
         } else {
             console.warn("likeBtn 요소를 찾을 수 없거나 data.destination_number가 없습니다.");
         }
@@ -671,16 +671,15 @@ function initSSRcardEvents(){
             const mode = e.target.dataset.mode;
             if (mode === "single") {
                 const destinationNum = e.target.dataset.destinationNumber;
-                sendLike(destinationNum);
             } else if (mode === "multi") {
                 const checked = document.querySelectorAll('input[name="fivelike"]:checked:not(:disabled)');
                 if (checked.length === 0) {
                     alert("찜할 여행지를 선택해주세요!");
                     return;
                 }
-                checked.forEach((input) => {
-                    sendLike(input.dataset.destinationNumber);
-                });
+                 checked.forEach((input) => {
+
+                 });
             }
         };
 
@@ -691,11 +690,10 @@ function initSSRcardEvents(){
 
 
     function sendLike(destination_number) {
-        fetch('/api/likes/add-like', {
+        fetch('/api/likes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ destination_number }),
-            credentials: 'include' // ✔️ 세션 포함!
         })
             .then(async res => {
                 const result = await res.json();

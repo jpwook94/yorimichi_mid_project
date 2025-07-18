@@ -28,10 +28,7 @@ pageEncoding="UTF-8" %>
                     name="user_id"
                     type="text"
                     class="login-input-mail"
-<<<<<<< HEAD
                     value="asdf"
-=======
->>>>>>> 0be8d39a9872b7739e56079eb0b6b737fa2b7b54
                 />
                 <span> </span>
             </div>
@@ -47,6 +44,7 @@ pageEncoding="UTF-8" %>
                     name="user_pw"
                     type="password"
                     class="login-input-pwd"
+                    value="123"
                 />
             </div>
             <button class="login-submit" type="submit">
@@ -61,17 +59,13 @@ pageEncoding="UTF-8" %>
                     >Sign up</a
                 >
             </p>
-<<<<<<< HEAD
-        </form>
 <%--        <script>--%>
 <%--            document.querySelector(".sign-text").click();--%>
 <%--        </script>--%>
-=======
         </form><%--
         <script>
             document.querySelector(".sign-text").click();
         </script>--%>
->>>>>>> 0be8d39a9872b7739e56079eb0b6b737fa2b7b54
         <script src="/other/js/account.js"></script>
     </body>
 </html>
