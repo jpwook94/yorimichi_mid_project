@@ -32,13 +32,26 @@ public interface LikesMapper {
     @Select("SELECT COUNT(*) FROM likes WHERE user_id = #{userId}")
     int getTotalLikedDestinationsCount(String userId); // userId를 파라미터로 받아서 likes 테이블의 개수를 세는 쿼리
 
-@Select("SELECT count(*)" +
-        "            FROM destination d, likes l " +
-        "            where d.destination_number = l.destination_number and " +
-        "            l.user_id = #{userId}")
-    int findLikedDestinationsByUserIdCount(String userId);
+    @Select("SELECT count(*)" +
+            "            FROM destination d, likes l " +
+            "            where d.destination_number = l.destination_number and " +
+            "            l.user_id = #{userId}")
+        int findLikedDestinationsByUserIdCount(String userId);
 
-@Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
-    int existsCheck(String id, int desNum);
+    // 유저가 여행지 찜 한게 있는지 없는지(없으면 0, 있으면 1)
+    @Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
+        int existsCheck(String id, int desNum);
+
+    @Select({
+            "<script>",
+            "SELECT destination_number FROM likes",
+            "WHERE user_id = #{userId}",
+            "AND destination_number IN",
+            "<foreach item='num' collection='destinationNumbers' open='(' separator=',' close=')'>",
+            "#{num}",
+            "</foreach>",
+            "</script>"
+    })
+    List<Integer> findLikedDestinationNumbers(@Param("userId") String userId, @Param("destinationNumbers") List<Integer> destinationNumbers);
 }
 

@@ -174,6 +174,8 @@ CREATE TABLE mascot
         FOREIGN KEY (location_number)
             REFERENCES location (location_number)
 );
+drop table mascot;
+
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (1, '도쿄돔쿤', 1);
 
@@ -190,13 +192,50 @@ INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (5, '시오로마루히메', 5);
 
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
-VALUES (6, '멜론쿠마', 6);
+VALUES (6, '즈시홋키', 6);
 
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (7, '히로쿠마', 7);
 
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (8, '난지', 8);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (9, '쿠마몬', 9);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (10, '치바군', 10);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (11, '성덕멘타이코', 11);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (12, '아루쿠마', 12);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (13, '킨타로', 13);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (14, '도치마루군', 14);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (15, '햐쿠만', 15);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (16, '치륫피', 16);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (17, '나고밍', 17);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (18, '키이쨩', 18);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (19, '미컁', 19);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (20, '히코냥', 20);
+
 
 CREATE TABLE tag_mbti
 (
@@ -269,6 +308,8 @@ insert into FOOD values (12, '오뎅', '어묵, 무, 계란 넣고 끓인 따끈
 insert into FOOD values (13, '텐동', '바삭한 튀김을 밥 위에 올리고 달콤한 소스 뿌려서 먹는 덮밥!');
 insert into FOOD values (14, '나베', '채소랑 고기, 두부 듬뿍 넣고 끓여서 다 같이 먹는 따뜻한 전골!');
 insert into FOOD values (15, '모찌', '쫀득쫀득한 찹쌀떡! 단팥 넣거나 구워 먹으면 더 맛있어!');
+insert into FOOD values (16, '몬자야끼', '잘게 썬 재료를 걸쭉한 반죽에 섞어 철판에 지글지글~ 긁어 먹는 재미까지 있는 일본식 철판 요리!');
+
 
 
 select *

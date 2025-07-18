@@ -41,14 +41,14 @@
         <div class="c-content-box">
             <div class="c-content-area">
                 <div class="c-icons">
-                    <div class="icon-box" onclick="showMBTIPopup()" >
-                        <img class="test-img" src="/other/image/MBTItest.png" alt="">
-                        <p class="icon-label">mbti.exe</p>
+                    <div class="c-icon-box" onclick="showMBTIPopup()" >
+                        <img class="c-test-img" src="/other/image/MBTItest.png" alt="">
+                        <p class="c-icon-label">mbti.exe</p>
                     </div>
 
-                    <div class="icon-box" onclick="showITPopup()">
-                    <img class="test-img" src="/other/image/idealtest.png" alt="">
-                        <p class="icon-label">ideal_type.exe</p>
+                    <div class="c-icon-box" onclick="showITPopup()">
+                    <img class="c-test-img" src="/other/image/idealtest.png" alt="">
+                        <p class="c-icon-label">ideal_type.exe</p>
                     </div>
                 </div>
             </div>
