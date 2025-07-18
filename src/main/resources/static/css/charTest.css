@@ -760,7 +760,7 @@ fake-popup-body {
 .c-ITtheme-preview {
     width: 305px;
     height: 232px;
-    background: #6060a0;
+   /* background: #6060a0;*/
     /*border: 1px solid #000;*/
     position: relative;
     margin-bottom: 12px;
@@ -771,7 +771,7 @@ fake-popup-body {
 }
 
 .c-ITtheme-preview.mono {
-    background: #8080b0;
+   /* background: #8080b0;*/
     overflow: hidden;
 }
 
