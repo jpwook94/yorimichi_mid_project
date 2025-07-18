@@ -91,8 +91,12 @@ document.addEventListener('click', function (e) {
             });
     }
     if (e.target && e.target.className === 'gacha') {
-        console.log('랜덤뽑기!!');
-
+        /* 선택지 클릭 사운드 */
+        const foodclick = new Audio("/other/audio/gacha/powerup02.mp3");
+        foodclick.volume = 0.6;
+        foodclick.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
         document.querySelector("#result").textContent = "";
 
         const duckImage = document.getElementById('gachafood-duck');
@@ -116,10 +120,12 @@ document.addEventListener('click', function (e) {
         console.log(e.target.value)
         if (e.target.value == 'on') {
             url += '?where=on'}
+
         const eventSource = new EventSource(url);
         eventSource.onmessage = function (event) {
 
             console.log(event.data)
+
             const data = event.data;
             document.querySelector("#result").textContent += data;
             if (data.includes(".")) {
@@ -137,7 +143,7 @@ document.addEventListener('click', function (e) {
 // 찜기능
 document.addEventListener('click', function (e) {
     const likeButton = e.target.closest('.like-btn');
-    const page = document.querySelector(".cur-page").dataset.page;
+    /*const page = document.querySelector(".cur-page").dataset.page;*/
 
     if (likeButton) {
         likeButton.disabled = true;

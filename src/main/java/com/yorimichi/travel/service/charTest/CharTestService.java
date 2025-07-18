@@ -2,25 +2,27 @@ package com.yorimichi.travel.service.charTest;
 
 import com.yorimichi.travel.mapper.CharTestMapper;
 import com.yorimichi.travel.vo.DestinationVO;
+import com.yorimichi.travel.vo.FoodVO;
 import com.yorimichi.travel.vo.TagMbtiVO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CharTestService {
+
 
     @Autowired
     private CharTestMapper charTestMapper;
 
     ArrayList<String> ansArray = null;
+
+    int round = 16;
 
     // mbti 테스트 값 계산
     public Map<String, Object> resultMBTI(String[] ans) {
@@ -156,6 +158,82 @@ public class CharTestService {
 
 
     }
+
+
+    // 이상형 월드컵 전체조회
+    public List<FoodVO> getAllFood() {
+        List<FoodVO> foods = charTestMapper.selectAllFood();
+        System.out.println(foods);
+        return foods;
+    }
+
+    // 무작위 16명 추출
+    public List<FoodVO> getRandom16Foods() {
+        List<FoodVO> all = getAllFood();
+        Collections.shuffle(all);
+
+        // 후보 수 부족하면 예외 발생
+        if (all.size() < 16) {
+            throw new IllegalStateException("후보 수가 16명 미만입니다.");
+        }
+
+        return all.subList(0, 16);
+    }
+
+    public static FoodVO findFoodById(List<FoodVO> list, int id) {
+        return list.stream()
+                .filter(f -> id == f.getFood_number())
+                .findFirst()
+                .orElse(null);
+    }
+
+
+    public Map<String, Object> processSelection(int selectedId, HttpSession session) {
+        List<FoodVO> roundList = (List<FoodVO>) session.getAttribute("roundList");
+        List<FoodVO> tempWinners = (List<FoodVO>) session.getAttribute("tempWinners");
+        Integer index = (Integer) session.getAttribute("currentIndex");
+
+
+
+        Map<String, Object> result = new HashMap<>();
+        FoodVO selected = findFoodById(roundList, selectedId);
+        System.out.println(selected);
+
+        if (selected != null) {
+            tempWinners.add(selected);
+        }
+
+        index += 2;
+        session.setAttribute("currentIndex", index);
+        if (index >= roundList.size()) {
+            System.out.println("---------마지막에만 나와야됨.");
+            round /= 2;
+            System.out.println(round + "강 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println(tempWinners.size());
+            if (tempWinners.size() == 1) {
+                result.put("finished", true);
+                result.put("winner", tempWinners.get(0));
+                round = 16;
+                session.invalidate();
+                return result;
+            }
+
+            session.setAttribute("roundList", tempWinners);
+            session.setAttribute("tempWinners", new ArrayList<>());
+            session.setAttribute("currentIndex", 0);
+            roundList = tempWinners;
+            index = 0;
+        }
+
+        result.put("finished", false);
+        result.put("left", roundList.get(index));
+        result.put("right", roundList.get(index + 1));
+        result.put("round", round);
+        return result;
+    }
+
+
+
 
 
 }
