@@ -6,11 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
-    <style>
-        h1, button{
-            margin-left: 500px;
-        }
-    </style>
+
 </head>
 <body>
 <audio controls autoplay loop style="display: none">
@@ -36,21 +32,7 @@
     <span id="result" > 앗, 오리쿤에게 물어볼까?</span>
 </div>
 </div>
-<script>
-    // document.addEventListener('click', (e) => {
-        // if (e.target && e.target.class === 'gacha') {
-        //     console.log('랜덤뽑기!!');
-        //     let url = "api/gacha/food";
-        //     if (e.target.value == on) url += '?where=on';
-        //     fetch(url)
-        //         .then(response => response.text())
-        //         .then(data => {
-        //             console.log(data)
-        //             document.querySelector("#result").innerText = data;
-        //         });
-        // }
-    // });
-</script>
+
 
 </body>
 </html>
