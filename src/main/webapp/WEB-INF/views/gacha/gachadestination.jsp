@@ -37,6 +37,9 @@
             <img class="SSRcard-cardback" src="/other/image/gacha-cute/SSRcardBack.png" alt="">
         </div>
         <div class="SSRcard-flip-card-back">
+            <div class="SSRcard-SSR">
+                <div class="c-MBTIresultBlink">★SSR</div>
+            </div>
             <img class="SSRcard-cardback" src="/other/image/gacha-cute/SSRcardBack.png" alt="">
             <div class="SSRcard-imgcontainer">
                 <img src="" alt="">
@@ -63,22 +66,27 @@
 
                     <div class="checkbox-item">
                         <input type="checkbox" id="fivelike-0" name="fivelike" value="">
+                        <span class="SSRrainbow">&nbsp;★SSR&nbsp; </span>
                         <label for="fivelike-0" class="checkbox-label"></label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="fivelike-1" name="fivelike" value="">
+                        <span class="SSRrainbow">&nbsp;★SSR&nbsp; </span>
                         <label for="fivelike-1" class="checkbox-label"></label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="fivelike-2" name="fivelike" value="">
+                        <span class="SSRrainbow">&nbsp;★SSR&nbsp; </span>
                         <label for="fivelike-2" class="checkbox-label"></label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="fivelike-3" name="fivelike" value="">
+                        <span class="SSRrainbow">&nbsp;★SSR&nbsp; </span>
                         <label for="fivelike-3" class="checkbox-label"></label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="fivelike-4" name="fivelike" value="">
+                        <span class="SSRrainbow">&nbsp;★SSR&nbsp; </span>
                         <label for="fivelike-4" class="checkbox-label"></label>
                     </div>
                 </div>
@@ -137,7 +145,7 @@
 
 <div class="gachadescard-pickcontainer">
     <div id="SSRpick1" class="gachadescard-pickbtn" data-userId="${sessionScope.loginUser.user_id}" >1회 뽑기</div>
-    <div id="SSRpickN" class="gachadescard-pickbtn" data-userId="${sessionScope.loginUser.user_id}">n회 뽑기</div>
+    <div id="SSRpickN" class="gachadescard-pickbtn" data-userId="${sessionScope.loginUser.user_id}">5회 뽑기</div>
 </div>
 
 </body>

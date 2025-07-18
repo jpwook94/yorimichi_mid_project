@@ -605,8 +605,12 @@ document.addEventListener('click', function (e) {
             });
     }
     if (e.target && e.target.className === 'gacha') {
-        console.log('랜덤뽑기!!');
-
+        /* 선택지 클릭 사운드 */
+        const foodclick = new Audio("/other/audio/gacha/powerup02.mp3");
+        foodclick.volume = 0.6;
+        foodclick.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
         document.querySelector("#result").textContent = "";
 
         const duckImage = document.getElementById('gachafood-duck');

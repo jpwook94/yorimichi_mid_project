@@ -82,45 +82,53 @@ VALUES (9, '히로시마 평화기념공원', 'INFJ', '일본 히로시마현 �
 INSERT INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
 VALUES (10, '슈리성', 'ENFJ', '일본 오키나와현 나하시 슈리킨조초 1-2-3', 8);
 
--- 11 ~ 48번까지 번호 순서대로 INSERT
-INSERT INTO destination VALUES (11, '나카메구로 벚꽃길', 'INFP', '일본 도쿄도 메구로구 나카메구로', 1);
-INSERT INTO destination VALUES (12, '하라주쿠', 'INFP', '일본 도쿄도 시부야구 진구마에', 1);
-INSERT INTO destination VALUES (13, '고베 하버랜드', 'ENFP', '일본 효고현 고베시 주오구', 5);
-INSERT INTO destination VALUES (14, '시모키타자와 거리', 'ENFP', '일본 도쿄도 세타가야구', 1);
-INSERT INTO destination VALUES (15, '다카야마 구시가지', 'INTJ', '일본 기후현 다카야마시', 9);
-INSERT INTO destination VALUES (16, '요코하마 붉은 벽돌 창고', 'INTJ', '일본 가나가와현 요코하마시 나카구', 10);
-INSERT INTO destination VALUES (17, '가마쿠라 대불', 'ISTJ', '일본 가나가와현 가마쿠라시 하세', 10);
-INSERT INTO destination VALUES (18, '나라 공원', 'ISTJ', '일본 나라현 나라시', 11);
-INSERT INTO destination VALUES (19, '하코네 온천마을', 'ISFP', '일본 가나가와현 아시가라시모군 하코네마치', 10);
-INSERT INTO destination VALUES (20, '구마모토성', 'ISFP', '일본 구마모토현 구마모토시 주오구', 12);
-INSERT INTO destination VALUES (21, '도톤보리', 'ESFP', '일본 오사카부 오사카시 주오구 도톤보리', 4);
-INSERT INTO destination VALUES (22, '오이타 벳푸 지옥온천', 'ESFP', '일본 오이타현 벳푸시', 13);
-INSERT INTO destination VALUES (23, '가라쓰성', 'ESFJ', '일본 사가현 가라쓰시 히가시조나이', 14);
-INSERT INTO destination VALUES (24, '우에노 동물원', 'ESFJ', '일본 도쿄도 다이토구 우에노 공원', 1);
-INSERT INTO destination VALUES (25, '야마구치 츠노시마 대교', 'ISFJ', '일본 야마구치현 시모노세키시', 15);
-INSERT INTO destination VALUES (26, '마쓰야마성', 'ISFJ', '일본 에히메현 마쓰야마시', 16);
-INSERT INTO destination VALUES (27, '도야마 만', 'ISFJ', '일본 도야마현 도야마시', 17);
-INSERT INTO destination VALUES (28, '기온 거리', 'INFJ', '일본 교토부 교토시 히가시야마구', 3);
-INSERT INTO destination VALUES (29, '나가사키 평화공원', 'INFJ', '일본 나가사키현 나가사키시', 18);
-INSERT INTO destination VALUES (30, '하코다테 야경', 'ENFJ', '일본 홋카이도 하코다테시', 6);
-INSERT INTO destination VALUES (31, '나고야 성', 'ENFJ', '일본 아이치현 나고야시', 19);
-INSERT INTO destination VALUES (32, '요요기 공원', 'INTP', '일본 도쿄도 시부야구', 1);
-INSERT INTO destination VALUES (33, '고레카와 유적', 'INTP', '일본 아오모리현 하치노헤시', 20);
-INSERT INTO destination VALUES (34, '다테야마 쿠로베 알펜루트', 'INTP', '일본 도야마현', 17);
-INSERT INTO destination VALUES (35, '센다이 아오바성', 'ISTP', '일본 미야기현 센다이시', 21);
-INSERT INTO destination VALUES (36, '니가타 마린피아 수족관', 'ISTP', '일본 니가타현 니가타시', 22);
-INSERT INTO destination VALUES (37, '아키하바라 전자상가', 'ISTP', '일본 도쿄도 치요다구', 1);
-INSERT INTO destination VALUES (38, '나라야마산 전망대', 'ISFJ', '일본 나라현 나라시', 11);
-INSERT INTO destination VALUES (39, '오키나와 츄라우미 수족관', 'ISFP', '일본 오키나와현 모토부정', 8);
-INSERT INTO destination VALUES (40, '오사카 유니버설 스튜디오', 'ESFP', '일본 오사카부 오사카시 고노하나구', 4);
-INSERT INTO destination VALUES (41, '기후 고마키 성', 'ISTJ', '일본 기후현 고마키시', 9);
-INSERT INTO destination VALUES (42, '다카마쓰 리쓰린 공원', 'INFJ', '일본 가가와현 다카마쓰시', 23);
-INSERT INTO destination VALUES (43, '미에 이세 신궁', 'ISFJ', '일본 미에현 이세시', 24);
-INSERT INTO destination VALUES (44, '도쿠시마 아와오도리 회관', 'ESTP', '일본 도쿠시마현 도쿠시마시', 25);
-INSERT INTO destination VALUES (45, '가고시마 사쿠라지마', 'ESTP', '일본 가고시마현 가고시마시', 26);
-INSERT INTO destination VALUES (46, '이바라키 히타치 해변공원', 'ESTP', '일본 이바라키현 히타치나카시', 27);
-INSERT INTO destination VALUES (47, '시즈오카 오마에자키 등대', 'ESTJ', '일본 시즈오카현 오마에자키시', 2);
-INSERT INTO destination VALUES (48, '치바 마쿠하리 멧세', 'ESTJ', '일본 치바현 지바시 미하마구', 28);
+/* 여기에서부터 추가 */
+INSERT ALL
+    INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (41, '센조가하라', 'INFP', '도치기현 닛코시', 14)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (42, '후타라산 신사', 'ENFP', '도치기현 닛코시', 14)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (43, '가나자와 성', 'ESFP', '이시카와현 가나자와시', 15)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (44, '겐로쿠엔', 'ISFP', '이시카와현 가나자와시', 15)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (45, '백만석 축제', 'ESTJ', '이시카와현 가나자와시', 15)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (46, '과자의 성', 'ISFP', '아이치현 인부시', 16)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (47, '나고야 성', 'ENTJ', '아이치현 나고야시', 16)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (48, '도요타 박물관', 'ISTP', '아이치현 나가쿠테시', 16)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (49, '다카야마 구시가지', 'ESTP', '기후현 다카야마시', 17)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (50, '다카야마 축제', 'INFP', '기후현 다카야마시', 17)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (51, '사라카와고', 'ENTJ', '기후현 시라카와무라', 17)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (52, '고야산', 'ESFJ', '와카야마현 고야정', 18)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (53, '나치 폭포', 'ENFJ', '와카야마현 나치카쓰우라정', 18)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (54, '토레토레 시장 난키 시라하마', 'ENFP', '와카야마현 시라하마정', 18)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (55, '니이하마 북축제', 'ISFJ', '에히메현 니이하마시', 19)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (56, '도고 온천', 'ENFJ', '에히메현 마쓰야마시', 19)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (57, '마츠야마 성', 'ESTJ', '에히메현 마쓰야마시', 19)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (58, '비와호', 'INFJ', '시가현 오쓰시', 20)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (59, '오미하치만', 'ENTJ', '시가현 오미하치만시', 20)
+INTO destination (destination_number, destination_name, mbti_category, destination_address, location_number)
+VALUES (60, '히코네 성', 'ISFJ', '시가현 히코네시', 20)
+SELECT * FROM dual;
+
+
+
+
 
 
 select *
@@ -141,28 +149,65 @@ CREATE TABLE location
     mascot_number   NUMBER(10)              -- 마스코트 번호 (FK로 쓸 수 있음)
 );
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (1, '도쿄도', 1);
+VALUES (1, '도쿄', 1);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (2, '시즈오카현', 2);
+VALUES (2, '시즈오카', 2);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (3, '교토부', 3);
+VALUES (3, '교토', 3);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (4, '오사카부', 4);
+VALUES (4, '오사카', 4);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (5, '효고현', 5);
+VALUES (5, '효고', 5);
 
 INSERT INTO location (location_number, location_name, mascot_number)
 VALUES (6, '홋카이도', 6);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (7, '히로시마현', 7);
+VALUES (7, '히로시마', 7);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (8, '오키나와현', 8);
+VALUES (8, '오키나와', 8);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (9, '구마모토', 9);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (10, '치바', 10);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (11, '후쿠오카', 11);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (12, '나가노', 12);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (13, '카나가와', 13);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (14, '도치기', 14);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (15, '이시카와', 15);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (16, '아이치', 16);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (17, '기후', 17);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (18, '와카야마', 18);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (19, '에히메', 19);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (20, '시가', 20);
+
 
 CREATE TABLE mascot
 (
@@ -360,3 +405,6 @@ select *
 from destination;
 
 select * from likes where user_id = 'asdf';
+select * from likes where user_id='qwer';
+
+DELETE FROM likes;
