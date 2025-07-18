@@ -690,6 +690,12 @@
     border: 3px solid #0820a3;
     margin-bottom: 10px;
 }
+
+.SSRcard-imgcontainer img{
+    width: 200px;
+    height: 150px;
+}
+
 #SSR-destination-name {
     font-size: 30px;
     position: relative;
@@ -849,6 +855,13 @@
 
 
 .likegacha-container{
+    position: absolute;
+    top: 233px;
+    left: 785px;
+    z-index: 100;
+    display: none;
+}
+.likegacha-container22{
     position: absolute;
     top: 233px;
     left: 785px;

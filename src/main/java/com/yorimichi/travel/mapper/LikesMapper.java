@@ -33,5 +33,8 @@ public interface LikesMapper {
         "            where d.destination_number = l.destination_number and " +
         "            l.user_id = #{userId}")
     int findLikedDestinationsByUserIdCount(String userId);
+
+@Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
+    int existsCheck(String id, int desNum);
 }
 
