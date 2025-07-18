@@ -9,8 +9,6 @@ document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
 
                 if (e.target.dataset.cate === "2") {
                     initSSRcardEvents(); // 원하는 함수 호출
-                } else if (e.target.dataset.cate === "3"){
-                    initFoodGachaEvents();
                 }
             });
     });
@@ -307,9 +305,8 @@ function createSparkleEffect() {
 }
 
 
-
+/* SSR 카드뽑기 선택 */
 function initSSRcardEvents(){
-    console.log("🎉 data-cate='2'을 클릭했습니다!");
     window.addEventListener("DOMContentLoaded", () => {
         const audio = document.getElementById("gacha-audio");
         if (audio) {
@@ -317,48 +314,102 @@ function initSSRcardEvents(){
         }
     });
 
+    /* 뽑기 버튼 */
     const SSRcardpicked1 = document.querySelector('#SSRpick1');
     const SSRcardpickedN = document.querySelector('#SSRpickN');
 
+    /* 찜하기 창 전체 */
     const likegachaContainer = document.querySelector(".likegacha-container");
+    const likegachaContainer2 = document.querySelector(".likegacha-container22");
+    /* 찜하기 버튼 */
+    const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn1");
+    /* 닫기 버튼 */
     const closeButton = document.querySelector(".likegacha-window-controls .likegacha-control-btn:last-child");
-    const noButton = document.querySelector(".likegacha-main-btnlist .likegacha-main-btn:last-child");
-    const hideLikegachaContainer = () => {
-        if (likegachaContainer) {
-            likegachaContainer.style.display = "none";
-        }
-    };
+    const noButton = document.querySelector('.likegacha-main-btn[value=\"n\"]');
+    const closeButton2 = likegachaContainer2.querySelector(".likegacha-control-btn:last-child");
+    const noButton2 = likegachaContainer2.querySelector('.likegacha-main-btn[value="n"]');
+    /* 닫기 버튼 누를 때 사운드 */
+    const likenoclickSound = new Audio("/other/audio/gacha/gameboy-pluck.mp3");
     if (closeButton) {
-        closeButton.addEventListener("click", hideLikegachaContainer);
+        closeButton.addEventListener("click", () => {
+            likenoclickSound.play().catch((err) => {
+                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+            });
+            likegachaContainer.style.display = "none";
+            document.querySelector(".SSRcard-wrapper").classList.add("hide");
+        });
     } else {
         console.warn("닫기 버튼 (×)을 찾을 수 없습니다.");
     }
 
     if (noButton) {
-        noButton.addEventListener("click", hideLikegachaContainer);
+        noButton.addEventListener("click", () => {
+            likenoclickSound.play().catch((err) => {
+                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+            });
+            likegachaContainer.style.display = "none";
+            document.querySelector(".SSRcard-wrapper").classList.add("hide");
+        });
     } else {
         console.warn("'no' 버튼을 찾을 수 없습니다.");
     }
 
+    if (closeButton2) {
+        closeButton2.addEventListener("click", () => {
+            likenoclickSound.play().catch((err) => {
+                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+            });
+            likegachaContainer2.style.display = "none";
+            document.querySelector(".SSRcard-wrapper").classList.add("hide");
+        });
+    }
+
+    if (noButton2) {
+        noButton2.addEventListener("click", () => {
+            likenoclickSound.play().catch((err) => {
+                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+            });
+            likegachaContainer2.style.display = "none";
+            document.querySelector(".SSRcard-wrapper").classList.add("hide");
+        });
+    }
+    /* 카드 뽑기 눌렀을 때 사운드 */
+    const clickSSRSound = new Audio("/other/audio/gacha/clickSSRbut.mp3");
+    /* 카드 나올 때 사운드 */
+    const SSRcardshow = new Audio("/other/audio/gacha/shine-5.mp3");
+    /* 카드 스파클 사운드 */
+    const SSRcardSparkle = new Audio("/other/audio/gacha/shine-7.mp3");
+
     /* 1회 뽑기 눌렀을 때 */
-    SSRcardpicked1.addEventListener("click", async () => {
+    SSRcardpicked1.addEventListener("click", async (e) => {
         // 버튼 비활성화
         SSRcardpicked1.style.pointerEvents = "none"; // 클릭 막기
         SSRcardpicked1.style.opacity = "0.5"; // 시각적으로 흐리게
         SSRcardpickedN.style.pointerEvents = "none"; // 클릭 막기
         SSRcardpickedN.style.opacity = "0.5"; // 시각적으로 흐리게
 
+        clickSSRSound.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
+
         const wrapper = document.querySelector(".SSRcard-wrapper");
         const innerCard = document.querySelector(".SSRcard-inner");
-        const likegachaContainer = document.querySelector(".likegacha-container");
-        const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn");
 
 
         console.log("1회뽑기 눌렀음")
+        let userId = e.target.dataset.userid;
         /* 데이터 받아오기 */
         const response = await fetch("/pickSSR");
         const data = await response.json();
         console.log(data)
+        const destination_num = data.destination_number;
+        let exists = 0;
+        if(userId !== null || userId !== ""){
+            const response = await fetch(`/existsCheck/${userId}/${destination_num}`);
+            const data2 = await response.json();
+            exists = data2 === 1 ? 1 : 0;
+        }
+
         /* 받아온 destination 이름 적기 */
         const destNameEl = document.getElementById("SSR-destination-name");
         if (destNameEl) {
@@ -366,6 +417,17 @@ function initSSRcardEvents(){
             destNameEl.setAttribute("data-content", data.destination_name);
         }
 
+        if (likeBtn && data.destination_number) { // likeBtn과 data.destination_number가 모두 있는지 확인
+            likeBtn.setAttribute("data-destination-number", data.destination_number);
+            console.log(`data-destination-number 설정됨: ${data.destination_number}`);
+        } else {
+            console.warn("likeBtn 요소를 찾을 수 없거나 data.destination_number가 없습니다.");
+        }
+
+        const pickeddestimg = document.querySelector(".SSRcard-imgcontainer img");
+        if (pickeddestimg && data.destination_number) {
+            pickeddestimg.src = `/other/image/destination/${data.destination_number}.png`;
+        }
 
         if (wrapper) {
             // 초기 상태 리셋
@@ -387,6 +449,10 @@ function initSSRcardEvents(){
 
                 // 등장
                 wrapper.classList.add("show");
+                SSRcardshow.play().catch((err) => {
+                    console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+                });
+
 
                 // flip은 2초 후
                 setTimeout(() => {
@@ -395,8 +461,20 @@ function initSSRcardEvents(){
                     // flip 1초 뒤 효과
                     setTimeout(() => {
                         createSparkleEffect();
+                        SSRcardSparkle.play().catch((err) => {
+                            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+                        });
                         setTimeout(() => {
+                            if(exists == 1){
+                            document.querySelector(".likegacha-container22").style.display = "block";
+
+                            }else {
                             document.querySelector(".likegacha-container").style.display = "block";
+                            let tg = document.querySelectorAll(".likegacha-main-btn")[0];
+                            tg.dataset.destinationNumber = destination_num;
+                            addEvent();
+                            }
+
                         }, 1000);
                     }, 1000);
                 }, 2000);
@@ -410,10 +488,8 @@ function initSSRcardEvents(){
             SSRcardpickedN.style.opacity = "1";
         }, 5000);
 
-
-
-
     })
+
 
     /* 5회 뽑기 */
     SSRcardpickedN.addEventListener("click", async () => {
@@ -422,6 +498,10 @@ function initSSRcardEvents(){
         SSRcardpicked1.style.opacity = "0.5"; // 시각적으로 흐리게
         SSRcardpickedN.style.pointerEvents = "none"; // 클릭 막기
         SSRcardpickedN.style.opacity = "0.5"; // 시각적으로 흐리게
+
+        clickSSRSound.play().catch((err) => {
+            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+        });
 
         console.log("N회뽑기 눌렀음")
         likegachaContainer.style.display = "none";
@@ -442,6 +522,10 @@ function initSSRcardEvents(){
 
 function playSSRN(destinations) {
     let index = 0;
+    /* 카드 나올 때 사운드 */
+    const SSRcardshow = new Audio("/other/audio/gacha/shine-5.mp3");
+    /* 카드 스파클 사운드 */
+    const SSRcardSparkle = new Audio("/other/audio/gacha/shine-7.mp3");
 
     function revealNext() {
         // 모든 목적지가 표시되었으면 함수를 종료합니다.
@@ -471,6 +555,9 @@ function playSSRN(destinations) {
 
                 // 등장
                 wrapper.classList.add("show");
+                SSRcardshow.play().catch((err) => {
+                    console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+                });
 
                 // flip은 2초 후
                 setTimeout(() => {
@@ -479,6 +566,9 @@ function playSSRN(destinations) {
                     // flip 1초 뒤 효과
                     setTimeout(() => {
                         createSparkleEffect();
+                        SSRcardSparkle.play().catch((err) => {
+                            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+                        });
                         setTimeout(() => {
                             index++; // 다음 목적지를 위해 인덱스 증가
                             revealNext(); // 다음 항목을 위해 revealNext 호출
@@ -496,6 +586,42 @@ function playSSRN(destinations) {
     revealNext(); // 프로세스 시작
 }
 
-function initFoodGachaEvents(){
-    console.log("🎉 data-cate='3'을 클릭했습니다!");
+
+function addEvent() {
+    console.log("addEvent() 실행됨");
+
+    const yesBtn = document.querySelectorAll(".likegacha-main-btn")[0];
+
+    const yesClickHandler = (e) => {
+        console.log(e.target.value);
+        console.log(e.target.dataset);
+
+        if (e.target.value == "y") {
+            // 중복 클릭 방지: 리스너 제거
+            yesBtn.removeEventListener("click", yesClickHandler);
+
+            const likeData = {
+                destination_number: e.target.dataset.destinationNumber
+            };
+
+            fetch('/api/likes/add-like', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(likeData)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    alert(result.message);
+                    if (result.status === 'success') {
+                        document.querySelectorAll(".gacha-sidebar-item")[1].click();
+                    }
+                })
+                .catch(err => {
+                    console.error("찜 요청 중 오류 발생:", err);
+                });
+        }
+    };
+
+    yesBtn.addEventListener("click", yesClickHandler);
+
 }

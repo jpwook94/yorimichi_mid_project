@@ -43,4 +43,8 @@ public class LikesService {
         return likesMapper.getTotalLikedDestinationsCount(userId);
     }
 
+
+    public int existsCheck(String id, int desNum) {
+            return likesMapper.existsCheck(id, desNum);
+    }
 }
