@@ -545,5 +545,7 @@ footer {
 }
 
 
-
+.team-member > div img {
+    width: 300px;
+}
 
