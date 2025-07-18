@@ -321,6 +321,7 @@ function initSSRcardEvents(){
     /* 찜하기 창 전체 */
     const likegachaContainer = document.querySelector(".likegacha-container");
     const likegachaContainer2 = document.querySelector(".likegacha-container22");
+    const fivegachaContainer = document.querySelector(".fivegacha-container")
     /* 찜하기 버튼 */
     const likeBtn = document.querySelector(".likegacha-main-btnlist .like-btn1");
     /* 닫기 버튼 */
@@ -328,6 +329,7 @@ function initSSRcardEvents(){
     const noButton = document.querySelector('.likegacha-main-btn[value=\"n\"]');
     const closeButton2 = likegachaContainer2.querySelector(".likegacha-control-btn:last-child");
     const noButton2 = likegachaContainer2.querySelector('.likegacha-main-btn[value="n"]');
+    const closeButton3 = fivegachaContainer.querySelector(".fivegacha-window-controls:last-child");
     /* 닫기 버튼 누를 때 사운드 */
     const likenoclickSound = new Audio("/other/audio/gacha/gameboy-pluck.mp3");
     if (closeButton) {
@@ -392,6 +394,22 @@ function initSSRcardEvents(){
             SSRcardpickedN.style.pointerEvents = "auto";
             SSRcardpickedN.style.opacity = "1";
         });
+    }
+    if (closeButton3) {
+        closeButton3.addEventListener("click", () => {
+            likenoclickSound.play().catch((err) => {
+                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+            });
+            likegachaContainer.style.display = "none";
+            document.querySelector(".fivegacha-container").style.display = "none";
+            document.querySelector(".SSRcard-wrapper").classList.add("hide");
+            SSRcardpicked1.style.pointerEvents = "auto";
+            SSRcardpicked1.style.opacity = "1";
+            SSRcardpickedN.style.pointerEvents = "auto";
+            SSRcardpickedN.style.opacity = "1";
+        });
+    } else {
+        console.warn("닫기 버튼 (×)을 찾을 수 없습니다.");
     }
     /* 카드 뽑기 눌렀을 때 사운드 */
     const clickSSRSound = new Audio("/other/audio/gacha/clickSSRbut.mp3");

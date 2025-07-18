@@ -141,28 +141,65 @@ CREATE TABLE location
     mascot_number   NUMBER(10)              -- 마스코트 번호 (FK로 쓸 수 있음)
 );
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (1, '도쿄도', 1);
+VALUES (1, '도쿄', 1);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (2, '시즈오카현', 2);
+VALUES (2, '시즈오카', 2);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (3, '교토부', 3);
+VALUES (3, '교토', 3);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (4, '오사카부', 4);
+VALUES (4, '오사카', 4);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (5, '효고현', 5);
+VALUES (5, '효고', 5);
 
 INSERT INTO location (location_number, location_name, mascot_number)
 VALUES (6, '홋카이도', 6);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (7, '히로시마현', 7);
+VALUES (7, '히로시마', 7);
 
 INSERT INTO location (location_number, location_name, mascot_number)
-VALUES (8, '오키나와현', 8);
+VALUES (8, '오키나와', 8);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (9, '구마모토', 9);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (10, '치바', 10);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (11, '후쿠오카', 11);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (12, '나가노', 12);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (13, '카나가와', 13);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (14, '도치기', 14);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (15, '이시카와', 15);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (16, '아이치', 16);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (17, '기후', 17);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (18, '와카야마', 18);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (19, '에히메', 19);
+
+INSERT INTO location (location_number, location_name, mascot_number)
+VALUES (20, '시가', 20);
+
 
 CREATE TABLE mascot
 (

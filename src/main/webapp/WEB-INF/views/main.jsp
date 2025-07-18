@@ -22,7 +22,7 @@
     <div class="heart"><img src="/other/image/heart.png" alt=""/></div>
     <div class="heart"><img src="/other/image/heart.png" alt=""/></div>
     <div class="heart"><img src="/other/image/heart.png" alt=""/></div>
-    <div class="heart-time">10:10</div>
+    <div class="heart-time">8:02</div>
 </div>
 
 <div class="login-menu-area">
