@@ -75,7 +75,8 @@ $(document).ready(function () {
                                     <div class="c-ITresult-image-container">
                                         <div class="c-ITresult-post-image">
                                             <div class="c-ITresult-imageBox">
-                                                <img src="/other/image/food/${data.winner.food_number}.jpg" class="c-ITresult-img" alt="">
+                                                <img src="/other/image/food/${data.winner.food_number}.jpg" class="c-ITresult-img" alt=""
+                                                onerror="this.onerror=null;this.src='/other/image/food/${data.winner.food_number}.png'">
                                             </div>
                                             <div class="c-ITresult-scrollbar">
                                                 <div class="c-ITresult-scroll-button">▲</div>
@@ -139,7 +140,7 @@ $(document).ready(function () {
                         <div class="c-ITtheme-box" id="${left.food_number}">
                             <div class="c-ITtheme-preview">
                                 <img class="c-ITtheme-selecimg" src="/other/image/food/${left.food_number}.png"
-                                     onerror="this.onerror=null;this.src='/other/image/food/${left.food_number}.jpg';">
+                                     onerror="this.onerror=null;this.src='/other/image/food/${left.food_number}.jpg'">
                             </div>
                             <div class="c-ITtheme-label">${left.food_name}</div>
                         </div>
@@ -147,7 +148,7 @@ $(document).ready(function () {
                         <div class="c-ITtheme-box" id="${right.food_number}">
                             <div class="c-ITtheme-preview mono">
                                 <img class="c-ITtheme-selecimg" src="/other/image/food/${right.food_number}.png"
-                                     onerror="this.onerror=null;this.src='/other/image/food/${right.food_number}.jpg';">
+                                     onerror="this.onerror=null;this.src='/other/image/food/${right.food_number}.jpg'">
                             </div>
                             <div class="c-ITtheme-label">${right.food_name}</div>
                         </div>
