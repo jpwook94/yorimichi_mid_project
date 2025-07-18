@@ -107,7 +107,7 @@
         <img src="/other/image/DUCK4.png" alt=""/>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/other/js/gacha.js" defer></script>
 </body>
 </html>

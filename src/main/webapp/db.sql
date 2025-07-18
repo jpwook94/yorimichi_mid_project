@@ -298,7 +298,6 @@ CREATE SEQUENCE likes_seq
 
 select * from likes;
 
-<<<<<<< HEAD
 
 SELECT d.destination_number, d.destination_name, d.mbti_category, d.destination_address, d.location_number
                         FROM destination d, likes l
@@ -313,6 +312,8 @@ insert into likes values (likes_seq.nextval, 'asdf', 16);
 insert into likes values (likes_seq.nextval, 'asdf', 17);
 insert into likes values (likes_seq.nextval, 'asdf', 18);
 insert into likes values (likes_seq.nextval, 'asdf', 19);
-=======
 select * from likes where user_id='qwer';
->>>>>>> 599e989cc17b9ccabdf9e1cde75abecf6189abb8
+
+
+select *
+from destination;

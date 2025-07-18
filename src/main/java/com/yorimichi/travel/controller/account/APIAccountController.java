@@ -46,6 +46,7 @@ public class APIAccountController {
     @PostMapping
     public int post(@RequestBody DestinationVO destinationVO, HttpSession session, Model model) {
         AccountVO accountVO = (AccountVO) session.getAttribute("loginUser");
+        System.out.println(destinationVO.getDestination_number());
         if (accountVO == null) {
             return -1;
         }

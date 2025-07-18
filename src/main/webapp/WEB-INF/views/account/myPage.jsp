@@ -103,7 +103,7 @@
 <span id="user-info" data-user_id="${loginUser.user_id}" data-user_name="${loginUser.user_name}"
       data-user_email="${loginUser.user_email}" data-user_pw="${loginUser.user_pw}"></span>
 <%--    <script src="/other/js/account.js"></script>--%>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </body>
 <script src="/other/js/account_renew.js"></script>
 </html>

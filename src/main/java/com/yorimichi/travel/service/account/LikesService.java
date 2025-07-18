@@ -14,6 +14,8 @@ public class LikesService {
     private LikesMapper likesMapper;
 
     public int addLike(String userId, int destinationNumber) {
+        System.out.println(userId);
+        System.out.println(destinationNumber);
        return  likesMapper.addLike(userId, destinationNumber);
     }
 

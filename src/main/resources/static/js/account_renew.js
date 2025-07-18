@@ -1,6 +1,16 @@
+let func;
+
 window.onload = () => {
-    render();
-    sidebar();
+    func = location.pathname.split("/").filter(Boolean).pop();
+    console.log(func)
+    if (func == 'tag-page') {
+        console.log(11)
+        likeFn(".render-wrapper")
+    } else {
+        console.log(22)
+        renderUserProfil();
+        sidebar();
+    }
 };
 
 const mainContent = document.querySelector("#myPageContentArea");
@@ -24,32 +34,40 @@ function sidebar() {
 function likeFn(container) {
     document.querySelector(container).addEventListener('click', function (e) {
         const btn = e.target.closest('.like-btn');
-        const bj = btn.dataset.bj;
-        const tf = btn.dataset.liked;
+        let tf = btn.dataset.liked;
         const destination_number = btn.dataset.destinationNumber;
         console.log('찜 클릭됨:', destination_number);
-        if (tf) {
-            axios.delete('api/likes', {data: {destination_number}})
+        console.log(destination_number);
+        console.log(tf);
+        if (tf == 'true') {
+            axios.delete('api/likes', {data :{ destination_number}})
                 .then(res => {
                     console.log(res.data)
-                    if (res.data) {
-                        if (bj != 1) {
+                    if (res.data == 1) {
+                        if (func != 'tag-page') {
                             e.target.closest(".pokemon-card").remove();
                             renderLikes();
                         } else {
                             // 병주용 공간
+                            btn.children[0].src = '/other/image/emptyheart.png';
+                            btn.dataset.liked = 'false';
+
                         }
-                    } else if(res.data == -1){
+                    } else if (res.data == -1) {
                         alert('로그인이 필요합니다.');
-                        location.href='/login-page'
+                        location.href = '/login-page'
                     }
 
                 })
-        }else{
-            axios.post('api/likes', {data : {destination_number}})
+        } else {
+            console.log('add request')
+            console.log(destination_number);
+            axios.post('api/likes', {destination_number})
                 .then(res => {
                     console.log(res.data);
-            })
+                    btn.children[0].src = '/other/image/heart.png';
+                    btn.dataset.liked = 'true';
+                })
         }
 
     });
@@ -58,7 +76,6 @@ function likeFn(container) {
 function renderUserProfil() {
     console.log("profile called.")
 
-    console.log(loginUser);
     let content = `<div style="border: 1px solid black; margin-left: 270px ">
 
     <div id="display-mode">
@@ -154,19 +171,4 @@ async function selectLikes() {
         });
     return arrayData;
 }
-
-// 페이지별 내용 그리기
-function render() {
-    console.log('render called')
-    // user
-    renderUserProfil();
-    // 찜
-    // renderLikes();
-
-
-}
-
-
-
-
 
