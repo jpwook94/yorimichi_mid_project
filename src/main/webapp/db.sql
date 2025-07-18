@@ -174,6 +174,8 @@ CREATE TABLE mascot
         FOREIGN KEY (location_number)
             REFERENCES location (location_number)
 );
+drop table mascot;
+
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (1, '도쿄돔쿤', 1);
 
@@ -190,13 +192,50 @@ INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (5, '시오로마루히메', 5);
 
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
-VALUES (6, '멜론쿠마', 6);
+VALUES (6, '즈시홋키', 6);
 
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (7, '히로쿠마', 7);
 
 INSERT INTO mascot (mascot_number, mascot_name, location_number)
 VALUES (8, '난지', 8);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (9, '쿠마몬', 9);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (10, '치바군', 10);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (11, '성덕멘타이코', 11);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (12, '아루쿠마', 12);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (13, '킨타로', 13);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (14, '도치마루군', 14);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (15, '햐쿠만', 15);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (16, '치륫피', 16);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (17, '나고밍', 17);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (18, '키이쨩', 18);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (19, '미컁', 19);
+
+INSERT INTO mascot (mascot_number, mascot_name, location_number)
+VALUES (20, '히코냥', 20);
+
 
 CREATE TABLE tag_mbti
 (
@@ -299,3 +338,5 @@ CREATE SEQUENCE likes_seq
     NOCACHE;
 
 select * from likes;
+
+select * from likes where user_id='qwer';

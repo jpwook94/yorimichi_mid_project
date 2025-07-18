@@ -38,7 +38,7 @@ $(document).ready(function () {
                                 <div class="c-ITtitle-bar">
                                     <div class="c-ITtitle-left">
                                         <div class="c-ITtitle-icon">🦆</div>
-                                        <span>Yorimichi.exe</span>
+                                        <span>Yostagram.exe</span>
                                     </div>
                                     <div class="c-ITwindow-controls">
                                         <div class="c-ITcontrol-btn">_</div>
