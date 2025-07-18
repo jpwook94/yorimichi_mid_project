@@ -141,10 +141,22 @@
     <div class="team-member">
         <div class="team-member-title"><h1>팀원</h1></div>
         <div class="team-member-list">
-            <div>정현욱(팀장)</div>
-            <div>이가은</div>
-            <div>장채은</div>
-            <div>최병주</div>
+            <div class="tag-member">
+                <div>정현욱(팀장)</div>
+                <div><img src="/other/image/jhw.png" alt=""></div>
+            </div>
+            <div class="tag-member">
+                <div>이가은</div>
+                <div><img src="/other/image/lge.png" alt=""></div>
+            </div>
+            <div class="tag-member">
+                <div>장채은</div>
+                <div><img src="/other/image/jce.png" alt=""></div>
+            </div>
+            <div class="tag-member">
+                <div>최병주</div>
+                <div><img src="/other/image/DUCK1.png" alt=""></div>
+            </div>
         </div>
     </div>
 </footer>

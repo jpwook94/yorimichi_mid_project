@@ -521,8 +521,9 @@ footer {
 
 .team-member {
     position: absolute;
-    left: 70%;
-    top: 25%;
+    left: 60%;
+    top: 15%;
+    color: white;
     text-align: center;
     font-family: "pixelfont", sans-serif;
     text-shadow:
@@ -532,5 +533,17 @@ footer {
             1px 1px 0 black;
 }
 
+.team-member-title {
+    margin-bottom: 25px;
+}
 
-.team-member-list
+
+.team-member-list {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+
+
+
+
