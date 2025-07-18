@@ -5,7 +5,9 @@ import com.yorimichi.travel.vo.DestinationVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class LikesService {
@@ -41,8 +43,9 @@ public class LikesService {
             return likesMapper.existsCheck(id, desNum);
     }
 
-    public boolean isLiked(String userId, int destinationNumber) {
-        return likesMapper.isLiked(userId, destinationNumber) > 0;
+    public Set<Integer> getLikedDestinationNumbers(String userId, List<Integer> destinationNumbers) {
+        List<Integer> liked = likesMapper.findLikedDestinationNumbers(userId, destinationNumbers);
+        return new HashSet<>(liked); // 빠른 lookup 위해 Set 사용
     }
 
 

@@ -38,7 +38,16 @@ public interface LikesMapper {
     @Select("select count(*) from likes where user_id=#{id} and destination_number=${desNum}")
         int existsCheck(String id, int desNum);
 
-    @Select("SELECT COUNT(*) FROM likes WHERE user_id = #{userId} AND destination_number = #{destinationNumber}")
-    int isLiked(String userId, int destinationNumber);
+    @Select({
+            "<script>",
+            "SELECT destination_number FROM likes",
+            "WHERE user_id = #{userId}",
+            "AND destination_number IN",
+            "<foreach item='num' collection='destinationNumbers' open='(' separator=',' close=')'>",
+            "#{num}",
+            "</foreach>",
+            "</script>"
+    })
+    List<Integer> findLikedDestinationNumbers(@Param("userId") String userId, @Param("destinationNumbers") List<Integer> destinationNumbers);
 }
 

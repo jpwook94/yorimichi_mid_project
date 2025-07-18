@@ -446,6 +446,7 @@ function initSSRcardEvents(){
         if (likeBtn && data.destination_number) { // likeBtn과 data.destination_number가 모두 있는지 확인
             likeBtn.setAttribute("data-destination-number", data.destination_number);
             console.log(`data-destination-number 설정됨: ${data.destination_number}`);
+            document.querySelector(".like-btn1").setAttribute("data-destination-number", data.destination_number);
         } else {
             console.warn("likeBtn 요소를 찾을 수 없거나 data.destination_number가 없습니다.");
         }
@@ -530,191 +531,197 @@ function initSSRcardEvents(){
         const response = await fetch("/pickSSRN");
         const data = await response.json();
         console.log(data)
-        const nums = data.map(d => d.destination_number);
+        const destinationNumbers = data.map(d => d.destination_number);
 
-        const likeCheck = await fetch("/api/likes/check-liked-list", {
+        const likedRes = await fetch("/api/likes/check-liked-list", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(nums),
+            body: JSON.stringify(destinationNumbers),
+            credentials: 'include'
         });
-        const likedMap = await likeCheck.json();
+        const likedMap = await likedRes.json();
 
-        // likedList로 넘기기
-        const likedList = Object.keys(likedMap).filter(key => likedMap[key]).map(Number);
-
-        playSSRN(data, likedList);
+        // SSRN 시작
+        playSSRN(data, likedMap);
         setTimeout(() => {
             document.querySelector(".likegacha-container").style.display = "block";
             document.querySelector(".fivegacha-container").style.display = "block";
+            addEvent();
         }, 33000);
 
     })
 
     /* 5회뽑기 돌아감 */
-    function playSSRN(destinations, likedList = []) {
-    let index = 0;
-    /* 카드 나올 때 사운드 */
-    const SSRcardshow = new Audio("/other/audio/gacha/shine-5.mp3");
-    /* 카드 스파클 사운드 */
-    const SSRcardSparkle = new Audio("/other/audio/gacha/shine-7.mp3");
+    function playSSRN(destinations, likedMap = {}) {
+        let index = 0;
+        /* 카드 나올 때 사운드 */
+        const SSRcardshow = new Audio("/other/audio/gacha/shine-5.mp3");
+        /* 카드 스파클 사운드 */
+        const SSRcardSparkle = new Audio("/other/audio/gacha/shine-7.mp3");
 
-    //여행지 하나
-    function revealNext() {
+        //여행지 하나
+        function revealNext() {
 
-        // 모든 여행지가 표시되었으면 함수를 종료합니다.
-        if (index >= destinations.length) {
-            console.log("모든 목적지가 표시되었습니다!");
-            document.querySelector(".SSRcard-wrapper").classList.add("hide");
-            setTimeout(() => {
-                const checkboxes = document.querySelectorAll("input[name='fivelike']");
-                checkboxes.forEach((input, idx) => {
-                    const destNum = destinations[idx].destination_number;
-                    if (likedList.includes(destNum)) {
-                        input.checked = true;
-                        input.disabled = true;
-                    } else {
-                        input.checked = false;
-                        input.disabled = false;
-                    }
-                });
-            }, 300);
-            return;
-        }
-        const wrapper = document.querySelector(".SSRcard-wrapper");
-        if (wrapper) {
-            // 초기 상태 리셋
-            wrapper.classList.remove("flip", "show");
-            wrapper.classList.add("hide");
-
-            const destNameEl = document.getElementById("SSR-destination-name");
-            const currentDest = destinations[index];
-            const checkboxes = document.querySelectorAll("input[name='fivelike']");
-            const labels = document.querySelectorAll(".checkbox-label");
-            if (destNameEl) {
-                destNameEl.textContent = currentDest.destination_name;
-                destNameEl.setAttribute("data-content", currentDest.destination_name);
-            }
-            const pickeddestimg = document.querySelector(".SSRcard-imgcontainer img");
-            if (pickeddestimg && currentDest.destination_number) {
-                pickeddestimg.src = `/other/image/destination/${currentDest.destination_number}.png`;
-            }
-            if (checkboxes[index]) {
-                const destNum = currentDest.destination_number;
-                checkboxes[index].value = currentDest.destination_name;
-                checkboxes[index].dataset.destinationNumber = destNum;
-                if (likedList.includes(destNum)) {
-                    checkboxes[index].checked = true;
-                    checkboxes[index].disabled = true; // 이미 찜이면 비활성화
-                } else {
-                    checkboxes[index].checked = false;
-                    checkboxes[index].disabled = false;
-                }
-            }
-            if (labels[index]) {
-                labels[index].textContent = currentDest.destination_name;
-            }
-
-            setTimeout(() => {
-                wrapper.classList.remove("hide");
-
-                // 강제 리플로우로 transition 다시 계산
-                void wrapper.offsetWidth;
-
-                // 등장
-                wrapper.classList.add("show");
-                SSRcardshow.currentTime = 0;
-                SSRcardshow.play().catch((err) => {
-                    console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
-                });
-
-                // flip은 2초 후
+            // 모든 여행지가 표시되었으면 함수를 종료합니다.
+            if (index >= destinations.length) {
+                console.log("모든 목적지가 표시되었습니다!");
+                document.querySelectorAll("input[data-destination-number]").forEach(e => console.log(e.onclick));
+                document.querySelector(".SSRcard-wrapper").classList.add("hide");
                 setTimeout(() => {
-                    wrapper.classList.add("flip");
+                    const checkboxes = document.querySelectorAll("input[name='fivelike']");
+                    checkboxes.forEach((input, idx) => {
+                        const destNum = destinations[idx].destination_number;
 
-                    // flip 1초 뒤 효과
+                        if (likedMap[destNum]) {
+                            input.checked = true;
+                            input.disabled = true;
+                        } else {
+                            input.checked = false;
+                            input.disabled = false;
+                        }
+                    });
+
+                }, 300);
+                return;
+            }
+
+            const wrapper = document.querySelector(".SSRcard-wrapper");
+            if (wrapper) {
+                // 초기 상태 리셋
+                wrapper.classList.remove("flip", "show");
+                wrapper.classList.add("hide");
+
+                const destNameEl = document.getElementById("SSR-destination-name");
+                const currentDest = destinations[index];
+                const checkboxes = document.querySelectorAll("input[name='fivelike']");
+                const labels = document.querySelectorAll(".checkbox-label");
+                if (destNameEl) {
+                    destNameEl.textContent = currentDest.destination_name;
+                    destNameEl.setAttribute("data-content", currentDest.destination_name);
+                }
+                const pickeddestimg = document.querySelector(".SSRcard-imgcontainer img");
+                if (pickeddestimg && currentDest.destination_number) {
+                    pickeddestimg.src = `/other/image/destination/${currentDest.destination_number}.png`;
+                }
+                if (checkboxes[index]) {
+                    const destNum = currentDest.destination_number;
+                    checkboxes[index].value = currentDest.destination_name;
+                    checkboxes[index].dataset.destinationNumber = destNum;
+
+                    if (likedMap[destNum]) {
+                        checkboxes[index].checked = true;
+                        checkboxes[index].disabled = true;
+                    } else {
+                        checkboxes[index].checked = false;
+                        checkboxes[index].disabled = false;
+                    }
+                }
+
+                if (labels[index]) {
+                    labels[index].textContent = currentDest.destination_name;
+                }
+
+                setTimeout(() => {
+                    wrapper.classList.remove("hide");
+
+                    // 강제 리플로우로 transition 다시 계산
+                    void wrapper.offsetWidth;
+
+                    // 등장
+                    wrapper.classList.add("show");
+                    SSRcardshow.currentTime = 0;
+                    SSRcardshow.play().catch((err) => {
+                        console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+                    });
+
+                    // flip은 2초 후
                     setTimeout(() => {
-                        createSparkleEffect();
-                        SSRcardSparkle.play().catch((err) => {
-                            console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
-                        });
+                        wrapper.classList.add("flip");
+
+                        // flip 1초 뒤 효과
                         setTimeout(() => {
-                            index++; // 다음 목적지를 위해 인덱스 증가
-                            revealNext(); // 다음 항목을 위해 revealNext 호출
-                        }, 2500);
+                            createSparkleEffect();
+                            SSRcardSparkle.play().catch((err) => {
+                                console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+                            });
+                            setTimeout(() => {
+                                index++; // 다음 목적지를 위해 인덱스 증가
+                                revealNext(); // 다음 항목을 위해 revealNext 호출
+                            }, 2500);
 
-                    }, 1000);
+                        }, 1000);
 
-                }, 2000);
-            }, 1000);
-        } else {
-            console.error("SSRcard-wrapper를 찾을 수 없습니다.");
-            return;
+                    }, 2000);
+                }, 1000);
+            } else {
+                console.error("SSRcard-wrapper를 찾을 수 없습니다.");
+                return;
+            }
         }
+        revealNext(); // 프로세스 시작
     }
-    revealNext(); // 프로세스 시작
-}
 
 
     function addEvent() {
-        console.log("addEvent() 실행됨");
         const yesBtn = document.querySelectorAll(".likegacha-main-btn")[0];
         yesBtn.replaceWith(yesBtn.cloneNode(true));
+        const newYesBtn = document.querySelectorAll(".likegacha-main-btn")[0];
 
         const yesClickHandler = (e) => {
-            // 중복 방지
-            yesBtn.removeEventListener("click", yesClickHandler);
-
-            // 뽑기 모드 확인
             const mode = e.target.dataset.mode;
-
             if (mode === "single") {
                 const destinationNum = e.target.dataset.destinationNumber;
                 sendLike(destinationNum);
-            }
-
-            if (mode === "multi") {
+            } else if (mode === "multi") {
                 const checked = document.querySelectorAll('input[name="fivelike"]:checked:not(:disabled)');
                 if (checked.length === 0) {
                     alert("찜할 여행지를 선택해주세요!");
                     return;
                 }
-
                 checked.forEach((input) => {
-                    const destinationNum = input.dataset.destinationNumber;
-                    sendLike(destinationNum);
+                    sendLike(input.dataset.destinationNumber);
                 });
             }
         };
 
-        yesBtn.addEventListener("click", yesClickHandler);
+        newYesBtn.addEventListener("click", yesClickHandler);
     }
+
+
 
 
     function sendLike(destination_number) {
         fetch('/api/likes/add-like', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ destination_number })
+            body: JSON.stringify({ destination_number }),
+            credentials: 'include' // ✔️ 세션 포함!
         })
-            .then(res => res.json())
-            .then(result => {
-                console.log("찜 결과:", result.message);
-                alert(result.message);
-                if (result.status === 'success') {
-                    // 성공 시 UI 이동 or 알림
+            .then(async res => {
+                const result = await res.json();
+
+                if (res.ok) {
+                    console.log("찜 성공:", result.message);
+                    alert(result.message);
+
                     const input = document.querySelector(`input[data-destination-number="${destination_number}"]`);
                     if (input) {
                         input.checked = true;
                         input.disabled = true;
-                    }else if (result.message === "이미 찜한 여행지입니다.") {
-                        alert("이미 찜한 여행지입니다!");
                     }
+                } else {
+                    // 오류 응답 처리
+                    console.warn("찜 실패:", result.message);
+                    alert(result.message); // 예: "이미 찜한 여행지입니다."
                 }
             })
             .catch(err => {
                 console.error("찜 요청 중 오류 발생:", err);
+                alert("찜 중 오류가 발생했습니다.");
             });
     }
+
+
 
 
 }

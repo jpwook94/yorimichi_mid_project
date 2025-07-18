@@ -137,7 +137,7 @@
 
 <div class="gachadescard-pickcontainer">
     <div id="SSRpick1" class="gachadescard-pickbtn" data-userId="${sessionScope.loginUser.user_id}" >1회 뽑기</div>
-    <div id="SSRpickN" class="gachadescard-pickbtn" >n회 뽑기</div>
+    <div id="SSRpickN" class="gachadescard-pickbtn" data-userId="${sessionScope.loginUser.user_id}">n회 뽑기</div>
 </div>
 
 </body>
