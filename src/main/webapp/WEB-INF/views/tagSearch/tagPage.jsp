@@ -121,24 +121,42 @@
     <div class="teamlogo-container2" >
         <img src="/other/image/logo.png" alt="">
         <hr>
-        <div class="team-description">여행지 고르기 어려우셨죠? <span style="color: #F97267">팀</span> <span style="color:#FF9900;">요리미치</span>가 도와드릴게요! <br>
-            친구가 기획에 소극적인가요? 게임처럼 참여하게 만드는 <span style="color: #ffe97d">가챠 기능</span>으로 해결! <br>
-            원하는 조건에 딱 맞는 여행지를 고르고 싶다면? <span style="color: #ffe97d">태그 검색</span>으로 한 눈에! <br>
-            어디로 가야할지 모르겠다면? <span style="color: #ffe97d">성향 테스트</span>로 나와 맞는 여행지를 탐색! <br>
+        <div class="wowwow" style="left: 507px; bottom: 96px; cursor: pointer"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+        <div class="wowwow" style="left: 432px; bottom: 73px; cursor: pointer"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+        <div class="wowwow" style="left: 446px; bottom: 67px; cursor: pointer"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+        <div class="wowwow" style="left: 366px; bottom: 46px; cursor: pointer"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+        <div class="wowwow" style="left: 320px; bottom: 35px; cursor: pointer"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+        <div class="wowwow" style="left: 220px; bottom: 15px; cursor: pointer"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+        <div class="team-description">여행지 고르기 어려우셨죠? <span style="color: #F97267; cursor: pointer">팀</span> <span style="color:#FF9900;">요리미치</span>가 도와드릴게요! <br>
+            친구가 기획에 소극적인가요? 게임처럼 참여하게 만드는 <span style="color: #ffe97d; cursor: pointer"  onclick="location.href='/gacha'">가챠 기능</span>으로 해결! <br>
+            원하는 조건에 딱 맞는 여행지를 고르고 싶다면? <span style="color: #ffe97d; cursor: pointer" onclick="location.href='/tag-page'">태그 검색</span>으로 한 눈에! <br>
+            어디로 가야할지 모르겠다면? <span style="color: #ffe97d; cursor: pointer" onclick="location.href='/charTest'">성향 테스트</span>로 나와 맞는 여행지를 탐색! <br>
             지루하고 딱딱한 기존 사이트와 달리, 감성+재미를 모두 담았답니다! <br>
         </div>
     </div>
     
     
-    <div class="wowwow"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
+
 
     <div class="team-member">
         <div class="team-member-title"><h1>팀원</h1></div>
         <div class="team-member-list">
-            <div>정현욱(팀장)</div>
-            <div>이가은</div>
-            <div>장채은</div>
-            <div>최병주</div>
+            <div class="tag-member">
+                <div>정현욱(팀장)</div>
+                <div><img src="/other/image/jhw.png" alt=""></div>
+            </div>
+            <div class="tag-member">
+                <div>이가은</div>
+                <div><img src="/other/image/lge.png" alt=""></div>
+            </div>
+            <div class="tag-member">
+                <div>장채은</div>
+                <div><img src="/other/image/jce.png" alt=""></div>
+            </div>
+            <div class="tag-member">
+                <div>최병주</div>
+                <div><img src="/other/image/DUCK1.png" alt=""></div>
+            </div>
         </div>
     </div>
 </footer>
