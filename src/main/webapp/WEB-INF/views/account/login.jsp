@@ -28,7 +28,7 @@ pageEncoding="UTF-8" %>
                     name="user_id"
                     type="text"
                     class="login-input-mail"
-                    value="bj"
+                    value="asdf"
                 />
                 <span> </span>
             </div>
@@ -60,9 +60,9 @@ pageEncoding="UTF-8" %>
                 >
             </p>
         </form>
-        <script>
-            document.querySelector(".sign-text").click();
-        </script>
+<%--        <script>--%>
+<%--            document.querySelector(".sign-text").click();--%>
+<%--        </script>--%>
         <script src="/other/js/account.js"></script>
     </body>
 </html>

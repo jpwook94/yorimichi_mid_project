@@ -124,13 +124,13 @@ INSERT INTO destination VALUES (48, '치바 마쿠하리 멧세', 'ESTJ', '일�
 
 
 select *
-from destination;
+from destination, location;
+
+select  * from destination;
+select  * from location;
+select  * from mascot;
 
 SELECT * FROM destination ORDER BY destination_number ASC;
-
-
-delete
-from LOCATION;
 
 drop table LOCATION;
 
@@ -297,3 +297,18 @@ CREATE SEQUENCE likes_seq
     NOCACHE;
 
 select * from likes;
+
+
+SELECT d.destination_number, d.destination_name, d.mbti_category, d.destination_address, d.location_number
+                        FROM destination d, likes l
+                        where d.destination_number = l.destination_number and
+                        l.user_id = 'asdf';
+
+insert into likes values (likes_seq.nextval, 'asdf', 11);
+insert into likes values (likes_seq.nextval, 'asdf', 12);
+insert into likes values (likes_seq.nextval, 'asdf', 14);
+insert into likes values (likes_seq.nextval, 'asdf', 15);
+insert into likes values (likes_seq.nextval, 'asdf', 16);
+insert into likes values (likes_seq.nextval, 'asdf', 17);
+insert into likes values (likes_seq.nextval, 'asdf', 18);
+insert into likes values (likes_seq.nextval, 'asdf', 19);

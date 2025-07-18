@@ -19,6 +19,8 @@ public class LikesController {
     @Autowired
     private LikesService likesService;
 
+    int totalCount = 0;
+
     @PostMapping("/add-like")
     public ResponseEntity<?> LikeMethodCreatedByTeamLeader(@RequestBody DestinationVO data, HttpSession session) {
         // 1. 세션에서 로그인 정보 가져오기
@@ -30,8 +32,14 @@ public class LikesController {
         // 2. 서비스 호출해서 '좋아요' 추가 로직 실행
         try {
             likesService.addLike(loginUser.getUser_id(), data.getDestination_number());
+        int totalCount = (int)session.getAttribute("totalcnt2");
+            totalCount++;
+            session.setAttribute("totalcnt2", totalCount);
+
+        int totalPage = (int) Math.ceil( (double) totalCount / 3);
+
             // 성공 시 - 성공 메시지 반환
-            return ResponseEntity.ok(Map.of("status", "success", "message", "찜 목록에 추가되었습니다!"));
+            return ResponseEntity.ok(Map.of("status", "success", "message", "찜 목록에 추가되었습니다!", "totalPage", totalPage));
         } catch (Exception e) {
             // 실패 시 (이미 찜한 경우 등) - 실패 메시지 반환
             return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message", "이미 찜한 여행지입니다."));
@@ -46,13 +54,19 @@ public class LikesController {
         if (loginUser == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "로그인이 필요합니다."));
         }
+        try {
 
         // 2. 서비스 호출해서 '좋아요' 삭제 로직 실행
-        try {
-            likesService.deleteLike(loginUser.getUser_id(), destinationNumber);
+            int deleted = likesService.deleteLike(loginUser.getUser_id(), destinationNumber);
+        int totalCount = (int)session.getAttribute("totalcnt2");
+        totalCount--;
+        session.setAttribute("totalcnt2", totalCount);
+
+        int totalPage = (int) Math.ceil( (double) totalCount / 3);
             // 성공 시 - 성공 메시지 반환
-            return ResponseEntity.ok(Map.of("status", "success", "message", "찜을 취소했습니다."));
+            return ResponseEntity.ok(Map.of("status", "success", "message", "찜을 취소했습니다.", "totalPage", totalPage));
         } catch (Exception e) {
+
             // 실패 시 - 실패 메시지 반환
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("message", "처리 중 오류가 발생했습니다."));
         }

@@ -26,8 +26,8 @@
                 <a href="/logout">로그아웃</a>
             </c:when>
             <c:otherwise>
-                <!-- 로그인 안 된 상태면 로그인/회원가입 버튼 노출 -->
-                <%--로그인 버튼--%>
+                <!--  안 된 상태면 /회원가입 버튼 노출 -->
+                <%-- 버튼--%>
                 <button class="login-container" onclick="location.href='/login-page'">
                     <svg
                             xmlns="http://www.w3.org/2000/svg"

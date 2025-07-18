@@ -58,6 +58,6 @@
         </c:choose>
     </c:forEach>
 </div>
-<script src="/other/js/account.js"></script>
+<%--<script src="/other/js/account.js"></script>--%>
 </body>
 </html>

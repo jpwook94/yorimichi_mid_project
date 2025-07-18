@@ -13,25 +13,34 @@ public class LikesService {
     @Autowired
     private LikesMapper likesMapper;
 
-    public void addLike(String userId, int destinationNumber) {
-        likesMapper.addLike(userId, destinationNumber);
+    public int addLike(String userId, int destinationNumber) {
+       return  likesMapper.addLike(userId, destinationNumber);
     }
 
-//     찜 하기 메소드
+    //     찜 하기 메소드
     public List<Integer> getLikedDestinationIds(String userId) {
         return likesMapper.findLikedDestinationIdsByUserId(userId);
     }
 
     // 찜 취소(삭제)를 위한 서비스 메소드
-    public void deleteLike(String userId, int destinationNumber) {
-        likesMapper.deleteLike(userId, destinationNumber);
+    public int deleteLike(String userId, int destinationNumber) {
+        System.out.println(userId);
+        System.out.println(destinationNumber);
+        int row = likesMapper.deleteLike(userId, destinationNumber);
+        return row;
     }
 
     // [이 메소드 사용] 찜한 여행지 목록의 상세 정보를 가져오는 서비스 메소드
-    public List<DestinationVO> getLikedDestinations(int offset, String userId) {
-        return likesMapper.findLikedDestinationsByUserId(offset, userId);
+    public List<DestinationVO> findLikedDestinationsByUserId(String userId) {
+        return likesMapper.findLikedDestinationsByUserId(userId);
     }
+
     public int getLikedDestinationsCount(String userId) {
         return likesMapper.findLikedDestinationsByUserIdCount(userId);
     }
+
+    public int getTotalLikedDestinationsCount(String userId) {
+        return likesMapper.getTotalLikedDestinationsCount(userId);
+    }
+
 }

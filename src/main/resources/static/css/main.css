@@ -263,3 +263,10 @@
     height: auto;
     margin-left: 30px;
 }
+
+#pagination-container{
+    position: absolute;
+    bottom: 0px;
+    left: 500px;
+    display: none;
+}
