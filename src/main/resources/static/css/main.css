@@ -305,3 +305,15 @@
     height: auto;
     margin-left: 30px;
 }
+
+
+.startcuteduck{
+    position: relative;
+    display: none;
+}
+.startcuteduck img{
+    position: absolute;
+    top: 434px;
+    left: -55px;
+    width: 100px;
+}
