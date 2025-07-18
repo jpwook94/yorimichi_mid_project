@@ -118,14 +118,23 @@
 
 
 <footer>
-    <div class="teamlogo-container" >
-        <img src="/other/image/logo.png" alt="" style="width: 240px; height: auto">
-        <div>팀 설명 팀 설명 팀 설명</div>
+    <div class="teamlogo-container2" >
+        <img src="/other/image/logo.png" alt="">
+        <hr>
+        <div class="team-description">여행지 고르기 어려우셨죠? <span style="color: #F97267">팀</span> <span style="color:#FF9900;">요리미치</span>가 도와드릴게요! <br>
+            친구가 기획에 소극적인가요? 게임처럼 참여하게 만드는 <span style="color: #ffe97d">가챠 기능</span>으로 해결! <br>
+            원하는 조건에 딱 맞는 여행지를 고르고 싶다면? <span style="color: #ffe97d">태그 검색</span>으로 한 눈에! <br>
+            어디로 가야할지 모르겠다면? <span style="color: #ffe97d">성향 테스트</span>로 나와 맞는 여행지를 탐색! <br>
+            지루하고 딱딱한 기존 사이트와 달리, 감성+재미를 모두 담았답니다! <br>
+        </div>
     </div>
+    
+    
+    <div class="wowwow"><img src="/other/image/gacha-cute/mario-sparkle.gif" alt=""></div>
 
-    <div class="team-description">
-        <div class="team-description-title"><h1>팀원</h1></div>
-        <div class="team-member">
+    <div class="team-member">
+        <div class="team-member-title"><h1>팀원</h1></div>
+        <div class="team-member-list">
             <div>정현욱(팀장)</div>
             <div>이가은</div>
             <div>장채은</div>

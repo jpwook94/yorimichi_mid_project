@@ -91,6 +91,8 @@
     </div>
 </div>
 
+<div class="walking"><img src="/other/image/running.gif" alt=""></div>
+
 <div class="tagsearch-container">
     <div class="tagsearch-speechbubble">
         <img src="/other/image/pixel-speech-bubble.gif" alt=""/>
