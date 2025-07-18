@@ -202,6 +202,7 @@ hr {
 
 
 .top-button-wrapper {
+    z-index: 998;
     position: fixed;
     bottom: 0;
     right: 30px;
@@ -406,11 +407,68 @@ footer {
     display: flex;
     overflow: hidden;
     /*padding: 100px;*/
-    justify-content: space-between;
+    position: relative;
     width: 100%;
     height: 500px;
-    background-image: url("/other/image/footer.png");
+    background-image: url("/other/image/background.png");
+    background-repeat: repeat-x; /* 가로 방향으로 반복 */
+    background-size: contain;
+    animation: scrollBackground 500s linear infinite;
+    overflow: hidden;
 }
+
+@keyframes scrollBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 0; /* 이미지의 가로 길이에 맞춰 조절 */
+    }
+}
+
+
+.teamlogo-container2 {
+    position: absolute;
+    left: 10%;
+    top: 25%;
+}
+
+.teamlogo-container2 img {
+    height: 50px;
+}
+
+
+.team-description {
+    font-family: "pixelfont", sans-serif;
+    font-size: 20px;
+    width: 800px;
+    color: white;
+    line-height: 1.5;
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black;
+}
+@font-face {
+    font-family: "pixelfont";
+    src: url("../fonts/PFstar3.0ExtraBold.ttf") format("woff2");
+    src: url("../fonts/PFstar3.0ExtraBold.ttf") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.wowwow {
+    position: fixed;
+    left: 100px;
+    bottom: 100px;
+    z-index: 999;
+}
+
+.wowwow img {
+    width: 30px;
+}
+
 
 
 .tag-item-wrapper {
