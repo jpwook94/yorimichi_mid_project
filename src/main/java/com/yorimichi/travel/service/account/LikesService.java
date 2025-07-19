@@ -48,5 +48,17 @@ public class LikesService {
         return new HashSet<>(liked); // 빠른 lookup 위해 Set 사용
     }
 
+    // LikesService.java
+    public void addLikesBatch(String userId, List<Integer> destinationNumbers) {
+        for (Integer destNum : destinationNumbers) {
+            try {
+                likesMapper.addLike(userId, destNum);
+            } catch (Exception e) {
+                // 이미 찜한 항목은 무시 (선택적)
+            }
+        }
+    }
+
+
 
 }
