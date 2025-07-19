@@ -689,16 +689,16 @@ function initSSRcardEvents(){
             const mode = e.target.dataset.mode;
             if (mode === "single") {
                 const destinationNum = e.target.dataset.destinationNumber;
-                sendLike(destinationNum);
+                sendLike([destinationNum]); // 배열로 감싸줌
             } else if (mode === "multi") {
                 const checked = document.querySelectorAll('input[name="fivelike"]:checked:not(:disabled)');
                 if (checked.length === 0) {
                     alert("찜할 여행지를 선택해주세요!");
                     return;
                 }
-                checked.forEach((input) => {
-                    sendLike(input.dataset.destinationNumber);
-                });
+
+                const destinationNums = Array.from(checked).map(input => input.dataset.destinationNumber);
+                sendLike(destinationNums); // 배열로 전송
             }
         };
 
@@ -706,14 +706,12 @@ function initSSRcardEvents(){
     }
 
 
-
-
-    function sendLike(destination_number) {
-        fetch('/api/likes/add-like', {
+    function sendLike(destinationNumbers) {
+        fetch('/api/likes/add-like-list', { // ✅ 새로운 엔드포인트로 변경
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ destination_number }),
-            credentials: 'include' // ✔️ 세션 포함!
+            body: JSON.stringify({ destination_numbers: destinationNumbers }),
+            credentials: 'include'
         })
             .then(async res => {
                 const result = await res.json();
@@ -722,15 +720,17 @@ function initSSRcardEvents(){
                     console.log("찜 성공:", result.message);
                     alert(result.message);
 
-                    const input = document.querySelector(`input[data-destination-number="${destination_number}"]`);
-                    if (input) {
-                        input.checked = true;
-                        input.disabled = true;
-                    }
+                    // 체크된 항목 UI 업데이트
+                    destinationNumbers.forEach(num => {
+                        const input = document.querySelector(`input[data-destination-number="${num}"]`);
+                        if (input) {
+                            input.checked = true;
+                            input.disabled = true;
+                        }
+                    });
                 } else {
-                    // 오류 응답 처리
                     console.warn("찜 실패:", result.message);
-                    alert(result.message); // 예: "이미 찜한 여행지입니다."
+                    alert(result.message);
                 }
             })
             .catch(err => {
