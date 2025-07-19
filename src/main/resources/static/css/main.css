@@ -25,6 +25,7 @@
 }
 
 .main-container {
+    z-index: -1;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -50,8 +51,9 @@
 
 .walking {
     position: fixed;
-    left: 200px;
+    left: 100px;
     bottom: 70px;
+
 }
 
 .walking img {

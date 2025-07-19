@@ -84,14 +84,6 @@ public class CharTestController {
     }
 
 
-    // 테스트 끝나고 지우기
-    @GetMapping("/temporary")
-    public String goTempDirect(Model model) {
-        model.addAttribute("content", "charTest/temporary.jsp");
-        return "main";
-    }
-
-
 
 
 
