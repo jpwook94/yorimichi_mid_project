@@ -706,8 +706,6 @@ function initSSRcardEvents(){
     }
 
 
-
-
     function sendLike(destinationNumbers) {
         fetch('/api/likes/add-like-list', { // ✅ 새로운 엔드포인트로 변경
             method: 'POST',

@@ -48,7 +48,7 @@ public class LikesService {
         return new HashSet<>(liked); // 빠른 lookup 위해 Set 사용
     }
 
-    // LikesService.java
+
     public void addLikesBatch(String userId, List<Integer> destinationNumbers) {
         for (Integer destNum : destinationNumbers) {
             try {
