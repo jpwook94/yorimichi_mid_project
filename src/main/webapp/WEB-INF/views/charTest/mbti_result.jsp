@@ -100,49 +100,60 @@
             </div>
 
 
-        </c:forEach>
-
-
-        <%--여기서부터 팝업창--%>
-        <div class="c-commonPopup-container">
-            <div class="c-commonPopup1">
-                <div class="c-popup-header">
-                    <span class="c-commonPopup-title">destination.png</span>
-                    <div class="c-popup-buttons">
-                        <div class="c-commonPopup-extraBTN"></div>
+            <%--여기서부터 팝업창--%>
+            <div class="c-commonPopup-container">
+                <div class="c-commonPopup1">
+                    <div class="c-popup-header">
+                        <span class="c-commonPopup-title">destination.png</span>
+                        <div class="c-popup-buttons">
+                            <div class="c-commonPopup-extraBTN"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="c-commonPopup-body">
-                    <div class="c-commonPopup-imgblock">
-                        <img src="/other/image/charTest_cloud.gif" alt="">
+                    <div class="c-commonPopup-body">
+                        <div class="c-commonPopup-imgblock">
+                            <img src="/other/image/charTest_cloud.gif" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="c-mbti-menu">
-            <ul class="c-MBTImenu-items">
-                <li class="c-MBTImenu-item">
+            <%--            <c:if test="${status.index == 0}">--%>
+            <%--                <button class="like-btn"--%>
+            <%--                        data-liked="false"--%>
+            <%--                        data-destination-number="${desti.destination_number}">--%>
+            <%--                    Like--%>
+            <%--                </button>--%>
+            <%--            </c:if>--%>
+            <c:if test="${status.index == 0}">
+                <div class="c-mbti-menu">
+                <ul class="c-MBTImenu-items">
+                <li class="c-MBTImenu-item like-btn" data-liked="false" data-destination-number="${desti.destination_number}">
                     <img class="c-MBTImenu-icon" src="/other/image/mbtiLike.png">
-                    <span data-testlike><u>L</u>ike</span>
+                    <span>
+                        Like
+                    </span>
                     <span class="c-MBTImenu-arrow">▶</span>
                 </li>
-                <%--
-                <c:set var="isLiked" value="false"/>
-            <c:forEach items="${likedDestinationIds}" var="likedId">
-                <c:if test="${des.destination_number == likedId}">
-                    <c:set var="isLiked" value="true"/>
-                </c:if>
-            </c:forEach>
-                --%>
-                <li class="c-MBTImenu-item" id="mbtiMoreBtn">
-                    <img class="c-MBTImenu-icon" src="/other/image/mbtiMore.png">
-                    <span><u>M</u>ore</span>
-                    <span class="c-MBTImenu-arrow">▶</span>
-                </li>
-            </ul>
-        </div>
+                    <li class="c-MBTImenu-item" id="mbtiMoreBtn">
+                        <img class="c-MBTImenu-icon" src="/other/image/mbtiMore.png">
+                        <span><u>M</u>ore</span>
+                        <span class="c-MBTImenu-arrow">▶</span>
+                    </li>
+                </ul>
+                </div>
+            </c:if>
+
+            <%--
+            <c:set var="isLiked" value="false"/>
+        <c:forEach items="${likedDestinationIds}" var="likedId">
+            <c:if test="${des.destination_number == likedId}">
+                <c:set var="isLiked" value="true"/>
+            </c:if>
+        </c:forEach>
+            --%>
+
+        </c:forEach>
 
 
         <%--여기서부터 팝업창--%>

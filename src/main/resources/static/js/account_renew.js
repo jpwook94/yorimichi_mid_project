@@ -8,6 +8,8 @@ window.onload = () => {
         likeFn(".render-wrapper")
     } else if (func == 'gacha') {
         likeFn(".main-container")
+    } else if (func == 'mbtiTest-result') {
+        likeFn(".c-mbti-menu")
     } else if (func == 'mypage') {
         console.log(22)
         renderUserProfil();
@@ -40,7 +42,10 @@ function likeFn(container) {
     }
     document.querySelector(container).addEventListener('click', function (e) {
         const btn = e.target.closest('.like-btn');
+        console.log(e.target.closest('.like-btn').value)
+        console.log(e.target.closest('.like-btn').dataset.liked)
         let tf = btn.dataset.liked;
+        console.log(tf);
         const destination_number = btn.dataset.destinationNumber;
         console.log('찜 클릭됨:', destination_number);
         console.log(destination_number);
@@ -57,13 +62,11 @@ function likeFn(container) {
                             // 병주용 공간
                             btn.children[0].src = '/other/image/emptyheart.png';
                             btn.dataset.liked = 'false';
-
                         }
                     } else if (res.data == -1) {
                         alert('로그인이 필요합니다.');
                         location.href = '/login-page'
                     }
-
                 })
         } else {
             console.log('add request')
@@ -79,11 +82,20 @@ function likeFn(container) {
                         if (func == 'gacha') {
                             document.querySelectorAll(".likegacha-control-btn")[2].click();
                         } else if (func == 'tag-page') {
+                            // 병주 페이지 어떻게 할건지
                             btn.children[0].src = '/other/image/heart.png';
                             btn.dataset.liked = 'true';
+                        } else if (func == 'mbtiTest-result') {
+                            // 가은 페이지 어떻게 할건지
+                            // 찜 버튼 누룬 이후에 어떻게 할것인가
+                            alert('찜 완료!')
                         }
                     }
                 })
+                .catch(err => {
+                console.error("찜 등록중 에러 발생! 아마 이미 찜해놔서 그럴거임")
+                alert('이미 찜 했잖아 이 자식아');
+            })
         }
 
     });
@@ -92,51 +104,105 @@ function likeFn(container) {
 function renderUserProfil() {
     console.log("profile called.")
     const loginUser = document.querySelector("#user-info").dataset;
-    let content = `<div style="border: 1px solid black; margin-left: 270px ">
-
-    <div id="display-mode">
-        <h3>내 프로필</h3>
-        <p><strong>아이디:</strong> ${loginUser?.user_id}</p>
-        <p id="display_user_name"><strong>이름:</strong> ${loginUser?.user_name}</p>
-        <p id="display_user_email"><strong>이메일:</strong> ${loginUser?.user_email}</p>
-        <button type="button" id="edit-profile-btn">수정</button>
+    let content = `
+<div id="display-mode" class="retro-window">
+    <div class="retro-titlebar">
+            <h3 id="profile-title">주민등록증</h3>
     </div>
-
-    <div id="edit-mode" style="display:none;">
-        <h3>프로필 수정</h3>
-        <form action="/account/update" method="post" id="profile-update-form">
-            <p><strong>아이디:</strong> ${loginUser?.user_id}</p>
-            <input type="hidden" name="user_id" value="${loginUser?.user_id}">
-            <p>
-                <strong>이름:</strong><br>
-                <input type="text" name="user_name" value="${loginUser?.user_name}" required>
-            </p>
-            <p>
-                <strong>이메일:</strong><br>
-                <input type="email" name="user_email" value="${loginUser?.user_email}" required>
-            </p>
-            <hr>
-            <p><strong>비밀번호 변경 (변경할 경우에만 입력)</strong></p>
-            <p>
-                <strong>새 비밀번호:</strong><br>
-                <input type="password" name="user_pw" id="new_pw">
-            </p>
-            <p>
-                <strong>새 비밀번호 확인:</strong><br>
-                <input type="password" id="confirm_pw">
-            </p>
-            <button type="submit">저장</button>
-            <%-- [수정] onclick을 지우고 id 추가 --%>
-            <button type="button" id="cancel-edit-btn">취소</button>
-        </form>
+    <div class="retro-body">
+        <div class="retro-content">
+            <p id="display_user_id"><strong>아이디:</strong> ${loginUser?.user_id}</p>
+            <p id="display_user_name"><strong>이름:</strong> ${loginUser?.user_name}</p>
+            <p id="display_user_email"><strong>이메일:</strong> ${loginUser?.user_email}</p>
+            <button type="button" id="edit-profile-btn">수정</button>
+        </div>
+        <div class="retro-image-box">
+            <img src="/other/image/DUCK1.png" alt="프로필 이미지" />
+        </div>
     </div>
-</div>`
+</div>
+
+<div id="edit-mode" class="retro-window" style="display:none;">
+    <div class="retro-titlebar">
+            <h3 id="profile-title">프로필 수정</h3>
+    </div>
+    <div class="retro-body">
+        <div class="retro-content">
+            <form action="/account/update" method="post" id="profile-update-form">
+                <input type="hidden" name="user_id" value="${loginUser?.user_id}">
+                <p>
+                    <strong>이름:</strong><br>
+                    <input type="text" name="user_name" id="input_user_name" value="${loginUser?.user_name}" required>
+                </p>
+                <p>
+                    <strong>이메일:</strong><br>
+                    <input type="email" name="user_email" id="input_user_email" value="${loginUser?.user_email}" required>
+                </p>
+                <p>
+                    <strong>새 비밀번호:</strong><br>
+                    <input type="password" name="user_pw" id="input_user_pw">
+                </p>
+                <p>
+                    <strong>새 비밀번호 확인:</strong><br>
+                    <input type="password" id="input_confirm_pw">
+                </p>
+                <button type="submit" id="save-profile-btn">저장</button>
+                <button type="button" id="cancel-edit-btn">취소</button>
+            </form>
+        </div>
+        <div class="retro-image-box">
+            <img src="/other/image/DUCK1.png" alt="프로필 이미지" />
+        </div>
+    </div>
+</div>`;
     mainContent.innerHTML = content;
     document.querySelector("#edit-profile-btn").addEventListener("click", () => {
         console.log("edit");
+        document.getElementById("edit-profile-btn").addEventListener("click", () => {
+            document.getElementById("display-mode").style.display = "none";
+            document.getElementById("edit-mode").style.display = "block";
+        });
+
+        document.getElementById("cancel-edit-btn").addEventListener("click", () => {
+            document.getElementById("display-mode").style.display = "block";
+            document.getElementById("edit-mode").style.display = "none";
+        });
     })
 
 }
+// 수정 제출
+document.addEventListener("submit", function (e) {
+    if (!e.target.matches('#profile-update-form')) return;
+
+    e.preventDefault();
+
+    const form = e.target;
+    const newPw = form.querySelector('#new_pw').value;
+    const confirmPw = form.querySelector('#confirm_pw').value;
+
+    if (newPw && newPw !== confirmPw) {
+        alert("새 비밀번호가 일치하지 않습니다.");
+        return;
+    }
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    fetch("/account/update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+        .then(res => res.json())
+        .then(result => {
+            alert(result.message);
+            if (result.status === "success") {
+                document.getElementById("display_user_name").innerHTML = `<strong>이름:</strong> ${result.updatedUser.user_name}`;
+                document.getElementById("display_user_email").innerHTML = `<strong>이메일:</strong> ${result.updatedUser.user_email}`;
+                document.getElementById("edit-mode").style.display = "none";
+                document.getElementById("display-mode").style.display = "block";
+            }
+        });
+});
 
 async function renderLikes() {
     const arrayData = await selectLikes();

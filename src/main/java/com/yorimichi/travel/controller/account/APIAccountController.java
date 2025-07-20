@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RequestMapping("/api/likes")
 @RestController
@@ -39,18 +38,27 @@ public class APIAccountController {
     public int delete(@RequestBody DestinationVO destinationVO, HttpSession session, Model model) {
         AccountVO accountVO = (AccountVO) session.getAttribute("loginUser");
         if (accountVO == null) {
-            return -1; // 3 이면 로그인 안된거
+            return -1; // -1이면 로그인 안된거
         }
         return likesService.deleteLike(accountVO.getUser_id(), destinationVO.getDestination_number());
     }
     @PostMapping
-    public int post(@RequestBody DestinationVO destinationVO, HttpSession session, Model model) {
+    public ResponseEntity<Integer> post(@RequestBody DestinationVO destinationVO, HttpSession session, Model model) {
         AccountVO accountVO = (AccountVO) session.getAttribute("loginUser");
         System.out.println(destinationVO.getDestination_number());
         if (accountVO == null) {
-            return -1;
+//            return -1;
+            return ResponseEntity.ok(-1); // or ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(-1);
         }
+
         // 2. 서비스 호출해서 '좋아요' 추가 로직 실행
-          return  likesService.addLike(accountVO.getUser_id(), destinationVO.getDestination_number());
+        try {
+            int result = likesService.addLike(accountVO.getUser_id(), destinationVO.getDestination_number());
+            return ResponseEntity.ok(result); // res.data === result (1 or 0)
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(0);
+        }
+//          return  likesService.addLike(accountVO.getUser_id(), destinationVO.getDestination_number());
     }
 }
