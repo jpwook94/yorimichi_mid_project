@@ -86,10 +86,10 @@
                                      src="/other/image/destination/${desti.destination_number}.jpg" alt=""
                                      onerror="
                                              this.onerror=null;
-                                             this.src='/other/image/${desti.destination_number}.png';
+                                             this.src='/other/image/destination/${desti.destination_number}.png';
                                              this.onerror=function(){
                                              this.onerror=null;
-                                             this.src='/other/image/${desti.destination_number}.jpeg';
+                                             this.src='/other/image/destination/${desti.destination_number}.jpeg';
                                              };
                                              "
                                      alt="">

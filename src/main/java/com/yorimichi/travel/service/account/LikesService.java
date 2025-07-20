@@ -58,4 +58,16 @@ public class LikesService {
     }
 
 
+    public void addLikesBatch(String userId, List<Integer> destinationNumbers) {
+        for (Integer destNum : destinationNumbers) {
+            try {
+                likesMapper.addLike(userId, destNum);
+            } catch (Exception e) {
+                // 이미 찜한 항목은 무시 (선택적)
+            }
+        }
+    }
+
+
+
 }

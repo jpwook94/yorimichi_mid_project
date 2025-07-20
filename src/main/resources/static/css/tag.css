@@ -459,14 +459,13 @@ footer {
 }
 
 .wowwow {
-    position: fixed;
-    left: 100px;
-    bottom: 100px;
+    position: absolute;
     z-index: 999;
 }
 
 .wowwow img {
     width: 30px;
+    height: 30px;
 }
 
 
@@ -517,3 +516,36 @@ footer {
     font-size: 16px;
     color: #ffb8b8;
 }
+
+
+
+.team-member {
+    position: absolute;
+    left: 60%;
+    top: 15%;
+    color: white;
+    text-align: center;
+    font-family: "pixelfont", sans-serif;
+    text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px 1px 0 black,
+            1px 1px 0 black;
+}
+
+.team-member-title {
+    margin-bottom: 25px;
+}
+
+
+.team-member-list {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+
+
+.team-member > div img {
+    width: 300px;
+}
+

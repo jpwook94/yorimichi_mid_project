@@ -92,5 +92,26 @@ public class LikesController {
         return ResponseEntity.ok(likedMap);
     }
 
+    @PostMapping("/add-like-list")
+    public ResponseEntity<?> addLikeList(@RequestBody Map<String, List<Integer>> data, HttpSession session) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "로그인이 필요합니다."));
+        }
+
+        List<Integer> destinationNumbers = data.get("destination_numbers");
+        if (destinationNumbers == null || destinationNumbers.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("message", "찜할 여행지가 없습니다."));
+        }
+
+        try {
+            likesService.addLikesBatch(loginUser.getUser_id(), destinationNumbers);
+            return ResponseEntity.ok(Map.of("status", "success", "message", "여행지를 찜 목록에 추가했습니다!"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message", "찜 추가 중 오류가 발생했습니다."));
+        }
+    }
+
+
 
 }

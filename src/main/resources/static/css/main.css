@@ -25,6 +25,7 @@
 }
 
 .main-container {
+    z-index: -1;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -50,8 +51,9 @@
 
 .walking {
     position: fixed;
-    left: 200px;
+    left: 100px;
     bottom: 70px;
+
 }
 
 .walking img {
@@ -306,9 +308,23 @@
     margin-left: 30px;
 }
 
+<<<<<<< HEAD
 #pagination-container{
     position: absolute;
     bottom: 0px;
     left: 500px;
     display: none;
 }
+=======
+
+.startcuteduck{
+    position: relative;
+    display: none;
+}
+.startcuteduck img{
+    position: absolute;
+    top: 434px;
+    left: -55px;
+    width: 100px;
+}
+>>>>>>> e6f7c4964af71ea99ee1b3ba07fddb860df4f713

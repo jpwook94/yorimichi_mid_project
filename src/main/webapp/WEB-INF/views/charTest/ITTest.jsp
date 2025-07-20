@@ -30,7 +30,7 @@
                     <div class="c-btn minimize">
                         <div class="icon-line"></div>
                     </div>
-                    <div class="c-btn maximize" onclick="location.href='/temporary'">
+                    <div class="c-btn maximize">
                         <div class="icon-square"></div>
                     </div>
                     <div class="c-btn close" onclick="location.href='/gamelist'">
@@ -53,7 +53,7 @@
                                 <!-- 왼쪽 박스 -->
                                 <div class="c-ITtheme-box" id="${left.food_number}">
                                     <div class="c-ITtheme-preview">
-                                        <img class="c-ITtheme-selecimg" src="/other/image/food/${left.food_number}" alt=""
+                                        <img class="c-ITtheme-selecimg" src="/other/image/food/${left.food_number}.png" alt=""
                                              onerror="
                                                      this.onerror=null;
                                                      this.src='/other/image/food/${left.food_number}.jpg';
@@ -70,7 +70,7 @@
                                 <!-- 오른쪽 박스 -->
                                 <div class="c-ITtheme-box" id="${right.food_number}">
                                     <div class="c-ITtheme-preview mono">
-                                        <img class="c-ITtheme-selecimg" src="/other/image/food/${right.food_number}" alt=""
+                                        <img class="c-ITtheme-selecimg" src="/other/image/food/${right.food_number}.png" alt=""
                                              onerror="
                                                      this.onerror=null;
                                                      this.src='/other/image/food/${right.food_number}.jpg';
