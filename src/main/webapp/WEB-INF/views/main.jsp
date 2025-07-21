@@ -107,5 +107,42 @@
 
 <script src="/other/js/account.js"></script>
 <script src="/other/js/gacha.js" defer></script>
+<%--<script>
+    function updateHeartUI() {
+        const userId = "<%= session.getAttribute("userId") %>"; // 세션에서 userId 가져오기!!! 어케 가져오죠???
+
+        fetch('/heart/status', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ userId: userId })    // 여기도 바꿔야하나용???????????
+        })
+            .then(res => res.json())
+            .then(data => {
+                const currentHeart = data.currentHeart;
+                const time = data.timeUntilNext;
+
+                const hearts = document.querySelectorAll('.heart img');
+                hearts.forEach((img, index) => {
+                    if (index < currentHeart) {
+                        img.src = '/other/image/heart.png';
+                    } else {
+                        img.src = '/other/image/emptyheart.png';
+                    }
+                });
+
+                document.querySelector('.heart-time').textContent = time;
+            });
+    }
+
+    // 페이지 로드 시 호출
+    document.addEventListener("DOMContentLoaded", updateHeartUI);
+
+    // 주기적으로 업데이트
+    setInterval(updateHeartUI, 10000); // 10초마다 갱신
+
+</script>--%>
+
 </body>
 </html>
