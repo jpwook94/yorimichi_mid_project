@@ -142,7 +142,7 @@
         <div class="team-member-title"><h1>팀원</h1></div>
         <div class="team-member-list">
             <div class="tag-member">
-                <div>정현욱(팀장)</div>
+                <div><span class="SSRrainbow">(팀장)</span><br>정현욱</div>
                 <div><img src="/other/image/jhw.png" alt=""></div>
             </div>
             <div class="tag-member">
