@@ -521,7 +521,8 @@ footer {
 
 .team-member {
     position: absolute;
-    left: 60%;
+    font-size: 20px;
+    left: 55%;
     top: 15%;
     color: white;
     text-align: center;
@@ -540,12 +541,13 @@ footer {
 
 .team-member-list {
     display: flex;
-    width: 500px;
+    width: 700px;
     justify-content: space-between;
+    gap: 50px;
 }
 
 
 .team-member > div img {
-    width: 300px;
+    width: 110px;
 }
 
