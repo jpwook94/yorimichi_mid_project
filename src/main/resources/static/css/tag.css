@@ -523,9 +523,13 @@ footer {
     position: absolute;
     font-size: 20px;
     left: 55%;
-    top: 15%;
+    top: 20%;
+    height: 350px;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     font-family: "pixelfont", sans-serif;
     text-shadow:
             -1px -1px 0 black,
@@ -541,13 +545,104 @@ footer {
 
 .team-member-list {
     display: flex;
+    bottom: 0px;
     width: 700px;
     justify-content: space-between;
     gap: 50px;
+    align-items: flex-end;
 }
 
 
 .team-member > div img {
     width: 110px;
+}
+
+.tag-member {
+    bottom: 0;
+}
+
+
+.SSRrainbow{
+    background: linear-gradient(90deg, #00ff99, #00ffff, #ff00ff, #00ff99);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* ← 일반 color도 투명 처리 */
+
+    text-shadow: none !important;
+    font-size: 20px;
+    font-weight: bold;
+    animation: hackerWave 4s infinite linear, blinkCaret 1s steps(2, start) infinite;
+}
+
+@keyframes hackerWave {
+    0% { background-position: 0%; }
+    100% { background-position: 400%; }
+}
+
+@keyframes blinkCaret {
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 🚀 더 높고 빠른 점프 애니메이션 키프레임 */
+@keyframes simpleJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+}
+
+@keyframes mediumJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-65px); }
+}
+
+@keyframes bigJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-80px); }
+}
+
+@keyframes quickJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+}
+
+/* ⚡ 점프 속도 업! */
+.tag-member:nth-child(1) {
+    animation: simpleJump 1.2s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.tag-member:nth-child(2) {
+    animation: mediumJump 1.4s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+.tag-member:nth-child(3) {
+    animation: quickJump 1.0s ease-in-out infinite;
+    animation-delay: 0.6s;
+}
+
+.tag-member:nth-child(4) {
+    animation: bigJump 1.6s ease-in-out infinite;
+    animation-delay: 0.9s;
+}
+
+/* 🪩 호버 시 슈퍼 점프 */
+.tag-member:hover {
+    animation-duration: 0.6s !important;
+    transform: scale(1.08);
 }
 
