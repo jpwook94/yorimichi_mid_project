@@ -70,7 +70,7 @@
     <div class="teamlogo-container"><img id="teamlogo2" onclick="location.href='/gamelist'" src="/other/image/logo.png"
                                          alt=""></div>
     <div class="login-menu-area">
-        <c:>
+        <c:choose>
             <c:when test="${not empty sessionScope.loginUser}">
                 <span class="welcome-msg">${sessionScope.loginUser.user_name}님, 환영합니다!</span>
                 <button class="mypage-btn" onclick="location.href='/mypage'">마이페이지</button>
