@@ -140,11 +140,11 @@ function renderUserProfil() {
                 </p>
                 <p>
                     <strong>새 비밀번호:</strong><br>
-                    <input type="password" name="user_pw" id="input_user_pw">
+                    <input type="password" name="user_pw" id="new_pw">
                 </p>
                 <p>
                     <strong>새 비밀번호 확인:</strong><br>
-                    <input type="password" id="input_confirm_pw">
+                    <input type="password" id="confirm_pw">
                 </p>
                 <button type="submit" id="save-profile-btn">저장</button>
                 <button type="button" id="cancel-edit-btn">취소</button>
@@ -229,7 +229,7 @@ async function renderLikes() {
                     </button>
 
                     <div class="card-image">
-                        <img src="/other/image/DUCK1.png" alt="피카츄">
+                        <img src="/other/image/destination/${des.destination_number}.png" alt="피카츄">
                     </div>
                 </div>`;
         }

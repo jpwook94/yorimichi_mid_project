@@ -716,3 +716,8 @@
 #display-mode p {
     font-size: 20px;
 }
+#pagination-container{
+    position: absolute;
+    top: 342px;
+    left: 57%;
+}

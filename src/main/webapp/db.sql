@@ -403,7 +403,7 @@ select * from likes where user_id='qwer';
 
 select *
 from destination;
-
+select * from destination where destination_name = '후지산';
 select * from likes where user_id = 'asdf';
 select * from likes where user_id='qwer';
 
