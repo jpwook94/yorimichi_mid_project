@@ -9,6 +9,8 @@ document.querySelectorAll(".gacha-sidebar-item").forEach((dom) => {
 
         if (e.target.dataset.cate === "2") {
           initSSRcardEvents(); // 원하는 함수 호출
+        } if (e.target.dataset.cate === "3") {
+          initFoodEvents();
         }
       });
   });
@@ -754,3 +756,58 @@ function initSSRcardEvents() {
       });
   }
 }
+
+function initFoodEvents() {
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.classList.contains('gacha')) {
+      handleFoodGacha(e.target);
+    }
+  });
+}
+
+function handleFoodGacha(target) {
+  // 선택지 클릭 사운드
+  const foodclick = new Audio("/other/audio/gacha/powerup02.mp3");
+  foodclick.volume = 0.6;
+  foodclick.play().catch((err) => {
+    console.warn("사운드 재생이 차단되었을 수 있습니다:", err);
+  });
+  document.querySelector("#result").textContent = "";
+
+  const duckImage = document.getElementById('gachafood-duck');
+  const duckImages = [
+    '/other/image/gacha/dokidoki22.png',
+    '/other/image/gacha/dokidoki33.png'
+  ];
+  const randomIndex = Math.floor(Math.random() * duckImages.length);
+  duckImage.src = duckImages[randomIndex];
+
+  duckImage.classList.add('bounce');
+  setTimeout(() => {
+    duckImage.classList.remove('bounce');
+  }, 600);
+
+  let flag = 0;
+  let url = "/api/gacha/food";
+  console.log(target.value)
+  if (target.value === 'on') {
+    url += '?where=on';
+  }
+
+  const eventSource = new EventSource(url);
+  eventSource.onmessage = function (event) {
+    console.log(event.data);
+
+    const data = event.data;
+    document.querySelector("#result").textContent += data;
+    if (data.includes(".")) {
+      flag++;
+      if (flag === 2) {
+        eventSource.close();
+      }
+    }
+  };
+}
+
+
+
