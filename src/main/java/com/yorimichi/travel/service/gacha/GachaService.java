@@ -106,7 +106,7 @@ public class GachaService {
     public String getRandomFoodFromGemma(HttpServletResponse response, String where) {
         response.setContentType("text/event-stream");
         response.setCharacterEncoding("UTF-8");
-        String prompt = "일본 여행왔는데 일본 음식 뭐먹을까?";
+        String prompt = "일본 여행왔는데 일본 음식 뭐먹을까? 하나 추천해주라~";
 
         if (where != null) {
             result = result.replaceAll("\n", " ").trim();
@@ -114,7 +114,7 @@ public class GachaService {
                     .map(String::trim)
                     .filter(s -> !s.isEmpty())
                     .map(s -> s + ".")
-                    .limit(2)
+                    .limit(3)
                     .collect(Collectors.toList());
 
             String finalText = String.join(" ", sentences);
