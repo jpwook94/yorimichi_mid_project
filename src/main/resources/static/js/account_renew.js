@@ -7,7 +7,8 @@ window.onload = () => {
         console.log(11)
         likeFn(".render-wrapper")
     } else if (func == 'gacha') {
-        likeFn(".main-container")
+        // likeFn(".main-container")
+        return;
     } else if (func == 'mbtiTest-result') {
         likeFn(".c-mbti-menu")
     } else if (func == 'mypage') {

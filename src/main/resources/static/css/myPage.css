@@ -46,7 +46,7 @@
     margin-bottom: 20px;
     justify-self: center;
     align-self: center;
-    font-size: 17pt;
+    -size: 17pt;
     color: #5b3b88;
 }
 
@@ -681,8 +681,7 @@
 #edit-profile-btn,
 #save-profile-btn,
 #cancel-edit-btn {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 10px;
+    font-size: 20px;
     padding: 6px 10px;
     margin-top: 10px;
     margin-right: 6px;

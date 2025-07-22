@@ -33,9 +33,9 @@
 <div class="login-menu-area">
     <c:choose>
         <c:when test="${not empty sessionScope.loginUser}">
-            <span>${sessionScope.loginUser.user_name}님, 환영합니다!</span>
-            <button onclick="location.href='/mypage'">마이페이지</button>
-            <a href="/logout">로그아웃</a>
+            <span class="welcome-msg">${sessionScope.loginUser.user_name}님, 환영합니다!</span>
+            <button class="mypage-btn" onclick="location.href='/mypage'">마이페이지</button>
+            <a class="logout-btn" href="/logout">로그아웃</a>
         </c:when>
         <c:otherwise>
             <!-- 로그인 안 된 상태면 로그인/회원가입 버튼 노출 -->

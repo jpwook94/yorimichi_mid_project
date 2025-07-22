@@ -397,11 +397,9 @@ hr {
 }
 
 .login-menu-area {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: pixelfont;
+    margin-right: 10px;
 }
-
-
-
 
 footer {
     display: flex;
