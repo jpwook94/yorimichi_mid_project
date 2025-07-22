@@ -12,6 +12,57 @@
     <title>Document</title>
     <link rel="stylesheet" href="/other/css/tag.css">
     <link rel="stylesheet" href="/other/css/card-list.css">
+    <style>
+        /* 마이페이지 버튼 */
+        .mypage-btn {
+            font-family: "pixelfont", sans-serif;
+            background-color: #ffcc66;
+            color: #333;
+            border: 2px solid #000;
+            border-radius: 20px;
+            padding: 8px 16px;
+            margin-right: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 #000;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .mypage-btn:hover {
+            background-color: #fff176;
+            transform: translateY(-2px);
+        }
+
+        /* 로그아웃 버튼 */
+        .logout-btn {
+            font-family: "pixelfont", sans-serif;
+            background-color: transparent;
+            color: #e53935;
+            border: 2px solid #e53935;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 2px 2px 0 #000;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .logout-btn:hover {
+            background-color: #e53935;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* 환영 메시지 */
+        .welcome-msg {
+            font-family: "pixelfont", sans-serif;
+            font-size: 16px;
+            margin-right: 10px;
+            color: #444;
+        }
+    </style>
 </head>
 <body>
 <div class="header-wrapper" onclick="">
@@ -19,11 +70,11 @@
     <div class="teamlogo-container"><img id="teamlogo2" onclick="location.href='/gamelist'" src="/other/image/logo.png"
                                          alt=""></div>
     <div class="login-menu-area">
-        <c:choose>
+        <c:>
             <c:when test="${not empty sessionScope.loginUser}">
-                <span>${sessionScope.loginUser.user_name}님, 환영합니다!</span>
-                <button onclick="location.href='/mypage'">마이페이지</button>
-                <a href="/logout">로그아웃</a>
+                <span class="welcome-msg">${sessionScope.loginUser.user_name}님, 환영합니다!</span>
+                <button class="mypage-btn" onclick="location.href='/mypage'">마이페이지</button>
+                <a class="logout-btn" href="/logout">로그아웃</a>
             </c:when>
             <c:otherwise>
                 <!-- 로그인 안 된 상태면 로그인/회원가입 버튼 노출 -->

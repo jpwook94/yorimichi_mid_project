@@ -82,10 +82,4 @@ public class CharTestController {
         System.out.println("선택된 후보 ID: " + selectedId);
         return charTestService.processSelection(selectedId, session);
     }
-
-
-
-
-
-
 }

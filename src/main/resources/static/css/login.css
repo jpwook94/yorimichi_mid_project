@@ -685,14 +685,62 @@
     right: 50px;   /* ← 원하는 위치 (오른쪽 상단이면 right: 50px; left: auto) */
     left: auto;
     z-index: 999;
-    background: rgba(0,0,0,0.12); /* 투명도 조절(선택) */
+    /*background: rgba(0,0,0,0.12); !* 투명도 조절(선택) *!*/
     padding: 8px 16px;
     border-radius: 12px;
     font-size: 1.15rem;
     display: flex;
     align-items: center;
-    gap: 14px;
-    /* 원하는 추가 스타일 */
 }
-.login-menu-area a { color: #fff; text-decoration: underline; font-weight: 700; }
+.login-menu-area a { font-weight: 700; }
 .login-menu-area span { color: #fff9c4; font-weight: bold; }
+
+/* 마이페이지 버튼 */
+.mypage-btn {
+    font-family: "pixelfont", sans-serif;
+    background-color: #ffcc66;
+    color: #333;
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #000;
+    transition: all 0.2s ease-in-out;
+}
+
+.mypage-btn:hover {
+    background-color: #fff176;
+    transform: translateY(-2px);
+}
+
+/* 로그아웃 버튼 */
+.logout-btn {
+    font-family: "pixelfont", sans-serif;
+    background-color: whitesmoke;
+    color: #e53935;
+    border: 2px solid #e53935;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 2px 2px 0 #000;
+    transition: all 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+    background-color: #e53935;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* 환영 메시지 */
+.welcome-msg {
+    font-family: "pixelfont", sans-serif;
+    font-size: 16px;
+    margin-right: 10px;
+    color: #444;
+}

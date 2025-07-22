@@ -101,6 +101,7 @@
 
 
             <%--여기서부터 팝업창--%>
+            <c:if test="${status.index == 0}">
             <div class="c-commonPopup-container">
                 <div class="c-commonPopup1">
                     <div class="c-popup-header">
@@ -116,15 +117,8 @@
                     </div>
                 </div>
             </div>
+            </c:if>
 
-
-            <%--            <c:if test="${status.index == 0}">--%>
-            <%--                <button class="like-btn"--%>
-            <%--                        data-liked="false"--%>
-            <%--                        data-destination-number="${desti.destination_number}">--%>
-            <%--                    Like--%>
-            <%--                </button>--%>
-            <%--            </c:if>--%>
             <c:if test="${status.index == 0}">
                 <div class="c-mbti-menu">
                 <ul class="c-MBTImenu-items">
@@ -143,18 +137,7 @@
                 </ul>
                 </div>
             </c:if>
-
-            <%--
-            <c:set var="isLiked" value="false"/>
-        <c:forEach items="${likedDestinationIds}" var="likedId">
-            <c:if test="${des.destination_number == likedId}">
-                <c:set var="isLiked" value="true"/>
-            </c:if>
         </c:forEach>
-            --%>
-
-        </c:forEach>
-
 
         <%--여기서부터 팝업창--%>
         <div class="c-commonPopup-container">
