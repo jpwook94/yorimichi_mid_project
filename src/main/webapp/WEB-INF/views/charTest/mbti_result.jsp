@@ -98,10 +98,10 @@
                     </div>
                 </div>
             </div>
+        </c:forEach>
 
 
             <%--여기서부터 팝업창--%>
-            <c:if test="${status.index == 0}">
             <div class="c-commonPopup-container">
                 <div class="c-commonPopup1">
                     <div class="c-popup-header">
@@ -117,12 +117,11 @@
                     </div>
                 </div>
             </div>
-            </c:if>
 
-            <c:if test="${status.index == 0}">
+
                 <div class="c-mbti-menu">
                 <ul class="c-MBTImenu-items">
-                <li class="c-MBTImenu-item like-btn" data-liked="false" data-destination-number="${desti.destination_number}">
+                <li class="c-MBTImenu-item like-btn" data-liked="false" data-destination-number="${destList[0].destination_number}">
                     <img class="c-MBTImenu-icon" src="/other/image/mbtiLike.png">
                     <span>
                         Like
@@ -136,8 +135,6 @@
                     </li>
                 </ul>
                 </div>
-            </c:if>
-        </c:forEach>
 
         <%--여기서부터 팝업창--%>
         <div class="c-commonPopup-container">
@@ -158,10 +155,17 @@
 
 
 <script>
+    const destinationNumbers = [
+        <c:forEach var="desti" items="${destList}" varStatus="status">
+        "${desti.destination_number}"<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
+    ];
+
     let currentIndex = 0;
 
     document.addEventListener("DOMContentLoaded", function () {
         const items = document.querySelectorAll(".c-window-container");
+        const likeBtn = document.querySelector(".like-btn");
         let currentIndex = 0;
 
         document.addEventListener("click", function (e) {
@@ -177,6 +181,7 @@
                 }
 
                 items[currentIndex].style.display = "block";
+                likeBtn.setAttribute("data-destination-number", destinationNumbers[currentIndex]);
             }
         });
     });
