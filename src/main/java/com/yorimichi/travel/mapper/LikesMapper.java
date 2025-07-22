@@ -11,7 +11,7 @@ public interface LikesMapper {
 
     @Insert("INSERT INTO likes (like_number, user_id, destination_number) " +
             "VALUES (likes_seq.NEXTVAL, #{userId}, #{destinationNumber})")
-    int addLike(@Param("userId") String userId, @Param("destinationNumber") int destinationNumber);
+    int addLike(String userId,int destinationNumber);
 
     // 특정 유저가 찜한 모든 여행지 번호 목록을 조회
     @Select("SELECT destination_number FROM likes WHERE user_id = #{userId}")
@@ -19,14 +19,18 @@ public interface LikesMapper {
 
     // 찜 취소(삭제) 메소드
     @Delete("DELETE FROM likes WHERE user_id = #{userId} AND destination_number = #{destinationNumber}")
-    int deleteLike(@Param("userId") String userId, @Param("destinationNumber") int destinationNumber);
+    int deleteLike(String userId, int destinationNumber);
 
     // [이 메소드 사용] 특정 유저가 찜한 모든 여행지의 상세 정보 목록을 조회
     @Select("SELECT d.destination_number, d.destination_name, d.mbti_category, d.destination_address, d.location_number\n" +
             "            FROM destination d, likes l " +
             "            where d.destination_number = l.destination_number and " +
-            "            l.user_id = #{userId} offset #{offset} rows fetch next 3 rows only")
-    List<DestinationVO> findLikedDestinationsByUserId(int offset, String userId);
+            "            l.user_id = #{userId}")
+    List<DestinationVO> findLikedDestinationsByUserId(String userId);
+
+    // [새로 추가해야 할 메소드] 특정 유저가 찜한 전체 여행지의 개수를 조회
+    @Select("SELECT COUNT(*) FROM likes WHERE user_id = #{userId}")
+    int getTotalLikedDestinationsCount(String userId); // userId를 파라미터로 받아서 likes 테이블의 개수를 세는 쿼리
 
     @Select("SELECT count(*)" +
             "            FROM destination d, likes l " +
