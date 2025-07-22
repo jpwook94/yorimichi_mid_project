@@ -408,3 +408,17 @@ select * from likes where user_id = 'asdf';
 select * from likes where user_id='qwer';
 
 DELETE FROM likes;
+
+
+
+CREATE TABLE heart_status (
+                              user_id         VARCHAR2(50) PRIMARY KEY,
+                              heart_count     NUMBER(1) NOT NULL,
+                              last_used_time  TIMESTAMP NULL
+);
+
+
+ALTER TABLE heart_status
+    ADD CONSTRAINT fk_heart_user
+        FOREIGN KEY (user_id)
+            REFERENCES users(user_id);
