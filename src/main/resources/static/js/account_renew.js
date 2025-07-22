@@ -7,7 +7,8 @@ window.onload = () => {
         console.log(11)
         likeFn(".render-wrapper")
     } else if (func == 'gacha') {
-        likeFn(".main-container")
+        // likeFn(".main-container")
+        return;
     } else if (func == 'mbtiTest-result') {
         likeFn(".c-mbti-menu")
     } else if (func == 'mypage') {
@@ -38,7 +39,7 @@ function sidebar() {
 function likeFn(container) {
     if (func == 'gacha') {
         console.log('gacha event config')
-        container = ".main-container"
+        // container = ".main-container"
     }
     document.querySelector(container).addEventListener('click', function (e) {
         const btn = e.target.closest('.like-btn');
@@ -58,6 +59,8 @@ function likeFn(container) {
                         if (func != 'tag-page') {
                             e.target.closest(".pokemon-card").remove();
                             renderLikes();
+                        }else if(func == 'gacha'){
+                           return;
                         } else {
                             // 병주용 공간
                             btn.children[0].src = '/other/image/emptyheart.png';
