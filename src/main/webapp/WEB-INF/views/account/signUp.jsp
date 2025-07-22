@@ -60,6 +60,6 @@
         <a class="signup-up" onclick="loadContent(event, '/login-page')">Sign in</a>
     </p>
 </form>
-<script src="/other/js/account.js"></script>
+<%--<script src="/other/js/account.js"></script>--%>
 </body>
 </html>

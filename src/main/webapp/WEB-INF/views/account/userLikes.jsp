@@ -32,7 +32,7 @@
     <c:forEach begin="1" end="${totalPage}" var="i">
         <c:choose>
             <c:when test="${i == curPage}">
-                <span class="active cur-page" data-page="${curPage}">[${i}]</span>
+                <span class="active cur-page page-link" data-page="${curPage}">[${i}]</span>
             </c:when>
             <c:otherwise>
                 <a href="#" class="page-link" data-page="${i}">[${i}]</a>
@@ -40,5 +40,4 @@
         </c:choose>
     </c:forEach>
 </div>
-
-<script src="/other/js/account.js"></script>
+<%--<script src="/other/js/account.js"></script>--%>

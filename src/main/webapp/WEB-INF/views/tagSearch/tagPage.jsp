@@ -160,7 +160,8 @@
         </div>
     </div>
 </footer>
-
+<%--<span id="user-info" data-user_id="${loginUser.user_id}" data-user_name="${loginUser.user_name}"--%>
+<%--      data-user_email="${loginUser.user_email}" data-user_pw="${loginUser.user_pw}"></span>--%>
 
 
 <script>
@@ -168,8 +169,9 @@
     const locations = JSON.parse('${tags5}');
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/other/js/tagSearch.js"></script>
-<script src="/other/js/account.js"></script>
+<script src="/other/js/account_renew.js"></script>
 
 
 </body>

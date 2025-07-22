@@ -157,7 +157,7 @@
     transition: 0.12s;
 }
 
-.login-form-title span {
+.login-form-title  {
     animation: flickering 2s linear infinite both;
 }
 

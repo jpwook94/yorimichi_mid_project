@@ -111,7 +111,7 @@
                 <span>여행지를 저장할래?</span>
                 <img src="/other/image/gacha/heart-beating-heart.gif" alt="">
                 <div class="likegacha-main-btnlist">
-                    <div class="like-btn1" data-destination-number="">
+                    <div class="like-btn" data-destination-number="" data-liked="false">
                         <button class="likegacha-main-btn" data-mode="single" value="y" style="">yes</button>
                     </div>
                     <button class="likegacha-main-btn" value="n">no</button>

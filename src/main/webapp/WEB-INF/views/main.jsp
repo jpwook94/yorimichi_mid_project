@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="/other/css/gacha.css"/>
     <link rel="stylesheet" href="/other/css/login.css"/>
     <link rel="stylesheet" href="/other/css/card-list.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/paginationjs@2.1.5/dist/pagination.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/paginationjs@2.1.5/dist/pagination.min.js" defer></script>
+    <script src="/other/js/main.js" defer></script>
 </head>
 <body>
 <%--하트--%>
@@ -104,8 +109,8 @@
         <img src="/other/image/DUCK4.png" alt=""/>
     </div>
 </div>
-
-<script src="/other/js/account.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/other/js/account_renew.js"></script>
 <script src="/other/js/gacha.js" defer></script>
 </body>
 </html>

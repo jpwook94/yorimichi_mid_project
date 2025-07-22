@@ -42,7 +42,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     margin-left: 268px;
-    margin-top: 24px;
+    padding-top: 20px;
     justify-items: center;
 }
 .pagination {
